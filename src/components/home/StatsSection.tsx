@@ -44,12 +44,14 @@ function AnimatedCounter({
   }, [value, duration, isVisible]);
 
   return (
-    <span className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
+    <span className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
       {count.toLocaleString()}
       {suffix}
     </span>
   );
 }
+
+import { FlightAnimation } from "@/components/ui/FlightAnimation";
 
 export function StatsSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -76,26 +78,27 @@ export function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-background border-y border-border"
+      className="py-20 bg-background border-y border-border relative overflow-hidden"
     >
-      <div className="container-wide">
+      <FlightAnimation className="text-primary/5" />
+      <div className="container-wide relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16 animate-fade-in-up px-4 sm:px-0">
           <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
             Our Track Record
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
             Excellence in Every Number
           </h2>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-4 px-4 sm:px-0">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className="text-center"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="text-center animate-fade-in-up"
+              style={{ animationDelay: `${200 + index * 100}ms` }}
             >
               <AnimatedCounter
                 value={stat.value}
@@ -103,7 +106,7 @@ export function StatsSection() {
                 duration={stat.duration}
                 isVisible={isVisible}
               />
-              <p className="text-muted-foreground mt-2 text-sm md:text-base">
+              <p className="text-muted-foreground mt-2 text-xs sm:text-sm md:text-base">
                 {stat.label}
               </p>
             </div>

@@ -37,16 +37,16 @@ const Contact = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-primary text-primary-foreground">
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 bg-primary text-primary-foreground">
           <div className="container-wide">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl animate-fade-in-up px-4 sm:px-0">
               <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
                 Contact Us
               </span>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
                 Let's Start Your <span className="text-gold italic">Journey</span>
               </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
+              <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl leading-relaxed">
                 Have questions? We're here to help. Reach out and our team will 
                 respond within 24 hours.
               </p>
@@ -57,15 +57,15 @@ const Contact = () => {
         {/* Contact Section */}
         <section className="section-padding bg-background">
           <div className="container-wide">
-            <div className="grid lg:grid-cols-5 gap-12">
+            <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 px-4 sm:px-0">
               {/* Contact Form */}
               <div className="lg:col-span-3">
-                <div className="bg-card rounded-2xl p-8 md:p-10 shadow-card">
-                  <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
+                <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-card animate-fade-in-up">
+                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
                     Send Us a Message
                   </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                           Full Name *
@@ -96,7 +96,7 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                           Phone Number *
@@ -107,7 +107,7 @@ const Contact = () => {
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
+                          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all text-sm sm:text-base"
                           placeholder="+49 123 456 789"
                         />
                       </div>
@@ -120,7 +120,7 @@ const Contact = () => {
                           required
                           value={formData.country}
                           onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
+                          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all text-sm sm:text-base"
                         >
                           <option value="">Select a country</option>
                           <option value="germany">Germany</option>
@@ -144,7 +144,7 @@ const Contact = () => {
                         rows={5}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none"
+                        className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none text-sm sm:text-base"
                         placeholder="Tell us about your travel plans or questions..."
                       />
                     </div>
@@ -153,7 +153,7 @@ const Contact = () => {
                       type="submit"
                       disabled={isSubmitting}
                       className={cn(
-                        "btn-gold w-full flex items-center justify-center gap-2",
+                        "btn-gold w-full flex items-center justify-center gap-2 text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3",
                         isSubmitting && "opacity-70 cursor-not-allowed"
                       )}
                     >
@@ -171,51 +171,51 @@ const Contact = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="lg:col-span-2 space-y-8">
-                <div className="bg-primary text-primary-foreground rounded-2xl p-8">
-                  <h3 className="font-heading text-xl font-bold mb-6">Contact Information</h3>
-                  <ul className="space-y-6">
-                    <li className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <MapPin className="w-5 h-5 text-gold" />
+              <div className="lg:col-span-2 space-y-6 sm:space-y-8">
+                <div className="bg-primary text-primary-foreground rounded-xl sm:rounded-2xl p-6 sm:p-8 animate-fade-in-up animation-delay-200">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold mb-4 sm:mb-6">Contact Information</h3>
+                  <ul className="space-y-4 sm:space-y-6">
+                    <li className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                       </div>
                       <div>
-                        <p className="font-medium mb-1">Office Address</p>
-                        <p className="text-primary-foreground/70 text-sm">
+                        <p className="font-medium mb-1 text-sm sm:text-base">Office Address</p>
+                        <p className="text-primary-foreground/70 text-xs sm:text-sm">
                           123 European Way<br />
                           Berlin, Germany 10115
                         </p>
                       </div>
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Phone className="w-5 h-5 text-gold" />
+                    <li className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                        <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                       </div>
                       <div>
-                        <p className="font-medium mb-1">Phone</p>
-                        <a href="tel:+49123456789" className="text-primary-foreground/70 text-sm hover:text-gold transition-colors">
+                        <p className="font-medium mb-1 text-sm sm:text-base">Phone</p>
+                        <a href="tel:+49123456789" className="text-primary-foreground/70 text-xs sm:text-sm hover:text-gold transition-colors">
                           +49 123 456 789
                         </a>
                       </div>
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Mail className="w-5 h-5 text-gold" />
+                    <li className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                       </div>
                       <div>
-                        <p className="font-medium mb-1">Email</p>
-                        <a href="mailto:info@europecalling.com" className="text-primary-foreground/70 text-sm hover:text-gold transition-colors">
+                        <p className="font-medium mb-1 text-sm sm:text-base">Email</p>
+                        <a href="mailto:info@europecalling.com" className="text-primary-foreground/70 text-xs sm:text-sm hover:text-gold transition-colors break-all">
                           info@europecalling.com
                         </a>
                       </div>
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-5 h-5 text-gold" />
+                    <li className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                        <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                       </div>
                       <div>
-                        <p className="font-medium mb-1">Working Hours</p>
-                        <p className="text-primary-foreground/70 text-sm">
+                        <p className="font-medium mb-1 text-sm sm:text-base">Working Hours</p>
+                        <p className="text-primary-foreground/70 text-xs sm:text-sm">
                           Mon - Fri: 9:00 AM - 6:00 PM<br />
                           Sat: 10:00 AM - 2:00 PM
                         </p>
@@ -225,10 +225,10 @@ const Contact = () => {
                 </div>
 
                 {/* Map Placeholder */}
-                <div className="bg-muted rounded-2xl h-64 flex items-center justify-center">
+                <div className="bg-muted rounded-xl sm:rounded-2xl h-48 sm:h-64 flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
-                    <MapPin className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                    <p className="text-sm">Google Map Integration</p>
+                    <MapPin className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 opacity-50" />
+                    <p className="text-xs sm:text-sm">Google Map Integration</p>
                   </div>
                 </div>
               </div>

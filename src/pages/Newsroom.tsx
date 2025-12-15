@@ -64,16 +64,16 @@ const Newsroom = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-primary text-primary-foreground">
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 bg-primary text-primary-foreground">
           <div className="container-wide">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl animate-fade-in-up px-4 sm:px-0">
               <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
                 Newsroom
               </span>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
                 Stay <span className="text-gold italic">Informed</span>
               </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
+              <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl leading-relaxed">
                 The latest updates on European travel policies, company news, 
                 success stories, and valuable insights for your journey.
               </p>
@@ -82,13 +82,13 @@ const Newsroom = () => {
         </section>
 
         {/* Category Filter */}
-        <section className="py-6 bg-champagne border-b border-border">
+        <section className="py-4 sm:py-6 bg-champagne border-b border-border">
           <div className="container-wide">
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center px-4 sm:px-0">
               {categories.map((category) => (
                 <button
                   key={category}
-                  className="px-5 py-2 rounded-full font-medium text-sm bg-card text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                  className="px-4 sm:px-5 py-1.5 sm:py-2 rounded-full font-medium text-xs sm:text-sm bg-card text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-200"
                 >
                   {category}
                 </button>
@@ -100,18 +100,19 @@ const Newsroom = () => {
         {/* News Grid */}
         <section className="section-padding bg-background">
           <div className="container-wide">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-0">
               {news.map((article, index) => (
                 <article
                   key={article.id}
-                  className={`bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 group ${
-                    index === 0 ? "md:col-span-2 lg:col-span-2" : ""
+                  className={`bg-card rounded-lg sm:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 group animate-fade-in-up ${
+                    index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
                   }`}
+                  style={{ animationDelay: `${200 + index * 100}ms` }}
                 >
-                  <div className={`bg-muted ${index === 0 ? "h-64" : "h-48"}`} />
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="inline-flex items-center gap-1 text-xs font-medium text-gold bg-gold/10 px-3 py-1 rounded-full">
+                  <div className={`bg-muted ${index === 0 ? "h-48 sm:h-56 md:h-64" : "h-40 sm:h-48"}`} />
+                  <div className="p-4 sm:p-6">
+                    <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+                      <span className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-medium text-gold bg-gold/10 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
                         <Tag className="w-3 h-3" />
                         {article.category}
                       </span>
@@ -120,20 +121,20 @@ const Newsroom = () => {
                         {article.date}
                       </span>
                     </div>
-                    <h2 className={`font-heading font-bold text-foreground mb-3 group-hover:text-gold transition-colors ${
-                      index === 0 ? "text-2xl" : "text-xl"
+                    <h2 className={`font-heading font-bold text-foreground mb-2 sm:mb-3 group-hover:text-gold transition-colors ${
+                      index === 0 ? "text-lg sm:text-xl md:text-2xl" : "text-base sm:text-lg md:text-xl"
                     }`}>
                       {article.title}
                     </h2>
-                    <p className="text-muted-foreground mb-4 line-clamp-2">
+                    <p className="text-muted-foreground mb-3 sm:mb-4 line-clamp-2 text-sm sm:text-base">
                       {article.excerpt}
                     </p>
                     <Link
                       to={`/newsroom/${article.slug}`}
-                      className="inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors group/link"
+                      className="inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors group/link text-sm sm:text-base"
                     >
                       Read More
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </article>
@@ -143,21 +144,21 @@ const Newsroom = () => {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-20 bg-primary text-primary-foreground">
-          <div className="container-narrow text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+        <section className="py-16 sm:py-20 bg-primary text-primary-foreground">
+          <div className="container-narrow text-center px-4 sm:px-0">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
               Stay Updated
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8">
+            <p className="text-primary-foreground/80 text-base sm:text-lg mb-6 sm:mb-8">
               Subscribe to our newsletter for the latest European travel updates and opportunities.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-gold"
+                className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-gold text-sm sm:text-base"
               />
-              <button type="submit" className="btn-gold whitespace-nowrap">
+              <button type="submit" className="btn-gold whitespace-nowrap text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3">
                 Subscribe
               </button>
             </form>

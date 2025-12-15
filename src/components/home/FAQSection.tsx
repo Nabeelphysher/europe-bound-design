@@ -7,44 +7,34 @@ import {
 
 const faqs = [
   {
-    question: "What documents do I need to start the process?",
+    question: "What documents are required to begin the application?",
     answer:
-      "The basic documents required include a valid passport, educational certificates, work experience letters (if applicable), financial statements, and passport-size photographs. Our team will provide you with a detailed checklist based on your specific destination and visa type.",
+      "We initiate the process with a personalized consultation to generate a specific checklist for your destination. Typically, you will need a valid passport, academic transcripts, work experience letters, and a CV in the European format. We assist with verification and translation services.",
   },
   {
-    question: "How long does the visa process typically take?",
+    question: "How does the Europe Calling package process work?",
     answer:
-      "Processing times vary by country and visa type. Generally, work visas take 4-8 weeks, while tourist visas may take 2-4 weeks. We'll provide you with accurate timelines during your consultation based on your specific case.",
+      "Our process is systematic and transparent. It begins with profile evaluation, followed by package selection tailored to your goals. We then manage the entire workflow—from documentation and job search assistance to visa filing and pre-departure briefings—keeping you informed at every milestone.",
   },
   {
-    question: "What is your success rate for visa approvals?",
+    question: "Do you offer interview preparation or job placement support?",
     answer:
-      "We maintain a 98% success rate for visa approvals. This high success rate is achieved through meticulous documentation, thorough preparation, and our deep understanding of each country's immigration requirements.",
+      "Yes, our comprehensive packages include dedicated career support. We provide resume enhancement, LinkedIn profile optimization, and rigorous mock interview sessions designed to meet European employer standards, significantly boosting your placement chances.",
   },
   {
-    question: "Do you provide job placement assistance?",
+    question: "Do you provide assistance with travel arrangements?",
     answer:
-      "Yes, our Customized Package includes job placement support. We work with a network of employers across Europe to match candidates with suitable opportunities based on their skills and preferences.",
+      "Absolutely. To ensure a seamless transition, we offer detailed travel guides, assistance with flight bookings at competitive rates, and guidance on finding initial accommodation in your new city.",
   },
   {
-    question: "What happens if my visa application is rejected?",
+    question: "What are your payment terms and refund policies?",
     answer:
-      "While rejections are rare with our guidance, if it happens, we analyze the reasons, address any issues, and assist with reapplication at no additional consultation fee. Our commitment is to your success.",
+      "We operate with full transparency. Our payment plans are flexible and structure-based on process milestones. Detailed refund policies are outlined in our service agreement, providing you with financial protection if specific service deliverables are not met.",
   },
   {
-    question: "Can you help with family reunification visas?",
+    question: "What is the typical timeline for the entire process?",
     answer:
-      "Absolutely. We specialize in family reunification cases and have helped numerous families unite in Europe. The process requirements vary by country, and we'll guide you through every step.",
-  },
-  {
-    question: "What payment options do you offer?",
-    answer:
-      "We offer flexible payment plans including full upfront payment, installments, and milestone-based payments. All fees are transparent with no hidden costs. We discuss payment options during your initial consultation.",
-  },
-  {
-    question: "Do you provide post-arrival support?",
-    answer:
-      "Yes, our support extends beyond visa approval. We assist with airport pickup coordination, initial accommodation, local registration requirements, and settling-in guidance to ensure a smooth transition.",
+      "Timelines can vary depending on the destination country and specific visa category, generally ranging from 3 to 6 months. We provide a realistic, estimated timeline at the outset and ensure you are updated on progress throughout the journey.",
   },
 ];
 
@@ -53,30 +43,33 @@ export function FAQSection() {
     <section className="section-padding bg-champagne">
       <div className="container-narrow">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16 animate-fade-in-up px-4 sm:px-0">
           <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
             Got Questions?
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
             Find answers to common questions about our services and processes.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="bg-card rounded-xl border border-border px-6 data-[state=open]:shadow-card transition-shadow"
+              className="bg-card rounded-lg sm:rounded-xl border border-border px-4 sm:px-6 data-[state=open]:shadow-card transition-shadow animate-fade-in-up"
+              style={{
+                animationDelay: `${200 + index * 100}ms`,
+              }}
             >
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-gold py-5 [&[data-state=open]>svg]:rotate-180">
+              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-gold py-4 sm:py-5 text-sm sm:text-base [&[data-state=open]>svg]:rotate-180">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+              <AccordionContent className="text-muted-foreground pb-4 sm:pb-5 leading-relaxed text-sm sm:text-base">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

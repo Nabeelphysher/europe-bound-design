@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star } from "lucide-react";
+import flightVideo from "@/assets/vecteezy_airplane-flying-in-the-sky_35448314.mp4";
 
 const packages = [
   {
     title: "Basic Package",
     description:
-      "Perfect for first-time travelers seeking essential support for their European journey.",
+      "Essential support for first-time travelers to ensure a smooth journey.",
+    price: "Essential",
     features: [
       "Visa documentation guidance",
       "Travel itinerary planning",
@@ -18,14 +20,15 @@ const packages = [
   {
     title: "Customized Package",
     description:
-      "Tailored solutions for discerning travelers who want a personalized European experience.",
+      "Tailored luxury experiences for discerning travelers seeking perfection.",
+    price: "Premium",
     features: [
       "Everything in Basic Package",
       "Personal travel consultant",
-      "Premium accommodation booking",
-      "Local experience curation",
+      "Premium 4★ & 5★ bookings",
+      "Exclusive local experiences",
       "Business networking support",
-      "VIP airport services",
+      "VIP airport fast-track",
     ],
     highlighted: true,
   },
@@ -33,89 +36,95 @@ const packages = [
 
 export function ServicesPreview() {
   return (
-    <section className="section-padding bg-champagne">
-      <div className="container-wide">
+    <section className="section-padding relative overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={flightVideo} type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay for Readability */}
+      <div className="absolute inset-0 bg-black/60 z-0" />
+
+      <div className="container-wide relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-gold text-xs font-bold tracking-wider uppercase mb-4 md:mb-6 border border-white/20">
+            <Star className="w-3 h-3 fill-current" />
             Our Services
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Tailored Packages for Every Journey
+          </div>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight px-4">
+            Tailored Packages for <br className="hidden md:block" />
+            <span className="text-gold italic">Every Journey</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Choose the package that fits your needs, or let us create a custom
-            solution just for you.
+          <p className="text-white/80 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-4">
+            Choose the package that fits your needs, or let us curate a completely custom European experience just for you.
           </p>
         </div>
 
         {/* Packages Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 max-w-5xl mx-auto px-4 sm:px-0">
           {packages.map((pkg, index) => (
             <div
               key={pkg.title}
-              className={`relative rounded-2xl p-8 md:p-10 transition-all duration-300 hover:shadow-elevated ${
-                pkg.highlighted
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-card shadow-card"
-              }`}
+              className={`group relative rounded-2xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-500 hover:-translate-y-2 border ${pkg.highlighted
+                ? "bg-primary text-primary-foreground shadow-2xl shadow-primary/20 border-primary"
+                : "bg-white/80 backdrop-blur-sm hover:shadow-xl hover:shadow-gold/5 border-gold/10"
+                } flex flex-col animate-fade-in-up`}
+              style={{ animationDelay: `${200 + index * 150}ms` }}
             >
+              {/* Highlight Badge */}
               {pkg.highlighted && (
-                <div className="absolute -top-3 right-8 bg-gold text-gold-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
+                <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gold to-amber-500 text-primary-foreground px-4 md:px-6 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-bold shadow-lg shadow-gold/20 flex items-center gap-2">
+                  <Star className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current" />
+                  <span className="whitespace-nowrap">Most Popular Choice</span>
                 </div>
               )}
 
-              <h3
-                className={`font-heading text-2xl font-bold mb-4 ${
-                  pkg.highlighted ? "text-primary-foreground" : "text-foreground"
-                }`}
-              >
-                {pkg.title}
-              </h3>
+              {/* Card Header */}
+              <div className="mb-6 md:mb-8 border-b pb-6 md:pb-8 border-current/10">
+                <div className="flex justify-between items-start mb-3 md:mb-4">
+                  <h3 className={`font-heading text-2xl sm:text-3xl font-bold ${pkg.highlighted ? "text-white" : "text-foreground"}`}>
+                    {pkg.title}
+                  </h3>
+                </div>
+                <p className={`text-base sm:text-lg leading-relaxed ${pkg.highlighted ? "text-white/80" : "text-muted-foreground"}`}>
+                  {pkg.description}
+                </p>
+              </div>
 
-              <p
-                className={`mb-8 ${
-                  pkg.highlighted
-                    ? "text-primary-foreground/80"
-                    : "text-muted-foreground"
-                }`}
-              >
-                {pkg.description}
-              </p>
-
-              <ul className="space-y-4 mb-10">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <CheckCircle2
-                      className={`w-5 h-5 shrink-0 mt-0.5 ${
-                        pkg.highlighted ? "text-gold" : "text-gold"
-                      }`}
-                    />
-                    <span
-                      className={
-                        pkg.highlighted
-                          ? "text-primary-foreground/90"
-                          : "text-foreground"
-                      }
-                    >
+              {/* Features List */}
+              <ul className="space-y-3 md:space-y-4 lg:space-y-5 mb-6 md:mb-8 lg:mb-10 flex-grow">
+                {pkg.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 md:gap-4 group/item">
+                    <div className={`mt-1 p-1 rounded-full shrink-0 ${pkg.highlighted ? "bg-white/10 text-gold" : "bg-gold/10 text-gold-dark"}`}>
+                      <CheckCircle2 className="w-4 h-4" />
+                    </div>
+                    <span className={`font-medium text-sm sm:text-base ${pkg.highlighted ? "text-white/90" : "text-foreground/90"}`}>
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <Link
-                to="/services"
-                className={`inline-flex items-center gap-2 font-semibold transition-colors group ${
-                  pkg.highlighted
-                    ? "text-gold hover:text-gold/80"
-                    : "text-primary hover:text-gold"
-                }`}
-              >
-                Know More
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              {/* Action Button */}
+              <div className="mt-auto">
+                <Link
+                  to="/services"
+                  className={`w-full inline-flex items-center justify-center gap-2 py-3 md:py-4 px-6 md:px-8 rounded-lg md:rounded-xl font-bold transition-all duration-300 text-sm sm:text-base md:text-lg ${pkg.highlighted
+                    ? "bg-white text-primary hover:bg-gold hover:text-primary-foreground shadow-lg shadow-black/10"
+                    : "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                    }`}
+                >
+                  <span>Explore {pkg.price}</span>
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
           ))}
         </div>

@@ -280,22 +280,22 @@ const CountryPage = () => {
             <img src={data.image} alt={data.name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 gradient-overlay-hero" />
           </div>
-          <div className="relative container-wide pb-16 pt-32">
+          <div className="relative container-wide pb-12 sm:pb-16 pt-24 sm:pt-28 md:pt-32 px-4 sm:px-0">
             <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
               Destination
             </span>
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4">
               {data.name}
             </h1>
-            <p className="text-primary-foreground/90 text-xl">{data.tagline}</p>
+            <p className="text-primary-foreground/90 text-lg sm:text-xl">{data.tagline}</p>
           </div>
         </section>
 
         {/* Description */}
         <section className="section-padding bg-background">
           <div className="container-wide">
-            <div className="max-w-3xl">
-              <p className="text-lg text-muted-foreground leading-relaxed">{data.description}</p>
+            <div className="max-w-3xl px-4 sm:px-0">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{data.description}</p>
             </div>
           </div>
         </section>
@@ -303,19 +303,19 @@ const CountryPage = () => {
         {/* Why Choose */}
         <section className="section-padding bg-champagne">
           <div className="container-wide">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-0">
               <div>
                 <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
                   Why Choose
                 </span>
-                <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 sm:mb-8">
                   Why {data.name}?
                 </h2>
-                <ul className="space-y-4">
+                <ul className="space-y-3 sm:space-y-4">
                   {data.whyChoose.map((reason) => (
-                    <li key={reason} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                      <span className="text-foreground">{reason}</span>
+                    <li key={reason} className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-gold shrink-0 mt-0.5" />
+                      <span className="text-foreground text-sm sm:text-base">{reason}</span>
                     </li>
                   ))}
                 </ul>
