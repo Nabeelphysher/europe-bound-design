@@ -1,180 +1,209 @@
-import { useState, useEffect } from "react";
-import { Play, X, Star, Quote } from "lucide-react";
-import { FlightAnimation } from "@/components/ui/FlightAnimation";
-import franceImg from "@/assets/destination-france.jpg";
+import { useState } from "react";
+import { Play, Star, Globe, MapPin } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import netherlandsImg from "@/assets/destination-netherlands.png";
 import germanyImg from "@/assets/destination-germany.jpg";
-import netherlandsImg from "@/assets/destination-netherlands.png"; // Using as placeholder for Venice/Canal
-import georgiaImg from "@/assets/destination-georgia.png"; // Placeholder for Italy
+import franceImg from "@/assets/destination-france.jpg";
+import georgiaImg from "@/assets/destination-georgia.png";
+import testimonialVideo from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.17 PM (2).mp4";
 
 const testimonials = [
-  {
-    id: 1,
-    name: "Sarah K.",
-    location: "Paris, France",
-    text: "Euro Calling made my dream Parisian vacation a reality! Their local recommendations were priceless. I'm already planning my next trip with them!",
-    image: franceImg,
-  },
-  {
-    id: 2,
-    name: "Mark & Lisa B.",
-    location: "Rome, Italy",
-    text: "The team handled every detail with such professionalism and care. The skip-the-line tickets for the Vatican were a lifesaver. Five stars for an exceptional service!",
-    image: georgiaImg,
-  },
-  {
-    id: 3,
-    name: "Dr. Adrian P.",
-    location: "Bavarian Alps, Germany",
-    text: "The 'Alpine Adventure' package was superb. The personalized support throughout the journey gave me complete peace of mind. Highly recommend!",
-    image: germanyImg,
-  },
+    {
+        id: 1,
+        name: "Sophia L.",
+        role: "Luxury Traveler",
+        text: "Europe Calling helped reunite my family in Prague. Their expertise in family reunification cases is unparalleled.",
+        image: franceImg,
+        from: "Dubai",
+        to: "Prague"
+    },
+    {
+        id: 2,
+        name: "James D.",
+        role: "Adventure Enthusiast",
+        text: "Truly luxurious. Every detail was perfectly curated. The best trip of our lives were made possible by them.",
+        image: germanyImg,
+        from: "London",
+        to: "Berlin"
+    },
+    {
+        id: 3,
+        name: "Elena R.",
+        role: "Photography Lover",
+        text: "Highly recommend! The locations were cinematic and the guide was amazing. A seamless experience.",
+        image: georgiaImg,
+        from: "Tbilisi",
+        to: "Kazbegi"
+    },
+    {
+        id: 4,
+        name: "Michael B.",
+        role: "Business Traveler",
+        text: "Seamless and efficient. The team handled everything perfectly, allowing me to focus on work.",
+        image: netherlandsImg,
+        from: "New York",
+        to: "Amsterdam"
+    },
 ];
 
 export function TestimonialsSection() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
 
-  // Handle Esc key to close modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsVideoOpen(false);
-      }
-    };
+    return (
+        <section id="testimonials-preview" className="py-16 bg-[#FDFBF7] relative overflow-hidden">
+            {/* Ambient Background Elements */}
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] translate-x-1/2 translate-y-1/2" />
 
-    if (isVideoOpen) {
-      document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "unset";
-    }
+            {/* Container widened to max-w-7xl to support professional card width */}
+            <div className="container relative z-10 px-6 max-w-7xl mx-auto">
 
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isVideoOpen]);
+                {/* Section Header */}
+                <RevealOnScroll animation="fade-up">
+                    <div className="text-center mb-12">
+                        <span className="text-gold font-bold text-xs uppercase tracking-[0.2em] mb-3 block">Testimonials</span>
+                        <h2 className="font-heading text-3xl lg:text-4xl text-primary font-bold">Journeys of a Lifetime</h2>
+                    </div>
+                </RevealOnScroll>
 
-  return (
-    <section id="testimonials-preview" className="py-24 bg-secondary/20 relative overflow-hidden">
-      <FlightAnimation className="text-primary/10" />
-      <div className="container-wide relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-fade-in-up px-4 sm:px-0">
-          <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-            Client Stories
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            Memories That Last a Lifetime
-          </h2>
-          <p className="text-muted-foreground text-base sm:text-lg">
-            Discover why travelers trust us to design their perfect European getaways.
-          </p>
-        </div>
+                <RevealOnScroll animation="fade-up" delay={200}>
+                    <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
 
-        <div className="flex flex-col gap-8 md:gap-12 px-4 sm:px-0">
-          {/* Video Testimonial - Featured Section */}
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[21/8] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl cursor-pointer group animate-fade-in-up animation-delay-200" onClick={() => setIsVideoOpen(true)}>
-            {/* Thumbnail */}
-            <img
-              src={netherlandsImg}
-              alt="Video Testimonial Thumbnail"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                        {/* Left Column: Testimonials 1-2 */}
+                        <div className="lg:col-span-4 flex flex-col gap-6 h-full">
+                            {testimonials.slice(0, 2).map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="bg-white border border-gray-100 p-6 rounded-[20px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between flex-1 group"
+                                >
+                                    {/* Header: Avatar & Info */}
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="flex gap-3">
+                                            <div className="w-12 h-12 rounded-full bg-[#F5F0E6] text-primary font-serif font-bold text-lg flex items-center justify-center shrink-0">
+                                                {item.name.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-heading text-primary font-bold text-base leading-tight">{item.name}</h4>
+                                                <p className="text-muted-foreground text-xs">{item.role}</p>
+                                            </div>
+                                        </div>
+                                        <Globe className="w-5 h-5 text-gray-200" />
+                                    </div>
 
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-glow transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
-                <Play className="w-6 h-6 md:w-8 md:h-8 text-primary fill-primary ml-1" />
-              </div>
+                                    {/* Stars */}
+                                    <div className="flex text-gold mb-3">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                                        ))}
+                                    </div>
+
+                                    {/* Text */}
+                                    <p className="text-primary/80 italic font-medium text-sm leading-relaxed mb-6">"{item.text}"</p>
+
+                                    {/* Footer: Locations */}
+                                    <div className="mt-auto border-t border-gray-100 pt-4 flex items-center justify-between">
+                                        <div className="flex items-center gap-1.5 text-muted-foreground">
+                                            <MapPin className="w-3.5 h-3.5" />
+                                            <span className="text-xs font-medium">From {item.from}</span>
+                                        </div>
+                                        <div className="bg-slate-50 border border-slate-100 px-3 py-1 rounded-md text-primary text-[10px] font-bold uppercase tracking-wide">
+                                            To {item.to}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Center Column: Cinematic Video Card */}
+                        <div className="lg:col-span-4 h-full">
+                            <div
+                                className="relative w-full h-full min-h-[350px] lg:min-h-[400px] rounded-[32px] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] group cursor-pointer"
+                                onClick={() => setIsPlaying(true)}
+                            >
+                                {isPlaying ? (
+                                    <video
+                                        src={testimonialVideo}
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                        controls
+                                        autoPlay
+                                        playsInline
+                                    />
+                                ) : (
+                                    <>
+                                        <img
+                                            src={netherlandsImg}
+                                            alt="Cinematic Amsterdam Canal"
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500" />
+
+                                        {/* Floating Play Button */}
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30">
+                                                <div className="w-16 h-16 rounded-full bg-white text-primary flex items-center justify-center shadow-lg">
+                                                    <Play className="w-6 h-6 fill-current ml-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Minimalist Overlay Text */}
+                                        <div className="absolute bottom-8 left-8 text-white pointer-events-none">
+                                            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 opacity-80">Watch Film</p>
+                                            <h3 className="font-heading text-3xl font-bold">Amsterdam Stories</h3>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Right Column: Testimonials 3-4 */}
+                        <div className="lg:col-span-4 flex flex-col gap-6 h-full">
+                            {testimonials.slice(2, 4).map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="bg-white border border-gray-100 p-6 rounded-[20px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between flex-1 group"
+                                >
+                                    {/* Header: Avatar & Info */}
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="flex gap-3">
+                                            <div className="w-12 h-12 rounded-full bg-[#F5F0E6] text-primary font-serif font-bold text-lg flex items-center justify-center shrink-0">
+                                                {item.name.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-heading text-primary font-bold text-base leading-tight">{item.name}</h4>
+                                                <p className="text-muted-foreground text-xs">{item.role}</p>
+                                            </div>
+                                        </div>
+                                        <Globe className="w-5 h-5 text-gray-200" />
+                                    </div>
+
+                                    {/* Stars */}
+                                    <div className="flex text-gold mb-3">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                                        ))}
+                                    </div>
+
+                                    {/* Text */}
+                                    <p className="text-primary/80 italic font-medium text-sm leading-relaxed mb-6">"{item.text}"</p>
+
+                                    {/* Footer: Locations */}
+                                    <div className="mt-auto border-t border-gray-100 pt-4 flex items-center justify-between">
+                                        <div className="flex items-center gap-1.5 text-muted-foreground">
+                                            <MapPin className="w-3.5 h-3.5" />
+                                            <span className="text-xs font-medium">From {item.from}</span>
+                                        </div>
+                                        <div className="bg-slate-50 border border-slate-100 px-3 py-1 rounded-md text-primary text-[10px] font-bold uppercase tracking-wide">
+                                            To {item.to}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </RevealOnScroll>
             </div>
-
-            {/* Caption Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent">
-              <div className="max-w-3xl mx-auto text-center md:text-left">
-                <p className="text-white font-heading text-lg sm:text-xl md:text-2xl font-semibold mb-2">
-                  See the Experience
-                </p>
-                <p className="text-white/80 text-sm sm:text-base">
-                  Watch our travelers' journey through Europe. "We capture not just places, but feelings."
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Text Testimonials Grid - 3 Columns on Desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {testimonials.map((item, index) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-sm border border-border/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full animate-fade-in-up"
-                style={{
-                  animationDelay: `${300 + index * 100}ms`,
-                }}
-              >
-                <div className="flex items-center gap-1 mb-4 sm:mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-gold text-gold" />
-                  ))}
-                </div>
-
-                <p className="text-foreground/80 mb-4 sm:mb-6 leading-relaxed flex-grow italic text-sm sm:text-base">
-                  "{item.text}"
-                </p>
-
-                <div className="flex items-center gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-border/50">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border-2 border-gold/20">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary text-xs sm:text-sm">{item.name}</h4>
-                    <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wide">
-                      {item.location}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Video Lightbox Modal */}
-      {isVideoOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in"
-          onClick={() => setIsVideoOpen(false)}
-        >
-          {/* Close Button */}
-          <button
-            onClick={() => setIsVideoOpen(false)}
-            className="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white transition-colors"
-            aria-label="Close modal"
-          >
-            <X className="w-8 h-8 md:w-10 md:h-10" />
-          </button>
-
-          {/* Modal Content */}
-          <div
-            className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl animate-scale-in"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking content
-          >
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
-    </section>
-  );
+        </section>
+    );
 }

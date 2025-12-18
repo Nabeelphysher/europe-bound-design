@@ -10,24 +10,26 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { StatsSection } from "@/components/home/StatsSection";
 import { CTASection } from "@/components/home/CTASection";
+import { FAQSection } from "@/components/home/FAQSection";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 
 const Index = () => {
   const { isOpen, setIsOpen } = useLeadPopup(15000);
-  useScrollReveal();
 
   return (
     <>
       <Header />
       <main>
         <HeroSection /> {/* Hero usually has its own animations */}
-        <div className="reveal-on-scroll"><DestinationsSection /></div>
-        <div className="reveal-on-scroll"><ServicesPreview /></div>
-        <div className="reveal-on-scroll"><WhyChooseUs /></div>
-        <div className="reveal-on-scroll"><StatsSection /></div>
-        <div className="reveal-on-scroll"><TestimonialsSection /></div>
-        <div className="reveal-on-scroll"><CTASection /></div>
+        <DestinationsSection />
+        <ServicesPreview />
+        <WhyChooseUs />
+        <StatsSection />
+
+        <TestimonialsSection />
+        <FAQSection />
+        <CTASection />
       </main>
       <Footer />
       <WhatsAppButton />

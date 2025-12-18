@@ -8,11 +8,14 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Testimonials from "./pages/Testimonials";
 import Newsroom from "./pages/Newsroom";
+import NewsArticle from "./pages/NewsArticle";
 import Contact from "./pages/Contact";
 import CountryPage from "./pages/CountryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -20,12 +23,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/newsroom" element={<Newsroom />} />
+          <Route path="/newsroom/:slug" element={<NewsArticle />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/destinations/:country" element={<CountryPage />} />
           <Route path="*" element={<NotFound />} />

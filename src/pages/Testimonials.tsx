@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -346,6 +347,8 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
   );
 };
 
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+
 const Testimonials = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
@@ -371,24 +374,12 @@ const Testimonials = () => {
   return (
     <>
       <Header />
-      <main className="bg-background min-h-screen">
-        {/* Animated Hero Section */}
-        <section className="relative pt-32 pb-20 overflow-hidden bg-primary">
-          <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5 mix-blend-overlay"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/95 to-primary"></div>
-
-          <div className="container-wide relative z-10 text-center">
-            <span className="inline-block animate-fade-in text-gold font-medium text-sm tracking-[0.2em] uppercase mb-4">
-              Client Success Stories
-            </span>
-            <h1 className="animate-fade-in-up font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6">
-              Global <span className="text-gold italic">Trust</span>
-            </h1>
-            <p className="animate-fade-in-up animation-delay-100 text-primary-foreground/80 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-              Read and watch stories from our successful clients who have started their new lives in Europe.
-            </p>
-          </div>
-        </section>
+      <main className="bg-background min-h-screen pt-20">
+        <PageHeader
+          eyebrow="Client Success Stories"
+          title={<>Voices of <span className="text-gold italic">Triumph</span></>}
+          description="Real stories from real people who turned their European dreams into reality with our guidance."
+        />
 
         {/* Filter Navigation */}
         <div className="sticky top-[72px] z-40 bg-background/80 backdrop-blur-md border-b border-border shadow-sm py-3 transition-all duration-300">
@@ -443,91 +434,96 @@ const Testimonials = () => {
 
           {/* New Video Carousel Section */}
           {videoTestimonials.length > 0 && (
-            <section className="w-full mb-20 relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-32 bg-gold/5 blur-[100px] -z-10 rounded-full"></div>
+            <RevealOnScroll className="w-full mb-20 relative">
+              <section className="w-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-32 bg-gold/5 blur-[100px] -z-10 rounded-full"></div>
 
-              <div className="container-wide px-4 mb-12 sm:mb-16 text-center">
-                <div className="flex flex-col items-center justify-center animate-fade-in-up">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">
-                    <Play className="w-3 h-3 fill-gold" />
-                    Watch Now
+                <div className="container-wide px-4 mb-12 sm:mb-16 text-center">
+                  <div className="flex flex-col items-center justify-center animate-fade-in-up">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">
+                      <Play className="w-3 h-3 fill-gold" />
+                      Watch Now
+                    </div>
+
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary mb-4 drop-shadow-sm">
+                      Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-400 to-gold">Stories</span>
+                    </h2>
+
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-gold/50"></div>
+                      <Star className="w-5 h-5 text-gold fill-gold animate-pulse-gentle" />
+                      <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-gold/50"></div>
+                    </div>
+
+                    <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+                      Hear directly from our clients as they share their journey to success in Europe.
+                    </p>
                   </div>
-
-                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary mb-4 drop-shadow-sm">
-                    Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-400 to-gold">Stories</span>
-                  </h2>
-
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-gold/50"></div>
-                    <Star className="w-5 h-5 text-gold fill-gold animate-pulse-gentle" />
-                    <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-gold/50"></div>
-                  </div>
-
-                  <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-                    Hear directly from our clients as they share their journey to success in Europe.
-                  </p>
                 </div>
-              </div>
 
-              <VideoCarousel items={videoTestimonials} />
-            </section>
+                <VideoCarousel items={videoTestimonials} />
+              </section>
+            </RevealOnScroll>
           )}
 
           {/* Written Testimonials Section */}
           {textTestimonials.length > 0 && (
             <section className="container-wide px-4">
-              <div className="flex items-center gap-4 mb-10 animate-fade-in">
-                <div className="h-px bg-border flex-grow"></div>
-                <h2 className="text-2xl sm:text-3xl font-heading font-bold text-primary flex items-center gap-3">
-                  <Quote className="fill-gold text-gold w-6 h-6" />
-                  Client Reviews
-                </h2>
-                <div className="h-px bg-border flex-grow"></div>
-              </div>
+              <RevealOnScroll animation="fade-up">
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="h-px bg-border flex-grow"></div>
+                  <h2 className="text-2xl sm:text-3xl font-heading font-bold text-primary flex items-center gap-3">
+                    <Quote className="fill-gold text-gold w-6 h-6" />
+                    Client Reviews
+                  </h2>
+                  <div className="h-px bg-border flex-grow"></div>
+                </div>
+              </RevealOnScroll>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {textTestimonials.map((t, index) => (
-                  <div
-                    key={t.id}
-                    className="flex flex-col h-full bg-white border border-border/60 p-8 rounded-xl hover:shadow-elevated hover:border-gold/30 transition-all duration-300"
-                  >
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-champagne text-gold-foreground flex items-center justify-center font-bold text-xl font-heading shadow-inner">
-                          {t.name.charAt(0)}
+                  <RevealOnScroll className="h-full" delay={index * 100} key={t.id}>
+                    <div
+                      className="flex flex-col h-full bg-white border border-border/60 p-8 rounded-xl hover:shadow-elevated hover:border-gold/30 transition-all duration-300"
+                    >
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-champagne text-gold-foreground flex items-center justify-center font-bold text-xl font-heading shadow-inner">
+                            {t.name.charAt(0)}
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-foreground leading-tight">{t.name}</h3>
+                            <p className="text-xs text-muted-foreground">{t.role || 'Client'}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-bold text-foreground leading-tight">{t.name}</h3>
-                          <p className="text-xs text-muted-foreground">{t.role || 'Client'}</p>
+                        <Globe className="w-5 h-5 text-gray-300" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="mb-6 flex-grow">
+                        <div className="flex gap-1 mb-3">
+                          {[...Array(t.rating)].map((_, i) => (
+                            <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
+                          ))}
+                        </div>
+                        <p className="text-foreground/80 leading-relaxed italic text-sm sm:text-base">
+                          "{t.content}"
+                        </p>
+                      </div>
+
+                      {/* Footer */}
+                      <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-xs sm:text-sm">
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <MapPin className="w-3.5 h-3.5 text-gold" />
+                          From {t.location}
+                        </div>
+                        <div className="font-medium text-primary bg-primary/5 px-2 py-1 rounded">
+                          To {t.destination}
                         </div>
                       </div>
-                      <Globe className="w-5 h-5 text-gray-300" />
                     </div>
-
-                    {/* Content */}
-                    <div className="mb-6 flex-grow">
-                      <div className="flex gap-1 mb-3">
-                        {[...Array(t.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
-                        ))}
-                      </div>
-                      <p className="text-foreground/80 leading-relaxed italic text-sm sm:text-base">
-                        "{t.content}"
-                      </p>
-                    </div>
-
-                    {/* Footer */}
-                    <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-xs sm:text-sm">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <MapPin className="w-3.5 h-3.5 text-gold" />
-                        From {t.location}
-                      </div>
-                      <div className="font-medium text-primary bg-primary/5 px-2 py-1 rounded">
-                        To {t.destination}
-                      </div>
-                    </div>
-                  </div>
+                  </RevealOnScroll>
                 ))}
               </div>
             </section>

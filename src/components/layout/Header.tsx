@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoImg from "../../assets/logo.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -46,14 +47,11 @@ export function Header() {
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <span
-            className={cn(
-              "font-heading text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300",
-              shouldShowScrolledStyle ? "text-primary" : "text-primary-foreground"
-            )}
-          >
-            Europe<span className="text-gold">Calling</span>
-          </span>
+          <img
+            src={logoImg}
+            alt="Europe Calling Logo"
+            className="h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}

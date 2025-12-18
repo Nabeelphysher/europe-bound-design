@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, ArrowRight, MessageSquare, Globe } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import contactBanner from "@/assets/destination-czech.jpg";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +19,7 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeField, setActiveField] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,218 +29,306 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      title: "Message Sent Successfully!",
+      description: "Our team will review your inquiry and respond within 24 hours.",
     });
 
     setIsSubmitting(false);
     setFormData({ name: "", email: "", phone: "", country: "", message: "" });
   };
 
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      content: "+49 123 456 789",
+      link: "tel:+49123456789",
+      subtext: "Mon-Fri 9am-6pm"
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      content: "info@europecalling.com",
+      link: "mailto:info@europecalling.com",
+      subtext: "Online 24/7"
+    },
+    {
+      icon: MapPin,
+      title: "Headquarters",
+      content: "Berlin, Germany",
+      link: "#",
+      subtext: "123 European Way, 10115"
+    }
+  ];
+
   return (
     <>
       <Header />
-      <main>
-        {/* Hero Section */}
-        <section className="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 bg-primary text-primary-foreground">
+      <main className="bg-background min-h-screen pt-20">
+        <PageHeader
+          eyebrow="Contact Us"
+          title="Get in Touch"
+          description="We're here to answer your questions and help you start your journey."
+        />
+
+        {/* Contact Info Cards */}
+        <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-20">
           <div className="container-wide">
-            <div className="max-w-3xl animate-fade-in-up px-4 sm:px-0">
-              <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-                Contact Us
-              </span>
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-                Let's Start Your <span className="text-gold italic">Journey</span>
-              </h1>
-              <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl leading-relaxed">
-                Have questions? We're here to help. Reach out and our team will 
-                respond within 24 hours.
-              </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {contactInfo.map((info, index) => (
+                <RevealOnScroll className="h-full" delay={index * 100} key={index}>
+                  <a
+                    href={info.link}
+                    className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center text-center backdrop-blur-sm h-full"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-gold/10 group-hover:bg-gold group-hover:text-primary text-gold flex items-center justify-center mb-6 transition-all duration-500 shadow-inner group-hover:shadow-glow">
+                      <info.icon className="w-7 h-7" />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold mb-2 group-hover:text-gold transition-colors">{info.title}</h3>
+                    <p className="text-foreground font-medium text-lg mb-1">{info.content}</p>
+                    <p className="text-muted-foreground text-sm">{info.subtext}</p>
+                  </a>
+                </RevealOnScroll>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="section-padding bg-background">
-          <div className="container-wide">
-            <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 px-4 sm:px-0">
-              {/* Contact Form */}
-              <div className="lg:col-span-3">
-                <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-card animate-fade-in-up">
-                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
-                    Send Us a Message
-                  </h2>
-                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                          placeholder="John Doe"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                          placeholder="john@example.com"
-                        />
-                      </div>
+        {/* --- Main Content Split --- */}
+        < section className="section-padding pt-0 relative overflow-hidden" >
+          {/* Decorative Elements */}
+          < div className="absolute top-20 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="container-wide relative z-10">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+              {/* Left Column: Form */}
+              <RevealOnScroll className="lg:col-span-7" animation="fade-right" delay={300}>
+                <div className="bg-white rounded-3xl shadow-xl border border-border/50 overflow-hidden relative group">
+                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-primary to-gold" />
+
+                  <div className="p-8 sm:p-10 md:p-12">
+                    <div className="mb-10">
+                      <h2 className="font-heading text-3xl font-bold text-primary mb-4 flex items-center gap-3">
+                        <MessageSquare className="w-6 h-6 text-gold" />
+                        Send a Message
+                      </h2>
+                      <p className="text-muted-foreground">
+                        Fill out the form below and verify your specific requirements. We respect your privacy.
+                      </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                          Phone Number *
-                        </label>
-                        <input
-                          id="phone"
-                          type="tel"
-                          required
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all text-sm sm:text-base"
-                          placeholder="+49 123 456 789"
-                        />
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div className="grid sm:grid-cols-2 gap-8">
+                        {/* Name Input */}
+                        <div className="relative">
+                          <input
+                            id="name"
+                            type="text"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            onFocus={() => setActiveField('name')}
+                            onBlur={() => setActiveField(null)}
+                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
+                            placeholder=" "
+                          />
+                          <label
+                            htmlFor="name"
+                            className={cn(
+                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
+                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
+                              formData.name && "top-1 text-xs font-semibold"
+                            )}
+                          >
+                            Full Name
+                          </label>
+                        </div>
+
+                        {/* Email Input */}
+                        <div className="relative">
+                          <input
+                            id="email"
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            onFocus={() => setActiveField('email')}
+                            onBlur={() => setActiveField(null)}
+                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
+                            placeholder=" "
+                          />
+                          <label
+                            htmlFor="email"
+                            className={cn(
+                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
+                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
+                              formData.email && "top-1 text-xs font-semibold"
+                            )}
+                          >
+                            Email Address
+                          </label>
+                        </div>
                       </div>
-                      <div>
-                        <label htmlFor="country" className="block text-sm font-medium text-foreground mb-2">
-                          Country of Interest *
-                        </label>
-                        <select
-                          id="country"
+
+                      <div className="grid sm:grid-cols-2 gap-8">
+                        {/* Phone Input */}
+                        <div className="relative">
+                          <input
+                            id="phone"
+                            type="tel"
+                            required
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            onFocus={() => setActiveField('phone')}
+                            onBlur={() => setActiveField(null)}
+                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
+                            placeholder=" "
+                          />
+                          <label
+                            htmlFor="phone"
+                            className={cn(
+                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
+                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
+                              formData.phone && "top-1 text-xs font-semibold"
+                            )}
+                          >
+                            Phone Number
+                          </label>
+                        </div>
+
+                        {/* Country Input */}
+                        <div className="relative">
+                          <select
+                            id="country"
+                            required
+                            value={formData.country}
+                            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                            onFocus={() => setActiveField('country')}
+                            onBlur={() => setActiveField(null)}
+                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6 appearance-none cursor-pointer"
+                          >
+                            <option value=""></option>
+                            <option value="germany">Germany</option>
+                            <option value="poland">Poland</option>
+                            <option value="czech">Czech Republic</option>
+                            <option value="france">France</option>
+                            <option value="romania">Romania</option>
+                            <option value="azerbaijan">Azerbaijan</option>
+                            <option value="other">Other</option>
+                          </select>
+                          <label
+                            htmlFor="country"
+                            className={cn(
+                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
+                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
+                              formData.country && "top-1 text-xs font-semibold"
+                            )}
+                          >
+                            Country of Interest
+                          </label>
+                          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+                            <Globe className="w-5 h-5 opacity-50" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Message Input */}
+                      <div className="relative">
+                        <textarea
+                          id="message"
                           required
-                          value={formData.country}
-                          onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all text-sm sm:text-base"
+                          rows={6}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          onFocus={() => setActiveField('message')}
+                          onBlur={() => setActiveField(null)}
+                          className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all resize-none pt-6"
+                          placeholder=" "
+                        />
+                        <label
+                          htmlFor="message"
+                          className={cn(
+                            "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
+                            "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
+                            formData.message && "top-1 text-xs font-semibold"
+                          )}
                         >
-                          <option value="">Select a country</option>
-                          <option value="germany">Germany</option>
-                          <option value="poland">Poland</option>
-                          <option value="czech">Czech Republic</option>
-                          <option value="france">France</option>
-                          <option value="romania">Romania</option>
-                          <option value="azerbaijan">Azerbaijan</option>
-                          <option value="other">Other</option>
-                        </select>
+                          Your Message
+                        </label>
                       </div>
-                    </div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        Your Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none text-sm sm:text-base"
-                        placeholder="Tell us about your travel plans or questions..."
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={cn(
-                        "btn-gold w-full flex items-center justify-center gap-2 text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3",
-                        isSubmitting && "opacity-70 cursor-not-allowed"
-                      )}
-                    >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </div>
-              </div>
-
-              {/* Contact Info */}
-              <div className="lg:col-span-2 space-y-6 sm:space-y-8">
-                <div className="bg-primary text-primary-foreground rounded-xl sm:rounded-2xl p-6 sm:p-8 animate-fade-in-up animation-delay-200">
-                  <h3 className="font-heading text-lg sm:text-xl font-bold mb-4 sm:mb-6">Contact Information</h3>
-                  <ul className="space-y-4 sm:space-y-6">
-                    <li className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                      </div>
-                      <div>
-                        <p className="font-medium mb-1 text-sm sm:text-base">Office Address</p>
-                        <p className="text-primary-foreground/70 text-xs sm:text-sm">
-                          123 European Way<br />
-                          Berlin, Germany 10115
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                      </div>
-                      <div>
-                        <p className="font-medium mb-1 text-sm sm:text-base">Phone</p>
-                        <a href="tel:+49123456789" className="text-primary-foreground/70 text-xs sm:text-sm hover:text-gold transition-colors">
-                          +49 123 456 789
-                        </a>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                      </div>
-                      <div>
-                        <p className="font-medium mb-1 text-sm sm:text-base">Email</p>
-                        <a href="mailto:info@europecalling.com" className="text-primary-foreground/70 text-xs sm:text-sm hover:text-gold transition-colors break-all">
-                          info@europecalling.com
-                        </a>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                      </div>
-                      <div>
-                        <p className="font-medium mb-1 text-sm sm:text-base">Working Hours</p>
-                        <p className="text-primary-foreground/70 text-xs sm:text-sm">
-                          Mon - Fri: 9:00 AM - 6:00 PM<br />
-                          Sat: 10:00 AM - 2:00 PM
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Map Placeholder */}
-                <div className="bg-muted rounded-xl sm:rounded-2xl h-48 sm:h-64 flex items-center justify-center">
-                  <div className="text-center text-muted-foreground">
-                    <MapPin className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 opacity-50" />
-                    <p className="text-xs sm:text-sm">Google Map Integration</p>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={cn(
+                          "w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex items-center justify-center gap-2 group",
+                          isSubmitting && "opacity-70 cursor-not-allowed"
+                        )}
+                      >
+                        {isSubmitting ? (
+                          "Sending..."
+                        ) : (
+                          <>
+                            Send Inquiry
+                            <Send className="w-5 h-5 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          </>
+                        )}
+                      </button>
+                    </form>
                   </div>
                 </div>
+            </RevealOnScroll>
+
+            {/* Right Column: Content/Map */}
+            <RevealOnScroll className="lg:col-span-5 flex flex-col gap-8" animation="fade-left" delay={500}>
+              {/* Office Info Card */}
+              <div className="bg-primary text-primary-foreground p-8 rounded-3xl shadow-xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors" />
+
+                <h3 className="font-heading text-2xl font-bold mb-6">Visit Our HQ</h3>
+                <div className="space-y-4 mb-8 relative z-10">
+                  <p className="opacity-90 leading-relaxed">
+                    We always welcome clients to our headquarters for a personal consultation. Please schedule an appointment in advance.
+                  </p>
+                </div>
+
+                {/* Decorative Map Image */}
+                <div className="relative h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map">
+                  <img
+                    src={contactBanner}
+                    alt="Map Location"
+                    className="w-full h-full object-cover opacity-80 group-hover/map:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-primary/40 group-hover/map:bg-primary/20 transition-colors flex items-center justify-center">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40 group-hover/map:scale-110 transition-transform">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex items-center gap-2 text-sm text-gold font-medium cursor-pointer hover:underline">
+                  Get Directions <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
-      </main>
+
+              {/* FAQ Teaser */}
+              <div className="bg-muted/50 border border-border rounded-3xl p-8 hover:bg-muted transition-colors">
+                <h3 className="font-heading text-xl font-bold text-foreground mb-4">Frequently Asked Questions</h3>
+                <p className="text-muted-foreground mb-4 text-sm">
+                  Find quick answers to common questions about visas, processing times, and documents.
+                </p>
+                <a href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                  Visit FAQ Page <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+          </RevealOnScroll>
+
+        </div>
+      </div>
+    </section >
+      </main >
       <Footer />
       <WhatsAppButton />
     </>

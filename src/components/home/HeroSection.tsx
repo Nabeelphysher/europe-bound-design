@@ -1,127 +1,151 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FlightAnimation } from "@/components/ui/FlightAnimation";
-import heroImage from "@/assets/hero-europe.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+
+// Mock Data
+import azerbaijanImg from "@/assets/destination-azerbaijan.png";
+import kazakhstanImg from "@/assets/destination-kazakhstan.png";
+import armeniaImg from "@/assets/destination-armenia.png";
+import netherlandsImg from "@/assets/destination-netherlands.png";
+import franceImg from "@/assets/destination-france.jpg";
+
+const heroDestinations = [
+  { id: "azerbaijan", name: "AZERBAIJAN", location: "Baku - Azerbaijan", description: "Discover the Land of Fire, where ancient history meets modern architecture.", image: azerbaijanImg },
+  { id: "netherlands", name: "THE NETHERLANDS", location: "Amsterdam - Netherlands", description: "Explore the picturesque canals, historic windmills, and vibrant tulip fields.", image: netherlandsImg },
+  { id: "france", name: "FRANCE", location: "Paris - France", description: "Immerse yourself in art, fashion, and gastronomy.", image: franceImg },
+  { id: "kazakhstan", name: "KAZAKHSTAN", location: "Almaty - Kazakhstan", description: "Journey through the Heart of Eurasia. Explore vast steppes and mountains.", image: kazakhstanImg },
+  { id: "armenia", name: "ARMENIA", location: "Yerevan - Armenia", description: "Visit the world's first Christian nation and its ancient monasteries.", image: armeniaImg }
+];
 
 export function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const [activeDest, setActiveDest] = useState(heroDestinations[0]);
+  const [carouselDests, setCarouselDests] = useState(heroDestinations.slice(1));
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [expandingCard, setExpandingCard] = useState<{ id: string; image: string; initialStyle: { top: number; left: number; width: number; height: number } } | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const scrolled = window.scrollY;
-        // Only update if the section is somewhat visible to save performance
-        if (scrolled < window.innerHeight * 1.5) {
-          setScrollY(scrolled);
-        }
+  const handleDestClick = (e: React.MouseEvent<HTMLButtonElement>, dest: typeof heroDestinations[0]) => {
+    if (isTransitioning || !sectionRef.current) return;
+
+    const sectionRect = sectionRef.current.getBoundingClientRect();
+    const cardRect = e.currentTarget.getBoundingClientRect();
+
+    setExpandingCard({
+      id: dest.id,
+      image: dest.image,
+      initialStyle: {
+        top: cardRect.top - sectionRect.top,
+        left: cardRect.left - sectionRect.left,
+        width: cardRect.width,
+        height: cardRect.height
       }
-    };
+    });
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setIsTransitioning(true);
+    setTimeout(() => setIsExpanded(true), 50);
+
+    setTimeout(() => {
+      const prevActive = activeDest;
+      setActiveDest(dest);
+      setCarouselDests((prev) => {
+        const filtered = prev.filter((d) => d.id !== dest.id);
+        return [...filtered, prevActive];
+      });
+      setExpandingCard(null);
+      setIsExpanded(false);
+      setIsTransitioning(false);
+    }, 1000); // 1s transition
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-    >
-      {/* Flight Animation for Hero - Behind content but visible */}
-      <FlightAnimation className="text-white/20 z-0" />
 
-      {/* Parallax Background Image */}
-      <div
-        className="absolute inset-0 z-0 will-change-transform"
-        style={{
-          transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0002})`,
-        }}
-      >
+    <section ref={sectionRef} className="relative h-screen min-h-[700px] w-full flex flex-col justify-end overflow-hidden bg-black">
+
+      {/* LAYER 1: Current Background (Lowest Z) */}
+      <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
-          alt="Beautiful European street at golden hour"
-          className="w-full h-full object-cover"
+          src={activeDest.image}
+          alt={activeDest.name}
+          className="w-full h-full object-cover transition-transform duration-[2000ms] ease-out scale-105"
         />
-        <div className="absolute inset-0 gradient-overlay-hero" />
+        {/* Gradient Overlay for Text Readability without hiding the image */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative container-wide pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 z-10">
-        <div className="max-w-3xl px-4 sm:px-0">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-gold/20 backdrop-blur-sm border border-gold/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 animate-fade-in">
-            <span className="w-2 h-2 bg-gold rounded-full animate-pulse-gentle" />
-            <span className="text-primary-foreground text-xs sm:text-sm font-medium">
-              Your Gateway to Europe
-            </span>
-          </div>
+      {/* LAYER 2: Expanding Card (Behind Text and Carousel) */}
+      {expandingCard && (
+        <div
+          className={cn(
+            "absolute z-10 shadow-2xl overflow-hidden pointer-events-none",
+            isExpanded ? "transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-none" : "rounded-xl"
+          )}
+          style={isExpanded ? { top: 0, left: 0, width: "100%", height: "100%" } : {
+            top: expandingCard.initialStyle.top,
+            left: expandingCard.initialStyle.left,
+            width: expandingCard.initialStyle.width,
+            height: expandingCard.initialStyle.height,
+          }}
+        >
+          <img src={expandingCard.image} className="w-full h-full object-cover" alt="" />
+          {/* Matching Gradient Inside Expansion */}
+          <div className={cn(
+            "absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent transition-opacity duration-1000",
+            isExpanded ? "opacity-100" : "opacity-0"
+          )} />
+        </div>
+      )}
 
-          {/* Headline */}
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] mb-4 sm:mb-6 animate-fade-in-up">
-            Your Trusted Partner for{" "}
-            <span className="text-gold italic">Europe</span> Travel &
-            Hospitality
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 sm:mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
-            We transform your European dreams into reality with expert guidance,
-            seamless processes, and personalized attention at every step.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300">
-            <Link to="/contact" className="btn-gold inline-flex items-center justify-center gap-2 group text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3">
-              Get Consultation
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/services"
-              className="btn-secondary border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary inline-flex items-center justify-center gap-2 text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3"
-            >
-              Explore Packages
-            </Link>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-primary-foreground/20 animate-fade-in-up animation-delay-400">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
-                <span className="text-gold font-bold text-base sm:text-lg">98%</span>
-              </div>
-              <div>
-                <p className="text-primary-foreground font-semibold text-sm sm:text-base">Success Rate</p>
-                <p className="text-primary-foreground/60 text-xs sm:text-sm">Visa Approvals</p>
-              </div>
+      {/* LAYER 3: Main Content (Highest Z - Always Visible) */}
+      <div className="relative z-50 container-wide h-full flex flex-col justify-center items-start pl-4 sm:pl-0 pointer-events-none">
+        <div className="max-w-xl pointer-events-auto mt-20 sm:mt-[-10vh]">
+          <RevealOnScroll animation="fade-right">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <span className="h-[2px] w-8 sm:w-12 bg-gold inline-block"></span>
+              <span className="text-gold font-bold uppercase tracking-[0.2em] text-xs sm:text-base">
+                {activeDest.location}
+              </span>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
-                <span className="text-gold font-bold text-base sm:text-lg">10+</span>
-              </div>
-              <div>
-                <p className="text-primary-foreground font-semibold text-sm sm:text-base">Years</p>
-                <p className="text-primary-foreground/60 text-xs sm:text-sm">Experience</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
-                <span className="text-gold font-bold text-base sm:text-lg">5K+</span>
-              </div>
-              <div>
-                <p className="text-primary-foreground font-semibold text-sm sm:text-base">Clients</p>
-                <p className="text-primary-foreground/60 text-xs sm:text-sm">Successfully Placed</p>
-              </div>
-            </div>
-          </div>
+            <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl font-black text-white uppercase leading-[0.9] mb-4 sm:mb-6 tracking-tighter drop-shadow-lg">
+              {activeDest.name}
+            </h1>
+            <p className="text-white/90 text-sm sm:text-xl leading-relaxed mb-6 sm:mb-8 max-w-lg drop-shadow-md">
+              {activeDest.description}
+            </p>
+          </RevealOnScroll>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-float">
-        <div className="w-6 h-10 rounded-full border-2 border-primary-foreground/30 flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-gold rounded-full animate-bounce" />
-        </div>
+      {/* LAYER 4: Carousel (Above Expanding Card, Below Text interaction-wise) */}
+      <div className="absolute bottom-6 sm:bottom-8 right-0 sm:right-8 z-40 w-full max-w-3xl pl-4 sm:pl-0">
+        <Carousel opts={{ align: "start", loop: true }} className="w-full">
+          <CarouselContent className="-ml-4 pb-4">
+            {carouselDests.map((dest) => (
+              <CarouselItem key={dest.id} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/3">
+                <button
+                  onClick={(e) => handleDestClick(e, dest)}
+                  className={cn(
+                    "relative w-full h-[120px] sm:h-[180px] md:h-[220px] rounded-xl overflow-hidden border border-white/20 transition-all duration-300 hover:scale-[1.03] hover:border-gold hover:shadow-xl group",
+                    expandingCard?.id === dest.id ? "opacity-0" : "opacity-100"
+                  )}
+                >
+                  <img src={dest.image} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                  <div className="absolute bottom-3 left-4 text-left pr-2">
+                    <p className="text-white font-bold text-sm sm:text-base uppercase tracking-wider truncate">{dest.name}</p>
+                    <p className="text-white/60 text-[10px] uppercase tracking-widest truncate">{dest.location.split(' - ')[0]}</p>
+                  </div>
+                </button>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );

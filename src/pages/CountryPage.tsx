@@ -1,393 +1,898 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
-import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, MapPin, Briefcase, GraduationCap, Heart } from "lucide-react";
+import {
+    ArrowRight, CheckCircle2, Globe, Award,
+    User, Mail, Phone, Clock, Wallet, ShieldCheck
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { toast } from "@/hooks/use-toast";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+// Import Images
 import germanyImg from "@/assets/destination-germany.jpg";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import polandImg from "@/assets/destination-poland.jpg";
 import czechImg from "@/assets/destination-czech.jpg";
 import franceImg from "@/assets/destination-france.jpg";
 import romaniaImg from "@/assets/destination-romania.jpg";
+import azerbaijanImg from "@/assets/destination-azerbaijan.png";
+import kazakhstanImg from "@/assets/destination-kazakhstan.png";
+import armeniaImg from "@/assets/destination-armenia.png";
+import netherlandsImg from "@/assets/destination-netherlands.png";
+import georgiaImg from "@/assets/destination-georgia.png";
+import kyrgyzstanImg from "@/assets/destination-kyrgyzstan.png";
+import uzbekistanImg from "@/assets/destination-uzbekistan.png";
 
-const countryData: Record<string, {
-  name: string;
-  tagline: string;
-  image: string;
-  description: string;
-  whyChoose: string[];
-  eligibility: string[];
-  benefits: string[];
-  process: { step: number; title: string; description: string }[];
-}> = {
-  germany: {
-    name: "Germany",
-    tagline: "Innovation, Opportunity & Excellence",
-    image: germanyImg,
-    description: "Germany stands as Europe's economic powerhouse, offering world-class opportunities in technology, engineering, healthcare, and more. With its strong economy, excellent quality of life, and welcoming environment for skilled workers, Germany is a top destination for ambitious professionals.",
-    whyChoose: [
-      "Europe's largest economy with abundant job opportunities",
-      "World-renowned engineering and technology sectors",
-      "Excellent healthcare and social security systems",
-      "Rich cultural heritage and modern infrastructure",
-      "Strong work-life balance culture",
-      "Pathway to permanent residency and citizenship",
-    ],
-    eligibility: [
-      "Bachelor's degree or equivalent qualification",
-      "Relevant work experience (varies by visa type)",
-      "Basic German language skills (recommended)",
-      "Valid passport with 6+ months validity",
-      "Clean criminal record",
-      "Proof of financial stability",
-    ],
-    benefits: [
-      "Access to EU job market",
-      "Free or low-cost education for dependents",
-      "Comprehensive health insurance",
-      "Social security benefits",
-      "Family reunification options",
-      "Travel within Schengen zone",
-    ],
-    process: [
-      { step: 1, title: "Initial Consultation", description: "Free assessment of your profile and eligibility" },
-      { step: 2, title: "Documentation", description: "Complete document collection and verification" },
-      { step: 3, title: "Application Prep", description: "Visa application form filling and review" },
-      { step: 4, title: "Embassy Submission", description: "Guided embassy appointment and submission" },
-      { step: 5, title: "Visa Approval", description: "Track application and receive visa" },
-      { step: 6, title: "Arrival Support", description: "Post-arrival assistance and settling in" },
-    ],
-  },
-  poland: {
-    name: "Poland",
-    tagline: "Historic Charm Meets Modern Opportunity",
-    image: polandImg,
-    description: "Poland has emerged as one of Europe's fastest-growing economies, offering excellent opportunities in IT, manufacturing, and services. With lower living costs than Western Europe and a rich cultural heritage, Poland is an attractive destination for professionals seeking European experience.",
-    whyChoose: [
-      "Rapidly growing economy with tech hub status",
-      "Lower cost of living compared to Western Europe",
-      "Strong IT and business services sector",
-      "Rich history and vibrant culture",
-      "Central European location",
-      "English widely spoken in business",
-    ],
-    eligibility: [
-      "Relevant educational qualifications",
-      "Job offer from Polish employer (work visa)",
-      "Valid passport",
-      "Health insurance coverage",
-      "Proof of accommodation",
-      "Financial means documentation",
-    ],
-    benefits: [
-      "Gateway to European market",
-      "Growing salary standards",
-      "Quality public healthcare",
-      "Affordable education",
-      "Safe and welcoming environment",
-      "Schengen zone access",
-    ],
-    process: [
-      { step: 1, title: "Profile Assessment", description: "Evaluate qualifications and opportunities" },
-      { step: 2, title: "Job Matching", description: "Connect with Polish employers" },
-      { step: 3, title: "Documentation", description: "Prepare and verify all documents" },
-      { step: 4, title: "Visa Application", description: "Submit application at embassy" },
-      { step: 5, title: "Approval & Travel", description: "Receive visa and plan travel" },
-      { step: 6, title: "Integration Support", description: "Help with settling and registration" },
-    ],
-  },
-  "czech-republic": {
-    name: "Czech Republic",
-    tagline: "Timeless Beauty & Modern Prosperity",
-    image: czechImg,
-    description: "The Czech Republic offers a unique blend of fairy-tale cities, rich history, and a modern economy. Prague's thriving tech scene and the country's central European location make it an ideal destination for professionals seeking quality of life and career growth.",
-    whyChoose: [
-      "Stunning architecture and cultural heritage",
-      "Strong manufacturing and IT sectors",
-      "High quality of life",
-      "Central European location",
-      "Affordable living costs",
-      "Safe and stable environment",
-    ],
-    eligibility: [
-      "Recognized educational qualifications",
-      "Relevant work experience",
-      "Valid passport",
-      "Health insurance",
-      "Proof of purpose (work/study)",
-      "Financial documentation",
-    ],
-    benefits: [
-      "Access to EU market",
-      "Quality healthcare system",
-      "Excellent public transport",
-      "Rich cultural experiences",
-      "Growing expat community",
-      "Schengen zone mobility",
-    ],
-    process: [
-      { step: 1, title: "Consultation", description: "Discuss goals and assess eligibility" },
-      { step: 2, title: "Opportunity Search", description: "Find suitable positions" },
-      { step: 3, title: "Documentation", description: "Prepare required documents" },
-      { step: 4, title: "Application", description: "Submit visa application" },
-      { step: 5, title: "Processing", description: "Track and follow up" },
-      { step: 6, title: "Arrival", description: "Welcome and settling support" },
-    ],
-  },
-  france: {
-    name: "France",
-    tagline: "Art, Elegance & Endless Possibilities",
-    image: franceImg,
-    description: "France, the world's most visited country, offers unparalleled cultural richness, excellent quality of life, and diverse career opportunities. From Paris's business districts to the tech hubs of Lyon and Toulouse, France welcomes skilled professionals from around the world.",
-    whyChoose: [
-      "World-class arts, culture, and cuisine",
-      "Strong aerospace and luxury goods sectors",
-      "Excellent public services",
-      "Mediterranean and Alpine lifestyles",
-      "Global business hub",
-      "Quality education system",
-    ],
-    eligibility: [
-      "Higher education degree",
-      "Professional experience",
-      "French language skills (varies)",
-      "Valid passport",
-      "Clean background",
-      "Financial proof",
-    ],
-    benefits: [
-      "Premium healthcare system",
-      "35-hour work week culture",
-      "Generous vacation days",
-      "Family-friendly policies",
-      "Cultural immersion",
-      "EU mobility rights",
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Evaluate profile and goals" },
-      { step: 2, title: "Preparation", description: "Gather and translate documents" },
-      { step: 3, title: "Application", description: "Complete visa forms" },
-      { step: 4, title: "Submission", description: "Embassy appointment" },
-      { step: 5, title: "Approval", description: "Receive decision" },
-      { step: 6, title: "Integration", description: "Arrival support in France" },
-    ],
-  },
-  romania: {
-    name: "Romania",
-    tagline: "Hidden Treasures & Emerging Opportunities",
-    image: romaniaImg,
-    description: "Romania offers an exciting blend of medieval charm, natural beauty, and a rapidly growing economy. With competitive salaries in IT, low living costs, and EU membership benefits, Romania is becoming an increasingly popular destination for international professionals.",
-    whyChoose: [
-      "Fast-growing IT and tech sector",
-      "Very affordable living costs",
-      "Beautiful natural landscapes",
-      "Rich cultural heritage",
-      "EU membership benefits",
-      "Friendly and welcoming people",
-    ],
-    eligibility: [
-      "Educational qualifications",
-      "Job offer or business plan",
-      "Valid travel documents",
-      "Health coverage",
-      "Accommodation proof",
-      "Financial means",
-    ],
-    benefits: [
-      "Low cost of living",
-      "Growing expat community",
-      "Fast internet infrastructure",
-      "EU rights and mobility",
-      "Diverse landscapes",
-      "Emerging startup scene",
-    ],
-    process: [
-      { step: 1, title: "Consultation", description: "Initial assessment" },
-      { step: 2, title: "Documentation", description: "Prepare paperwork" },
-      { step: 3, title: "Application", description: "Submit visa request" },
-      { step: 4, title: "Processing", description: "Follow up on status" },
-      { step: 5, title: "Approval", description: "Collect visa" },
-      { step: 6, title: "Arrival", description: "Settling support" },
-    ],
-  },
-  azerbaijan: {
-    name: "Azerbaijan",
-    tagline: "Where East Meets West",
-    image: germanyImg, // Using Germany image as placeholder
-    description: "Azerbaijan, the Land of Fire, offers unique opportunities at the crossroads of Europe and Asia. With its booming oil and gas sector, growing tourism industry, and strategic location, Azerbaijan presents exciting prospects for adventurous professionals.",
-    whyChoose: [
-      "Strategic location between Europe and Asia",
-      "Growing economy and infrastructure",
-      "Rich cultural heritage",
-      "Competitive tax environment",
-      "Expanding tourism sector",
-      "Unique blend of cultures",
-    ],
-    eligibility: [
-      "Relevant qualifications",
-      "Work permit (if employed)",
-      "Valid passport",
-      "Health insurance",
-      "Invitation letter (if applicable)",
-      "Financial documentation",
-    ],
-    benefits: [
-      "Low income tax rates",
-      "Growing business environment",
-      "Unique cultural experience",
-      "Modern infrastructure in Baku",
-      "Gateway to Central Asia",
-      "Affordable living",
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Review eligibility" },
-      { step: 2, title: "Documentation", description: "Collect documents" },
-      { step: 3, title: "Application", description: "Prepare submission" },
-      { step: 4, title: "Processing", description: "Track application" },
-      { step: 5, title: "Approval", description: "Receive visa" },
-      { step: 6, title: "Travel", description: "Arrival assistance" },
-    ],
-  },
+interface CountryData {
+    title: string;
+    name: string;
+    tagline: string;
+    image: string;
+    description: string;
+    stats: { price: string; duration: string; visa: string };
+    whyChoose: { title: string; description: string }[];
+    eligibility: string[];
+    benefits: { title: string; description: string }[];
+    process: { step: number; title: string; description: string }[];
+    testimonials: { name: string; role: string; content: string; location: string }[];
+    faqs: { question: string; answer: string }[];
+}
+
+const countryData: Record<string, CountryData> = {
+    germany: {
+        title: "Germany Heritage Tour",
+        name: "Germany",
+        tagline: "Experience the Heart of Europe",
+        image: germanyImg,
+        description: "Explore medieval castles, vibrant cities, and the scenic Rhine Valley. From the history of Berlin to the festivities of Munich, discover Germany's rich culture.",
+        stats: { price: "€1,200", duration: "7 Days", visa: "Schengen Visa" },
+        whyChoose: [
+            { title: "Neuschwanstein Castle visit", description: "Experience the fairytale architecture." },
+            { title: "Berlin historic tour", description: "Walk through history in the capital." },
+            { title: "Rhine River cruise", description: "Relax on scenic river waters." },
+            { title: "Black Forest excursion", description: "Discover nature's untouched beauty." },
+            { title: "Oktoberfest vibes", description: "Celebrate culture and tradition." },
+            { title: "Premium transport", description: "Travel in comfort and style." }
+        ],
+        eligibility: ["Valid Passport (6mo+)", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds Proof"],
+        benefits: [
+            { title: "Guided City Tours", description: "Explore locally with experts." },
+            { title: "4-Star Accommodation", description: "Premium comfort included." },
+            { title: "Breakfast Daily", description: "Start your day right." },
+            { title: "Inter-city Transfers", description: "Travel between cities with ease." },
+            { title: "Museum Entries", description: "All entry tickets covered." },
+            { title: "English Speaking Guide", description: "Full assistance throughout the trip." }
+        ],
+        process: [
+            { step: 1, title: "Inquire", description: "Select your travel dates." },
+            { step: 2, title: "Customize", description: "Choose add-ons." },
+            { step: 3, title: "Book", description: "Pay deposit." },
+            { step: 4, title: "Visa", description: "Submit documents." },
+            { step: 5, title: "Briefing", description: "Pre-departure guide." },
+            { step: 6, title: "Fly", description: "Arrive in Berlin." }
+        ],
+        testimonials: [
+            { name: "Rahul S.", role: "Tourist", content: "The castle tour was magical. Perfectly organized.", location: "Berlin" },
+            { name: "Anita K.", role: "Traveler", content: "Loved the food and culture. Great guide.", location: "Munich" }
+        ],
+        faqs: [
+            { question: "Best time to visit?", answer: "Summer (Jun-Aug) or December for markets." },
+            { question: "Visa included?", answer: "We provide assistance, fees separate." },
+            { question: "Vegetarian food?", answer: "Yes, available everywhere." }
+        ]
+    },
+    poland: {
+        title: "Poland Discovery Package",
+        name: "Poland",
+        tagline: "Cathedrals & Historic Squares",
+        image: polandImg,
+        description: "Journey through Krakow's old town, visit the historic salt mines, and explore the vibrant capital of Warsaw. A land of history and resilience.",
+        stats: { price: "€950", duration: "6 Days", visa: "Schengen Visa" },
+        whyChoose: [
+            { title: "Krakow Old Town", description: "Wander through medieval streets." },
+            { title: "Wieliczka Salt Mine", description: "Explore underground wonders." },
+            { title: "Auschwitz Memorial", description: "A touching historical site." },
+            { title: "Warsaw City Tour", description: "Discover the resilient capital." },
+            { title: "Traditional Pierogi Dinner", description: "Taste authentic local cuisine." },
+            { title: "Affordable Luxury", description: "Premium experience at great value." }
+        ],
+        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Flight Itinerary", "Hotel Voucher", "Bank Statement"],
+        benefits: [
+            { title: "Centrally Located Hotels", description: "Stay in the heart of the city." },
+            { title: "Entrance Fees Included", description: "No hidden costs." },
+            { title: "Airport Transfers", description: "Stress-free arrival & departure." },
+            { title: "Local Expert Guide", description: "Discover hidden gems." },
+            { title: "Daily Breakfast", description: "Delicious start to the day." },
+            { title: "Comfortable Transport", description: "Travel in modern vehicles." }
+        ],
+        process: [
+            { step: 1, title: "Plan", description: "Select itinerary." },
+            { step: 2, title: "Confirm", description: "Lock price." },
+            { step: 3, title: "Visa", description: "Easy application." },
+            { step: 4, title: "Pack", description: "Travel checklist." },
+            { step: 5, title: "Fly", description: "Land in Warsaw." },
+            { step: 6, title: "Enjoy", description: "Start the tour." }
+        ],
+        testimonials: [
+            { name: "Manpreet G.", role: "Family Trip", content: "Very affordable and beautiful country.", location: "Krakow" },
+            { name: "John D.", role: "Solo Traveler", content: "The salt mines were breathtaking.", location: "Warsaw" }
+        ],
+        faqs: [
+            { question: "Currency?", answer: "Polish Zloty (PLN)." },
+            { question: "Is English spoken?", answer: "Widely in tourist areas." },
+            { question: "Transport?", answer: "Private coach included." }
+        ]
+    },
+    azerbaijan: {
+        title: "Azerbaijan - Land of Fire",
+        name: "Azerbaijan",
+        tagline: "Where East Meets West",
+        image: azerbaijanImg,
+        description: "Discover the Land of Fire with unmatched expertise. We specialize in crafting seamless Azerbaijan experiences, blending the futuristic allure of Baku's skyline with the timeless charm of its ancient heritage. With local insights, premium comfort, and a commitment to transparency, we ensure every moment of your journey is as captivating as the destination itself.",
+        stats: { price: "$650", duration: "5 Days", visa: "E-Visa" },
+        whyChoose: [
+            { title: "Expert Local Knowledge", description: "Deep insights into local culture and hidden gems." },
+            { title: "Tailor-Made Itineraries", description: "Custom travel plans designed for your pace." },
+            { title: "Premium Comfort & Safety", description: "Handpicked 4-star hotels and private premium vehicles." },
+            { title: "24/7 Dedicated Support", description: "Full assistance from visa to on-ground coordination." }
+        ],
+        eligibility: ["Valid Passport", "E-Visa (3 days)", "Flight Ticket", "Hotel Voucher", "Vaccine Cert (if any)", "Funds Proof"],
+        benefits: [
+            { title: "Baku & Shahdag Stay", description: "4 nights premium stay with daily breakfast." },
+            { title: "Private Sedan Car", description: "Dedicated private vehicle for all your travels." },
+            { title: "Scenic Road Trips", description: "Curated sightseeing and beautiful road trip experiences." },
+            { title: "Personal Assistance", description: "Dedicated support for a smooth travel experience." },
+            { title: "English Speaking Driver", description: "Professional drivers for easy and clear communication." },
+            { title: "Daily Breakfast", description: "Delicious breakfast provided at the hotel every morning." }
+        ],
+        process: [
+            { step: 1, title: "Select", description: "Choose 4 or 5 day pack." },
+            { step: 2, title: "Visa", description: "Apply online (easy)." },
+            { step: 3, title: "Book", description: "Confirm flights." },
+            { step: 4, title: "Pay", description: "Secure booking." },
+            { step: 5, title: "Fly", description: "Arrival in Baku." },
+            { step: 6, title: "Tour", description: "Airport pickup." }
+        ],
+        testimonials: [
+            { name: "Ahmed K.", role: "Tourist", content: "Baku is dazzling at night. Great service.", location: "Baku" },
+            { name: "Sarah L.", role: "Traveler", content: "Very clean city and friendly people.", location: "Gabala" }
+        ],
+        faqs: [
+            { question: "Visa on arrival?", answer: "For some nationalities, others E-visa." },
+            { question: "Best food?", answer: "Try the Plov and Kebabs." },
+            { question: "Currency?", answer: "Manat (AZN)." }
+        ]
+    },
+    kazakhstan: {
+        title: "Kazakhstan Nature Tour",
+        name: "Kazakhstan",
+        tagline: "Mountains, Lakes & Canyons",
+        image: kazakhstanImg,
+        description: "Experience the perfect blend of modern city life and breathtaking natural wonders in Almaty. From the snowy peaks of Shymbulak to the dramatic landscapes of Charyn Canyon, we curate seamless family journeys with premium comfort and expert guidance. Trust us to turn your Kazakhstan dream into an unforgettable reality.",
+        stats: { price: "$850", duration: "5 Days", visa: "Visa Free/E-Visa" },
+        whyChoose: [
+            { title: "Expert Local Guides", description: "Learn more with our professional English-speaking guides." },
+            { title: "Private & Premium Travel", description: "Travel in comfort with private sedan vehicles." },
+            { title: "Family-Friendly Planning", description: "Itineraries designed for both adults and children." },
+            { title: "All-Inclusive Entry", description: "No hidden costs; all entry tickets pre-arranged." }
+        ],
+        eligibility: ["Valid Passport", "Visa Check", "Return Ticket", "Hotel Booking", "Funds", "Insurance"],
+        benefits: [
+            { title: "4-Star Hotel Stay", description: "Stay at Ozen Palace with daily breakfast." },
+            { title: "Private Sedan Vehicle", description: "Dedicated car for all transfers and tours." },
+            { title: "All Entry Tickets", description: "Entry to all mentioned parks and attractions." },
+            { title: "Full Cable Car Access", description: "Includes Shymbulak and Kok Tobe cable cars." },
+            { title: "Guided Nature Tours", description: "Full-day tours to canyons, lakes, and waterfalls." },
+            { title: "Hassle-Free Logistics", description: "Covers all tolls, parking, and eco-charges." }
+        ],
+        process: [
+            { step: 1, title: "Inquire", description: "Check seasonality." },
+            { step: 2, title: "Plan", description: "City or Nature focus?" },
+            { step: 3, title: "Book", description: "Reserve dates." },
+            { step: 4, title: "Visa", description: "If required." },
+            { step: 5, title: "Fly", description: "Almaty Airport." },
+            { step: 6, title: "Explore", description: "Start adventure." }
+        ],
+        testimonials: [
+            { name: "David R.", role: "Hiker", content: "The lakes are unreal. Amazing trip.", location: "Almaty" },
+            { name: "Maria S.", role: "Family", content: "Shymbulak was great for kids.", location: "Astana" }
+        ],
+        faqs: [
+            { question: "Best season?", answer: "May to September for nature." },
+            { question: "Is it cold?", answer: "Winters are snowy, Summers pleasant." },
+            { question: "Language?", answer: "Russian/Kazakh. Guides speak English." }
+        ]
+    },
+    armenia: {
+        title: "Armenia Cultural Tour",
+        name: "Armenia",
+        tagline: "The First Christian Nation",
+        image: armeniaImg,
+        description: "Explore ancient monasteries, the stunning Lake Sevan, and the vibrant streets of Yerevan. A journey through history and hospitality.",
+        stats: { price: "$700", duration: "5 Days", visa: "Visa on Arrival" },
+        whyChoose: [
+            { title: "Yerevan City Tour", description: "Visit the pink city." },
+            { title: "Lake Sevan", description: "The jewel of Armenia." },
+            { title: "Garni Temple", description: "Ancient Hellenistic temple." },
+            { title: "Geghard Monastery", description: "Cave monastery architecture." },
+            { title: "Brandy Tasting", description: "Legendary Armenian spirits." },
+            { title: "Cable Car Ride", description: "World's longest cable car." }
+        ],
+        eligibility: ["Valid Passport", "Visa on Arrival", "Ticket", "Accommodation", "Funds", "Travel Plan"],
+        benefits: [
+            { title: "Central Hotel", description: "Stay near major attractions." },
+            { title: "Breakfast Daily", description: "Complimentary morning meal." },
+            { title: "Private Tour", description: "Exclusive experience for your group." },
+            { title: "Tasting Sessions", description: "Sample local delicacies." },
+            { title: "Museum Tickets", description: "Entry to all sites included." },
+            { title: "Airport Transfers", description: "Pick-up and drop-off provided." }
+        ],
+        process: [
+            { step: 1, title: "Choose", description: "Select package." },
+            { step: 2, title: "Custom", description: "Add day trips." },
+            { step: 3, title: "Book", description: "Pay advance." },
+            { step: 4, title: "Fly", description: "Direct flights available." },
+            { step: 5, title: "Visa", description: "Get at airport." },
+            { step: 6, title: "Tour", description: "Meet driver." }
+        ],
+        testimonials: [
+            { name: "Elena P.", role: "Tourist", content: "The monasteries are magnificent.", location: "Yerevan" },
+            { name: "Mark T.", role: "Foodie", content: "Best bread and wine ever.", location: "Dilijan" }
+        ],
+        faqs: [
+            { question: "Is it safe?", answer: "One of the safest countries." },
+            { question: "Currency?", answer: "Armenian Dram (AMD)." },
+            { question: "Visa fee?", answer: "Very low or free for some." }
+        ]
+    },
+    kyrgyzstan: {
+        title: "Kyrgyzstan Exclusive 5-Day Tour",
+        name: "Kyrgyzstan",
+        tagline: "4 Nights / 5 Days - The Nomadic Spirit",
+        image: kyrgyzstanImg,
+        description: "Experience the untouched beauty of Kyrgyzstan with our curated mountain tours. From the stunning valleys of Chunkhurchak to the alpine landscapes of Ala-Archa, we provide seamless private journeys with premium comfort and expert local guidance.",
+        stats: { price: "$1,210", duration: "5 Days", visa: "E-Visa" },
+        whyChoose: [
+            { title: "Expert Multi-lingual Guides", description: "Professional Arabic or English-speaking drivers for your trip." },
+            { title: "Private Group Travel", description: "Exclusive travel in a private minivan for your group." },
+            { title: "Curated Alpine Tours", description: "Handpicked tours to Chunkhurchak, Ala-Archa, and Alameddin." },
+            { title: "Hassle-Free Planning", description: "Full-day tours with pre-arranged transfers and hotel stays." }
+        ],
+        eligibility: [
+            "Travel Date: 02 NOV 2025",
+            "Group Size: 5 PAX",
+            "Valid Passport",
+            "E-Visa Confirmation",
+            "Standard DBL + Triple Room",
+            "Return Ticket"
+        ],
+        benefits: [
+            { title: "Premium Hotel Stay", description: "Comfortable hotel stays with early check-in options." },
+            { title: "Private Minivan", description: "Private minivan for all your sightseeing and transfers." },
+            { title: "Airport Transfers", description: "Private pick-up and drop-off at the airport included." },
+            { title: "Daily Breakfast", description: "Delicious breakfast provided at the hotel every morning." },
+            { title: "Professional Driver", description: "Expert Arabic or English-speaking driver for all tours." },
+            { title: "Guided Day Tours", description: "Scheduled tours daily from 10:00 AM to 6:00 PM." }
+        ],
+        process: [
+            { step: 1, title: "Day 1", description: "Arrival & Transfer to Bishkek Hotel." },
+            { step: 2, title: "Day 2", description: "Chunkhurchank Tour (10 AM - 6 PM)." },
+            { step: 3, title: "Day 3", description: "Ala-Archa National Park Tour." },
+            { step: 4, title: "Day 4", description: "Alameddin Gorge Tour." },
+            { step: 5, title: "Day 5", description: "Transfer to Airport for Departure." },
+            { step: 6, title: "Book", description: "Check availability now." }
+        ],
+        testimonials: [
+            { name: "Ahmed A.", role: "Group Leader", content: "Great tailored experience for our group.", location: "UAE" },
+            { name: "Sarah K.", role: "Traveler", content: "The driver was excellent and the mountains stunning.", location: "UK" }
+        ],
+        faqs: [
+            { question: "What is included?", answer: "Hotels, Breakfast, Car, Driver, Tours, Transfers." },
+            { question: "Price for 5 Pax?", answer: "$1210 (Art Hotel) or $1250 (Resident Hotel)." },
+            { question: "Tour timings?", answer: "All tours start 10:00 AM and finish 6:00 PM." }
+        ]
+    },
+    netherlands: {
+        title: "Netherlands Classic Tour",
+        name: "Netherlands",
+        tagline: "Windmills, Canals & Culture",
+        image: netherlandsImg,
+        description: "Cruise the canals of Amsterdam, visit the Keukenhof tulip gardens (seasonal), and see the historic windmills of Zaanse Schans.",
+        stats: { price: "€1,100", duration: "5 Days", visa: "Schengen Visa" },
+        whyChoose: [
+            { title: "Amsterdam Canal Cruise", description: "See the city from water." },
+            { title: "Zaanse Schans Windmills", description: "Historic Dutch countryside." },
+            { title: "Van Gogh Museum", description: "World-class art collection." },
+            { title: "Keukenhof Gardens", description: "Millions of blooming tulips." },
+            { title: "Cheese Factory Visit", description: "Taste authentic Dutch gouda." },
+            { title: "Volendam Village", description: "Traditional fishing village charm." }
+        ],
+        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds"],
+        benefits: [
+            { title: "Centrally Located Hotel", description: "Convenient stay options." },
+            { title: "Breakfast Daily", description: "Start day with good food." },
+            { title: "Public Transport Card", description: "Easy city travel." },
+            { title: "Museum Entries", description: "Skip the line tickets." },
+            { title: "Canal Cruise Ticket", description: "Experience the city waters." },
+            { title: "Airport Transfers", description: "Hassle-free commute." }
+        ],
+        process: [
+            { step: 1, title: "Dates", description: "Pick your season." },
+            { step: 2, title: "Package", description: "Select hotel class." },
+            { step: 3, title: "Book", description: "Confirm details." },
+            { step: 4, title: "Visa", description: "Schengen process." },
+            { step: 5, title: "Arrive", description: "Schiphol pick-up." },
+            { step: 6, title: "Tour", description: "Explore the Dutch way." }
+        ],
+        testimonials: [
+            { name: "Suresh K.", role: "Tourist", content: "Amsterdam is beautiful. The cruise was highlight.", location: "Amsterdam" },
+            { name: "Priya M.", role: "Traveler", content: "Tulips were amazing.", location: "Lisse" }
+        ],
+        faqs: [
+            { question: "Best for Tulips?", answer: "Mid-April is peak season." },
+            { question: "Transport?", answer: "Trams and Trains are excellent." },
+            { question: "Visa?", answer: "Schengen visa required." }
+        ]
+    },
+    georgia: {
+        title: "Georgia - Jewel of Caucasus",
+        name: "Georgia",
+        tagline: "Wine, Mountains & History",
+        image: georgiaImg,
+        description: "Experience the soul of the Caucasus with our expertly curated Georgia tours. From the cobblestone streets of Old Tbilisi to the majestic heights of Kazbegi, we offer a perfect blend of adventure and comfort. Let us guide you through breathtaking landscapes and ancient heritage with a touch of local hospitality.",
+        stats: { price: "$600", duration: "5 Days", visa: "Visa on Arrival" },
+        whyChoose: [
+            { title: "Expert Local Insights", description: "Discover hidden gems in Tbilisi and Kazbegi with our knowledgeable guides." },
+            { title: "Handpicked Stays", description: "Enjoy unique accommodations, from premium city hotels to cozy mountain cottages." },
+            { title: "Seamless Adventures", description: "Experience iconic sites like the Dashbashi Glass Bridge with all logistics handled." },
+            { title: "Reliable Support", description: "Dedicated assistance throughout your journey for a stress-free travel experience." }
+        ],
+        eligibility: ["Valid Passport", "Visa Check", "Ticket", "Hotel", "Funds", "Insurance"],
+        benefits: [
+            { title: "Premium Accommodations", description: "Comfortable stays in top-rated hotels and cottages." },
+            { title: "Private Guided Tours", description: "Full-day tours to Gudauri, Kazbegi, and Dashbashi." },
+            { title: "Airport Transfers", description: "Private airport pick-up and drop-off included." },
+            { title: "Scenic Mountain Travel", description: "Private transport along the Georgian Military Highway." },
+            { title: "Entry Fees & Activities", description: "Includes entry to Dashbashi Canyon and glass bridge." },
+            { title: "Daily Breakfast", description: "Delicious breakfast provided every morning." }
+        ],
+        process: [
+            { step: 1, title: "Select", description: "Choose tour type." },
+            { step: 2, title: "Confirm", description: "Dates & Pax." },
+            { step: 3, title: "Book", description: "Advance payment." },
+            { step: 4, title: "Fly", description: "Tbilisi arrival." },
+            { step: 5, title: "Visa", description: "Immigration check." },
+            { step: 6, title: "Enjoy", description: "Start exploring." }
+        ],
+        testimonials: [
+            { name: "Chris B.", role: "Tourist", content: "The food is addictive. Loved the mountains.", location: "Tbilisi" },
+            { name: "Anna K.", role: "Photographer", content: "Kazbegi is picture perfect.", location: "Kazbegi" }
+        ],
+        faqs: [
+            { question: "Visa policy?", answer: "1 Year visa free for many nations." },
+            { question: "Is it safe?", answer: "Extremely safe for tourists." },
+            { question: "Best food?", answer: "Khachapuri and Khinkali." }
+        ]
+    },
+    uzbekistan: {
+        title: "Uzbekistan - Silk Road Jewel",
+        name: "Uzbekistan",
+        tagline: "Samarkand, Bukhara & Tashkent",
+        image: uzbekistanImg,
+        description: "Step back in time to the era of the Silk Road. Marvel at the blue-tiled mosques of Samarkand and the historic centers of Bukhara.",
+        stats: { price: "$900", duration: "7 Days", visa: "E-Visa" },
+        whyChoose: [
+            { title: "Registan Square", description: "Iconic heart of the Silk Road." },
+            { title: "Bukhara Old City", description: "A living museum." },
+            { title: "Khiva Walled City", description: "Step into history." },
+            { title: "Tashkent Metro", description: "Art underground." },
+            { title: "Silk Road History", description: "Connect with the past." },
+            { title: "Local Handicrafts", description: "Exquisite ceramics and textiles." }
+        ],
+        eligibility: ["Valid Passport", "E-Visa", "Return Flight", "Hotel Booking", "Funds", "Travel Insurance"],
+        benefits: [
+            { title: "Boutique Hotels", description: "Charming local stays." },
+            { title: "All Transfers", description: "Private and comfortable." },
+            { title: "Expert Guide", description: "Knowledgeable and friendly." },
+            { title: "Entrance Fees", description: "All monuments included." },
+            { title: "Bullet Train Tickets", description: "Fast inter-city travel." },
+            { title: "Breakfast", description: "Daily meals included." }
+        ],
+        process: [
+            { step: 1, title: "Plan", description: "Choose cities." },
+            { step: 2, title: "Visa", description: "Apply online." },
+            { step: 3, title: "Book", description: "Reserve package." },
+            { step: 4, title: "Fly", description: "Tashkent arrival." },
+            { step: 5, title: "Train", description: "Samarkand express." },
+            { step: 6, title: "Explore", description: "Discover history." }
+        ],
+        testimonials: [
+            { name: "Kevin L.", role: "Historian", content: "Samarkand exceeded expectations.", location: "Samarkand" },
+            { name: "Fatima R.", role: "Traveler", content: "Beautiful architecture.", location: "Bukhara" }
+        ],
+        faqs: [
+            { question: "Best time?", answer: "Spring (Apr-Jun) and Autumn (Sep-Nov)." },
+            { question: "Dress code?", answer: "Modest dress recommended." },
+            { question: "Safety?", answer: "Very safe and welcoming." }
+        ]
+    }
 };
 
 const CountryPage = () => {
-  const { country } = useParams<{ country: string }>();
-  const data = country ? countryData[country] : null;
+    const { country } = useParams();
+    const [data, setData] = useState<CountryData | null>(null);
+    const [date, setDate] = useState<Date>();
 
-  if (!data) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (country && countryData[country]) {
+            setData(countryData[country]);
+        } else {
+            setData(null);
+        }
+    }, [country]);
+
+    if (!data) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <p>Country data not found.</p>
+                <Link to="/" className="ml-4 text-primary underline">Go Home</Link>
+            </div>
+        );
+    }
+
     return (
-      <>
-        <Header />
-        <main className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="font-heading text-4xl font-bold text-foreground mb-4">Country Not Found</h1>
-            <Link to="/" className="text-gold hover:underline">Return to Home</Link>
-          </div>
-        </main>
-        <Footer />
-      </>
+        <>
+            <Header />
+            <main>
+                {/* --- 1. Immersive Hero Section (Banner) --- */}
+                <section className="relative h-[85vh] min-h-[600px] flex items-end justify-center overflow-hidden">
+                    {/* Background Image with optimized scale annimation */}
+                    <div className="absolute inset-0 z-0 select-none">
+                        <img
+                            src={data.image}
+                            alt={`${data.name} Landscape`}
+                            className="w-full h-full object-cover scale-110 animate-pulse-gentle"
+                            style={{ animationDuration: '30s' }}
+                        />
+                        {/* Modern Gradient Overlays - Darkened for White Text Readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 opacity-70" />
+                        <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
+                    </div>
+
+                    <div className="container-wide relative z-10 w-full mb-16 md:mb-24 px-4 sm:px-6">
+                        <div className="max-w-4xl mx-auto text-center">
+                            {/* Animated Eyebrow */}
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 animate-fade-in-up">
+                                <Globe className="w-4 h-4 text-gold" />
+                                <span className="text-xs font-bold tracking-[0.2em] uppercase">{data.tagline}</span>
+                            </div>
+
+                            {/* Main Title */}
+                            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight animate-fade-in-up animation-delay-100 drop-shadow-2xl">
+                                {data.title}
+                            </h1>
+
+                            {/* Key Stats Bar - Glassmorphic */}
+                            <div className="inline-flex flex-wrap justify-center items-center gap-8 sm:gap-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-full py-4 px-10 mt-10 animate-fade-in-up animation-delay-200 shadow-2xl hover:bg-black/50 transition-all duration-500">
+
+                                <div className="flex items-center gap-4 text-left group">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
+                                        <Clock className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Duration</p>
+                                        <p className="text-white font-bold text-lg">{data.stats.duration}</p>
+                                    </div>
+                                </div>
+
+                                <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden sm:block" />
+
+                                <div className="flex items-center gap-4 text-left group">
+                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
+                                        <ShieldCheck className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Visa Type</p>
+                                        <p className="text-white font-bold text-lg">{data.stats.visa}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Scroll Indicator */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+                        <ArrowRight className="w-6 h-6 text-white/50 rotate-90" />
+                    </div>
+                </section>
+
+                {/* --- 2. Overview & Why Choose (Why choose this country) --- */}
+                <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+                    <div className="container-wide relative z-10 px-4 sm:px-6">
+                        <RevealOnScroll animation="fade-up">
+                            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+                                {/* Content Column */}
+                                <div className="order-2 lg:order-1">
+                                    <span className="inline-block py-1.5 px-4 rounded-full bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest mb-6 border border-gold/20">
+                                        Tour Overview
+                                    </span>
+                                    <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary leading-[1.1]">
+                                        Explore the Best of <br />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-orange-400">{data.name}</span>
+                                    </h2>
+                                    <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl">
+                                        {data.description}
+                                    </p>
+
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                                        <a href="#inquire" className="btn-primary shadow-xl shadow-primary/20 bg-[#0B1120] hover:bg-[#151e32] text-white px-8 py-4 rounded-xl text-lg transition-all hover:scale-105">
+                                            Check Availability
+                                        </a>
+                                        <div className="flex items-center gap-2 text-sm font-medium text-emerald-600 bg-emerald-50 px-4 py-2 rounded-lg border border-emerald-100">
+                                            <CheckCircle2 className="w-4 h-4 fill-current" />
+                                            <span>Best Price Guarantee • Verified Tours</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Cards Grid */}
+                                <div className="order-1 lg:order-2 grid sm:grid-cols-2 gap-5">
+                                    {data.whyChoose.slice(0, 4).map((reason, i) => (
+                                        <div
+                                            key={i}
+                                            className={`group p-6 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between h-full
+                                                ${i % 3 === 0 ? 'bg-slate-50 border-slate-100' : 'bg-white border-gray-100'}
+                                            `}
+                                        >
+                                            <div className="mb-4">
+                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors
+                                                    ${i % 3 === 0 ? 'bg-white text-gold shadow-sm' : 'bg-primary/5 text-primary'}
+                                                `}>
+                                                    <CheckCircle2 className="w-6 h-6" />
+                                                </div>
+                                                <h3 className="font-bold text-lg mb-2 text-primary">{reason.title}</h3>
+                                                <p className="text-sm text-muted-foreground line-clamp-2">
+                                                    {reason.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                        </RevealOnScroll>
+                    </div>
+                </section>
+
+                {/* --- 3. Eligibility (Travel Requirements) --- */}
+                <section className="py-24 bg-slate-50/50">
+                    <div className="container-wide px-4 sm:px-6">
+                        <RevealOnScroll animation="fade-up" delay={100}>
+                            <div className="max-w-7xl mx-auto bg-white rounded-[3rem] shadow-xl border border-gray-100 p-8 md:p-12 lg:p-16 relative overflow-hidden">
+                                {/* Decorative Background */}
+                                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+                                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+                                    <div>
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <div className="w-8 h-1 bg-gold rounded-full" />
+                                            <span className="text-gold font-bold text-xs uppercase tracking-widest">Essential Documents</span>
+                                        </div>
+                                        <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-primary leading-tight">
+                                            Travel <span className="text-gold italic">Requirements</span>
+                                        </h2>
+                                        <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-md">
+                                            Ensure a smooth journey by preparing these necessary documents for {data.title}.
+                                            Our team provides full visa assistance and guidance.
+                                        </p>
+                                        <div className="flex flex-col sm:flex-row gap-4">
+                                            <a href="#inquire" className="btn-primary shadow-lg shadow-primary/20">
+                                                Start Booking
+                                            </a>
+                                            <Link
+                                                to="/contact"
+                                                className="px-8 py-4 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 text-center"
+                                            >
+                                                Talk to an Expert
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid sm:grid-cols-2 gap-4">
+                                        {data.eligibility.map((item, i) => (
+                                            <div
+                                                key={i}
+                                                className="group flex items-center gap-4 bg-gray-50 hover:bg-white p-5 rounded-2xl border border-gray-100 hover:border-gold/30 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                            >
+                                                <div className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                                                </div>
+                                                <span className="font-semibold text-primary group-hover:text-gold transition-colors">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </RevealOnScroll>
+                    </div>
+                </section>
+
+                {/* --- 4. Process Timeline (Process) --- */}
+                <section className="py-24 bg-[#FDFCF8] relative overflow-hidden">
+                    {/* Subtle Background Pattern */}
+                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#bca876_1px,transparent_1px)] [background-size:20px_20px]" />
+
+                    <div className="container-wide px-4 sm:px-6 relative z-10">
+                        <RevealOnScroll animation="fade-up" delay={100}>
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                                <div>
+                                    <span className="text-gold font-bold text-sm uppercase tracking-widest mb-3 block">Itinerary / Process</span>
+                                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary">Booking & Travel</h2>
+                                </div>
+                                <p className="text-muted-foreground max-w-md text-right md:text-left leading-relaxed">
+                                    A simple, transparent process to get you from planning to exploring {data.name}.
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                                {data.process.map((step, i) => (
+                                    <div
+                                        key={i}
+                                        className="group relative bg-white p-8 rounded-3xl border border-gray-100 hover:border-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                    >
+                                        {/* Number Badge */}
+                                        <div className="absolute -top-6 left-8 w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg shadow-primary/20 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
+                                            {step.step}
+                                        </div>
+
+                                        <div className="mt-6">
+                                            <h3 className="font-heading text-2xl font-bold text-primary mb-3 group-hover:text-gold transition-colors">{step.title}</h3>
+                                            <p className="text-gray-500 leading-relaxed font-medium">{step.description}</p>
+                                        </div>
+
+                                        {/* Subtle decorative corner */}
+                                        <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-gray-50 to-transparent rounded-br-3xl -z-10 group-hover:from-gold/5 transition-colors" />
+                                    </div>
+                                ))}
+                            </div>
+                        </RevealOnScroll>
+                    </div>
+                </section>
+
+                {/* --- 4.5. Benefits (What's Included) --- */}
+                <section className="py-24 bg-slate-50/50 relative">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')] opacity-40 mx-auto" />
+                    <div className="container-wide px-4 sm:px-6 relative z-10">
+                        <RevealOnScroll animation="scale-up" delay={200}>
+                            <div className="text-center mb-16">
+                                <span className="text-gold font-bold text-sm uppercase tracking-widest mb-3 block">Value & Transparency</span>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">What's Included</h2>
+                                <div className="w-24 h-1 bg-gold/30 mx-auto rounded-full mb-6" />
+                                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                                    We believe in complete transparency. Your {data.name} package includes everything you need for a seamless experience.
+                                </p>
+                            </div>
+
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+                                {data.benefits.map((benefit, i) => (
+                                    <div
+                                        key={i}
+                                        className="group flex flex-col sm:flex-row items-start gap-5 p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold/20 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                                    >
+                                        <div className="absolute top-0 left-0 w-1 h-full bg-gold/0 group-hover:bg-gold transition-colors duration-300" />
+
+                                        <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <CheckCircle2 className="w-6 h-6" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="font-heading text-xl font-bold text-primary mb-2 group-hover:text-gold transition-colors">{benefit.title}</h3>
+                                            <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">{benefit.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </RevealOnScroll>
+                    </div>
+                </section>
+
+                {/* --- 5. Testimonials --- */}
+                <section className="py-24 bg-background">
+                    <RevealOnScroll animation="fade-in">
+                        <div className="container-wide px-4 sm:px-6 text-center mb-16">
+                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Traveler Stories</h2>
+                            <p className="text-muted-foreground max-w-2xl mx-auto">
+                                Hear from those who have explored {data.name} with us.
+                            </p>
+                        </div>
+                        <div className="container-wide px-4 sm:px-6 grid md:grid-cols-2 gap-8">
+                            {data.testimonials.map((t, i) => (
+                                <div key={i} className="bg-secondary/10 p-8 rounded-3xl relative">
+                                    <span className="text-6xl text-gold/20 font-serif absolute top-4 left-6">“</span>
+                                    <p className="text-lg text-foreground italic mb-6 relative z-10">"{t.content}"</p>
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                                            {t.name[0]}
+                                        </div>
+                                        <div className="text-left">
+                                            <h4 className="font-bold text-foreground">{t.name}</h4>
+                                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{t.role} • {t.location}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </RevealOnScroll>
+                </section>
+
+                {/* --- 4.6 Inquiry Form Section --- */}
+                <section className="py-24 bg-slate-50 relative overflow-hidden" id="booking-form">
+                    <div className="absolute left-0 top-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
+                    <div className="container-wide px-4 sm:px-6 relative z-10">
+                        <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
+                            <div className="grid md:grid-cols-5 h-full">
+                                {/* Form Side */}
+                                <div className="md:col-span-3 p-8 md:p-12">
+                                    <div className="mb-8">
+                                        <h3 className="font-heading text-3xl font-bold text-primary mb-2">Start Your Journey</h3>
+                                        <p className="text-muted-foreground">Fill in the details below to get a custom quote for {data.name}.</p>
+                                    </div>
+                                    <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); toast({ title: "Inquiry Sent!", description: "We will contact you shortly." }); }}>
+                                        <div className="grid sm:grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-700">Name</label>
+                                                <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-700">Phone</label>
+                                                <input type="tel" placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-medium text-gray-700">Email</label>
+                                            <input type="email" placeholder="hello@example.com" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                        </div>
+                                        <div className="grid sm:grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-700">Travel Date</label>
+                                                <Popover>
+                                                    <PopoverTrigger asChild>
+                                                        <Button
+                                                            variant={"outline"}
+                                                            className={cn(
+                                                                "w-full px-4 py-3 h-[50px] rounded-xl bg-gray-50 border border-gray-200 text-left font-normal justify-start hover:bg-gray-100 hover:text-black shadow-none",
+                                                                !date && "text-muted-foreground"
+                                                            )}
+                                                        >
+                                                            <CalendarIcon className="mr-2 h-4 w-4" />
+                                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                                        </Button>
+                                                    </PopoverTrigger>
+                                                    <PopoverContent className="w-auto p-0" align="start">
+                                                        <Calendar
+                                                            mode="single"
+                                                            selected={date}
+                                                            onSelect={setDate}
+                                                            initialFocus
+                                                            className="rounded-xl border shadow-xl"
+                                                        />
+                                                    </PopoverContent>
+                                                </Popover>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-700">Travelers</label>
+                                                <select className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                                                    <option>1 Person</option>
+                                                    <option>Couple (2)</option>
+                                                    <option>Family (3-5)</option>
+                                                    <option>Group (6+)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" className="w-full btn-primary py-4 text-lg mt-4 shadow-lg shadow-primary/20 hover:scale-[1.02]">
+                                            Request Detailed Itinerary
+                                        </button>
+                                    </form>
+                                </div>
+                                {/* Visual Side */}
+                                <div className="md:col-span-2 bg-[#0B1120] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                                    <div className="relative z-10">
+                                        <h4 className="text-xl font-bold mb-6 text-gold">Why Book With Us?</h4>
+                                        <ul className="space-y-4">
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Best Price Guarantee</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">24/7 Expert Support</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Tailored Itineraries</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="mt-12 relative z-10">
+                                        <p className="text-xs text-white/40 uppercase tracking-widest mb-2">Need Help?</p>
+                                        <p className="text-2xl font-bold text-white">+91 85920 04857</p>
+                                        <p className="text-white/60 text-sm">sales@europecalling.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- 6. FAQ Section --- */}
+                <section className="py-24 bg-white">
+                    <div className="container-wide px-4 sm:px-6 max-w-4xl mx-auto">
+                        <div className="text-center mb-12">
+                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Common Questions</h2>
+                            <p className="text-muted-foreground">Everything you need to know about visiting {data.name}.</p>
+                        </div>
+
+                        <Accordion type="single" collapsible className="w-full">
+                            {data.faqs.map((faq, i) => (
+                                <AccordionItem key={i} value={`item-${i}`} className="border-b border-border/50">
+                                    <AccordionTrigger className="text-left font-bold text-lg hover:text-gold transition-colors py-6">
+                                        {faq.question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
+                                        {faq.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
+                </section>
+
+                {/* --- 7. Call to Action --- */}
+                <section id="inquire" className="py-24 bg-primary text-secondary relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+                    <div className="container-wide px-4 sm:px-6 text-center relative z-10">
+                        <h2 className="font-heading text-4xl md:text-6xl font-bold mb-8 text-white">
+                            Ready to Visit {data.name}?
+                        </h2>
+                        <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
+                            Book your {data.stats.duration} tour now. Spots are filling up fast for the upcoming season.
+                        </p>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <Link to="/contact" className="px-8 py-4 bg-gold text-primary font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-xl shadow-gold/20">
+                                Book This Tour
+                            </Link>
+                            <Link to="/contact" className="px-8 py-4 bg-transparent border border-white/30 text-white font-bold text-lg rounded-full hover:bg-white/10 transition-colors">
+                                Download Itinerary
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+            <Footer />
+            <WhatsAppButton />
+            <StickyEnquireButton />
+        </>
     );
-  }
-
-  return (
-    <>
-      <Header />
-      <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-end">
-          <div className="absolute inset-0">
-            <img src={data.image} alt={data.name} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 gradient-overlay-hero" />
-          </div>
-          <div className="relative container-wide pb-12 sm:pb-16 pt-24 sm:pt-28 md:pt-32 px-4 sm:px-0">
-            <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-              Destination
-            </span>
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4">
-              {data.name}
-            </h1>
-            <p className="text-primary-foreground/90 text-lg sm:text-xl">{data.tagline}</p>
-          </div>
-        </section>
-
-        {/* Description */}
-        <section className="section-padding bg-background">
-          <div className="container-wide">
-            <div className="max-w-3xl px-4 sm:px-0">
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{data.description}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose */}
-        <section className="section-padding bg-champagne">
-          <div className="container-wide">
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-0">
-              <div>
-                <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-                  Why Choose
-                </span>
-                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 sm:mb-8">
-                  Why {data.name}?
-                </h2>
-                <ul className="space-y-3 sm:space-y-4">
-                  {data.whyChoose.map((reason) => (
-                    <li key={reason} className="flex items-start gap-2 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-gold shrink-0 mt-0.5" />
-                      <span className="text-foreground text-sm sm:text-base">{reason}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-card rounded-xl p-6 text-center shadow-card">
-                  <MapPin className="w-8 h-8 text-gold mx-auto mb-3" />
-                  <p className="font-semibold text-foreground">Prime Location</p>
-                </div>
-                <div className="bg-card rounded-xl p-6 text-center shadow-card">
-                  <Briefcase className="w-8 h-8 text-gold mx-auto mb-3" />
-                  <p className="font-semibold text-foreground">Job Opportunities</p>
-                </div>
-                <div className="bg-card rounded-xl p-6 text-center shadow-card">
-                  <GraduationCap className="w-8 h-8 text-gold mx-auto mb-3" />
-                  <p className="font-semibold text-foreground">Quality Education</p>
-                </div>
-                <div className="bg-card rounded-xl p-6 text-center shadow-card">
-                  <Heart className="w-8 h-8 text-gold mx-auto mb-3" />
-                  <p className="font-semibold text-foreground">Quality of Life</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Process */}
-        <section className="section-padding bg-background">
-          <div className="container-wide">
-            <div className="text-center mb-16">
-              <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-                The Process
-              </span>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-                How We Help You Get to {data.name}
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.process.map((step) => (
-                <div key={step.step} className="bg-card rounded-xl p-6 shadow-card">
-                  <div className="w-10 h-10 rounded-full bg-gold text-gold-foreground flex items-center justify-center font-bold mb-4">
-                    {step.step}
-                  </div>
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 bg-primary text-primary-foreground text-center">
-          <div className="container-narrow">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              Ready to Move to {data.name}?
-            </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8">
-              Let our experts guide you through every step of your journey.
-            </p>
-            <Link to="/contact" className="btn-gold inline-flex items-center gap-2 group">
-              Get Started Today
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </section>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <StickyEnquireButton />
-    </>
-  );
 };
 
 export default CountryPage;
