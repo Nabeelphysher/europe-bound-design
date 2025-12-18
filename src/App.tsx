@@ -12,6 +12,7 @@ import NewsArticle from "./pages/NewsArticle";
 import Contact from "./pages/Contact";
 import CountryPage from "./pages/CountryPage";
 import NotFound from "./pages/NotFound";
+import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/newsroom" element={<Newsroom />} />
           <Route path="/newsroom/:slug" element={<NewsArticle />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/destinations/:country" element={<CountryPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -5,6 +5,7 @@ const footerLinks = {
   company: [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Gallery", path: "/gallery" },
     { name: "News room", path: "/newsroom" },
     { name: "Contact", path: "/contact" },
   ],
@@ -134,20 +135,28 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold shrink-0" />
-                <a
-                  href="tel:+49123456789"
-                  className="text-primary-foreground/70 hover:text-gold transition-colors text-xs sm:text-sm"
-                >
-                  +49 123 456 789
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a
+                    href="tel:+918590404857"
+                    className="text-primary-foreground/70 hover:text-gold transition-colors text-xs sm:text-sm"
+                  >
+                    +91 85904 04857
+                  </a>
+                  <a
+                    href="tel:+918592004857"
+                    className="text-primary-foreground/70 hover:text-gold transition-colors text-xs sm:text-sm"
+                  >
+                    +91 85920 04857
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold shrink-0" />
                 <a
-                  href="mailto:info@europecalling.com"
+                  href="mailto:sales@europecalling.co"
                   className="text-primary-foreground/70 hover:text-gold transition-colors text-xs sm:text-sm break-all"
                 >
-                  info@europecalling.com
+                  sales@europecalling.co
                 </a>
               </li>
             </ul>

@@ -7,7 +7,8 @@ import logoImg from "../../assets/logo.png";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
-  { name: "Service", path: "/services" },
+  { name: "Services", path: "/services" },
+  { name: "Gallery", path: "/gallery" },
   { name: "Testimonials", path: "/testimonials" },
   { name: "Newsroom", path: "/newsroom" },
   { name: "Contact Us", path: "/contact" },
@@ -19,7 +20,7 @@ export function Header() {
   const location = useLocation();
 
   // Pages without dark hero sections need header styling from the start
-  const pagesWithoutHero = ["/about", "/services", "/testimonials", "/newsroom", "/contact"];
+  const pagesWithoutHero = ["/about", "/services", "/testimonials", "/newsroom", "/contact", "/gallery"];
   const hasDarkHero = !pagesWithoutHero.includes(location.pathname);
   const shouldShowScrolledStyle = isScrolled || !hasDarkHero;
 
@@ -38,7 +39,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-[60] transition-all duration-300",
         shouldShowScrolledStyle
           ? "bg-card/95 backdrop-blur-md shadow-elegant py-3"
           : "bg-transparent py-5"
@@ -50,7 +51,10 @@ export function Header() {
           <img
             src={logoImg}
             alt="Europe Calling Logo"
-            className="h-12 w-auto object-contain"
+            className={cn(
+              "w-auto object-contain transition-all duration-300",
+              shouldShowScrolledStyle ? "h-16" : "h-24"
+            )}
           />
         </Link>
 

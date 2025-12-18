@@ -15,7 +15,7 @@ import { FAQSection } from "@/components/home/FAQSection";
 
 
 const Index = () => {
-  const { isOpen, setIsOpen } = useLeadPopup(15000);
+  const { isOpen, setIsOpen } = useLeadPopup(5000);
 
   return (
     <>

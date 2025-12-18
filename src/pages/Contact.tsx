@@ -41,15 +41,20 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "+49 123 456 789",
-      link: "tel:+49123456789",
+      content: (
+        <>
+          <span className="block">+91 85904 04857</span>
+          <span className="block">+91 85920 04857</span>
+        </>
+      ),
+      link: "tel:+918590404857",
       subtext: "Mon-Fri 9am-6pm"
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@europecalling.com",
-      link: "mailto:info@europecalling.com",
+      content: "sales@europecalling.co",
+      link: "mailto:sales@europecalling.co",
       subtext: "Online 24/7"
     },
     {
@@ -81,10 +86,10 @@ const Contact = () => {
                     href={info.link}
                     className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center text-center backdrop-blur-sm h-full"
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gold/10 group-hover:bg-gold group-hover:text-primary text-gold flex items-center justify-center mb-6 transition-all duration-500 shadow-inner group-hover:shadow-glow">
+                    <div className="w-16 h-16 rounded-2xl bg-gold text-primary flex items-center justify-center mb-6 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
                       <info.icon className="w-7 h-7" />
                     </div>
-                    <h3 className="font-heading text-xl font-bold mb-2 group-hover:text-gold transition-colors">{info.title}</h3>
+                    <h3 className="font-heading text-xl font-bold mb-2 text-gold transition-colors">{info.title}</h3>
                     <p className="text-foreground font-medium text-lg mb-1">{info.content}</p>
                     <p className="text-muted-foreground text-sm">{info.subtext}</p>
                   </a>
@@ -104,7 +109,7 @@ const Contact = () => {
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
 
               {/* Left Column: Form */}
-              <RevealOnScroll className="lg:col-span-7" animation="fade-right" delay={300}>
+              <RevealOnScroll className="lg:col-span-7" animation="slide-in-left" delay={300}>
                 <div className="bg-white rounded-3xl shadow-xl border border-border/50 overflow-hidden relative group">
                   <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-primary to-gold" />
 
@@ -279,55 +284,55 @@ const Contact = () => {
                     </form>
                   </div>
                 </div>
-            </RevealOnScroll>
+              </RevealOnScroll>
 
-            {/* Right Column: Content/Map */}
-            <RevealOnScroll className="lg:col-span-5 flex flex-col gap-8" animation="fade-left" delay={500}>
-              {/* Office Info Card */}
-              <div className="bg-primary text-primary-foreground p-8 rounded-3xl shadow-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors" />
+              {/* Right Column: Content/Map */}
+              <RevealOnScroll className="lg:col-span-5 flex flex-col gap-8" animation="slide-in-right" delay={500}>
+                {/* Office Info Card */}
+                <div className="bg-primary text-primary-foreground p-8 rounded-3xl shadow-xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors" />
 
-                <h3 className="font-heading text-2xl font-bold mb-6">Visit Our HQ</h3>
-                <div className="space-y-4 mb-8 relative z-10">
-                  <p className="opacity-90 leading-relaxed">
-                    We always welcome clients to our headquarters for a personal consultation. Please schedule an appointment in advance.
-                  </p>
-                </div>
+                  <h3 className="font-heading text-2xl font-bold mb-6">Visit Our HQ</h3>
+                  <div className="space-y-4 mb-8 relative z-10">
+                    <p className="opacity-90 leading-relaxed">
+                      We always welcome clients to our headquarters for a personal consultation. Please schedule an appointment in advance.
+                    </p>
+                  </div>
 
-                {/* Decorative Map Image */}
-                <div className="relative h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map">
-                  <img
-                    src={contactBanner}
-                    alt="Map Location"
-                    className="w-full h-full object-cover opacity-80 group-hover/map:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-primary/40 group-hover/map:bg-primary/20 transition-colors flex items-center justify-center">
-                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40 group-hover/map:scale-110 transition-transform">
-                      <MapPin className="w-6 h-6 text-white" />
+                  {/* Decorative Map Image */}
+                  <div className="relative h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map">
+                    <img
+                      src={contactBanner}
+                      alt="Map Location"
+                      className="w-full h-full object-cover opacity-80 group-hover/map:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-primary/40 group-hover/map:bg-primary/20 transition-colors flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40 group-hover/map:scale-110 transition-transform">
+                        <MapPin className="w-6 h-6 text-white" />
+                      </div>
                     </div>
+                  </div>
+
+                  <div className="mt-8 flex items-center gap-2 text-sm text-gold font-medium cursor-pointer hover:underline">
+                    Get Directions <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
 
-                <div className="mt-8 flex items-center gap-2 text-sm text-gold font-medium cursor-pointer hover:underline">
-                  Get Directions <ArrowRight className="w-4 h-4" />
+                {/* FAQ Teaser */}
+                <div className="bg-muted/50 border border-border rounded-3xl p-8 hover:bg-muted transition-colors">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-4">Frequently Asked Questions</h3>
+                  <p className="text-muted-foreground mb-4 text-sm">
+                    Find quick answers to common questions about visas, processing times, and documents.
+                  </p>
+                  <a href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                    Visit FAQ Page <ArrowRight className="w-3 h-3" />
+                  </a>
                 </div>
-              </div>
+              </RevealOnScroll>
 
-              {/* FAQ Teaser */}
-              <div className="bg-muted/50 border border-border rounded-3xl p-8 hover:bg-muted transition-colors">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-4">Frequently Asked Questions</h3>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  Find quick answers to common questions about visas, processing times, and documents.
-                </p>
-                <a href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
-                  Visit FAQ Page <ArrowRight className="w-3 h-3" />
-                </a>
-              </div>
-          </RevealOnScroll>
-
-        </div>
-      </div>
-    </section >
+            </div>
+          </div>
+        </section >
       </main >
       <Footer />
       <WhatsAppButton />
