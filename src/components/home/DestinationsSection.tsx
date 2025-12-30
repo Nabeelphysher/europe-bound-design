@@ -62,9 +62,14 @@ const destinations = [
   },
 ];
 
-export function DestinationsSection() {
+interface DestinationsSectionProps {
+  showViewAll?: boolean;
+  className?: string;
+}
+
+export function DestinationsSection({ showViewAll = true, className = "" }: DestinationsSectionProps) {
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
+    <section className={`section-padding bg-background relative overflow-hidden ${className}`}>
       <FlightAnimation className="text-primary" />
       <div className="container-wide relative z-10">
         {/* Section Header */}
@@ -76,9 +81,8 @@ export function DestinationsSection() {
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
               Most Favorite Destinations
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg">
-              Explore the best of Europe with our curated selection of premier
-              destinations.
+            <p className="text-muted-foreground text-sm sm:text-base">
+              From the cultural depths of Eastern Europe to the romantic elegance of the West, we open doors to the continent's most captivating experiences. Whether you seek the ancient history of the Silk Road or the vibrant energy of modern capitals, our curated selection of premier destinations promises a journey beyond the ordinary.
             </p>
           </div>
         </RevealOnScroll>
@@ -126,17 +130,52 @@ export function DestinationsSection() {
         </RevealOnScroll>
 
         {/* View All Link */}
-        <RevealOnScroll animation="fade-in" delay={400}>
-          <div className="text-center mt-12 animation-delay-500">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-gold transition-colors group"
-            >
-              View All Destinations
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </RevealOnScroll>
+        {showViewAll && (
+          <RevealOnScroll animation="fade-in" delay={400}>
+            <div className="text-center mt-12 animation-delay-500">
+              <style>
+                {`
+                  @keyframes shimmer-slide {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                  }
+                `}
+              </style>
+              <Link
+                to="/services"
+                className="relative inline-flex items-center group perspective-[1000px]"
+              >
+                {/* Main Button Container */}
+                <div className="relative overflow-hidden rounded-full bg-[#1A233A] border border-gold/20 px-8 py-3.5 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:border-gold group-hover:shadow-[0_0_30px_rgba(255,215,0,0.25)] group-hover:-translate-y-0.5">
+
+                  {/* Hover Gradient Fill (Absolute) */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#F2D06B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Shine Animation Area */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
+                    <div
+                      className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full"
+                      style={{ animation: 'shimmer-slide 1.5s infinite' }}
+                    />
+                  </div>
+
+                  {/* Content Wrapper */}
+                  <div className="relative z-10 flex items-center gap-4">
+                    <span className="font-heading font-bold text-xs tracking-[0.15em] uppercase text-white group-hover:text-primary transition-colors duration-300">
+                      View All Destinations
+                    </span>
+
+                    {/* Vertical Separator */}
+                    <div className="w-[1px] h-4 bg-white/20 group-hover:bg-primary/20 transition-colors duration-300" />
+
+                    {/* Icon */}
+                    <ArrowRight className="w-4 h-4 text-gold group-hover:text-primary transition-all duration-300 group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </RevealOnScroll>
+        )}
       </div>
     </section>
   );

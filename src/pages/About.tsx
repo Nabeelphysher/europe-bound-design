@@ -163,126 +163,68 @@ const About = () => {
         </section>
 
         {/* Core Values */}
-        <section className="section-padding bg-white relative overflow-hidden">
-          {/* Decorative Background Elements */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-          {/* Wind Sway Animation Styles */}
-          <style>
-            {`
-              @keyframes wind-sway {
-                0% { 
-                  transform: rotate(-3deg) translateY(0px) translateX(-2px);
-                }
-                25% { 
-                  transform: rotate(2deg) translateY(-8px) translateX(1px);
-                }
-                50% { 
-                  transform: rotate(3deg) translateY(-12px) translateX(3px);
-                }
-                75% { 
-                  transform: rotate(-1deg) translateY(-6px) translateX(-1px);
-                }
-                100% { 
-                  transform: rotate(-3deg) translateY(0px) translateX(-2px);
-                }
-              }
-              .wind-sway-card-values {
-                transform-origin: center bottom;
-                background: linear-gradient(135deg, 
-                  rgba(255,255,255,0.95) 0%, 
-                  rgba(255,255,255,0.90) 30%,
-                  rgba(255,255,255,0.85) 60%,
-                  rgba(255,215,0,0.08) 100%
-                );
-                border: 1px solid rgba(0,0,0,0.1);
-                backdrop-filter: blur(12px);
-                box-shadow: 
-                  0 8px 32px rgba(0,0,0,0.1),
-                  0 4px 16px rgba(0,0,0,0.05),
-                  inset 0 1px 0 rgba(255,255,255,0.8),
-                  inset 0 -1px 0 rgba(255,215,0,0.1);
-                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                animation: wind-sway 4s ease-in-out infinite;
-              }
-              .wind-sway-card-values:nth-child(1) { animation-delay: 0s; }
-              .wind-sway-card-values:nth-child(2) { animation-delay: 0.4s; }
-              .wind-sway-card-values:nth-child(3) { animation-delay: 0.8s; }
-              .wind-sway-card-values:hover {
-                animation-play-state: paused;
-                background: linear-gradient(135deg, 
-                  rgba(255,255,255,1) 0%, 
-                  rgba(255,255,255,0.98) 30%,
-                  rgba(255,255,255,0.95) 60%,
-                  rgba(255,215,0,0.12) 100%
-                );
-                border-color: rgba(255,215,0,0.4);
-                box-shadow: 
-                  0 16px 48px rgba(0,0,0,0.15),
-                  0 8px 24px rgba(0,0,0,0.1),
-                  inset 0 1px 0 rgba(255,255,255,1),
-                  0 0 40px rgba(255,215,0,0.2),
-                  0 0 60px rgba(255,215,0,0.1);
-              }
-            `}
-          </style>
+        <section className="section-padding relative overflow-hidden bg-[#fdfbf7]"
+          style={{
+            backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px)',
+            backgroundSize: '100% 40px',
+            backgroundAttachment: 'local'
+          }}
+        >
+          {/* Dashed Connecting Lines (Decorative) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 hidden lg:block" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200,300 Q600,100 1000,300" fill="none" stroke="#94a3b8" strokeWidth="2" strokeDasharray="8 8" />
+          </svg>
 
           <div className="container-wide relative z-10">
             <RevealOnScroll animation="fade-up">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="text-gold font-bold uppercase tracking-widest text-sm mb-4 block">Our Values</span>
+                <span className="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-gold text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
+                  Our Values
+                </span>
                 <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary mb-6">Driven by Purpose</h2>
-                <p className="text-muted-foreground text-lg">The principles that guide every decision we make.</p>
+                <p className="text-gray-600 text-lg leading-relaxed bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-100 shadow-sm inline-block">
+                  The principles that guide every decision we make.
+                </p>
               </div>
             </RevealOnScroll>
-            <div className="grid md:grid-cols-3 gap-8">
-              {values.map((item, index) => (
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+              {[
+                { ...values[0], color: { bg: "bg-[#FEFCE8]", pin: "bg-[#CA8A04]" } }, // Yellow
+                { ...values[1], color: { bg: "bg-[#FFF7ED]", pin: "bg-[#EA580C]" } }, // Orange
+                { ...values[2], color: { bg: "bg-[#FDF2F8]", pin: "bg-[#DB2777]" } }  // Pink
+              ].map((item, index) => (
                 <RevealOnScroll animation="fade-up" delay={index * 100} key={item.title}>
                   <div
-                    className="wind-sway-card-values group relative p-8 rounded-2xl hover:-translate-y-2 overflow-hidden h-full"
+                    className={`group relative p-8 rounded-xl ${item.color.bg} transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0`}
+                    style={{
+                      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                    }}
                   >
-                    {/* Animated Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                    {/* Enhanced Card Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/5 to-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Animated Border Glow */}
-                    <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-gold/30 via-gold/10 to-gold/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
-
-                    {/* Enhanced Glass shine effect */}
-                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Subtle animated background pattern */}
-                    <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
-                      style={{
-                        backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,215,0,0.3) 1px, transparent 0)',
-                        backgroundSize: '20px 20px',
-                      }}
-                    />
+                    {/* Pin Element */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                      <div className={`w-4 h-4 rounded-full ${item.color.pin} shadow-[inset_-2px_-2px_4px_rgba(0,0,0,0.2)]`} />
+                      <div className="absolute top-3 left-1 w-4 h-4 bg-black/20 blur-[2px] rounded-full transform scale-x-150 rotate-45 -z-10" />
+                    </div>
 
                     <div className="relative z-10">
                       {/* Icon */}
-                      <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-gold/30 via-gold/15 to-gold/5 border border-gold/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-[0_0_20px_rgba(255,215,0,0.2),0_4px_15px_rgba(0,0,0,0.2)] group-hover:shadow-[0_0_30px_rgba(255,215,0,0.4),0_8px_25px_rgba(0,0,0,0.3)]">
-                        <item.icon className="w-7 h-7 text-gold drop-shadow-lg group-hover:drop-shadow-[0_0_10px_rgba(255,215,0,0.6)] transition-all duration-500" />
+                      <div className="mb-6">
+                        <div className="w-14 h-14 rounded-xl bg-white/60 flex items-center justify-center shadow-sm group-hover:bg-white transition-colors duration-300">
+                          <item.icon className="w-7 h-7 text-gray-700" strokeWidth={1.5} />
+                        </div>
                       </div>
 
-                      {/* Content */}
-                      <h3 className="font-heading text-2xl font-bold mb-4 text-primary group-hover:text-gold transition-colors duration-500">
+                      <h3 className="font-heading text-2xl font-bold mb-4 text-gray-900 leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-500">
+                      <p className="text-gray-700 leading-relaxed font-medium opacity-90">
                         {item.text}
                       </p>
 
-                      {/* Enhanced Hover Arrow */}
-                      <div className="absolute top-6 right-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-10">
-                        <div className="relative">
-                          <ArrowRight className="w-5 h-5 text-gold drop-shadow-lg group-hover:drop-shadow-[0_0_10px_rgba(255,215,0,0.6)] transition-all duration-300" />
-                          <div className="absolute inset-0 bg-gold/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
+                      {/* Hover Arrow */}
+                      <div className="absolute top-8 right-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                        <ArrowRight className="w-5 h-5 text-gray-400" />
                       </div>
                     </div>
                   </div>

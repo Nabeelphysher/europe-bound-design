@@ -19,7 +19,7 @@ export function CTASection() {
               <span className="text-gold italic">European</span> Journey?
             </h2>
 
-            <p className="text-foreground/70 text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto">
+            <p className="text-foreground/70 text-sm sm:text-base mb-8 md:mb-10 max-w-2xl mx-auto">
               Take the first step today. Our experts are ready to guide you
               towards your European dream with personalized consultation.
             </p>

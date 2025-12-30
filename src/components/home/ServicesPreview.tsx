@@ -64,7 +64,7 @@ export function ServicesPreview() {
               Tailored Packages for <br className="hidden md:block" />
               <span className="text-gold italic">Every Journey</span>
             </h2>
-            <p className="text-white/80 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto px-4">
+            <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto px-4">
               Choose the package that fits your needs, or let us curate a completely custom European experience just for you.
             </p>
           </div>
@@ -97,7 +97,7 @@ export function ServicesPreview() {
                       {pkg.title}
                     </h3>
                   </div>
-                  <p className={`text-base sm:text-lg leading-relaxed ${pkg.highlighted ? "text-white/80" : "text-muted-foreground"}`}>
+                  <p className={`text-sm sm:text-base leading-relaxed ${pkg.highlighted ? "text-white/80" : "text-muted-foreground"}`}>
                     {pkg.description}
                   </p>
                 </div>

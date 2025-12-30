@@ -54,7 +54,7 @@ export function FAQSection() {
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 Frequently Asked Questions
               </h2>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-sm sm:text-base mb-8 leading-relaxed">
                 Find answers to common questions about our travel packages and visa services.
                 Everything you need to know for a smooth journey.
               </p>

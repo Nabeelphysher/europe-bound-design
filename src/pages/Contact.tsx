@@ -59,10 +59,10 @@ const Contact = () => {
     },
     {
       icon: MapPin,
-      title: "Headquarters",
-      content: "Berlin, Germany",
-      link: "#",
-      subtext: "123 European Way, 10115"
+      title: "Office",
+      content: "Kerala, India",
+      link: "https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519",
+      subtext: "2nd Floor, Paravath Arcade, opp. Budget Hypermarket, Varangode, Down Hill, Malappuram, Kerala 676519"
     }
   ];
 
@@ -292,15 +292,20 @@ const Contact = () => {
                 <div className="bg-primary text-primary-foreground p-8 rounded-3xl shadow-xl relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors" />
 
-                  <h3 className="font-heading text-2xl font-bold mb-6">Visit Our HQ</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-6">Visit Our Office</h3>
                   <div className="space-y-4 mb-8 relative z-10">
                     <p className="opacity-90 leading-relaxed">
-                      We always welcome clients to our headquarters for a personal consultation. Please schedule an appointment in advance.
+                      We always welcome clients to our office for a personal consultation. Please schedule an appointment in advance.
                     </p>
                   </div>
 
                   {/* Decorative Map Image */}
-                  <div className="relative h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map"
+                  >
                     <img
                       src={contactBanner}
                       alt="Map Location"
@@ -311,11 +316,16 @@ const Contact = () => {
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="mt-8 flex items-center gap-2 text-sm text-gold font-medium cursor-pointer hover:underline">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 items-center gap-2 text-sm text-gold font-medium cursor-pointer hover:underline inline-flex"
+                  >
                     Get Directions <ArrowRight className="w-4 h-4" />
-                  </div>
+                  </a>
                 </div>
 
                 {/* FAQ Teaser */}

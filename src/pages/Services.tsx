@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { DestinationsSection } from "@/components/home/DestinationsSection";
 
 const packages = [
   {
@@ -237,6 +238,9 @@ const Services = () => {
             </div>
           </RevealOnScroll>
         </div>
+
+
+        <DestinationsSection showViewAll={false} />
 
 
         <section className="py-24 bg-slate-50 relative overflow-hidden">

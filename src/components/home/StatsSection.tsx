@@ -95,7 +95,7 @@ export function StatsSection() {
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               Excellence in Every Number
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm sm:text-base">
               We take pride in our numbers. They represent the trust and dreams of thousands of travelers we've served.
             </p>
           </div>
@@ -103,11 +103,11 @@ export function StatsSection() {
 
         {/* Stats Grid */}
         <RevealOnScroll animation="fade-up" delay={200}>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 px-4 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 px-4 sm:px-0">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className="group relative bg-background p-6 rounded-2xl shadow-sm border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center"
+                className="group relative bg-background p-4 sm:p-6 rounded-2xl shadow-sm border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center"
                 style={{ animationDelay: `${200 + index * 100}ms` }}
               >
                 <div className="w-14 h-14 mx-auto mb-6 rounded-full bg-secondary/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">

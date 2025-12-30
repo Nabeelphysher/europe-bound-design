@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -16,6 +17,22 @@ import video5 from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.16 PM.mp4";
 import video6 from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.17 PM (1).mp4";
 import video7 from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.17 PM (2).mp4";
 // Note: video8 (WhatsApp Video 2025-12-15 at 1.17.17 PM.mp4) is available if needed we can add another testimonial.
+
+const GoogleLogo = () => (
+  <svg viewBox="0 0 24 24" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.26.81-.58z" fill="#FBBC05" />
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+  </svg>
+);
+
+const VerifiedBadge = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-500 fill-current ml-1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+  </svg>
+);
 
 // Enhanced Mock Data to support the Carousel effect (need ~7+ items for full effect)
 const testimonials = [
@@ -140,6 +157,61 @@ const testimonials = [
     destination: "Portugal",
     role: "Business Owner",
     content: "The Golden Visa assistance was top-notch. Highly professional team.",
+    rating: 5,
+    hasVideo: false,
+    image: null
+  },
+  {
+    id: 11,
+    name: "James Wilson",
+    location: "UK",
+    destination: "Italy",
+    role: "Designer",
+    content: "The visa process was incredibly smooth. Professional guidance throughout made it easy.",
+    rating: 5,
+    hasVideo: false,
+    image: null
+  },
+  {
+    id: 12,
+    name: "Anita Desai",
+    location: "India",
+    destination: "Sweden",
+    role: "Developer",
+    content: "Highly recommended! They helped me navigate the complex requirements effortlessly.",
+    rating: 5,
+    hasVideo: false,
+    image: null
+  },
+  {
+    id: 13,
+    name: "Robert Chang",
+    location: "Singapore",
+    destination: "Netherlands",
+    role: "Analyst",
+    content: "Efficiency at its best. Europe Calling knows their stuff inside out.",
+    rating: 5,
+    hasVideo: false,
+    image: null
+  },
+  {
+    id: 14,
+    name: "Maria Garcia",
+    location: "Spain",
+    destination: "Ireland",
+    role: "Consultant",
+    content: "Thanks to the team for their support. My move was hassle-free.",
+    rating: 4,
+    hasVideo: false,
+    image: null
+  },
+  {
+    id: 15,
+    name: "Ahmed Al-Fayed",
+    location: "UAE",
+    destination: "Germany",
+    role: "Engineer",
+    content: "From Dubai to Berlin, the journey was simplified by their experts.",
     rating: 5,
     hasVideo: false,
     image: null
@@ -480,51 +552,65 @@ const Testimonials = () => {
                 </div>
               </RevealOnScroll>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {textTestimonials.map((t, index) => (
-                  <RevealOnScroll className="h-full" delay={index * 100} key={t.id}>
-                    <div
-                      className="flex flex-col h-full bg-white border border-border/60 p-8 rounded-xl hover:shadow-elevated hover:border-gold/30 transition-all duration-300"
-                    >
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-full bg-champagne text-gold-foreground flex items-center justify-center font-bold text-xl font-heading shadow-inner">
-                            {t.name.charAt(0)}
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-foreground leading-tight">{t.name}</h3>
-                            <p className="text-xs text-muted-foreground">{t.role || 'Client'}</p>
-                          </div>
-                        </div>
-                        <Globe className="w-5 h-5 text-gray-300" />
-                      </div>
+              <div className="w-full max-w-[1400px] mx-auto">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-4">
+                    {textTestimonials.map((t, index) => (
+                      <CarouselItem key={t.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                        <div className="h-full">
+                          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col hover:shadow-md transition-all duration-300 font-sans min-h-[250px]">
 
-                      {/* Content */}
-                      <div className="mb-6 flex-grow">
-                        <div className="flex gap-1 mb-3">
-                          {[...Array(t.rating)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
-                          ))}
-                        </div>
-                        <p className="text-foreground/80 leading-relaxed italic text-sm sm:text-base">
-                          "{t.content}"
-                        </p>
-                      </div>
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-center gap-4">
+                                <div className="relative">
+                                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                                    {t.name.charAt(0)}
+                                  </div>
+                                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                    <Star className="w-2.5 h-2.5 text-white fill-white" />
+                                  </div>
+                                </div>
+                                <div>
+                                  <h3 className="font-bold text-gray-900 text-base leading-tight">{t.name}</h3>
+                                  <p className="text-xs text-gray-400 mt-1">{t.role || '2025 Client'}</p>
+                                </div>
+                              </div>
+                              <GoogleLogo />
+                            </div>
 
-                      {/* Footer */}
-                      <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between text-xs sm:text-sm">
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                          <MapPin className="w-3.5 h-3.5 text-gold" />
-                          From {t.location}
+                            {/* Stars & Verified */}
+                            <div className="flex items-center gap-1 mb-4">
+                              <div className="flex gap-1">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star key={i} className={`w-4 h-4 ${i < t.rating ? 'fill-[#fbbf24] text-[#fbbf24]' : 'fill-gray-200 text-gray-200'}`} />
+                                ))}
+                              </div>
+                              <VerifiedBadge />
+                            </div>
+
+                            {/* Content */}
+                            <div className="flex-grow">
+                              <p className="text-gray-600 text-[15px] leading-relaxed">
+                                {t.content}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="font-medium text-primary bg-primary/5 px-2 py-1 rounded">
-                          To {t.destination}
-                        </div>
-                      </div>
-                    </div>
-                  </RevealOnScroll>
-                ))}
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="flex justify-end gap-2 mt-8 pr-4">
+                    <CarouselPrevious className="static translate-y-0" />
+                    <CarouselNext className="static translate-y-0" />
+                  </div>
+                </Carousel>
               </div>
             </section>
           )}

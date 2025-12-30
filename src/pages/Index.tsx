@@ -14,6 +14,8 @@ import { FAQSection } from "@/components/home/FAQSection";
 
 
 
+import { VisaPromoSection } from "@/components/home/VisaPromoSection";
+
 const Index = () => {
   const { isOpen, setIsOpen } = useLeadPopup(5000);
 
@@ -26,7 +28,7 @@ const Index = () => {
         <ServicesPreview />
         <WhyChooseUs />
         <StatsSection />
-
+        <VisaPromoSection />
         <TestimonialsSection />
         <FAQSection />
         <CTASection />

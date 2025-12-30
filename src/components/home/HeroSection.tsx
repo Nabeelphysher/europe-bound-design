@@ -105,7 +105,7 @@ export function HeroSection() {
       {/* LAYER 3: Main Content (Highest Z - Always Visible) */}
       <div className="relative z-50 container-wide h-full flex flex-col justify-center items-start pl-4 sm:pl-0 pointer-events-none">
         <div className="max-w-xl pointer-events-auto mt-20 sm:mt-[-10vh]">
-          <RevealOnScroll animation="fade-right">
+          <RevealOnScroll animation="slide-in-right">
             <div className="flex items-center gap-3 mb-4 sm:mb-6">
               <span className="h-[2px] w-8 sm:w-12 bg-gold inline-block"></span>
               <span className="text-gold font-bold uppercase tracking-[0.2em] text-xs sm:text-base">
@@ -115,7 +115,7 @@ export function HeroSection() {
             <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl font-black text-white uppercase leading-[0.9] mb-4 sm:mb-6 tracking-tighter drop-shadow-lg">
               {activeDest.name}
             </h1>
-            <p className="text-white/90 text-sm sm:text-xl leading-relaxed mb-6 sm:mb-8 max-w-lg drop-shadow-md">
+            <p className="text-white/90 text-xs sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 max-w-lg drop-shadow-md">
               {activeDest.description}
             </p>
           </RevealOnScroll>

@@ -1,123 +1,144 @@
 import { useState } from "react";
-import { Play, Star, Globe, MapPin } from "lucide-react";
+import { Play, Star } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import netherlandsImg from "@/assets/destination-netherlands.png";
-import germanyImg from "@/assets/destination-germany.jpg";
-import franceImg from "@/assets/destination-france.jpg";
-import georgiaImg from "@/assets/destination-georgia.png";
 import testimonialVideo from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.17 PM (2).mp4";
 
 const testimonials = [
     {
         id: 1,
         name: "Sophia L.",
-        role: "Luxury Traveler",
-        text: "Europe Calling helped reunite my family in Prague. Their expertise in family reunification cases is unparalleled.",
-        image: franceImg,
-        from: "Dubai",
-        to: "Prague"
+        date: "31 July 2025",
+        text: "I just got France visa their service was just amazing soooo professional and great follow up with the team, I got rejected before but they made it happen.",
+        initial: "S"
     },
     {
         id: 2,
         name: "James D.",
-        role: "Adventure Enthusiast",
-        text: "Truly luxurious. Every detail was perfectly curated. The best trip of our lives were made possible by them.",
-        image: germanyImg,
-        from: "London",
-        to: "Berlin"
+        date: "15 Aug 2025",
+        text: "Truly luxurious. Every detail was perfectly curated. The best trip of our lives were made possible by them. Highly recommended for families!",
+        initial: "J"
     },
     {
         id: 3,
         name: "Elena R.",
-        role: "Photography Lover",
-        text: "Highly recommend! The locations were cinematic and the guide was amazing. A seamless experience.",
-        image: georgiaImg,
-        from: "Tbilisi",
-        to: "Kazbegi"
+        date: "02 Sept 2025",
+        text: "Highly recommend! The locations were cinematic and the guide was amazing. A seamless experience from start to finish.",
+        initial: "E"
     },
     {
         id: 4,
         name: "Michael B.",
-        role: "Business Traveler",
-        text: "Seamless and efficient. The team handled everything perfectly, allowing me to focus on work.",
-        image: netherlandsImg,
-        from: "New York",
-        to: "Amsterdam"
+        date: "12 Oct 2025",
+        text: "Seamless and efficient. The team handled everything perfectly, allowing me to focus on work. Will definitely use their services again.",
+        initial: "M"
     },
 ];
+
+const GoogleLogo = () => (
+    <svg viewBox="0 0 24 24" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.26.81-.58z" fill="#FBBC05" />
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+    </svg>
+);
+
+const VerifiedBadge = () => (
+    <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-500 fill-current ml-1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        {/* Simple checkmark, standard badge often has a shape behind it, but user image shows a blue checkmark-like icon, assuming standard 'verified' look */}
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+    </svg>
+);
+
+const StarIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+    </svg>
+);
 
 export function TestimonialsSection() {
     const [isPlaying, setIsPlaying] = useState(false);
 
-    return (
-        <section id="testimonials-preview" className="py-16 bg-[#FDFBF7] relative overflow-hidden">
-            {/* Ambient Background Elements */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] translate-x-1/2 translate-y-1/2" />
+    const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
+        <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 h-full flex flex-col font-sans">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-3">
+                <div className="flex gap-3">
+                    {/* Avatar with Badge */}
+                    <div className="relative">
+                        <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+                            {/* Placeholder Avatar */}
+                            {/* In a real app, use item.image */}
+                            <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                                {item.initial}
+                            </div>
+                        </div>
+                        {/* Orange Star Badge on Avatar */}
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center border border-white">
+                            <StarIcon className="w-2.5 h-2.5 text-white" />
+                        </div>
+                    </div>
 
-            {/* Container widened to max-w-7xl to support professional card width */}
+                    {/* Name and Date */}
+                    <div className="flex flex-col">
+                        <span className="font-bold text-gray-900 text-sm">{item.name}</span>
+                        <span className="text-gray-400 text-xs">{item.date}</span>
+                    </div>
+                </div>
+
+                {/* Google Logo */}
+                <GoogleLogo />
+            </div>
+
+            {/* Rating Stars */}
+            <div className="flex items-center gap-1 mb-3">
+                <div className="flex text-[#F4B400]">
+                    {[...Array(5)].map((_, i) => (
+                        <StarIcon key={i} className="w-4 h-4" />
+                    ))}
+                </div>
+                <VerifiedBadge />
+            </div>
+
+            {/* Review Text */}
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-2 line-clamp-4">
+                {item.text}
+            </p>
+
+        </div>
+    );
+
+    return (
+        <section id="testimonials-preview" className="py-20 bg-[#F8FAFC] relative overflow-hidden">
+            {/* Simple Background */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#f8f9fa] -z-10" />
+
             <div className="container relative z-10 px-6 max-w-7xl mx-auto">
 
                 {/* Section Header */}
                 <RevealOnScroll animation="fade-up">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-16">
                         <span className="text-gold font-bold text-xs uppercase tracking-[0.2em] mb-3 block">Testimonials</span>
-                        <h2 className="font-heading text-3xl lg:text-4xl text-primary font-bold">Journeys of a Lifetime</h2>
+                        <h2 className="font-heading text-3xl lg:text-4xl text-primary font-bold">What our clients say</h2>
                     </div>
                 </RevealOnScroll>
 
                 <RevealOnScroll animation="fade-up" delay={200}>
-                    <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                    <div className="grid lg:grid-cols-12 gap-6 items-stretch">
 
                         {/* Left Column: Testimonials 1-2 */}
-                        <div className="lg:col-span-4 flex flex-col gap-6 h-full">
+                        <div className="lg:col-span-4 flex flex-col gap-6">
                             {testimonials.slice(0, 2).map((item) => (
-                                <div
-                                    key={item.id}
-                                    className="bg-white border border-gray-100 p-6 rounded-[20px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between flex-1 group"
-                                >
-                                    {/* Header: Avatar & Info */}
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div className="flex gap-3">
-                                            <div className="w-12 h-12 rounded-full bg-[#F5F0E6] text-primary font-serif font-bold text-lg flex items-center justify-center shrink-0">
-                                                {item.name.charAt(0)}
-                                            </div>
-                                            <div>
-                                                <h4 className="font-heading text-primary font-bold text-base leading-tight">{item.name}</h4>
-                                                <p className="text-muted-foreground text-xs">{item.role}</p>
-                                            </div>
-                                        </div>
-                                        <Globe className="w-5 h-5 text-gray-200" />
-                                    </div>
-
-                                    {/* Stars */}
-                                    <div className="flex text-gold mb-3">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                                        ))}
-                                    </div>
-
-                                    {/* Text */}
-                                    <p className="text-primary/80 italic font-medium text-sm leading-relaxed mb-6">"{item.text}"</p>
-
-                                    {/* Footer: Locations */}
-                                    <div className="mt-auto border-t border-gray-100 pt-4 flex items-center justify-between">
-                                        <div className="flex items-center gap-1.5 text-muted-foreground">
-                                            <MapPin className="w-3.5 h-3.5" />
-                                            <span className="text-xs font-medium">From {item.from}</span>
-                                        </div>
-                                        <div className="bg-slate-50 border border-slate-100 px-3 py-1 rounded-md text-primary text-[10px] font-bold uppercase tracking-wide">
-                                            To {item.to}
-                                        </div>
-                                    </div>
-                                </div>
+                                <TestimonialCard key={item.id} item={item} />
                             ))}
                         </div>
 
                         {/* Center Column: Cinematic Video Card */}
-                        <div className="lg:col-span-4 h-full">
+                        <div className="lg:col-span-4 min-h-[400px]">
                             <div
-                                className="relative w-full h-full min-h-[350px] lg:min-h-[400px] rounded-[32px] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] group cursor-pointer"
+                                className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl cursor-pointer group"
                                 onClick={() => setIsPlaying(true)}
                             >
                                 {isPlaying ? (
@@ -132,24 +153,23 @@ export function TestimonialsSection() {
                                     <>
                                         <img
                                             src={netherlandsImg}
-                                            alt="Cinematic Amsterdam Canal"
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                            alt="Happy Clients"
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
-                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500" />
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
 
-                                        {/* Floating Play Button */}
-                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                            <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30">
-                                                <div className="w-16 h-16 rounded-full bg-white text-primary flex items-center justify-center shadow-lg">
-                                                    <Play className="w-6 h-6 fill-current ml-1" />
+                                        {/* Play Button */}
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 transition-transform group-hover:scale-110">
+                                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                                                    <Play className="w-5 h-5 text-primary fill-current ml-0.5" />
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* Minimalist Overlay Text */}
-                                        <div className="absolute bottom-8 left-8 text-white pointer-events-none">
-                                            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-2 opacity-80">Watch Film</p>
-                                            <h3 className="font-heading text-3xl font-bold">Amsterdam Stories</h3>
+                                        <div className="absolute bottom-6 left-6 text-white">
+                                            <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Watch Story</p>
+                                            <h3 className="text-xl font-bold">Client Experiences</h3>
                                         </div>
                                     </>
                                 )}
@@ -157,47 +177,9 @@ export function TestimonialsSection() {
                         </div>
 
                         {/* Right Column: Testimonials 3-4 */}
-                        <div className="lg:col-span-4 flex flex-col gap-6 h-full">
+                        <div className="lg:col-span-4 flex flex-col gap-6">
                             {testimonials.slice(2, 4).map((item) => (
-                                <div
-                                    key={item.id}
-                                    className="bg-white border border-gray-100 p-6 rounded-[20px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between flex-1 group"
-                                >
-                                    {/* Header: Avatar & Info */}
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div className="flex gap-3">
-                                            <div className="w-12 h-12 rounded-full bg-[#F5F0E6] text-primary font-serif font-bold text-lg flex items-center justify-center shrink-0">
-                                                {item.name.charAt(0)}
-                                            </div>
-                                            <div>
-                                                <h4 className="font-heading text-primary font-bold text-base leading-tight">{item.name}</h4>
-                                                <p className="text-muted-foreground text-xs">{item.role}</p>
-                                            </div>
-                                        </div>
-                                        <Globe className="w-5 h-5 text-gray-200" />
-                                    </div>
-
-                                    {/* Stars */}
-                                    <div className="flex text-gold mb-3">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                                        ))}
-                                    </div>
-
-                                    {/* Text */}
-                                    <p className="text-primary/80 italic font-medium text-sm leading-relaxed mb-6">"{item.text}"</p>
-
-                                    {/* Footer: Locations */}
-                                    <div className="mt-auto border-t border-gray-100 pt-4 flex items-center justify-between">
-                                        <div className="flex items-center gap-1.5 text-muted-foreground">
-                                            <MapPin className="w-3.5 h-3.5" />
-                                            <span className="text-xs font-medium">From {item.from}</span>
-                                        </div>
-                                        <div className="bg-slate-50 border border-slate-100 px-3 py-1 rounded-md text-primary text-[10px] font-bold uppercase tracking-wide">
-                                            To {item.to}
-                                        </div>
-                                    </div>
-                                </div>
+                                <TestimonialCard key={item.id} item={item} />
                             ))}
                         </div>
 
