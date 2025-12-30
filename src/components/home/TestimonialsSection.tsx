@@ -121,7 +121,7 @@ export function TestimonialsSection() {
                 <RevealOnScroll animation="fade-up">
                     <div className="text-center mb-16">
                         <span className="text-gold font-bold text-xs uppercase tracking-[0.2em] mb-3 block">Testimonials</span>
-                        <h2 className="font-heading text-3xl lg:text-4xl text-primary font-bold">What our clients say</h2>
+                        <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] text-primary font-bold">What our clients say</h2>
                     </div>
                 </RevealOnScroll>
 

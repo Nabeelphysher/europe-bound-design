@@ -86,8 +86,9 @@ export function StatsSection() {
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
           <div className="text-center mb-20 px-4 sm:px-0 max-w-2xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              <span className="text-[#C59D5F]">Excellence</span> in Every Number
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-[#192E57] mb-6">
+              <span className="text-[#E8B430]">Excellence</span> in Every <br />
+              Number
             </h2>
             <p className="text-gray-600 text-sm sm:text-base font-medium">
               We take pride in our numbers. They represent the trust and dreams of thousands of travelers we've served.

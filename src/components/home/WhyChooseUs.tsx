@@ -60,7 +60,7 @@ export function WhyChooseUs() {
   ];
 
   return (
-    <section className="section-padding relative overflow-hidden bg-[#fdfbf7]"
+    <section className="section-padding pb-32 md:pb-40 relative overflow-hidden bg-[#fdfbf7]"
       style={{
         backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px)',
         backgroundSize: '100% 40px',
@@ -80,7 +80,7 @@ export function WhyChooseUs() {
             <span className="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-gold text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
               The Europe Calling Difference
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary leading-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold mb-6 text-primary leading-tight">
               Why Travelers Choose <br className="hidden sm:block" />
               <span className="text-gold relative inline-block">
                 Europe Calling
@@ -136,6 +136,22 @@ export function WhyChooseUs() {
             })}
           </div>
         </RevealOnScroll>
+      </div>
+
+      {/* Curved Bottom Divider */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+        <svg
+          className="relative block w-full h-[60px] md:h-[100px]"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,120L1200,120L1200,60C1200,60,950,110,600,110C250,110,0,60,0,60Z"
+            className="fill-[#FFFBF2]"
+          ></path>
+        </svg>
       </div>
     </section>
   );

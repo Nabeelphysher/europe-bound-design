@@ -78,7 +78,7 @@ export function DestinationsSection({ showViewAll = true, className = "" }: Dest
             <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
               Discover Your
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-foreground mb-4 md:mb-6">
               Most Favorite Destinations
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">

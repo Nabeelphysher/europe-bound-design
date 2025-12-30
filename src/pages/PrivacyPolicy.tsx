@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
-import { Shield, Lock, Eye, FileText, Globe, Server, User, Database, Share2, Cookie } from "lucide-react";
+import { Shield, Lock, Eye, FileText, Globe, Server, User, Database, Share2, Cookie, Mail, MapPin, HelpCircle } from "lucide-react";
 
 export default function PrivacyPolicy() {
     const lastUpdated = "December 19, 2025";
@@ -111,15 +111,50 @@ export default function PrivacyPolicy() {
                                         </p>
                                     </div>
 
-                                    {/* Contact */}
-                                    <div className="bg-primary/5 p-8 rounded-2xl mt-12 text-center">
-                                        <h3 className="text-2xl font-bold text-primary mb-4">Have questions about this policy?</h3>
-                                        <p className="text-muted-foreground mb-6">
-                                            If you have any further questions or comments, you may contact us.
-                                        </p>
-                                        <div className="inline-block text-left text-sm text-muted-foreground bg-background p-4 rounded-lg border border-border/50">
-                                            <p className="font-bold text-primary m-0">Europe Calling</p>
-                                            <p className="m-0">Email: <a href="mailto:privacy@europecalling.co" className="text-primary hover:text-gold">privacy@europecalling.co</a></p>
+                                    {/* Contact Section - Premium Compact Design */}
+                                    <div className="relative overflow-hidden bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] p-8 md:p-10 rounded-[2rem] mt-12 text-center border border-white/80 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.06)]">
+                                        {/* Decorative background element */}
+                                        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-[#C59D5F]/5 rounded-full blur-3xl pointer-events-none" />
+                                        <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 bg-[#0B1536]/5 rounded-full blur-3xl pointer-events-none" />
+
+                                        <div className="relative z-10">
+                                            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-md text-[#C59D5F] mb-4 border border-[#C59D5F]/10 transform rotate-3">
+                                                <HelpCircle className="w-6 h-6" />
+                                            </div>
+
+                                            <h3 className="text-2xl md:text-3xl font-heading font-bold text-[#0B1536] mb-3 tracking-tight">
+                                                Questions about our Privacy Policy?
+                                            </h3>
+
+                                            <p className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+                                                If you have any further questions or comments regarding how we handle your data, you may contact us.
+                                            </p>
+
+                                            <div className="flex flex-col md:flex-row gap-4 justify-center items-stretch max-w-3xl mx-auto">
+                                                {/* Email Card */}
+                                                <a href="mailto:privacy@europecalling.co" className="group flex-1 bg-white p-5 rounded-xl shadow-sm hover:shadow-md border border-gray-100 hover:border-[#C59D5F]/30 transition-all duration-300 flex items-center gap-4 text-left relative overflow-hidden">
+                                                    <div className="absolute right-0 top-0 w-16 h-16 bg-[#C59D5F]/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
+                                                    <div className="w-10 h-10 rounded-full bg-[#f0f4f8] group-hover:bg-[#C59D5F] flex items-center justify-center text-[#0B1536] group-hover:text-white transition-colors duration-300 shrink-0">
+                                                        <Mail className="w-4 h-4" />
+                                                    </div>
+                                                    <div className="relative">
+                                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Privacy Support</p>
+                                                        <p className="text-[#0B1536] font-bold text-base leading-none group-hover:text-[#C59D5F] transition-colors">privacy@europecalling.co</p>
+                                                    </div>
+                                                </a>
+
+                                                {/* Address Card */}
+                                                <div className="flex-1 bg-white p-5 rounded-xl shadow-sm border border-gray-100 border-l-[4px] border-l-[#C59D5F] flex items-center gap-4 text-left">
+                                                    <div className="w-10 h-10 rounded-full bg-[#f0f4f8] flex items-center justify-center text-[#0B1536] shrink-0">
+                                                        <MapPin className="w-4 h-4" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-[#0B1536] text-base mb-0.5">Europe Calling</p>
+                                                        <p className="text-gray-500 text-xs m-0 leading-snug">Paravath Arcade, Malappuram</p>
+                                                        <p className="text-gray-400 text-[10px] m-0 mt-0.5">Kerala 676519</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

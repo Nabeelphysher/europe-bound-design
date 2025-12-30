@@ -60,7 +60,7 @@ export function ServicesPreview() {
               <Star className="w-3 h-3 fill-current" />
               Our Services
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight px-4">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-white mb-4 md:mb-6 leading-tight px-4">
               Tailored Packages for <br className="hidden md:block" />
               <span className="text-gold italic">Every Journey</span>
             </h2>

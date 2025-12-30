@@ -26,7 +26,7 @@ export function VisaPromoSection() {
                                 </div>
 
                                 {/* Headline */}
-                                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
+                                <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-white leading-[1.1] tracking-tight">
                                     You do the flying, <br />
                                     <span className="text-white/90">we'll handle the faff.</span>
                                 </h2>
