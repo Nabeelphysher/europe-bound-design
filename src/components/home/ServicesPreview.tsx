@@ -56,13 +56,12 @@ export function ServicesPreview() {
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-gold text-xs font-bold tracking-wider uppercase mb-4 md:mb-6 border border-white/20">
-              <Star className="w-3 h-3 fill-current" />
+            <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#E8B430] block mb-2">
               Our Services
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-white mb-4 md:mb-6 leading-tight px-4">
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-white mb-4 md:mb-6 leading-tight px-4 text-shadow-premium">
               Tailored Packages for <br className="hidden md:block" />
-              <span className="text-gold italic">Every Journey</span>
+              <span className="text-[#E8B430] italic text-shadow-premium">Every Journey</span>
             </h2>
             <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto px-4">
               Choose the package that fits your needs, or let us curate a completely custom European experience just for you.

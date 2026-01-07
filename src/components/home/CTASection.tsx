@@ -14,9 +14,9 @@ export function CTASection() {
       <div className="container-wide relative">
         <RevealOnScroll animation="fade-up">
           <div className="max-w-3xl mx-auto text-center px-4 sm:px-0">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6 text-shadow-premium">
               Ready to Start Your{" "}
-              <span className="text-gold italic">European</span> Journey?
+              <span className="text-gold italic text-shadow-premium">European</span> Journey?
             </h2>
 
             <p className="text-foreground/70 text-sm sm:text-base mb-8 md:mb-10 max-w-2xl mx-auto">

@@ -6,10 +6,15 @@ import visaExpertImg from "@/assets/Gemini_Generated_Image_szihweszihweszih.png"
 
 export function VisaPromoSection() {
     return (
-        <section className="py-12 px-4 md:px-6">
+        <section className="py-12 px-4 md:px-6 bg-white">
             <div className="container-wide">
                 <RevealOnScroll animation="scale-up">
-                    <div className="relative bg-black rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row items-center min-h-[420px]">
+                    <div
+                        className="relative bg-black rounded-3xl overflow-hidden flex flex-col md:flex-row items-center min-h-[420px]"
+                        style={{
+                            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset"
+                        }}
+                    >
 
                         {/* Decorative Gradient Background */}
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent z-0 pointer-events-none" />

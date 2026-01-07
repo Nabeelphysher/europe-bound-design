@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { FlightAnimation } from "@/components/ui/FlightAnimation";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { cn } from "@/lib/utils";
+
+// Import images
 import azerbaijanImg from "@/assets/destination-azerbaijan.png";
 import kazakhstanImg from "@/assets/destination-kazakhstan.png";
 import armeniaImg from "@/assets/destination-armenia.png";
@@ -12,171 +12,135 @@ import uzbekistanImg from "@/assets/destination-uzbekistan.png";
 import franceImg from "@/assets/destination-france.jpg";
 
 const destinations = [
-  {
-    name: "Azerbaijan",
-    tagline: "Land of Fire",
-    image: azerbaijanImg,
-    path: "/destinations/azerbaijan",
-  },
-  {
-    name: "Kazakhstan",
-    tagline: "Heart of Eurasia",
-    image: kazakhstanImg,
-    path: "/destinations/kazakhstan",
-  },
-  {
-    name: "Armenia",
-    tagline: "Ancient Highlands",
-    image: armeniaImg,
-    path: "/destinations/armenia",
-  },
-  {
-    name: "Netherlands",
-    tagline: "Canals & Culture",
-    image: netherlandsImg,
-    path: "/destinations/netherlands",
-  },
-  {
-    name: "Georgia",
-    tagline: "Wine & Mountains",
-    image: georgiaImg,
-    path: "/destinations/georgia",
-  },
-  {
-    name: "Kyrgyzstan",
-    tagline: "Nomadic Spirit",
-    image: kyrgyzstanImg,
-    path: "/destinations/kyrgyzstan",
-  },
-  {
-    name: "Uzbekistan",
-    tagline: "Silk Road Jewel",
-    image: uzbekistanImg,
-    path: "/destinations/uzbekistan",
-  },
-  {
-    name: "France",
-    tagline: "Art & Elegance",
-    image: franceImg,
-    path: "/destinations/france",
-  },
+    {
+        name: "Azerbaijan",
+        tagline: "LAND OF FIRE",
+        image: azerbaijanImg,
+        tours: "8 TOURS",
+        path: "/destinations/azerbaijan",
+    },
+    {
+        name: "Kazakhstan",
+        tagline: "HEART OF EURASIA",
+        image: kazakhstanImg,
+        tours: "7 TOURS",
+        path: "/destinations/kazakhstan",
+    },
+    {
+        name: "Armenia",
+        tagline: "ANCIENT HIGHLANDS",
+        image: armeniaImg,
+        tours: "6 TOURS",
+        path: "/destinations/armenia",
+    },
+    {
+        name: "Netherlands",
+        tagline: "CANALS & CULTURE",
+        image: netherlandsImg,
+        tours: "5 TOURS",
+        path: "/destinations/netherlands",
+    },
+    {
+        name: "Georgia",
+        tagline: "WINE & MOUNTAINS",
+        image: georgiaImg,
+        tours: "4 TOURS",
+        path: "/destinations/georgia",
+    },
+    {
+        name: "Kyrgyzstan",
+        tagline: "NOMADIC SPIRIT",
+        image: kyrgyzstanImg,
+        tours: "3 TOURS",
+        path: "/destinations/kyrgyzstan",
+    },
+    {
+        name: "Uzbekistan",
+        tagline: "SILK ROAD JEWEL",
+        image: uzbekistanImg,
+        tours: "2 TOURS",
+        path: "/destinations/uzbekistan",
+    },
+    {
+        name: "France",
+        tagline: "ART & ELEGANCE",
+        image: franceImg,
+        tours: "1 TOURS",
+        path: "/destinations/france",
+    },
 ];
 
 interface DestinationsSectionProps {
-  showViewAll?: boolean;
-  className?: string;
+    className?: string;
+    showViewAll?: boolean;
 }
 
-export function DestinationsSection({ showViewAll = true, className = "" }: DestinationsSectionProps) {
-  return (
-    <section className={`section-padding bg-background relative overflow-hidden ${className}`}>
-      <FlightAnimation className="text-primary" />
-      <div className="container-wide relative z-10">
-        {/* Section Header */}
-        <RevealOnScroll animation="fade-up">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 px-4 sm:px-0">
-            <span className="text-gold font-medium text-sm uppercase tracking-widest mb-4 block">
-              Discover Your
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-foreground mb-4 md:mb-6">
-              Most Favorite Destinations
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              From the cultural depths of Eastern Europe to the romantic elegance of the West, we open doors to the continent's most captivating experiences. Whether you seek the ancient history of the Silk Road or the vibrant energy of modern capitals, our curated selection of premier destinations promises a journey beyond the ordinary.
-            </p>
-          </div>
-        </RevealOnScroll>
+export function DestinationsSection({ className = "", showViewAll = true }: DestinationsSectionProps) {
+    return (
+        <section className={`py-32 bg-background relative overflow-hidden ${className}`}>
 
-        {/* Destinations Grid */}
-        <RevealOnScroll animation="fade-up" delay={200}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 px-3 sm:px-0 mx-auto max-w-sm sm:max-w-none">
-            {destinations.map((dest, index) => (
-              <Link
-                key={dest.name}
-                to={dest.path}
-                className="group relative overflow-hidden rounded-3xl w-full aspect-[3/4] transition-all duration-500 hover:scale-[1.02] hover:shadow-elevated"
-                style={{
-                  animationDelay: `${200 + index * 100}ms`,
-                }}
-              >
-                {/* Image */}
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
-
-                {/* Badge */}
-                <div className="absolute top-2 sm:top-4 left-1/2 -translate-x-1/2 bg-gold/90 backdrop-blur-sm text-black px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap shadow-sm">
-                  {destinations.length - index} Tours
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-3 sm:bottom-6 left-0 right-0 text-center px-1.5 sm:px-2">
-                  <h3 className="font-heading text-sm sm:text-lg md:text-xl font-bold text-white mb-0.5 sm:mb-1 leading-tight">
-                    {dest.name}
-                  </h3>
-                  <p className="text-white/70 text-[10px] sm:text-sm font-medium uppercase tracking-wide truncate">
-                    {dest.tagline}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </RevealOnScroll>
-
-        {/* View All Link */}
-        {showViewAll && (
-          <RevealOnScroll animation="fade-in" delay={400}>
-            <div className="text-center mt-12 animation-delay-500">
-              <style>
-                {`
-                  @keyframes shimmer-slide {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(100%); }
-                  }
-                `}
-              </style>
-              <Link
-                to="/services"
-                className="relative inline-flex items-center group perspective-[1000px]"
-              >
-                {/* Main Button Container */}
-                <div className="relative overflow-hidden rounded-full bg-[#1A233A] border border-gold/20 px-8 py-3.5 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:border-gold group-hover:shadow-[0_0_30px_rgba(255,215,0,0.25)] group-hover:-translate-y-0.5">
-
-                  {/* Hover Gradient Fill (Absolute) */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#F2D06B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  {/* Shine Animation Area */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
-                    <div
-                      className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full"
-                      style={{ animation: 'shimmer-slide 1.5s infinite' }}
-                    />
-                  </div>
-
-                  {/* Content Wrapper */}
-                  <div className="relative z-10 flex items-center gap-4">
-                    <span className="font-heading font-bold text-xs tracking-[0.15em] uppercase text-white group-hover:text-primary transition-colors duration-300">
-                      View All Destinations
-                    </span>
-
-                    {/* Vertical Separator */}
-                    <div className="w-[1px] h-4 bg-white/20 group-hover:bg-primary/20 transition-colors duration-300" />
-
-                    {/* Icon */}
-                    <ArrowRight className="w-4 h-4 text-gold group-hover:text-primary transition-all duration-300 group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
+            {/* Background Glows (Subtle & Premium) */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
+                <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px]" />
             </div>
-          </RevealOnScroll>
-        )}
-      </div>
-    </section>
-  );
+
+            <div className="container-wide px-4 sm:px-6 relative z-10">
+
+                {/* Header Content */}
+                <div className="text-center mb-16">
+                    <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-[#C6A355] block mb-4 animate-fade-in-up">
+                        Top Destinations
+                    </span>
+                    <h2 className="font-heading text-4xl md:text-6xl font-bold text-[#0F172A] mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
+                        Most Favorite Destinations
+                    </h2>
+                    <div className="w-20 h-1 bg-[#C6A355] mx-auto rounded-full animate-scale-in animation-delay-300" />
+                </div>
+
+                {/* Premium Grid Layout */}
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                    {destinations.map((dest, index) => (
+                        <Link
+                            key={index}
+                            to={dest.path}
+                            className="group relative h-[240px] sm:h-[320px] w-full rounded-[24px] overflow-hidden cursor-pointer block transform-gpu bg-[#0F172A] shadow-md hover:shadow-2xl transition-all duration-700 ease-out-expo hover:-translate-y-2"
+                        >
+                            {/* Background Image with Slow Zoom */}
+                            <img
+                                src={dest.image}
+                                alt={dest.name}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out-expo scale-100 group-hover:scale-110 will-change-transform opacity-90 group-hover:opacity-100"
+                            />
+
+                            {/* Gradient Overlay - Cinematic Bottom Fade */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-500 will-change-[opacity]" />
+
+                            {/* Top Badge (Tours Count) - Subtle Glass */}
+                            <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out translate-y-2 group-hover:translate-y-0">
+                                <span className="bg-white/20 backdrop-blur-md border border-white/10 text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">
+                                    {dest.tours}
+                                </span>
+                            </div>
+
+                            {/* Bottom Content */}
+                            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-20 flex flex-col items-center text-center">
+
+                                <h3 className="font-heading text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-1.5 drop-shadow-lg tracking-wide group-hover:text-[#C6A355] transition-colors duration-300">
+                                    {dest.name}
+                                </h3>
+
+                                <p className="text-white/80 text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] font-sans antialiased mb-2 sm:mb-3">
+                                    {dest.tagline}
+                                </p>
+
+                                {/* Hover Line Decor */}
+                                <div className="w-8 sm:w-10 h-[2px] bg-[#C6A355] scale-0 group-hover:scale-100 transition-transform duration-500 ease-out-expo origin-center" />
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }

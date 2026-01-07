@@ -62,7 +62,12 @@ export function TestimonialsSection() {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
-        <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 h-full flex flex-col font-sans">
+        <div
+            className="bg-white p-6 rounded-2xl h-full flex flex-col font-sans transition-all duration-300 hover:-translate-y-1"
+            style={{
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)"
+            }}
+        >
             {/* Header */}
             <div className="flex justify-between items-start mb-3">
                 <div className="flex gap-3">
@@ -76,15 +81,15 @@ export function TestimonialsSection() {
                             </div>
                         </div>
                         {/* Orange Star Badge on Avatar */}
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center border border-white">
+                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent rounded-full flex items-center justify-center border border-white">
                             <StarIcon className="w-2.5 h-2.5 text-white" />
                         </div>
                     </div>
 
                     {/* Name and Date */}
                     <div className="flex flex-col">
-                        <span className="font-bold text-gray-900 text-sm">{item.name}</span>
-                        <span className="text-gray-400 text-xs">{item.date}</span>
+                        <span className="font-bold text-primary text-sm">{item.name}</span>
+                        <span className="text-muted-foreground text-xs">{item.date}</span>
                     </div>
                 </div>
 
@@ -94,7 +99,7 @@ export function TestimonialsSection() {
 
             {/* Rating Stars */}
             <div className="flex items-center gap-1 mb-3">
-                <div className="flex text-[#F4B400]">
+                <div className="flex text-gold">
                     {[...Array(5)].map((_, i) => (
                         <StarIcon key={i} className="w-4 h-4" />
                     ))}
@@ -111,17 +116,17 @@ export function TestimonialsSection() {
     );
 
     return (
-        <section id="testimonials-preview" className="py-20 bg-[#F8FAFC] relative overflow-hidden">
+        <section id="testimonials-preview" className="py-20 bg-white relative overflow-hidden">
             {/* Simple Background */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[#f8f9fa] -z-10" />
+            <div className="absolute top-0 left-0 w-full h-full bg-white -z-10" />
 
             <div className="container relative z-10 px-6 max-w-7xl mx-auto">
 
                 {/* Section Header */}
                 <RevealOnScroll animation="fade-up">
                     <div className="text-center mb-16">
-                        <span className="text-gold font-bold text-xs uppercase tracking-[0.2em] mb-3 block">Testimonials</span>
-                        <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] text-primary font-bold">What our clients say</h2>
+                        <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-gold block mb-2">Testimonials</span>
+                        <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-semibold text-primary text-shadow-premium">What our clients say</h2>
                     </div>
                 </RevealOnScroll>
 

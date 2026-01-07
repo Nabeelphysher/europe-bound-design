@@ -17,7 +17,7 @@ export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => 
                 <span className="text-gold font-bold uppercase tracking-widest text-xs mb-4 block">
                     {eyebrow}
                 </span>
-                <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight text-shadow-premium">
                     {title}
                 </h1>
                 <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">

@@ -66,7 +66,7 @@ export function HeroSection() {
 
   return (
 
-    <section ref={sectionRef} className="relative h-screen min-h-[700px] w-full flex flex-col justify-end overflow-hidden bg-black">
+    <section ref={sectionRef} className="relative h-[70vh] sm:h-screen min-h-[480px] w-full flex flex-col justify-end overflow-hidden bg-black">
 
       {/* LAYER 1: Current Background (Lowest Z) */}
       <div className="absolute inset-0 z-0">
@@ -75,8 +75,9 @@ export function HeroSection() {
           alt={activeDest.name}
           className="w-full h-full object-cover transition-transform duration-[2000ms] ease-out scale-105"
         />
-        {/* Gradient Overlay for Text Readability without hiding the image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        {/* Gradients to Ensure Text & Nav Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-10" />
       </div>
 
       {/* LAYER 2: Expanding Card (Behind Text and Carousel) */}
@@ -96,26 +97,26 @@ export function HeroSection() {
           <img src={expandingCard.image} className="w-full h-full object-cover" alt="" />
           {/* Matching Gradient Inside Expansion */}
           <div className={cn(
-            "absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent transition-opacity duration-1000",
+            "absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-1000",
             isExpanded ? "opacity-100" : "opacity-0"
           )} />
         </div>
       )}
 
       {/* LAYER 3: Main Content (Highest Z - Always Visible) */}
-      <div className="relative z-50 container-wide h-full flex flex-col justify-center items-start pl-4 sm:pl-0 pointer-events-none">
-        <div className="max-w-xl pointer-events-auto mt-20 sm:mt-[-10vh]">
+      <div className="relative z-50 container-wide h-full flex flex-col justify-end pb-[150px] sm:pb-20 sm:justify-center items-start pl-5 sm:pl-0 pointer-events-none">
+        <div className="max-w-xl pointer-events-auto">
           <RevealOnScroll animation="slide-in-right">
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <span className="h-[2px] w-8 sm:w-12 bg-gold inline-block"></span>
-              <span className="text-gold font-bold uppercase tracking-[0.2em] text-xs sm:text-base">
+            <div className="flex items-center gap-3 mb-2 sm:mb-6">
+              <span className="h-[2px] w-8 sm:w-12 bg-[#FFD700] inline-block shadow-sm"></span>
+              <span className="text-[#FFD700] font-bold uppercase tracking-[0.15em] text-xs sm:text-base drop-shadow-md shadow-black">
                 {activeDest.location}
               </span>
             </div>
-            <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl font-black text-white uppercase leading-[0.9] mb-4 sm:mb-6 tracking-tighter drop-shadow-lg">
+            <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl font-bold text-white uppercase leading-[0.9] mb-2 sm:mb-6 tracking-tight drop-shadow-2xl text-shadow-premium">
               {activeDest.name}
             </h1>
-            <p className="text-white/90 text-xs sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 max-w-lg drop-shadow-md">
+            <p className="text-white/90 text-sm sm:text-lg leading-relaxed max-w-lg drop-shadow-lg font-medium line-clamp-2 sm:line-clamp-none">
               {activeDest.description}
             </p>
           </RevealOnScroll>
@@ -123,23 +124,23 @@ export function HeroSection() {
       </div>
 
       {/* LAYER 4: Carousel (Above Expanding Card, Below Text interaction-wise) */}
-      <div className="absolute bottom-6 sm:bottom-8 right-0 sm:right-8 z-40 w-full max-w-3xl pl-4 sm:pl-0">
-        <Carousel opts={{ align: "start", loop: true }} className="w-full">
+      <div className="absolute bottom-4 sm:bottom-8 right-0 sm:right-8 z-40 w-full sm:max-w-2xl lg:max-w-3xl pl-4 sm:pl-0 overflow-visible">
+        <Carousel opts={{ align: "start", loop: true, dragFree: true }} className="w-full">
           <CarouselContent className="-ml-4 pb-4">
             {carouselDests.map((dest) => (
-              <CarouselItem key={dest.id} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/3">
+              <CarouselItem key={dest.id} className="pl-4 basis-[35%] sm:basis-1/3 md:basis-1/3">
                 <button
                   onClick={(e) => handleDestClick(e, dest)}
                   className={cn(
-                    "relative w-full h-[120px] sm:h-[180px] md:h-[220px] rounded-xl overflow-hidden border border-white/20 transition-all duration-300 hover:scale-[1.03] hover:border-gold hover:shadow-xl group",
+                    "relative w-full h-[100px] sm:h-[180px] md:h-[220px] rounded-xl overflow-hidden border border-white/20 transition-all duration-300 hover:scale-[1.03] hover:border-[#FFD700] hover:shadow-2xl group shadow-lg",
                     expandingCard?.id === dest.id ? "opacity-0" : "opacity-100"
                   )}
                 >
                   <img src={dest.image} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                  <div className="absolute bottom-3 left-4 text-left pr-2">
-                    <p className="text-white font-bold text-sm sm:text-base uppercase tracking-wider truncate">{dest.name}</p>
-                    <p className="text-white/60 text-[10px] uppercase tracking-widest truncate">{dest.location.split(' - ')[0]}</p>
+                  <div className="absolute bottom-2 left-3 text-left pr-1">
+                    <p className="text-white font-bold text-xs sm:text-base uppercase tracking-wider truncate">{dest.name}</p>
+                    <p className="text-white/60 text-[9px] uppercase tracking-widest truncate">{dest.location.split(' - ')[0]}</p>
                   </div>
                 </button>
               </CarouselItem>

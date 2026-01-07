@@ -9,6 +9,7 @@ import {
   SheetTrigger,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetClose,
 } from "@/components/ui/sheet";
 
@@ -108,6 +109,12 @@ export function Header() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0 border-r-0 bg-background z-[70] [&>button]:text-white [&>button]:top-6 [&>button]:right-6 [&>button]:z-50 [&>button]:opacity-100 [&>button]:hover:opacity-80 [&>button]:focus:ring-offset-0">
+            <SheetHeader className="sr-only">
+              <SheetTitle>Mobile Navigation Menu</SheetTitle>
+              <SheetDescription>
+                Navigation links for accessing different sections of the website.
+              </SheetDescription>
+            </SheetHeader>
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="bg-primary p-6 pb-8 relative overflow-hidden">

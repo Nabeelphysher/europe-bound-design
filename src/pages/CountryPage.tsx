@@ -393,24 +393,22 @@ const countryData: Record<string, CountryData> = {
         name: "Uzbekistan",
         tagline: "Samarkand, Bukhara & Tashkent",
         image: uzbekistanImg,
-        description: "Step back in time to the era of the Silk Road. Marvel at the blue-tiled mosques of Samarkand and the historic centers of Bukhara.",
+        description: "Uzbekistan is the definitive heart of the Great Silk Road, where 2,500 years of history meet modern high-speed infrastructure. From the iconic blue-tiled mosques of Samarkand to the serene heights of the Chimgan Mountains, it offers an authentic, uncrowded escape for history enthusiasts and nature lovers alike.",
         stats: { price: "$900", duration: "7 Days", visa: "E-Visa" },
         whyChoose: [
-            { title: "Registan Square", description: "Iconic heart of the Silk Road." },
-            { title: "Bukhara Old City", description: "A living museum." },
-            { title: "Khiva Walled City", description: "Step into history." },
-            { title: "Tashkent Metro", description: "Art underground." },
-            { title: "Silk Road History", description: "Connect with the past." },
-            { title: "Local Handicrafts", description: "Exquisite ceramics and textiles." }
+            { title: "All-Inclusive Transport", description: "Private cars and Samarkand train tickets provided." },
+            { title: "Expert Local Guides", description: "Professional English-speaking guides for every tour." },
+            { title: "4-Star Comfort", description: "Premium 3-night hotel stays with breakfast included." },
+            { title: "Diverse Itinerary", description: "A perfect mix of ancient history and mountain nature." }
         ],
         eligibility: ["Valid Passport", "E-Visa", "Return Flight", "Hotel Booking", "Funds", "Travel Insurance"],
         benefits: [
-            { title: "Boutique Hotels", description: "Charming local stays." },
-            { title: "All Transfers", description: "Private and comfortable." },
-            { title: "Expert Guide", description: "Knowledgeable and friendly." },
-            { title: "Entrance Fees", description: "All monuments included." },
-            { title: "Bullet Train Tickets", description: "Fast inter-city travel." },
-            { title: "Breakfast", description: "Daily meals included." }
+            { title: "4-Star Hotel", description: "3 nights stay with daily breakfast." },
+            { title: "Private Car", description: "All ground transfers and city tours." },
+            { title: "Express Train", description: "Round-trip tickets to Samarkand." },
+            { title: "Pro Guide", description: "Dedicated English-speaking guide/driver." },
+            { title: "Mountain Tour", description: "Full-day excursion to Charvak Lake." },
+            { title: "Daily Water", description: "Complimentary bottled water during tours." }
         ],
         process: [
             { step: 1, title: "Plan", description: "Choose cities." },

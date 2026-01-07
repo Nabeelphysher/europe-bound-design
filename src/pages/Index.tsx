@@ -9,12 +9,14 @@ import { DestinationsSection } from "@/components/home/DestinationsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { StatsSection } from "@/components/home/StatsSection";
-import { CTASection } from "@/components/home/CTASection";
+
 import { FAQSection } from "@/components/home/FAQSection";
 
 
 
 import { VisaPromoSection } from "@/components/home/VisaPromoSection";
+
+import { GallerySection } from "@/components/home/GallerySection";
 
 const Index = () => {
   const { isOpen, setIsOpen } = useLeadPopup(5000);
@@ -29,9 +31,10 @@ const Index = () => {
         <WhyChooseUs />
         <StatsSection />
         <VisaPromoSection />
+        <GallerySection />
         <TestimonialsSection />
         <FAQSection />
-        <CTASection />
+
       </main>
       <Footer />
       <WhatsAppButton />

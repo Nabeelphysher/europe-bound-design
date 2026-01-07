@@ -47,6 +47,7 @@ const Contact = () => {
           <span className="block">+91 85920 04857</span>
         </>
       ),
+      description: "Speak directly with our expert consultants.",
       link: "tel:+918590404857",
       subtext: "Mon-Fri 9am-6pm"
     },
@@ -54,6 +55,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email",
       content: "sales@europecalling.co",
+      description: "Get a detailed quote or support for your application.",
       link: "mailto:sales@europecalling.co",
       subtext: "Online 24/7"
     },
@@ -61,6 +63,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Office",
       content: "Kerala, India",
+      description: "Visit our headquarters for a personal consultation.",
       link: "https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519",
       subtext: "2nd Floor, Paravath Arcade, opp. Budget Hypermarket, Varangode, Down Hill, Malappuram, Kerala 676519"
     }
@@ -79,19 +82,24 @@ const Contact = () => {
         {/* Contact Info Cards */}
         <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-20">
           <div className="container-wide">
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {contactInfo.map((info, index) => (
-                <RevealOnScroll className="h-full" delay={index * 100} key={index}>
+                <RevealOnScroll
+                  className="h-full w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                  delay={index * 100}
+                  key={index}
+                >
                   <a
                     href={info.link}
-                    className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center text-center backdrop-blur-sm h-full"
+                    className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center backdrop-blur-sm h-full min-h-[380px]"
                   >
                     <div className="w-16 h-16 rounded-2xl bg-gold text-primary flex items-center justify-center mb-6 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
                       <info.icon className="w-7 h-7" />
                     </div>
                     <h3 className="font-heading text-xl font-bold mb-2 text-gold transition-colors">{info.title}</h3>
-                    <p className="text-foreground font-medium text-lg mb-1">{info.content}</p>
-                    <p className="text-muted-foreground text-sm">{info.subtext}</p>
+                    <div className="text-foreground font-medium text-lg mb-2 break-words w-full px-2">{info.content}</div>
+                    <p className="text-muted-foreground/80 text-sm mb-4 px-4">{info.description}</p>
+                    <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">{info.subtext}</p>
                   </a>
                 </RevealOnScroll>
               ))}
@@ -125,7 +133,7 @@ const Contact = () => {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-8">
-                      <div className="grid sm:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         {/* Name Input */}
                         <div className="relative">
                           <input
@@ -177,7 +185,7 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         {/* Phone Input */}
                         <div className="relative">
                           <input

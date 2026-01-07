@@ -80,15 +80,15 @@ export function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 bg-[#FFFBF2] relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
           <div className="text-center mb-20 px-4 sm:px-0 max-w-2xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-[#192E57] mb-6">
-              <span className="text-[#E8B430]">Excellence</span> in Every <br />
-              Number
+            <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#E8B430] block mb-2">Our Achievements</span>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-[black] mb-6 text-shadow-premium">
+              Excellence in Every <br /> Number
             </h2>
             <p className="text-gray-600 text-sm sm:text-base font-medium">
               We take pride in our numbers. They represent the trust and dreams of thousands of travelers we've served.
@@ -98,11 +98,11 @@ export function StatsSection() {
 
         {/* Stats Grid */}
         <RevealOnScroll animation="fade-up" delay={200}>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 px-4 sm:px-0">
+          <div className="flex flex-wrap justify-center gap-8 lg:gap-12 px-4 sm:px-0">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className="text-center"
+                className="text-center w-full min-w-[140px] sm:w-[calc(50%-16px)] lg:w-auto lg:flex-1"
                 style={{ animationDelay: `${200 + index * 100}ms` }}
               >
                 <div className="mb-3">
