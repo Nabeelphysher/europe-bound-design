@@ -38,10 +38,11 @@ const Contact = () => {
           source: "Website Form"
         };
 
-        const response = await fetch("https://crm.europecalling.co/api/feedbacks/", {
+        const response = await fetch("/api/proxy/feedbacks/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json",
           },
           body: JSON.stringify(payload),
         });
