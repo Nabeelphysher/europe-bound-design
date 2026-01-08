@@ -145,7 +145,7 @@ const Gallery = () => {
                             {filteredImages.map((image, index) => (
                                 <RevealOnScroll key={image.id} delay={index * 100} className="break-inside-avoid">
                                     <div
-                                        className="group relative rounded-2xl overflow-hidden cursor-zoom-in shadow-md hover:shadow-xl transition-all duration-500"
+                                        className="group relative rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_10px_20px_-5px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.35)] transition-all duration-500"
                                         onClick={() => setSelectedImage(image)}
                                     >
                                         {/* Image */}

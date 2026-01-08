@@ -16,7 +16,7 @@ import {
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
+  { name: "Destinations", path: "/destinations" },
   { name: "Gallery", path: "/gallery" },
   { name: "Testimonials", path: "/testimonials" },
   { name: "Newsroom", path: "/newsroom" },
@@ -29,7 +29,7 @@ export function Header() {
   const location = useLocation();
 
   // Pages without dark hero sections need header styling from the start
-  const pagesWithoutHero = ["/about", "/services", "/testimonials", "/newsroom", "/contact", "/gallery", "/privacy", "/terms"];
+  const pagesWithoutHero = ["/about", "/destinations", "/testimonials", "/newsroom", "/contact", "/gallery", "/privacy", "/terms"];
   const hasDarkHero = !pagesWithoutHero.includes(location.pathname);
   const shouldShowScrolledStyle = isScrolled || !hasDarkHero;
 

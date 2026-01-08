@@ -73,11 +73,12 @@ const destinations = [
 interface DestinationsSectionProps {
     className?: string;
     showViewAll?: boolean;
+    showHeader?: boolean;
 }
 
-export function DestinationsSection({ className = "", showViewAll = true }: DestinationsSectionProps) {
+export function DestinationsSection({ className = "", showViewAll = true, showHeader = true }: DestinationsSectionProps) {
     return (
-        <section className={`py-32 bg-background relative overflow-hidden ${className}`}>
+        <section className={cn("py-32 bg-background relative overflow-hidden", className)}>
 
             {/* Background Glows (Subtle & Premium) */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
@@ -88,15 +89,17 @@ export function DestinationsSection({ className = "", showViewAll = true }: Dest
             <div className="container-wide px-4 sm:px-6 relative z-10">
 
                 {/* Header Content */}
-                <div className="text-center mb-16">
-                    <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-[#C6A355] block mb-4 animate-fade-in-up">
-                        Top Destinations
-                    </span>
-                    <h2 className="font-heading text-4xl md:text-6xl font-bold text-[#0F172A] mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
-                        Most Favorite Destinations
-                    </h2>
-                    <div className="w-20 h-1 bg-[#C6A355] mx-auto rounded-full animate-scale-in animation-delay-300" />
-                </div>
+                {showHeader && (
+                    <div className="text-center mb-16">
+                        <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-[#C6A355] block mb-4 animate-fade-in-up">
+                            Top Destinations
+                        </span>
+                        <h2 className="font-heading text-4xl md:text-6xl font-bold text-[#0F172A] mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
+                            Most Favorite Destinations
+                        </h2>
+                        <div className="w-20 h-1 bg-[#C6A355] mx-auto rounded-full animate-scale-in animation-delay-300" />
+                    </div>
+                )}
 
                 {/* Premium Grid Layout */}
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">

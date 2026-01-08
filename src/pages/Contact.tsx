@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { Mail, Phone, MapPin, Clock, Send, ArrowRight, MessageSquare, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, ArrowRight, MessageSquare, Globe, Star } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import contactBanner from "@/assets/destination-czech.jpg";
@@ -17,7 +17,9 @@ const Contact = () => {
     phone: "",
     country: "",
     message: "",
+    rating: 0,
   });
+  const [activeTab, setActiveTab] = useState<'contact' | 'feedback'>('contact');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeField, setActiveField] = useState<string | null>(null);
 
@@ -25,16 +27,63 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      if (activeTab === 'feedback') {
+        const payload = {
+          author: formData.name,
+          text: formData.message,
+          rating: formData.rating === 0 ? 5 : formData.rating,
+          email: formData.email,
+          phone: formData.phone,
+          source: "Website Form"
+        };
 
-    toast({
-      title: "Message Sent Successfully!",
-      description: "Our team will review your inquiry and respond within 24 hours.",
-    });
+        const response = await fetch("https://crm.europecalling.co/api/feedbacks/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
 
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", phone: "", country: "", message: "" });
+        if (!response.ok) {
+          throw new Error("Failed to submit feedback");
+        }
+
+        toast({
+          title: "Thank You!",
+          description: "Your feedback has been successfully submitted.",
+        });
+      } else {
+        // Mock API call for Contact Form
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Our team will review your inquiry and respond within 24 hours.",
+        });
+      }
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        message: "",
+        rating: 0,
+      });
+
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "There was a problem sending your message. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -116,159 +165,296 @@ const Contact = () => {
           <div className="container-wide relative z-10">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-              {/* Left Column: Form */}
-              <RevealOnScroll className="lg:col-span-7" animation="slide-in-left" delay={300}>
+              {/* Left Column: Form - Balanced Width (6 cols) */}
+              <RevealOnScroll className="lg:col-span-6" animation="slide-in-left" delay={300}>
                 <div className="bg-white rounded-3xl shadow-xl border border-border/50 overflow-hidden relative group">
-                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-primary to-gold" />
+                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#C6A87C] via-[#F3E7C9] to-[#C6A87C]" />
 
-                  <div className="p-8 sm:p-10 md:p-12">
-                    <div className="mb-10">
+                  <div className="p-6 sm:p-8">
+                    {/* Tab Switcher */}
+                    <div className="flex bg-muted/50 p-1 rounded-xl mb-8 relative">
+                      <button
+                        onClick={() => setActiveTab('contact')}
+                        className={cn(
+                          "flex-1 py-2.5 text-sm font-bold rounded-lg transition-all duration-300 z-10",
+                          activeTab === 'contact' ? "text-white shadow-md" : "text-muted-foreground hover:text-foreground"
+                        )}
+                      >
+                        Contact
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('feedback')}
+                        className={cn(
+                          "flex-1 py-2.5 text-sm font-bold rounded-lg transition-all duration-300 z-10",
+                          activeTab === 'feedback' ? "text-white shadow-md" : "text-muted-foreground hover:text-foreground"
+                        )}
+                      >
+                        Feedback
+                      </button>
+                      {/* Sliding Bg */}
+                      <div
+                        className={cn(
+                          "absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#0B1532] rounded-lg transition-all duration-300 ease-out shadow-sm",
+                          activeTab === 'feedback' ? "left-[calc(50%)]" : "left-1"
+                        )}
+                      />
+                    </div>
+
+                    <div className="mb-6">
                       <h2 className="font-heading text-3xl font-bold text-primary mb-4 flex items-center gap-3">
-                        <MessageSquare className="w-6 h-6 text-gold" />
-                        Send a Message
+                        {activeTab === 'contact' ? <MessageSquare className="w-6 h-6 text-gold" /> : <Star className="w-6 h-6 text-gold" />}
+                        {activeTab === 'contact' ? 'Send a Message' : 'Share Feedback'}
                       </h2>
                       <p className="text-muted-foreground">
-                        Fill out the form below and verify your specific requirements. We respect your privacy.
+                        {activeTab === 'contact'
+                          ? "Fill out the form below and verify your specific requirements. We respect your privacy."
+                          : "We value your opinion. Please let us know about your experience with us."}
                       </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-8">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {/* Name Input */}
-                        <div className="relative">
-                          <input
-                            id="name"
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            onFocus={() => setActiveField('name')}
-                            onBlur={() => setActiveField(null)}
-                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
-                            placeholder=" "
-                          />
-                          <label
-                            htmlFor="name"
-                            className={cn(
-                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
-                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
-                              formData.name && "top-1 text-xs font-semibold"
-                            )}
-                          >
-                            Full Name
-                          </label>
-                        </div>
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                      {activeTab === 'contact' ? (
+                        /* Contact Form Fields */
+                        <>
+                          <div className="grid grid-cols-1 gap-5">
+                            {/* Name Input */}
+                            <div className="relative">
+                              <input
+                                id="name"
+                                type="text"
+                                required
+                                value={formData.name}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                onFocus={() => setActiveField('name')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Full Name"
+                              />
+                              <label
+                                htmlFor="name"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.name && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Full Name
+                              </label>
+                            </div>
 
-                        {/* Email Input */}
-                        <div className="relative">
-                          <input
-                            id="email"
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            onFocus={() => setActiveField('email')}
-                            onBlur={() => setActiveField(null)}
-                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
-                            placeholder=" "
-                          />
-                          <label
-                            htmlFor="email"
-                            className={cn(
-                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
-                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
-                              formData.email && "top-1 text-xs font-semibold"
-                            )}
-                          >
-                            Email Address
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {/* Phone Input */}
-                        <div className="relative">
-                          <input
-                            id="phone"
-                            type="tel"
-                            required
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            onFocus={() => setActiveField('phone')}
-                            onBlur={() => setActiveField(null)}
-                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6"
-                            placeholder=" "
-                          />
-                          <label
-                            htmlFor="phone"
-                            className={cn(
-                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
-                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
-                              formData.phone && "top-1 text-xs font-semibold"
-                            )}
-                          >
-                            Phone Number
-                          </label>
-                        </div>
-
-                        {/* Country Input */}
-                        <div className="relative">
-                          <select
-                            id="country"
-                            required
-                            value={formData.country}
-                            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                            onFocus={() => setActiveField('country')}
-                            onBlur={() => setActiveField(null)}
-                            className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all pt-6 appearance-none cursor-pointer"
-                          >
-                            <option value=""></option>
-                            <option value="germany">Germany</option>
-                            <option value="poland">Poland</option>
-                            <option value="czech">Czech Republic</option>
-                            <option value="france">France</option>
-                            <option value="romania">Romania</option>
-                            <option value="azerbaijan">Azerbaijan</option>
-                            <option value="other">Other</option>
-                          </select>
-                          <label
-                            htmlFor="country"
-                            className={cn(
-                              "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
-                              "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
-                              formData.country && "top-1 text-xs font-semibold"
-                            )}
-                          >
-                            Country of Interest
-                          </label>
-                          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
-                            <Globe className="w-5 h-5 opacity-50" />
+                            {/* Email Input */}
+                            <div className="relative">
+                              <input
+                                id="email"
+                                type="email"
+                                required
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                onFocus={() => setActiveField('email')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Email Address"
+                              />
+                              <label
+                                htmlFor="email"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.email && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Email Address
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      {/* Message Input */}
+                          <div className="grid grid-cols-1 gap-4">
+                            {/* Phone Input */}
+                            <div className="relative">
+                              <input
+                                id="phone"
+                                type="tel"
+                                required
+                                value={formData.phone}
+                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                onFocus={() => setActiveField('phone')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Phone Number"
+                              />
+                              <label
+                                htmlFor="phone"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.phone && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Phone Number
+                              </label>
+                            </div>
+
+                            {/* Country Input */}
+                            <div className="relative">
+                              <select
+                                id="country"
+                                required
+                                value={formData.country}
+                                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                                onFocus={() => setActiveField('country')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium shadow-sm hover:border-gray-300 appearance-none cursor-pointer"
+                              >
+                                <option value=""></option>
+                                <option value="germany">Germany</option>
+                                <option value="poland">Poland</option>
+                                <option value="czech">Czech Republic</option>
+                                <option value="france">France</option>
+                                <option value="romania">Romania</option>
+                                <option value="azerbaijan">Azerbaijan</option>
+                                <option value="other">Other</option>
+                              </select>
+                              <label
+                                htmlFor="country"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.country && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Country of Interest
+                              </label>
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+                                <Globe className="w-5 h-5 opacity-50" />
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        /* Feedback Form Fields */
+                        <>
+                          <div className="grid grid-cols-1 gap-5">
+                            {/* Name Input */}
+                            <div className="relative">
+                              <input
+                                id="feedback-name"
+                                type="text"
+                                required
+                                value={formData.name}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                onFocus={() => setActiveField('feedback-name')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Full Name"
+                              />
+                              <label
+                                htmlFor="feedback-name"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.name && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Full Name
+                              </label>
+                            </div>
+
+                            {/* Email Input */}
+                            <div className="relative">
+                              <input
+                                id="feedback-email"
+                                type="email"
+                                required
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                onFocus={() => setActiveField('feedback-email')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Email Address"
+                              />
+                              <label
+                                htmlFor="feedback-email"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.email && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Email Address
+                              </label>
+                            </div>
+
+                            {/* Phone Input (Optional) */}
+                            <div className="relative">
+                              <input
+                                id="feedback-phone"
+                                type="tel"
+                                value={formData.phone}
+                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                onFocus={() => setActiveField('feedback-phone')}
+                                onBlur={() => setActiveField(null)}
+                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                placeholder="Phone Number"
+                              />
+                              <label
+                                htmlFor="feedback-phone"
+                                className={cn(
+                                  "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                                  "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                                  formData.phone && "top-1 text-[10px] font-semibold"
+                                )}
+                              >
+                                Phone Number (Optional)
+                              </label>
+                            </div>
+
+                            {/* Rating */}
+                            <div className="flex flex-col gap-2">
+                              <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider ml-1">Your Rating</label>
+                              <div className="flex items-center gap-2">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <button
+                                    key={star}
+                                    type="button"
+                                    onClick={() => setFormData({ ...formData, rating: star })}
+                                    className="focus:outline-none transition-transform hover:scale-110 active:scale-90"
+                                  >
+                                    <Star
+                                      className={cn(
+                                        "w-8 h-8 transition-colors duration-300",
+                                        formData.rating >= star ? "fill-[#0B1532] text-[#0B1532]" : "text-gray-300 hover:text-[#0B1532]/50"
+                                      )}
+                                    />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      )}
+
+                      {/* Message Input (Shared) */}
                       <div className="relative">
                         <textarea
                           id="message"
                           required
-                          rows={6}
+                          rows={4}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           onFocus={() => setActiveField('message')}
                           onBlur={() => setActiveField(null)}
-                          className="peer w-full px-4 py-4 rounded-xl border border-border bg-background/50 focus:bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all resize-none pt-6"
-                          placeholder=" "
+                          className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 resize-none pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                          placeholder={activeTab === 'contact' ? "Your Message" : "Tell us about your experience"}
                         />
                         <label
                           htmlFor="message"
                           className={cn(
-                            "absolute left-4 top-4 text-muted-foreground text-sm transition-all pointer-events-none",
-                            "peer-focus:top-1 peer-focus:text-xs peer-focus:text-gold peer-focus:font-semibold",
-                            formData.message && "top-1 text-xs font-semibold"
+                            "absolute left-4 top-3 text-muted-foreground text-xs transition-all pointer-events-none",
+                            "peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gold peer-focus:font-semibold",
+                            formData.message && "top-1 text-[10px] font-semibold"
                           )}
                         >
-                          Your Message
+                          {activeTab === 'contact' ? "Your Message" : "Additional Comments"}
                         </label>
                       </div>
 
@@ -276,9 +462,10 @@ const Contact = () => {
                         type="submit"
                         disabled={isSubmitting}
                         className={cn(
-                          "w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex items-center justify-center gap-2 group",
+                          "w-full bg-[#0B1221] hover:bg-[#152035] text-white font-bold py-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_-15px_rgba(11,18,33,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group text-sm",
                           isSubmitting && "opacity-70 cursor-not-allowed"
                         )}
+
                       >
                         {isSubmitting ? (
                           "Sending..."
@@ -294,8 +481,8 @@ const Contact = () => {
                 </div>
               </RevealOnScroll>
 
-              {/* Right Column: Content/Map */}
-              <RevealOnScroll className="lg:col-span-5 flex flex-col gap-8" animation="slide-in-right" delay={500}>
+              {/* Right Column: Content/Map - Balanced Width (6 cols) */}
+              <RevealOnScroll className="lg:col-span-6 flex flex-col gap-8" animation="slide-in-right" delay={500}>
                 {/* Office Info Card */}
                 <div className="bg-primary text-primary-foreground p-8 rounded-3xl shadow-xl relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/15 transition-colors" />

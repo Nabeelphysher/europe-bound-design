@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Eye, Heart, Globe, Award } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FlightAnimation } from "@/components/ui/FlightAnimation";
 import { CTASection } from "@/components/home/CTASection";
@@ -32,7 +32,7 @@ const team = [
   { name: "Global Partner", role: "Europe Operations", location: "Berlin", img: img3709 },
   { name: "Strategic Lead", role: "Planning", location: "London", img: img3698 },
   { name: "Legal Counsel", role: "Advisory", location: "Paris", img: img3691 },
-  { name: "MUHAMMED SHA A P", role: "Support", location: "Dubai", img: img3684 },
+  { name: "MUHAMMED SHA", role: "Support", location: "Dubai", img: img3684 },
 ];
 
 const values = [
@@ -98,42 +98,55 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
 
               {/* Left: Content */}
-              <div className="order-2 lg:order-1">
+              <div className="order-2 lg:order-1 relative z-10">
                 <RevealOnScroll animation="fade-up">
-                  <div className="mb-10 text-left">
-                    <span className="font-['Dancing_Script'] text-3xl text-[#E8B430] block mb-2">Our Origins</span>
-                    <h2 className="font-heading text-[48px] font-bold text-[black] leading-tight">
+                  <div className="mb-12 text-left relative">
+                    <span className="font-['Dancing_Script'] text-3xl text-gold mb-3 block transform -rotate-2 origin-bottom-left">Our Origins</span>
+                    <h2 className="font-heading text-5xl md:text-[56px] font-bold text-primary leading-[1.1]">
                       Why Europe Calling <br />
-                      <span className="text-[#E8B430] italic">Was Created</span>
+                      <span className="text-gold italic relative inline-block">
+                        Was Created
+                        <svg className="absolute w-full h-3 -bottom-1 left-0 text-gold/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                          <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                        </svg>
+                      </span>
                     </h2>
                   </div>
 
-                  <div className="space-y-8 text-lg text-muted-foreground leading-relaxed font-light">
-                    <p className="first-letter:text-5xl first-letter:font-heading first-letter:text-primary first-letter:mr-3 first-letter:float-left">
-                      It began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy.
+                  <div className="space-y-6 text-lg text-slate-600 leading-relaxed text-justify max-w-xl">
+                    <p>
+                      <span className="text-6xl font-heading text-primary float-left mr-3 mt-[-8px] leading-[0.8]">I</span>
+                      t began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy.
                     </p>
                     <p>
-                      We saw brilliant professionals held back by paperwork. We saw families separated by avoidable errors. We saw a gap between <span className="text-primary font-medium">human ambition</span> and <span className="text-primary font-medium">administrative reality</span>.
+                      We saw brilliant professionals held back by paperwork. We saw families separated by avoidable errors. We saw a gap between <strong className="text-primary font-bold">human ambition</strong> and <strong className="text-primary font-bold">administrative reality</strong>.
                     </p>
-                    <div className="border-l-4 border-gold pl-6 py-2 my-8 bg-white/50 backdrop-blur-sm rounded-r-lg">
-                      <p className="text-xl font-heading text-primary italic">
+
+                    <div className="relative my-10 py-8 pl-8 pr-6 border-l-4 border-gold bg-gradient-to-r from-gold/10 to-transparent rounded-r-2xl">
+                      <Quote className="absolute top-4 left-4 w-12 h-12 text-gold/20 -z-10 transform -scale-x-100" />
+                      <p className="text-2xl font-heading text-primary italic leading-relaxed relative z-10">
                         "The world didn't need another visa agency. It needed a partner who cared as much about the destination as the traveler does."
                       </p>
                     </div>
+
                     <p>
                       Europe Calling was born to bridge this gap. To provide not just a service, but a standard. A standard of transparency, expertise, and unwavering support that turns a daunting process into a confident journey.
                     </p>
                   </div>
                 </RevealOnScroll>
 
-                <div ref={statsRef} className="mt-12 grid grid-cols-2 gap-12 border-t border-border pt-10">
+                <div ref={statsRef} className="mt-16 grid grid-cols-2 gap-12 border-t border-primary/10 pt-10">
                   <div>
-                    <AnimatedCounter value={50} suffix="+" duration={1500} isVisible={statsVisible} />
-                    <p className="text-sm text-foreground/70 font-bold uppercase tracking-widest mt-2">Expert Consultants</p>
+                    <div className="flex items-baseline gap-1">
+                      <AnimatedCounter value={50} suffix="+" duration={1500} isVisible={statsVisible} />
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold mt-2">Expert Consultants</p>
                   </div>
                   <div>
-                    <AnimatedCounter value={15} suffix="+" duration={1500} isVisible={statsVisible} />
-                    <p className="text-sm text-foreground/70 font-bold uppercase tracking-widest mt-2">Partner Countries</p>
+                    <div className="flex items-baseline gap-1">
+                      <AnimatedCounter value={15} suffix="+" duration={1500} isVisible={statsVisible} />
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold mt-2">Partner Countries</p>
                   </div>
                 </div>
               </div>
@@ -509,28 +522,27 @@ const About = () => {
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Meet the experts guiding your European integration.</p>
               </div>
             </RevealOnScroll>
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
               {team.map((member, index) => (
                 <RevealOnScroll animation="fade-up" delay={index * 100} key={member.name}>
-                  <div className="group relative h-[450px] w-[320px] overflow-hidden transition-all duration-500">
+                  <div className="group relative h-[400px] w-[300px] overflow-hidden transition-all duration-500 bg-white/5 rounded-2xl mx-auto">
                     {/* Hover Backlight Glow */}
                     <div className="absolute inset-x-4 bottom-0 h-[80%] bg-gradient-to-t from-[#E8B430]/20 via-[#E8B430]/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 blur-2xl md:blur-3xl" />
 
                     {/* Grayscale Image - Scaled Up */}
-                    <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 pb-0 flex items-end justify-center">
+                    <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 flex items-end justify-center">
                       <img
                         src={member.img}
                         alt={member.name}
-                        className="h-[135%] w-auto max-w-none object-contain object-bottom transition-transform duration-700 group-hover:scale-110 mb-[-5%] relative z-10"
+                        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105 relative z-10"
                       />
                     </div>
 
                     {/* Diagonal Cut Overlay */}
                     <div
-                      className="absolute bottom-0 left-0 right-0 h-[40%] bg-white/95 backdrop-blur-sm z-20 transition-all duration-500"
+                      className="absolute bottom-0 left-0 right-0 h-[40%] bg-white z-20 transition-all duration-500"
                       style={{
-                        clipPath: "polygon(0 75%, 100% 0, 100% 100%, 0 100%)",
-                        filter: "drop-shadow(0 -4px 10px rgba(0,0,0,0.05))"
+                        clipPath: "polygon(0 75%, 100% 0, 100% 100%, 0 100%)"
                       }}
                     >
                       {/* Text Content in White Area */}

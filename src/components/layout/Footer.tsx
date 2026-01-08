@@ -59,7 +59,7 @@ export function Footer() {
               {[
                 { name: 'Home', path: '/' },
                 { name: 'About', path: '/about' },
-                { name: 'Services', path: '/services' },
+                { name: 'Destinations', path: '/destinations' },
                 { name: 'Contact', path: '/contact' }
               ].map((item) => (
                 <li key={item.name}>
