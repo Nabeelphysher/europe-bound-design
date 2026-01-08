@@ -12,6 +12,19 @@ export default defineConfig(({ mode }) => ({
       '/api/proxy': {
         target: 'https://crm.europecalling.co',
         changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api\/proxy/, '/api'),
+      },
+    },
+  },
+  preview: {
+    host: "::",
+    port: 8080,
+    proxy: {
+      '/api/proxy': {
+        target: 'https://crm.europecalling.co',
+        changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api\/proxy/, '/api'),
       },
     },

@@ -38,6 +38,7 @@ const Contact = () => {
           source: "Website Form"
         };
 
+        // Using the proxy path with trailing slash as preferred by the backend.
         const response = await fetch("/api/proxy/feedbacks/", {
           method: "POST",
           headers: {

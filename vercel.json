@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/api/proxy/feedbacks/(.*)",
+            "destination": "https://crm.europecalling.co/api/feedbacks/$1"
+        },
+        {
             "source": "/api/proxy/feedbacks",
             "destination": "https://crm.europecalling.co/api/feedbacks/"
         },
