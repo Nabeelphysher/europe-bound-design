@@ -590,12 +590,12 @@ const About = () => {
                   {/* Card Main Container */}
                   <div className="group relative bg-white rounded-3xl p-6 border border-teal-100 hover:border-teal-500 transition-all duration-300 hover:shadow-2xl h-full flex flex-col justify-between">
 
-                    {/* Image Area with Orange Background */}
-                    <div className="relative w-full aspect-[4/4.5] bg-[#FF7900] rounded-2xl mb-8 overflow-hidden flex items-end justify-center shrink-0">
+                    {/* Image Area */}
+                    <div className="relative w-full aspect-[4/4.5] rounded-2xl mb-8 overflow-hidden shrink-0">
                       <img
                         src={member.img}
                         alt={member.name}
-                        className="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top transform transition-transform duration-500 scale-125 group-hover:scale-135"
                       />
                     </div>
 
