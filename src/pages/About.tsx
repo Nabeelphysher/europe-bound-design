@@ -5,18 +5,24 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote, Instagram, Facebook, Linkedin } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FlightAnimation } from "@/components/ui/FlightAnimation";
 import { CTASection } from "@/components/home/CTASection";
 import heroImage from "@/assets/hero-europe.jpg";
 
 
-import shihabImg from "@/assets/1766227243591-removebg-preview.png";
-import img3709 from "@/assets/IMG_3709-removebg-preview.png";
-import img3698 from "@/assets/IMG_3698-removebg-preview.png";
-import img3691 from "@/assets/IMG_3691-removebg-preview.png";
-import img3684 from "@/assets/IMG_3684-removebg-preview.png";
+import poster1 from "@/assets/CODO 5 THEME POSTERS copy (1).png";
+import poster2 from "@/assets/CODO 5 THEME POSTERS 2 copy.png";
+import poster3 from "@/assets/CODO 5 THEME POSTERS 3 copy.png";
+import poster4 from "@/assets/CODO 5 THEME POSTERS 4 copy.png";
+import poster5 from "@/assets/CODO 5 THEME POSTERS 5 copy.png";
+import poster6 from "@/assets/CODO 5 THEME POSTERS 6 copy.png";
+import poster7 from "@/assets/CODO 5 THEME POSTERS 7 copy.png";
+import poster8 from "@/assets/CODO 5 THEME POSTERS 8 copy.png";
+import poster9 from "@/assets/CODO 5 THEME POSTERS 9 copy.png";
+import founderImage from "@/assets/image-removebg-preview.png";
+import { ChevronRight } from "lucide-react";
 
 const timeline = [
   { year: "2014", title: "Foundation", description: "Europe Calling was founded in Berlin with a vision to simplify European migration." },
@@ -28,11 +34,15 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Akhila", role: "Accountant", location: "Calicut, India", img: shihabImg },
-  { name: "Global Partner", role: "Europe Operations", location: "Berlin", img: img3709 },
-  { name: "Strategic Lead", role: "Planning", location: "London", img: img3698 },
-  { name: "Legal Counsel", role: "Advisory", location: "Paris", img: img3691 },
-  { name: "MUHAMMED SHA", role: "Support", location: "Dubai", img: img3684 },
+  { name: "Luthufulla", role: "Operations & Finance Head", location: "Calicut, India", img: poster6 },
+  { name: "Nizamudheen KC", role: "Digital Marketing Academic Head", location: "Berlin", img: poster7 },
+  { name: "Sajeer", role: "Education Program Manager", location: "London", img: poster8 },
+  { name: "Mohammed Rayan", role: "HR Manager", location: "Paris", img: poster9 },
+  { name: "Zainab Ali", role: "Senior Consultant", location: "Dubai", img: poster5 },
+  { name: "Arif Mohammed", role: "Legal Advisor", location: "Berlin", img: poster4 },
+  { name: "Lakshmi Priya", role: "Student Counselor", location: "Mumbai", img: poster3 },
+  { name: "Rohit Sharma", role: "Documentation Specialist", location: "Delhi", img: poster2 },
+  { name: "Fatima Khan", role: "Immigration Consultant", location: "Dubai", img: poster1 },
 ];
 
 const values = [
@@ -81,100 +91,220 @@ const About = () => {
     <>
       <Header />
       <main className="overflow-hidden pt-20">
-        <PageHeader
-          eyebrow="Since 2014"
-          title={<>Our Journey to <br /><span className="text-gold italic">Excellence</span></>}
-          description="Bridging the gap between ambition and destination for over a decade."
-        />
 
-        {/* Why Europe Calling Was Created Section */}
-        <section className="section-padding relative bg-muted/20 overflow-hidden">
-          {/* Background Watermark */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-[0.03]">
-            <div className="absolute top-20 left-10 text-[20rem] font-heading font-bold text-primary leading-none select-none">2014</div>
-          </div>
 
-          <div className="container-wide relative z-10">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
+        {/* Founder's Note Section - Redesigned */}
+        {/* Founder's Note Section - Premium Redesign */}
+        <section className="py-32 relative overflow-hidden bg-[#FAFAFA]">
+          {/* Decorative Background Elements - Premium & Subtle */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#E8B430]/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-[#0B1E3F]/5 rounded-full blur-[120px] pointer-events-none" />
 
-              {/* Left: Content */}
-              <div className="order-2 lg:order-1 relative z-10">
-                <RevealOnScroll animation="fade-up">
-                  <div className="mb-12 text-left relative">
-                    <span className="font-['Dancing_Script'] text-3xl text-gold mb-3 block transform -rotate-2 origin-bottom-left">Our Origins</span>
-                    <h2 className="font-heading text-5xl md:text-[56px] font-bold text-primary leading-[1.1]">
-                      Why Europe Calling <br />
-                      <span className="text-gold italic relative inline-block">
-                        Was Created
-                        <svg className="absolute w-full h-3 -bottom-1 left-0 text-gold/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                          <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
-                        </svg>
-                      </span>
-                    </h2>
-                  </div>
+          <div className="container px-4 sm:px-6 relative z-10">
+            <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 
-                  <div className="space-y-6 text-lg text-slate-600 leading-relaxed text-justify max-w-xl">
-                    <p>
-                      <span className="text-6xl font-heading text-primary float-left mr-3 mt-[-8px] leading-[0.8]">I</span>
-                      t began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy.
-                    </p>
-                    <p>
-                      We saw brilliant professionals held back by paperwork. We saw families separated by avoidable errors. We saw a gap between <strong className="text-primary font-bold">human ambition</strong> and <strong className="text-primary font-bold">administrative reality</strong>.
-                    </p>
-
-                    <div className="relative my-10 py-8 pl-8 pr-6 border-l-4 border-gold bg-gradient-to-r from-gold/10 to-transparent rounded-r-2xl">
-                      <Quote className="absolute top-4 left-4 w-12 h-12 text-gold/20 -z-10 transform -scale-x-100" />
-                      <p className="text-2xl font-heading text-primary italic leading-relaxed relative z-10">
-                        "The world didn't need another visa agency. It needed a partner who cared as much about the destination as the traveler does."
+              {/* Content Column */}
+              <div className="lg:col-span-6 space-y-12 order-2 lg:order-1">
+                <RevealOnScroll animation="slide-in-left">
+                  <div className="space-y-4 relative">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="h-[1px] w-12 bg-[#E8B430]"></span>
+                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-[#E8B430] uppercase">
+                        Welcome to Europe Bound
                       </p>
                     </div>
 
-                    <p>
-                      Europe Calling was born to bridge this gap. To provide not just a service, but a standard. A standard of transparency, expertise, and unwavering support that turns a daunting process into a confident journey.
+                    <h2 className="font-heading text-5xl lg:text-[4rem] font-bold text-[#0B1E3F] leading-[1.1] tracking-tight">
+                      Hi, I'm <br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B430] to-[#B48811]">Najath Sharafudeen</span>
+                    </h2>
+                    <p className="font-serif italic text-2xl text-[#0B1E3F]/60 font-light mt-2">
+                      Founder of Europe Calling.
                     </p>
                   </div>
-                </RevealOnScroll>
 
-                <div ref={statsRef} className="mt-16 grid grid-cols-2 gap-12 border-t border-primary/10 pt-10">
-                  <div>
-                    <div className="flex items-baseline gap-1">
-                      <AnimatedCounter value={50} suffix="+" duration={1500} isVisible={statsVisible} />
-                    </div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold mt-2">Expert Consultants</p>
+                  <div className="relative pt-8 group">
+                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-[#E8B430]/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
+                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-[#E8B430]/30">
+                      "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
+                    </p>
                   </div>
-                  <div>
-                    <div className="flex items-baseline gap-1">
-                      <AnimatedCounter value={15} suffix="+" duration={1500} isVisible={statsVisible} />
+
+                  <div className="pt-8 border-t border-gray-100">
+                    <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-8">
+                      CONNECT WITH ME
+                    </span>
+                    <div className="flex gap-4">
+                      {[
+                        { Icon: Instagram, label: "Instagram", href: "#" },
+                        { Icon: Facebook, label: "Facebook", href: "#" },
+                        { Icon: Linkedin, label: "LinkedIn", href: "#" }
+                      ].map(({ Icon, label, href }, i) => (
+                        <a
+                          key={i}
+                          href={href}
+                          className="group relative w-14 h-14 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(232,180,48,0.15)] transition-all duration-500 overflow-hidden"
+                          aria-label={label}
+                        >
+                          <div className="absolute inset-0 bg-[#E8B430] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                          <Icon className="w-5 h-5 text-gray-600 group-hover:text-white relative z-10 transition-colors duration-500" strokeWidth={1.5} />
+                        </a>
+                      ))}
                     </div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold mt-2">Partner Countries</p>
                   </div>
-                </div>
+                </RevealOnScroll>
               </div>
 
-              {/* Right: Visuals */}
-              <div className="relative order-1 lg:order-2">
-                <RevealOnScroll animation="fade-in" delay={200}>
-                  <div className="relative z-10 rounded-tr-[5rem] rounded-bl-[5rem] overflow-hidden shadow-2xl group">
+              {/* Image Column - Matches Reference Image Style */}
+              <div className="lg:col-span-6 relative order-1 lg:order-2 flex justify-center lg:justify-end">
+                <RevealOnScroll animation="slide-in-right" className="w-full max-w-[500px]">
+                  <div className="relative z-10">
+                    {/* Main Card Container */}
+                    <div className="relative p-6 bg-white rounded-[3rem] shadow-[0_30px_60px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(11,30,63,0.12)]">
+                      {/* Inner Image Frame */}
+                      <div className="relative rounded-[2.5rem] overflow-hidden bg-gray-50 aspect-[4/5]">
+                        {/* Subtle Grain/Texture Overlay */}
+                        <div className="absolute inset-0 bg-noise opacity-[0.03] z-10 pointer-events-none mix-blend-overlay"></div>
+
+                        {/* Gradient Background for Image */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#f3f4f6] to-[#e5e7eb] z-0"></div>
+
+                        <img
+                          src={founderImage}
+                          alt="Najath Sharafudeen"
+                          className="relative z-10 w-full h-full object-cover object-top transform transition-transform duration-1000 hover:scale-105"
+                        />
+
+                        {/* Overlay Gradient at bottom for text readability if needed, though clean is better */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10 pointer-events-none" />
+                      </div>
+
+                      {/* Floating 'Open for Consultation' Badge */}
+                      <div className="absolute bottom-10 -right-6 md:-right-12 z-30">
+                        <div className="bg-white py-4 px-8 rounded-full shadow-[0_15px_40px_-5px_rgba(0,0,0,0.1)] border border-gray-50 flex items-center gap-4 animate-float hover:scale-105 transition-transform duration-300">
+                          <div className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                          </div>
+                          <span className="text-sm font-bold text-[#0B1E3F] tracking-wide whitespace-nowrap">
+                            Open for Consultation
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Geometric Decoration */}
+                      <div className="absolute -top-8 -left-8 -z-10">
+                        <div className="w-32 h-32 border-2 border-[#E8B430]/20 rounded-full"></div>
+                      </div>
+                      <div className="absolute -bottom-8 -left-4 -z-10">
+                        <div className="w-24 h-24 bg-[#E8B430]/5 rounded-full blur-2xl"></div>
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Our Origins Section - Redesigned */}
+        <section className="py-24 relative bg-white overflow-hidden">
+          <div className="container px-4 sm:px-6 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+              {/* Left: Visuals (Matches reference Left side) */}
+              <div className="relative order-1 lg:h-auto min-h-[500px] flex items-center justify-center">
+                <RevealOnScroll animation="slide-in-right" className="w-full relative h-full flex items-center justify-center">
+
+                  {/* Decorative Background Blur */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#E8B430]/10 rounded-full blur-[60px] -z-10" />
+
+                  {/* Main Person Image */}
+                  <div className="relative w-[85%] max-w-[500px] aspect-[4/5] z-10 mx-auto">
+                    <div className="absolute inset-0 bg-[#0B1E3F] rounded-[2.5rem] rotate-3 opacity-5"></div>
                     <img
                       src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
-                      alt="Modern Office"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                      alt="Modern Office Space"
+                      className="w-full h-full object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(11,30,63,0.15)] relative z-10"
                     />
-                    <div className="absolute inset-0 bg-primary/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
+
+                    {/* Floating 'Watch Video' Pill (Top Left) */}
+                    <div className="absolute top-10 -left-6 md:-left-12 bg-white py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50">
+                      <div className="w-10 h-10 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-0.5">
+                          <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-bold text-[#0B1E3F]">Watch Video</span>
+                    </div>
+
+                    {/* Floating Quote Card (Bottom Left) */}
+                    <div className="absolute bottom-10 -left-6 md:-left-16 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] max-w-[280px] z-20 border border-gray-50 hidden sm:block">
+                      <div className="flex items-center gap-3 mb-4">
+                        <img src={founderImage} alt="Najath Sharafudeen" className="w-12 h-12 rounded-full object-cover border-2 border-[#E8B430]/20" />
+                        <div>
+                          <h4 className="text-sm font-extrabold text-[#0B1E3F]">Najath Sharafudeen</h4>
+                          <p className="text-[10px] text-[#E8B430] font-bold uppercase tracking-wider">FOUNDER</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 italic leading-relaxed font-medium">
+                        "Empower your passion for teaching by sharing your expertise and unlock the path to financial freedom."
+                      </p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              </div>
+
+              {/* Right: Content (Matches reference Right side) */}
+              <div className="order-2 relative z-10">
+                <RevealOnScroll animation="fade-up">
+                  <div className="mb-8 text-left">
+                    {/* Eyebrow */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#3B82F6]"></div>
+                      <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#9CA3AF] uppercase">
+                        WHO WE ARE
+                      </span>
+                    </div>
+
+                    {/* Headline */}
+                    <h2 className="font-heading text-5xl lg:text-[4rem] font-medium text-[#0B1E3F] leading-[1.1] mb-8">
+                      Why Europe Calling <br />
+                      <span className="font-serif italic text-[#0B1E3F]">Was Created</span>
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-lg text-gray-500 leading-[1.8] mb-12 font-light max-w-lg">
+                      It began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy. Europe Calling was born to bridge this gap.
+                    </p>
+
+                    <div className="w-full h-px bg-gray-100 mb-12"></div>
+
+                    {/* Stats Row */}
+                    <div ref={statsRef} className="grid grid-cols-3 gap-8">
+                      <div className="space-y-2 border-r border-gray-100 last:border-0 pr-4">
+                        <h3 className="font-heading text-4xl font-bold text-[#0B1E3F]">Top 1</h3>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">IN THE INDUSTRY</p>
+                      </div>
+                      <div className="space-y-2 border-r border-gray-100 last:border-0 px-4">
+                        <h3 className="font-heading text-4xl font-bold text-[#E8B430]">
+                          <AnimatedCounter value={25} suffix="K" duration={1500} isVisible={statsVisible} />
+                        </h3>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">SATISFIED USERS</p>
+                      </div>
+                      <div className="space-y-2 pl-4">
+                        <h3 className="font-heading text-4xl font-bold text-[#E8B430]">
+                          <AnimatedCounter value={50} suffix="M" duration={1500} isVisible={statsVisible} />
+                        </h3>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">TOTAL EARNINGS</p>
+                      </div>
+                    </div>
+
                   </div>
 
-                  {/* Floating Element */}
-                  <div className="absolute -bottom-12 -left-12 w-3/4 aspect-[4/3] rounded-tr-[3rem] rounded-bl-[3rem] overflow-hidden shadow-elegant border-8 border-white hidden md:block z-20 animate-float">
-                    <img
-                      src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600"
-                      alt="Handshake"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute -top-10 -right-10 w-full h-full border-2 border-gold/30 rounded-tr-[5rem] rounded-bl-[5rem] -z-10" />
-                  <div className="absolute bottom-20 -right-20 w-40 h-40 bg-gold/10 rounded-full blur-3xl z-0" />
                 </RevealOnScroll>
               </div>
 
@@ -254,90 +384,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Founder's Note Section */}
-        <section className="section-padding bg-champagne/10 relative overflow-hidden">
-          {/* Decorative Background Text */}
-          <div className="absolute top-20 right-0 text-[15rem] font-heading font-bold text-gold/5 opacity-50 select-none pointer-events-none whitespace-nowrap hidden lg:block rotate-[-5deg]">
-            Founder's Note
-          </div>
 
-          <div className="container-wide relative z-10">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-
-              {/* Image Column */}
-              <div className="lg:col-span-5 relative">
-                <RevealOnScroll animation="slide-in-left">
-                  <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border-[8px] border-white group">
-                    <img
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
-                      alt="Alexander Schmidt - Founder"
-                      className="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-0 left-0 w-full p-8 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="font-heading text-3xl font-bold mb-1">Alexander Schmidt</p>
-                      <p className="text-gold font-medium uppercase tracking-wider text-sm">Founder & CEO</p>
-                    </div>
-                  </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute -bottom-8 -right-8 w-full h-full border-2 border-gold/30 rounded-[2rem] -z-10 bg-gold/5" />
-                  <div className="absolute -left-8 -top-8 w-24 h-24 bg-gold/20 rounded-full blur-2xl" />
-                </RevealOnScroll>
-              </div>
-
-              {/* Content Column */}
-              <div className="lg:col-span-7 space-y-10">
-                <RevealOnScroll animation="slide-in-right">
-                  <div>
-                    <span className="font-['Dancing_Script'] text-3xl text-[#E8B430] block mb-2">From the Desk of the Founder</span>
-                    <h2 className="font-heading text-[48px] font-bold text-[black] mb-6">
-                      Building Bridges, <br />
-                      <span className="italic text-[#E8B430]">Not Just Visas</span>
-                    </h2>
-                  </div>
-
-                  <div className="space-y-6 text-muted-foreground font-light leading-relaxed">
-                    <p className="text-xl text-foreground font-medium italic border-l-4 border-gold pl-6 py-2">
-                      "When I established Europe Calling, I didn't want to create just another consultancy. I wanted to build the partner I wish I had when I first explored Europe."
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-8 mt-8">
-                      <div>
-                        <h3 className="text-lg font-heading text-primary font-bold mb-3 flex items-center gap-2">
-                          <Target className="w-5 h-5 text-gold" />
-                          Our Purpose
-                        </h3>
-                        <p className="text-sm leading-relaxed">
-                          Our mission goes beyond paperwork. It's about empowering ambition. We exist to remove the friction from global mobility, allowing talent to flow freely to where it can flourish best.
-                        </p>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-heading text-primary font-bold mb-3 flex items-center gap-2">
-                          <Heart className="w-5 h-5 text-gold" />
-                          My Commitment
-                        </h3>
-                        <p className="text-sm leading-relaxed">
-                          We treat your journey with the sanctity it deserves. No false promises, no hidden costs. You have my personal assurance that our team will champion your case with unyielding dedication.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-8 border-t border-gold/20 flex items-center justify-between">
-                    <div>
-                      <p className="font-heading text-4xl text-primary opacity-80" style={{ fontFamily: 'cursive' }}>Alexander Schmidt</p>
-                      <p className="text-xs text-muted-foreground mt-2 uppercase tracking-widest">Berlin, Germany</p>
-                    </div>
-                    <Link to="/contact" className="hidden sm:inline-flex items-center gap-2 text-gold font-bold uppercase tracking-widest text-sm hover:text-primary transition-colors group">
-                      Start Your Journey <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </RevealOnScroll>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Timeline */}
         <section className="py-20 bg-secondary/20">
@@ -513,51 +560,61 @@ const About = () => {
         </section>
 
         {/* Team Grid */}
-        <section className="py-20 bg-champagne/10">
-          <div className="container px-4 sm:px-6">
+        <section className="py-24 relative overflow-hidden bg-white">
+          {/* Dotted Grid Background Pattern */}
+          <div className="absolute inset-0 z-0 opacity-[0.2]"
+            style={{
+              backgroundImage: 'radial-gradient(#10B981 1px, transparent 1px)',
+              backgroundSize: '32px 32px'
+            }}
+          />
+
+          <div className="container px-4 sm:px-6 relative z-10">
             <RevealOnScroll animation="fade-up">
-              <div className="text-center mb-16">
-                <span className="font-['Dancing_Script'] text-3xl text-[#E8B430] block mb-2">Our Team</span>
-                <h2 className="font-heading text-[48px] font-bold text-[black] mb-6">Leadership</h2>
-                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Meet the experts guiding your European integration.</p>
+              <div className="text-center mb-20">
+                <h2 className="font-heading text-4xl md:text-5xl font-bold text-[#0B1E3F] mb-4">
+                  A wholesome team that stands for success!
+                </h2>
+                <p className="text-gray-500 text-lg">Meet the experts guiding your European integration.</p>
               </div>
             </RevealOnScroll>
-            <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
-              {team.map((member, index) => (
-                <RevealOnScroll animation="fade-up" delay={index * 100} key={member.name}>
-                  <div className="group relative h-[400px] w-[300px] overflow-hidden transition-all duration-500 bg-white/5 rounded-2xl mx-auto">
-                    {/* Hover Backlight Glow */}
-                    <div className="absolute inset-x-4 bottom-0 h-[80%] bg-gradient-to-t from-[#E8B430]/20 via-[#E8B430]/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 blur-2xl md:blur-3xl" />
 
-                    {/* Grayscale Image - Scaled Up */}
-                    <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 flex items-end justify-center">
+            <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+              {team.map((member, index) => (
+                <RevealOnScroll
+                  animation="fade-up"
+                  delay={index * 100}
+                  key={member.name}
+                  className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
+                >
+                  {/* Card Main Container */}
+                  <div className="group relative bg-white rounded-3xl p-6 border border-teal-100 hover:border-teal-500 transition-all duration-300 hover:shadow-2xl h-full flex flex-col justify-between">
+
+                    {/* Image Area with Orange Background */}
+                    <div className="relative w-full aspect-[4/4.5] bg-[#FF7900] rounded-2xl mb-8 overflow-hidden flex items-end justify-center shrink-0">
                       <img
                         src={member.img}
                         alt={member.name}
-                        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105 relative z-10"
+                        className="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
 
-                    {/* Diagonal Cut Overlay */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-[40%] bg-white z-20 transition-all duration-500"
-                      style={{
-                        clipPath: "polygon(0 75%, 100% 0, 100% 100%, 0 100%)"
-                      }}
-                    >
-                      {/* Text Content in White Area */}
-                      <div className="absolute bottom-6 right-8 text-right">
-                        <div className="mb-2 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                          <div className="w-12 h-1 bg-gradient-to-r from-transparent to-[#E8B430]" />
-                        </div>
-                        <h3 className="font-heading text-xl font-bold text-[black] uppercase tracking-wider leading-tight mb-1 group-hover:text-black transition-colors duration-300">
+                    {/* Content Section */}
+                    <div className="flex justify-between items-end">
+                      <div>
+                        <h3 className="font-heading text-xl font-bold text-[#0B1E3F] leading-tight mb-2">
                           {member.name}
                         </h3>
-                        <p className="font-sans text-xs text-[#E8B430] uppercase tracking-[0.2em] font-bold">
+                        <p className="font-bold text-[10px] text-teal-600 uppercase tracking-widest">
                           {member.role}
                         </p>
                       </div>
+
+                      <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-[#0B1E3F] text-white group-hover:bg-teal-600 transition-colors duration-300 shadow-lg cursor-pointer">
+                        <ChevronRight className="w-5 h-5" />
+                      </div>
                     </div>
+
                   </div>
                 </RevealOnScroll>
               ))}
