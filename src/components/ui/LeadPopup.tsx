@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { X, ChevronDown, Check } from "lucide-react";
+import { X, ChevronDown, Check, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
 interface LeadPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  initialDestination?: string;
 }
 
 export const useLeadPopup = (delay: number = 5000) => {
@@ -27,13 +28,20 @@ export const useLeadPopup = (delay: number = 5000) => {
   return { isOpen, setIsOpen };
 };
 
-export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
+export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    country: "",
+    country: initialDestination ? initialDestination.toLowerCase() : "",
   });
+
+  useEffect(() => {
+    if (initialDestination) {
+      setFormData(prev => ({ ...prev, country: initialDestination.toLowerCase() }));
+    }
+  }, [initialDestination, isOpen]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -72,8 +80,9 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
     console.log("Form submitted:", formData);
 
     toast({
-      title: "Thank you for your interest!",
-      description: "Our team will contact you within 24 hours.",
+      title: "Request Received",
+      description: "Our travel specialists will contact you shortly.",
+      duration: 3000,
     });
 
     setIsSubmitting(false);
@@ -83,51 +92,63 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
 
   if (!isOpen) return null;
 
+  // Helper to format title case
+  const formatDestination = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
+      {/* Backdrop with darker blur for focus */}
       <div
-        className="absolute inset-0 bg-foreground/50 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-[#050511]/80 backdrop-blur-sm animate-fade-in transition-all duration-500"
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md animate-scale-in flex flex-col overflow-visible">
+      {/* Modal Container */}
+      <div className="relative bg-white w-full max-w-[24rem] rounded-xl shadow-2xl overflow-hidden animate-scale-in flex flex-col">
 
-        {/* Decorative Top Border */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-gold via-yellow-400 to-gold rounded-t-2xl z-20" />
+        {/* Premium Header Section */}
+        <div className="relative bg-[#0B1E3F] px-5 pt-5 pb-4 text-center shrink-0 overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-80" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#D4AF37]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-        {/* Header */}
-        <div className="bg-primary px-5 py-5 text-center shrink-0 relative rounded-t-2xl">
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 text-white/60 hover:text-white bg-white/5 hover:bg-white/10 rounded-full p-1.5 transition-all duration-300"
+            className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors duration-300 p-2 hover:bg-white/5 rounded-full"
             aria-label="Close"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
 
-          <div className="mb-2">
-            <span className="inline-block py-0.5 px-2 rounded-full bg-gold/10 text-gold text-[10px] font-bold tracking-wider uppercase border border-gold/20">
-              Limited Time Offer
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 mb-2 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
+            <span className="text-[10px] font-bold tracking-[0.15em] text-[#D4AF37] uppercase">
+              Exclusive Offer
             </span>
           </div>
 
-          <h3 className="font-heading text-xl sm:text-2xl font-bold text-white mb-1">
-            Plan Your <span className="text-gold">Dream Trip</span>
+          <h3 className="font-heading text-2xl font-bold text-white mb-1 tracking-wide leading-tight">
+            Plan Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37]">
+              {initialDestination ? `${formatDestination(initialDestination)} Trip` : "Dream Trip"}
+            </span>
           </h3>
-          <p className="text-white/70 text-xs max-w-xs mx-auto leading-relaxed">
-            Get a 100% free, personalized itinerary.
+          <p className="text-white/60 text-sm font-light tracking-wide max-w-[80%] mx-auto">
+            Get a 100% free, {initialDestination ? "customized" : "personalized"} itinerary crafted by our experts.
           </p>
         </div>
 
-        {/* Form Container */}
-        <div className="bg-gray-50/50 rounded-b-2xl">
-          <form onSubmit={handleSubmit} className="p-5 space-y-3">
+        {/* Form Section */}
+        <div className="p-5 bg-white relative">
+          <form onSubmit={handleSubmit} className="space-y-3">
 
-            <div className="space-y-3">
-              <div className="grid gap-1">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wide ml-1">
+            {/* Input Group */}
+            <div className="space-y-2">
+              <div className="group relative">
+                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
                   Full Name
                 </label>
                 <input
@@ -135,13 +156,13 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all shadow-sm placeholder:text-gray-300 text-sm"
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
                   placeholder="e.g. Sarah Jenkins"
                 />
               </div>
 
-              <div className="grid gap-1">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wide ml-1">
+              <div className="group relative">
+                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
                   Email Address
                 </label>
                 <input
@@ -149,13 +170,13 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all shadow-sm placeholder:text-gray-300 text-sm"
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
                   placeholder="sarah@example.com"
                 />
               </div>
 
-              <div className="grid gap-1">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wide ml-1">
+              <div className="group relative">
+                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
                   Phone Number
                 </label>
                 <input
@@ -163,13 +184,13 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition-all shadow-sm placeholder:text-gray-300 text-sm"
-                  placeholder="+91 85904 04857"
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
+                  placeholder="+1 (555) 000-0000"
                 />
               </div>
 
-              <div className="grid gap-1">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wide ml-1">
+              <div className="group relative">
+                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
                   Destination
                 </label>
                 <div className="relative" ref={dropdownRef}>
@@ -177,23 +198,25 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className={cn(
-                      "w-full px-3 py-2.5 rounded-lg border bg-white text-left text-sm focus:outline-none transition-all shadow-sm flex items-center justify-between",
-                      isDropdownOpen ? "border-gold ring-2 ring-gold/20" : "border-gray-200 hover:border-gold/50",
-                      formData.country ? "text-gray-900" : "text-gray-400"
+                      "w-full px-3 py-2 bg-gray-50 border rounded-xl text-left text-sm focus:outline-none transition-all duration-300 shadow-sm flex items-center justify-between",
+                      isDropdownOpen
+                        ? "bg-white border-[#D4AF37] ring-1 ring-[#D4AF37]/50 text-gray-900"
+                        : "border-gray-100 hover:border-gray-200 text-gray-400",
+                      formData.country && !isDropdownOpen && "text-gray-900"
                     )}
                   >
                     <span className="truncate">
                       {formData.country
                         ? countries.find(c => c.value === formData.country)?.label
-                        : "Select a country..."}
+                        : "Select your destination"}
                     </span>
-                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-200", isDropdownOpen ? "rotate-180 text-gold" : "text-gray-400")} />
+                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isDropdownOpen ? "rotate-180 text-[#D4AF37]" : "text-gray-400")} />
                   </button>
 
-                  {/* Custom Dropdown Menu */}
+                  {/* Dropdown Menu */}
                   {isDropdownOpen && (
-                    <div className="absolute bottom-full left-0 right-0 mb-1 bg-white border border-gray-100 rounded-lg shadow-xl max-h-[200px] overflow-y-auto z-50 animate-in fade-in zoom-in-95 duration-200 custom-scrollbar">
-                      <div className="p-1">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] max-h-[220px] overflow-y-auto z-50 animate-in fade-in zoom-in-95 duration-200 custom-scrollbar">
+                      <div className="p-1.5">
                         {countries.map((country) => (
                           <div
                             key={country.value}
@@ -202,15 +225,15 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
                               setIsDropdownOpen(false);
                             }}
                             className={cn(
-                              "px-3 py-2 rounded-md text-sm cursor-pointer flex items-center justify-between transition-colors",
+                              "px-3 py-2 rounded-lg text-sm cursor-pointer flex items-center justify-between transition-all duration-200",
                               formData.country === country.value
-                                ? "bg-gold/10 text-gold font-medium"
-                                : "text-gray-700 hover:bg-gray-50"
+                                ? "bg-[#D4AF37]/10 text-[#0B1E3F] font-semibold"
+                                : "text-gray-600 hover:bg-gray-50 hover:text-[#0B1E3F]"
                             )}
                           >
                             {country.label}
                             {formData.country === country.value && (
-                              <Check className="w-3.5 h-3.5" />
+                              <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
                             )}
                           </div>
                         ))}
@@ -221,26 +244,29 @@ export function LeadPopup({ isOpen, onClose }: LeadPopupProps) {
               </div>
             </div>
 
-            <div className="pt-1">
+            {/* Action Button */}
+            <div className="pt-2">
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "w-full bg-gold hover:bg-gold/90 text-primary-foreground font-bold py-3 rounded-xl shadow-lg shadow-gold/20 hover:shadow-gold/30 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm",
-                  isSubmitting && "opacity-70 cursor-not-allowed transform-none"
+                  "w-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white font-bold py-3 rounded-xl shadow-[0_10px_20px_-5px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_25px_-5px_rgba(212,175,55,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm tracking-wide uppercase",
+                  isSubmitting && "opacity-80 cursor-not-allowed transform-none"
                 )}
               >
                 {isSubmitting ? (
-                  "Sending Request..."
+                  "Processing Request..."
                 ) : (
                   <>
-                    Get Free Quote
+                    <Plane className="w-4 h-4 fill-white/20" />
+                    Get My Free Quote
                   </>
                 )}
               </button>
 
-              <div className="mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-400">
-                <span>🔒 Secure & Confidential</span>
+              <div className="mt-2 flex items-center justify-center gap-2 text-[9px] text-gray-400 font-medium tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                Your data is secure & confidential
               </div>
             </div>
           </form>

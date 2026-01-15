@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { LeadPopup, useLeadPopup } from "@/components/ui/LeadPopup";
+import { HeroSectionV2 } from "@/components/home/HeroSectionV2";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { DestinationsSection } from "@/components/home/DestinationsSection";
@@ -25,7 +26,8 @@ const Index = () => {
     <>
       <Header />
       <main>
-        <HeroSection /> {/* Hero usually has its own animations */}
+        <HeroSectionV2 />
+        {/* <HeroSection /> */} {/* Hero usually has its own animations */}
         <DestinationsSection />
         <ServicesPreview />
         <WhyChooseUs />

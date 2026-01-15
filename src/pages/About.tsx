@@ -21,7 +21,7 @@ import poster6 from "@/assets/CODO 5 THEME POSTERS 6 copy.png";
 import poster7 from "@/assets/CODO 5 THEME POSTERS 7 copy.png";
 import poster8 from "@/assets/CODO 5 THEME POSTERS 8 copy.png";
 import poster9 from "@/assets/CODO 5 THEME POSTERS 9 copy.png";
-import founderImage from "@/assets/image-removebg-preview.png";
+import founderImage from "@/assets/NJD.jpg";
 import { ChevronRight } from "lucide-react";
 
 const timeline = [
@@ -34,15 +34,15 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Luthufulla", role: "Operations & Finance Head", location: "Calicut, India", img: poster6 },
-  { name: "Nizamudheen KC", role: "Digital Marketing Academic Head", location: "Berlin", img: poster7 },
-  { name: "Sajeer", role: "Education Program Manager", location: "London", img: poster8 },
-  { name: "Mohammed Rayan", role: "HR Manager", location: "Paris", img: poster9 },
-  { name: "Zainab Ali", role: "Senior Consultant", location: "Dubai", img: poster5 },
-  { name: "Arif Mohammed", role: "Legal Advisor", location: "Berlin", img: poster4 },
-  { name: "Lakshmi Priya", role: "Student Counselor", location: "Mumbai", img: poster3 },
-  { name: "Rohit Sharma", role: "Documentation Specialist", location: "Delhi", img: poster2 },
-  { name: "Fatima Khan", role: "Immigration Consultant", location: "Dubai", img: poster1 },
+  { name: "Muhammed Sha AP", role: "Travel Consultant", location: "Calicut, India", img: poster6 },
+  { name: "Aysha Thaslee E.C", role: "Travel Consultant ", location: "Berlin", img: poster7 },
+  { name: "Akhila", role: "Accounts", location: "London", img: poster8 },
+  { name: "Najiya binu", role: "Travel Consultant", location: "Paris", img: poster9 },
+  { name: "Muhammed Navaf P", role: "Senior Travel Consultant", location: "Dubai", img: poster5 },
+  { name: "Shammas K T", role: "Digital Marketing / Media ", location: "Berlin", img: poster4 },
+  { name: "Aysha Nasrin P", role: "Sales Adviser ", location: "Mumbai", img: poster3 },
+  { name: "Muhsin Mubarak P", role: " Sales Adviser", location: "Delhi", img: poster2 },
+  { name: "Nihala Sherin K", role: "Operations Department Head", location: "Dubai", img: poster1 },
 ];
 
 const values = [
@@ -571,21 +571,26 @@ const About = () => {
 
           <div className="container px-4 sm:px-6 relative z-10">
             <RevealOnScroll animation="fade-up">
-              <div className="text-center mb-20">
-                <h2 className="font-heading text-4xl md:text-5xl font-bold text-[#0B1E3F] mb-4">
-                  A wholesome team that stands for success!
+              <div className="text-center mb-24 relative">
+                {/* Decorative Element */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#E8B430]/10 rounded-full blur-3xl -z-10" />
+
+                <h2 className="font-heading text-5xl md:text-7xl font-bold text-[#0B1E3F] mb-6 tracking-tight drop-shadow-sm">
+                  A wholesome team that <br className="hidden md:block" /> stands for success!
                 </h2>
-                <p className="text-gray-500 text-lg">Meet the experts guiding your European integration.</p>
+                <p className="font-serif text-xl md:text-2xl italic text-gray-500 max-w-2xl mx-auto">
+                  Meet the experts guiding your European integration.
+                </p>
               </div>
             </RevealOnScroll>
 
-            <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {team.map((member, index) => (
                 <RevealOnScroll
                   animation="fade-up"
                   delay={index * 100}
                   key={member.name}
-                  className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
+                  className="w-full h-full"
                 >
                   {/* Card Main Container */}
                   <div className="group relative bg-white rounded-3xl p-6 border border-teal-100 hover:border-teal-500 transition-all duration-300 hover:shadow-2xl h-full flex flex-col justify-between">

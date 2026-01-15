@@ -6,27 +6,23 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary/30 pt-20 pb-10 border-t border-gold/10">
+    <footer className="bg-secondary/30 pt-12 pb-6 border-t border-gold/10">
       <div className="container-wide px-6 md:px-12">
 
-        {/* Top Section: Logo */}
-        <div className="mb-14">
-          <Link to="/" className="inline-flex items-center gap-3 group">
-            <img
-              src={logoImg}
-              alt="Europe Calling"
-              className="h-16 w-auto object-contain transition-transform group-hover:scale-105 duration-300"
-            />
-            <span className="font-heading text-2xl font-bold text-primary tracking-tight">Europe Calling</span>
-          </Link>
-          <div className="w-full h-px bg-gradient-to-r from-gold/40 to-transparent mt-8 mb-12" />
-        </div>
 
         {/* Main Grid Content */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 mb-20">
 
           {/* Column 1: Brand & Socials */}
-          <div className="col-span-2 md:col-span-1 space-y-8">
+          <div className="col-span-2 md:col-span-1 space-y-6">
+            <Link to="/" className="inline-flex items-center gap-3 group">
+              <img
+                src={logoImg}
+                alt="Europe Calling"
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105 duration-300"
+              />
+              <span className="font-heading text-2xl font-bold text-primary tracking-tight">Europe Calling</span>
+            </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-medium">
               Hassle-free travel shouldn't just be a dream. Seamless visa processing and premium travel experiences await.
             </p>
@@ -150,13 +146,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <div className="pt-8 border-t border-primary/5 flex justify-center items-center text-center">
           <p className="text-muted-foreground/60 text-xs tracking-wide">
             © {currentYear} Europe Calling. All Rights Reserved.
           </p>
-          <p className="text-muted-foreground/60 text-xs flex items-center gap-1">
-            Powered By <span className="font-bold text-primary/80">Europe Calling</span>
-          </p>
+
         </div>
       </div>
     </footer>
