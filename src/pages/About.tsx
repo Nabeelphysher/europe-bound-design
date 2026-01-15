@@ -51,7 +51,7 @@ const values = [
   { icon: Heart, title: "Philosophy", text: "We treat every client's dream with the same care and dedication as if it were our own." },
 ];
 
-function AnimatedCounter({ value, suffix, duration, isVisible }: { value: number; suffix: string; duration: number; isVisible: boolean }) {
+function AnimatedCounter({ value, suffix, duration, isVisible, className }: { value: number; suffix: string; duration: number; isVisible: boolean; className?: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function AnimatedCounter({ value, suffix, duration, isVisible }: { value: number
     return () => cancelAnimationFrame(animationFrame);
   }, [value, duration, isVisible]);
 
-  return <span className="font-heading text-4xl font-bold text-gold mb-2 block">{count.toLocaleString()}{suffix}</span>;
+  return <span className={`block ${className}`}>{count.toLocaleString()}{suffix}</span>;
 }
 
 const About = () => {
@@ -95,16 +95,16 @@ const About = () => {
 
         {/* Founder's Note Section - Redesigned */}
         {/* Founder's Note Section - Premium Redesign */}
-        <section className="py-32 relative overflow-hidden bg-[#FAFAFA]">
+        <section className="py-12 lg:py-32 relative overflow-hidden bg-[#FAFAFA]">
           {/* Decorative Background Elements - Premium & Subtle */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#E8B430]/5 via-transparent to-transparent pointer-events-none" />
           <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-[#0B1E3F]/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="container px-4 sm:px-6 relative z-10">
-            <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
 
               {/* Content Column */}
-              <div className="lg:col-span-6 space-y-12 order-2 lg:order-1">
+              <div className="lg:col-span-6 space-y-8 lg:space-y-12 order-2 lg:order-1">
                 <RevealOnScroll animation="slide-in-left">
                   <div className="space-y-4 relative">
                     <div className="flex items-center gap-4 mb-6">
@@ -211,9 +211,9 @@ const About = () => {
 
 
         {/* Our Origins Section - Redesigned */}
-        <section className="py-24 relative bg-white overflow-hidden">
+        <section className="py-12 lg:py-24 relative bg-white overflow-hidden">
           <div className="container px-4 sm:px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
 
               {/* Left: Visuals (Matches reference Left side) */}
               <div className="relative order-1 lg:h-auto min-h-[500px] flex items-center justify-center">
@@ -284,22 +284,30 @@ const About = () => {
                     <div className="w-full h-px bg-gray-100 mb-12"></div>
 
                     {/* Stats Row */}
-                    <div ref={statsRef} className="grid grid-cols-3 gap-8">
-                      <div className="space-y-2 border-r border-gray-100 last:border-0 pr-4">
-                        <h3 className="font-heading text-4xl font-bold text-[#0B1E3F]">Top 1</h3>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">IN THE INDUSTRY</p>
+                    <div ref={statsRef} className="grid grid-cols-3 gap-2 md:gap-8 divide-x divide-gray-100">
+                      <div className="space-y-1 md:space-y-2 pr-2 md:pr-4 text-center md:text-left">
+                        <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B1E3F] leading-tight">Top 1</h3>
+                        <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">IN THE INDUSTRY</p>
                       </div>
-                      <div className="space-y-2 border-r border-gray-100 last:border-0 px-4">
-                        <h3 className="font-heading text-4xl font-bold text-[#E8B430]">
-                          <AnimatedCounter value={25} suffix="K" duration={1500} isVisible={statsVisible} />
-                        </h3>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">SATISFIED USERS</p>
+                      <div className="space-y-1 md:space-y-2 px-2 md:px-4 text-center md:text-left">
+                        <AnimatedCounter
+                          value={25}
+                          suffix="K"
+                          duration={1500}
+                          isVisible={statsVisible}
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8B430] leading-tight"
+                        />
+                        <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">SATISFIED USERS</p>
                       </div>
-                      <div className="space-y-2 pl-4">
-                        <h3 className="font-heading text-4xl font-bold text-[#E8B430]">
-                          <AnimatedCounter value={50} suffix="M" duration={1500} isVisible={statsVisible} />
-                        </h3>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">TOTAL EARNINGS</p>
+                      <div className="space-y-1 md:space-y-2 pl-2 md:pl-4 text-center md:text-left">
+                        <AnimatedCounter
+                          value={50}
+                          suffix="M"
+                          duration={1500}
+                          isVisible={statsVisible}
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8B430] leading-tight"
+                        />
+                        <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">TOTAL EARNINGS</p>
                       </div>
                     </div>
 

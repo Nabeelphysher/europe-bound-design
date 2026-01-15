@@ -1,7 +1,14 @@
-import { useState, useEffect, useRef } from "react";
-import { X, ChevronDown, Check, Plane } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface LeadPopupProps {
   isOpen: boolean;
@@ -43,8 +50,6 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
   }, [initialDestination, isOpen]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const countries = [
     { value: "azerbaijan", label: "Azerbaijan" },
@@ -56,20 +61,6 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
     { value: "uzbekistan", label: "Uzbekistan" },
     { value: "france", label: "France" },
   ];
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,178 +90,137 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop with darker blur for focus */}
+      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-[#050511]/80 backdrop-blur-sm animate-fade-in transition-all duration-500"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in transition-all duration-500"
         onClick={onClose}
       />
 
-      {/* Modal Container */}
-      <div className="relative bg-white w-full max-w-[24rem] rounded-xl shadow-2xl overflow-hidden animate-scale-in flex flex-col">
+      {/* Modal Container - Clean White Card */}
+      <div className="relative bg-white w-full max-w-[26rem] rounded-3xl shadow-2xl p-5 md:p-8 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto custom-scrollbar">
 
-        {/* Premium Header Section */}
-        <div className="relative bg-[#0B1E3F] px-5 pt-5 pb-4 text-center shrink-0 overflow-hidden">
-          {/* Decorative Elements */}
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-80" />
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#D4AF37]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors duration-300 p-2 hover:bg-white/5 rounded-full"
-            aria-label="Close"
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 mb-2 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-            <span className="text-[10px] font-bold tracking-[0.15em] text-[#D4AF37] uppercase">
-              Exclusive Offer
-            </span>
-          </div>
-
-          <h3 className="font-heading text-2xl font-bold text-white mb-1 tracking-wide leading-tight">
-            Plan Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37]">
-              {initialDestination ? `${formatDestination(initialDestination)} Trip` : "Dream Trip"}
-            </span>
-          </h3>
-          <p className="text-white/60 text-sm font-light tracking-wide max-w-[80%] mx-auto">
-            Get a 100% free, {initialDestination ? "customized" : "personalized"} itinerary crafted by our experts.
+        {/* Header - Clean & Simple */}
+        <div className="mb-4 md:mb-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-1">
+            Plan Your {initialDestination ? formatDestination(initialDestination) : "Dream"} Trip
+          </h2>
+          <p className="text-gray-500 text-sm">
+            Get a free customized itinerary.
           </p>
         </div>
 
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-900 transition-colors duration-200 z-10"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
         {/* Form Section */}
-        <div className="p-5 bg-white relative">
-          <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3 md:space-y-5">
+          {/* Full Name */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Full Name
+            </label>
+            <input
+              type="text"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+              placeholder="e.g. Sarah Jenkins"
+            />
+          </div>
 
-            {/* Input Group */}
-            <div className="space-y-2">
-              <div className="group relative">
-                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
-                  placeholder="e.g. Sarah Jenkins"
-                />
-              </div>
+          {/* Email Address */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Email Address
+            </label>
+            <input
+              type="email"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+              placeholder="sarah@example.com"
+            />
+          </div>
 
-              <div className="group relative">
-                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
-                  placeholder="sarah@example.com"
-                />
-              </div>
-
-              <div className="group relative">
-                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-xl text-gray-900 placeholder:text-gray-300 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition-all duration-300 shadow-sm text-sm"
-                  placeholder="+1 (555) 000-0000"
-                />
-              </div>
-
-              <div className="group relative">
-                <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-[#0B1E3F]">
-                  Destination
-                </label>
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    type="button"
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className={cn(
-                      "w-full px-3 py-2 bg-gray-50 border rounded-xl text-left text-sm focus:outline-none transition-all duration-300 shadow-sm flex items-center justify-between",
-                      isDropdownOpen
-                        ? "bg-white border-[#D4AF37] ring-1 ring-[#D4AF37]/50 text-gray-900"
-                        : "border-gray-100 hover:border-gray-200 text-gray-400",
-                      formData.country && !isDropdownOpen && "text-gray-900"
-                    )}
-                  >
-                    <span className="truncate">
-                      {formData.country
-                        ? countries.find(c => c.value === formData.country)?.label
-                        : "Select your destination"}
-                    </span>
-                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isDropdownOpen ? "rotate-180 text-[#D4AF37]" : "text-gray-400")} />
-                  </button>
-
-                  {/* Dropdown Menu */}
-                  {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] max-h-[220px] overflow-y-auto z-50 animate-in fade-in zoom-in-95 duration-200 custom-scrollbar">
-                      <div className="p-1.5">
-                        {countries.map((country) => (
-                          <div
-                            key={country.value}
-                            onClick={() => {
-                              setFormData({ ...formData, country: country.value });
-                              setIsDropdownOpen(false);
-                            }}
-                            className={cn(
-                              "px-3 py-2 rounded-lg text-sm cursor-pointer flex items-center justify-between transition-all duration-200",
-                              formData.country === country.value
-                                ? "bg-[#D4AF37]/10 text-[#0B1E3F] font-semibold"
-                                : "text-gray-600 hover:bg-gray-50 hover:text-[#0B1E3F]"
-                            )}
-                          >
-                            {country.label}
-                            {formData.country === country.value && (
-                              <Check className="w-3.5 h-3.5 text-[#D4AF37]" />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+          {/* Phone & Destination Row? Or Stacked? Reference shows grid. Let's stack for mobile safety or grid if space allows. */}
+          <div className="grid grid-cols-1 gap-3 md:gap-5">
+            {/* Phone Number */}
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+                placeholder="+1 (555) 000-0000"
+              />
             </div>
 
-            {/* Action Button */}
-            <div className="pt-2">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "w-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white font-bold py-3 rounded-xl shadow-[0_10px_20px_-5px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_25px_-5px_rgba(212,175,55,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm tracking-wide uppercase",
-                  isSubmitting && "opacity-80 cursor-not-allowed transform-none"
-                )}
+            {/* Destination Dropdown */}
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Destination
+              </label>
+              <Select
+                value={formData.country}
+                onValueChange={(value) => setFormData({ ...formData, country: value })}
               >
-                {isSubmitting ? (
-                  "Processing Request..."
-                ) : (
-                  <>
-                    <Plane className="w-4 h-4 fill-white/20" />
-                    Get My Free Quote
-                  </>
-                )}
-              </button>
-
-              <div className="mt-2 flex items-center justify-center gap-2 text-[9px] text-gray-400 font-medium tracking-wide">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                Your data is secure & confidential
-              </div>
+                <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                  <SelectValue placeholder="Select Destination" />
+                </SelectTrigger>
+                <SelectContent position="popper" sideOffset={5} className="max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                  {countries.map((country) => (
+                    <SelectItem
+                      key={country.value}
+                      value={country.value}
+                      className="cursor-pointer focus:bg-[#D4AF37]/10 focus:text-[#0B1E3F]"
+                    >
+                      {country.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
-          </form>
-        </div>
+          </div>
+
+          {/* Action Button */}
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={cn(
+                "w-full bg-[#D4AF37] hover:bg-[#B8860B] text-white font-bold py-3 md:py-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/20 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm",
+                isSubmitting && "opacity-80 cursor-not-allowed transform-none"
+              )}
+            >
+              {isSubmitting ? (
+                "Processing..."
+              ) : (
+                "Get My Free Quote"
+              )}
+            </button>
+
+            <div className="mt-3 md:mt-4 flex items-center justify-center">
+              <button
+                type="button"
+                onClick={onClose}
+                className="text-gray-400 hover:text-gray-600 text-xs font-medium transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

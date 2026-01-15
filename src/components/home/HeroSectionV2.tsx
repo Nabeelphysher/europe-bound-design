@@ -1,27 +1,31 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { LeadPopup } from "../ui/LeadPopup";
+import azerbaijanBg from "../../assets/destination-azerbaijan.png";
+import armeniaBg from "../../assets/destination-armenia.png";
+import kyrgyzstanBg from "../../assets/destination-kyrgyzstan.png";
+import kazakhstanBg from "../../assets/destination-kazakhstan.png";
 
 const slides = [
     {
         id: 1,
         title: "AZERBAIJAN",
         subtitle: "Land of Fire",
-        image: "https://images.unsplash.com/photo-1606821262400-362c3f8730b6?q=80&w=2670&auto=format&fit=crop",
+        image: azerbaijanBg,
         cta: "Book Azerbaijan Tour"
     },
     {
         id: 2,
         title: "KAZAKHSTAN",
         subtitle: "Heart of Eurasia",
-        image: "https://images.unsplash.com/photo-1562234035-1a3eb268df21?q=80&w=2670&auto=format&fit=crop",
+        image: kazakhstanBg,
         cta: "Book Kazakhstan Tour"
     },
     {
         id: 3,
         title: "ARMENIA",
         subtitle: "Ancient Highlands",
-        image: "https://images.unsplash.com/photo-1548231223-9366df42490b?q=80&w=2670&auto=format&fit=crop",
+        image: armeniaBg,
         cta: "Book Armenia Tour"
     },
     {
@@ -42,7 +46,7 @@ const slides = [
         id: 6,
         title: "KYRGYZSTAN",
         subtitle: "Nomadic Spirit",
-        image: "https://images.unsplash.com/photo-1555546995-1f99cfa282d0?q=80&w=2670&auto=format&fit=crop",
+        image: kyrgyzstanBg,
         cta: "Book Kyrgyzstan Tour"
     },
     {
@@ -108,8 +112,8 @@ export function HeroSectionV2() {
 
                     {/* Foreground Content - Dynamic */}
                     <div className="relative z-10 flex flex-col items-center w-full mt-[5vw] md:mt-[4vw]" key={slide.id}>
-                        <div className="relative group overflow-hidden">
-                            <span className="font-heading text-6xl md:text-[9rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 tracking-[0.2em] uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] leading-tight block animate-fade-in-up">
+                        <div className="relative group overflow-hidden w-full px-2">
+                            <span className="font-heading text-[13vw] md:text-[9rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 tracking-[0.1em] md:tracking-[0.2em] uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] leading-tight block animate-fade-in-up break-words w-full text-center">
                                 {slide.title}
                             </span>
                         </div>
@@ -118,7 +122,7 @@ export function HeroSectionV2() {
                         <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#ffd700] to-transparent my-4 md:my-8 animate-scale-in" />
 
                         {/* Subtitle */}
-                        <p className="font-heading italic text-xl md:text-3xl text-[#EAD083] font-light tracking-widest drop-shadow-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                        <p className="font-heading italic text-lg md:text-3xl text-[#EAD083] font-light tracking-widest drop-shadow-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                             {slide.subtitle}
                         </p>
                     </div>
@@ -128,12 +132,12 @@ export function HeroSectionV2() {
                 <div className="mt-4 md:mt-8 animate-fade-in-up" key={`btn-${slide.id}`} style={{ animationDelay: '0.4s' }}>
                     <button
                         onClick={() => setIsLeadPopupOpen(true)}
-                        className="group relative inline-flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:bg-white hover:text-[#0B1E3F] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95"
+                        className="group relative inline-flex items-center gap-3 md:gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 md:px-10 md:py-5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:bg-white hover:text-[#0B1E3F] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95"
                     >
-                        <span className="font-medium text-lg tracking-widest relative z-10">{slide.cta}</span>
+                        <span className="font-medium text-sm md:text-lg tracking-widest relative z-10">{slide.cta}</span>
 
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#0B1E3F] group-hover:text-white transition-colors duration-300 relative z-10">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-45 transition-transform duration-300">
+                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#0B1E3F] group-hover:text-white transition-colors duration-300 relative z-10">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-45 transition-transform duration-300 md:w-[14px] md:h-[14px]">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
                                 <polyline points="7 7 17 7 17 17"></polyline>
                             </svg>
