@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { LeadPopup } from "../ui/LeadPopup";
-import azerbaijanBg from "../../assets/destination-azerbaijan.png";
-import armeniaBg from "../../assets/destination-armenia.png";
-import kyrgyzstanBg from "../../assets/destination-kyrgyzstan.png";
-import kazakhstanBg from "../../assets/destination-kazakhstan.png";
+import azerbaijanBg from "../../assets/a3.png";
+import armeniaBg from "../../assets/a4.png";
+import kyrgyzstanBg from "../../assets/a1.png";
+import kazakhstanBg from "../../assets/a2 (1).png";
 
 const slides = [
     {
@@ -77,6 +77,7 @@ export function HeroSectionV2() {
 
     const slide = slides[currentSlide];
     const [isLeadPopupOpen, setIsLeadPopupOpen] = useState(false);
+    const [popupDestination, setPopupDestination] = useState("");
 
     return (
         <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#050511]">
@@ -113,7 +114,7 @@ export function HeroSectionV2() {
                     {/* Foreground Content - Dynamic */}
                     <div className="relative z-10 flex flex-col items-center w-full mt-[5vw] md:mt-[4vw]" key={slide.id}>
                         <div className="relative group overflow-hidden w-full px-2">
-                            <span className="font-heading text-[13vw] md:text-[9rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 tracking-[0.1em] md:tracking-[0.2em] uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] leading-tight block animate-fade-in-up break-words w-full text-center">
+                            <span className="font-heading text-[9vw] sm:text-[10vw] md:text-[7rem] lg:text-[9rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 tracking-tight md:tracking-widest uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)] leading-tight block animate-fade-in-up whitespace-nowrap w-full text-center">
                                 {slide.title}
                             </span>
                         </div>
@@ -131,7 +132,10 @@ export function HeroSectionV2() {
                 {/* Premium Glass CTA Button */}
                 <div className="mt-4 md:mt-8 animate-fade-in-up" key={`btn-${slide.id}`} style={{ animationDelay: '0.4s' }}>
                     <button
-                        onClick={() => setIsLeadPopupOpen(true)}
+                        onClick={() => {
+                            setPopupDestination(slide.title);
+                            setIsLeadPopupOpen(true);
+                        }}
                         className="group relative inline-flex items-center gap-3 md:gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 md:px-10 md:py-5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:bg-white hover:text-[#0B1E3F] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95"
                     >
                         <span className="font-medium text-sm md:text-lg tracking-widest relative z-10">{slide.cta}</span>
@@ -149,7 +153,7 @@ export function HeroSectionV2() {
             <LeadPopup
                 isOpen={isLeadPopupOpen}
                 onClose={() => setIsLeadPopupOpen(false)}
-                initialDestination={slide.title}
+                initialDestination={popupDestination}
             />
         </section>
     );

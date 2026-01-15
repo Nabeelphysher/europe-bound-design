@@ -5,7 +5,7 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import {
     ArrowRight, CheckCircle2, Globe, Award,
-    User, Mail, Phone, Clock, Wallet, ShieldCheck
+    User, Mail, Phone, Clock, Wallet, ShieldCheck, Star, Quote
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
@@ -27,15 +27,15 @@ import germanyImg from "@/assets/destination-germany.jpg";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import polandImg from "@/assets/destination-poland.jpg";
 import czechImg from "@/assets/destination-czech.jpg";
-import franceImg from "@/assets/destination-france.jpg";
+import franceImg from "@/assets/france.jpg";
 import romaniaImg from "@/assets/destination-romania.jpg";
-import azerbaijanImg from "@/assets/destination-azerbaijan.png";
-import kazakhstanImg from "@/assets/destination-kazakhstan.png";
-import armeniaImg from "@/assets/destination-armenia.png";
+import azerbaijanImg from "@/assets/a3.png";
+import kazakhstanImg from "@/assets/a2 (1).png";
+import armeniaImg from "@/assets/a4.png";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
-import kyrgyzstanImg from "@/assets/destination-kyrgyzstan.png";
-import uzbekistanImg from "@/assets/destination-uzbekistan.png";
+import kyrgyzstanImg from "@/assets/a1.png";
+import uzbekistanImg from "@/assets/uzbekistan.jpg";
 
 interface CountryData {
     title: string;
@@ -93,6 +93,48 @@ const countryData: Record<string, CountryData> = {
             { question: "Best time to visit?", answer: "Summer (Jun-Aug) or December for markets." },
             { question: "Visa included?", answer: "We provide assistance, fees separate." },
             { question: "Vegetarian food?", answer: "Yes, available everywhere." }
+        ]
+    },
+    france: {
+        title: "France Heritage & Romance",
+        name: "France",
+        tagline: "Art, Culture & Cuisine",
+        image: franceImg,
+        description: "Experience the romance of Paris, the history of Normandy, and the charm of the French Riviera. From the Eiffel Tower to the lavender fields of Provence, immerse yourself in art, fashion, and world-renowned cuisine.",
+        stats: { price: "€1,250", duration: "6 Days", visa: "Schengen Visa" },
+        whyChoose: [
+            { title: "Eiffel Tower Visit", description: "Iconic landmark of Paris." },
+            { title: "Louvre Museum", description: "Home to the Mona Lisa." },
+            { title: "Palace of Versailles", description: "Royal opulence and gardens." },
+            { title: "Seine River Cruise", description: "Romantic evening boat ride." },
+            { title: "French Cuisine", description: "Gourmet dining experiences." },
+            { title: "Riviera Beaches", description: "Sun and style in the south." }
+        ],
+        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds Proof"],
+        benefits: [
+            { title: "Central Hotels", description: "Stay near major attractions." },
+            { title: "Daily Breakfast", description: "Croissants and coffee included." },
+            { title: "Museum Passes", description: "Skip-the-line entry." },
+            { title: "Private Transfers", description: "Comfortable travel." },
+            { title: "English Guide", description: "Expert local knowledge." },
+            { title: "City Tours", description: "Guided walks in Paris." }
+        ],
+        process: [
+            { step: 1, title: "Inquire", description: "Select dates." },
+            { step: 2, title: "Plan", description: "Customize itinerary." },
+            { step: 3, title: "Book", description: "Secure spot." },
+            { step: 4, title: "Visa", description: "Application support." },
+            { step: 5, title: "Fly", description: "Arrive in Paris." },
+            { step: 6, title: "Enjoy", description: "Bon voyage!" }
+        ],
+        testimonials: [
+            { name: "Sophie M.", role: "Couple", content: "Paris was a dream come true.", location: "Paris" },
+            { name: "James L.", role: "History Buff", content: "Versailles is breathtaking.", location: "Versailles" }
+        ],
+        faqs: [
+            { question: "Best time to visit?", answer: "Spring (Apr-Jun) and Fall (Sep-Nov)." },
+            { question: "Visa required?", answer: "Schengen visa for non-EU citizens." },
+            { question: "Language?", answer: "French, but English is widely spoken in tourist areas." }
         ]
     },
     poland: {
@@ -458,7 +500,7 @@ const CountryPage = () => {
             <Header />
             <main>
                 {/* --- 1. Immersive Hero Section (Banner) --- */}
-                <section className="relative h-[85vh] min-h-[600px] flex items-end justify-center overflow-hidden">
+                <section className="relative h-[60vh] md:h-[85vh] min-h-[500px] md:min-h-[600px] flex items-end justify-center overflow-hidden">
                     {/* Background Image with optimized scale annimation */}
                     <div className="absolute inset-0 z-0 select-none">
                         <img
@@ -477,36 +519,36 @@ const CountryPage = () => {
                             {/* Animated Eyebrow */}
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 animate-fade-in-up">
                                 <Globe className="w-4 h-4 text-gold" />
-                                <span className="text-xs font-bold tracking-[0.2em] uppercase">{data.tagline}</span>
+                                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">{data.tagline}</span>
                             </div>
 
                             {/* Main Title */}
-                            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight animate-fade-in-up animation-delay-100 drop-shadow-2xl">
+                            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up animation-delay-100 drop-shadow-2xl px-2 max-w-[95%] mx-auto">
                                 {data.title}
                             </h1>
 
-                            {/* Key Stats Bar - Glassmorphic */}
-                            <div className="inline-flex flex-wrap justify-center items-center gap-8 sm:gap-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-full py-4 px-10 mt-10 animate-fade-in-up animation-delay-200 shadow-2xl hover:bg-black/50 transition-all duration-500">
+                            {/* Key Stats Bar - Compact Mobile */}
+                            <div className="inline-flex flex-row flex-wrap justify-center items-center gap-4 sm:gap-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-[2rem] md:rounded-full py-4 px-6 md:px-10 mt-6 md:mt-10 animate-fade-in-up animation-delay-200 shadow-2xl hover:bg-black/50 transition-all duration-500 max-w-full">
 
-                                <div className="flex items-center gap-4 text-left group">
-                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
-                                        <Clock className="w-5 h-5" />
+                                <div className="flex items-center gap-3 md:gap-4 text-left group min-w-[120px]">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300 shrink-0">
+                                        <Clock className="w-4 h-4 md:w-5 md:h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Duration</p>
-                                        <p className="text-white font-bold text-lg">{data.stats.duration}</p>
+                                        <p className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Duration</p>
+                                        <p className="text-white font-bold text-sm md:text-lg whitespace-nowrap">{data.stats.duration}</p>
                                     </div>
                                 </div>
 
-                                <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden sm:block" />
+                                <div className="w-px h-8 md:h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden sm:block" />
 
-                                <div className="flex items-center gap-4 text-left group">
-                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
-                                        <ShieldCheck className="w-5 h-5" />
+                                <div className="flex items-center gap-3 md:gap-4 text-left group min-w-[120px]">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shrink-0">
+                                        <ShieldCheck className="w-4 h-4 md:w-5 md:h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Visa Type</p>
-                                        <p className="text-white font-bold text-lg">{data.stats.visa}</p>
+                                        <p className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Visa Type</p>
+                                        <p className="text-white font-bold text-sm md:text-lg whitespace-nowrap">{data.stats.visa}</p>
                                     </div>
                                 </div>
 
@@ -520,55 +562,76 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 2. Overview & Why Choose (Why choose this country) --- */}
-                <section className="py-24 md:py-32 bg-white relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                {/* --- 2. Overview & Why Choose (Why choose this country) - Premium Redesign --- */}
+                <section className="py-10 md:py-20 bg-white relative overflow-hidden">
+                    {/* Background Texture */}
+                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.4]" />
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50/50 to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                     <div className="container-wide relative z-10 px-4 sm:px-6">
                         <RevealOnScroll animation="fade-up">
                             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
                                 {/* Content Column */}
-                                <div className="order-2 lg:order-1">
-                                    <span className="inline-block py-1.5 px-4 rounded-full bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest mb-6 border border-gold/20">
-                                        Tour Overview
-                                    </span>
+                                <div className="order-2 lg:order-1 relative">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mb-6">
+                                        <Globe className="w-3.5 h-3.5" />
+                                        <span className="text-xs font-bold uppercase tracking-widest">Tour Overview</span>
+                                    </div>
+
                                     <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-primary leading-[1.1]">
-                                        Explore the Best of <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-orange-400">{data.name}</span>
+                                        Experience the <br />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-600 italic">Unforgettable</span> in {data.name}
                                     </h2>
-                                    <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl">
+
+                                    <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl border-l-2 border-gold/30 pl-6">
                                         {data.description}
                                     </p>
 
                                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                                        <a href="#inquire" className="btn-primary shadow-xl shadow-primary/20 bg-[#0B1120] hover:bg-[#151e32] text-white px-8 py-4 rounded-xl text-lg transition-all hover:scale-105">
-                                            Check Availability
+                                        {/* Premium Button Match */}
+                                        <a
+                                            href="#booking-form"
+                                            className="group relative px-8 py-4 bg-[#0B1E3F] text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
+                                        >
+                                            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                                            <span className="font-bold relative z-10">Check Availability</span>
+                                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10 text-gold" />
                                         </a>
-                                        <div className="flex items-center gap-2 text-sm font-medium text-emerald-600 bg-emerald-50 px-4 py-2 rounded-lg border border-emerald-100">
-                                            <CheckCircle2 className="w-4 h-4 fill-current" />
-                                            <span>Best Price Guarantee • Verified Tours</span>
+
+                                        <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+                                            <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                <CheckCircle2 className="w-4 h-4" />
+                                            </div>
+                                            <span className="max-w-[150px] leading-tight">Best Price Guarantee & Verified Tours</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Cards Grid */}
+                                {/* Cards Grid - Elegant Layout */}
                                 <div className="order-1 lg:order-2 grid sm:grid-cols-2 gap-5">
                                     {data.whyChoose.slice(0, 4).map((reason, i) => (
                                         <div
                                             key={i}
-                                            className={`group p-6 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between h-full
-                                                ${i % 3 === 0 ? 'bg-slate-50 border-slate-100' : 'bg-white border-gray-100'}
+                                            className={`group p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] flex flex-col justify-between h-full relative overflow-hidden
+                                                ${i === 1 || i === 2 ? 'bg-[#0B1E3F] text-white border-transparent' : 'bg-white border-gray-100 hover:border-gold/30'}
+                                                ${i === 1 ? 'sm:translate-y-8' : ''}
+                                                ${i === 2 ? 'sm:-translate-y-8' : ''}
                                             `}
                                         >
-                                            <div className="mb-4">
-                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors
-                                                    ${i % 3 === 0 ? 'bg-white text-gold shadow-sm' : 'bg-primary/5 text-primary'}
+                                            {/* Decorative Corner for dark cards */}
+                                            {(i === 1 || i === 2) && (
+                                                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent rounded-bl-[4rem] pointer-events-none" />
+                                            )}
+
+                                            <div className="mb-4 relative z-10">
+                                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 shadow-sm
+                                                    ${i === 1 || i === 2 ? 'bg-white/10 text-gold backdrop-blur-sm' : 'bg-gold/10 text-gold'}
                                                 `}>
-                                                    <CheckCircle2 className="w-6 h-6" />
+                                                    <Award className="w-7 h-7" />
                                                 </div>
-                                                <h3 className="font-bold text-lg mb-2 text-primary">{reason.title}</h3>
-                                                <p className="text-sm text-muted-foreground line-clamp-2">
+                                                <h3 className={`font-heading text-xl font-bold mb-3 ${i === 1 || i === 2 ? 'text-white' : 'text-primary'}`}>{reason.title}</h3>
+                                                <p className={`text-sm leading-relaxed ${i === 1 || i === 2 ? 'text-white/70' : 'text-muted-foreground'}`}>
                                                     {reason.description}
                                                 </p>
                                             </div>
@@ -582,7 +645,7 @@ const CountryPage = () => {
                 </section>
 
                 {/* --- 3. Eligibility (Travel Requirements) --- */}
-                <section className="py-24 bg-slate-50/50">
+                <section className="py-10 md:py-16 bg-slate-50/50">
                     <div className="container-wide px-4 sm:px-6">
                         <RevealOnScroll animation="fade-up" delay={100}>
                             <div className="max-w-7xl mx-auto bg-white rounded-[3rem] shadow-xl border border-gray-100 p-8 md:p-12 lg:p-16 relative overflow-hidden">
@@ -602,15 +665,27 @@ const CountryPage = () => {
                                             Ensure a smooth journey by preparing these necessary documents for {data.title}.
                                             Our team provides full visa assistance and guidance.
                                         </p>
-                                        <div className="flex flex-col sm:flex-row gap-4">
-                                            <a href="#inquire" className="btn-primary shadow-lg shadow-primary/20">
-                                                Start Booking
+                                        <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                                            {/* Primary Action - Premium Dark with Shine */}
+                                            <a
+                                                href="#booking-form"
+                                                className="group relative px-8 py-4 bg-[#0B1E3F] text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
+                                            >
+                                                {/* Shine Effect */}
+                                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                                                <span className="font-bold relative z-10">Start Booking</span>
+                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10 text-gold" />
                                             </a>
+
+                                            {/* Secondary Action - Elegant Outline */}
                                             <Link
                                                 to="/contact"
-                                                className="px-8 py-4 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 text-center"
+                                                className="group px-8 py-4 bg-white border border-gray-200 text-[#0B1E3F] rounded-xl font-bold hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:shadow-md w-full sm:w-auto text-center"
                                             >
-                                                Talk to an Expert
+                                                <span>Talk to an Expert</span>
+                                                <div className="hidden xs:flex w-8 h-8 rounded-full bg-gray-100 items-center justify-center group-hover:bg-gold group-hover:text-white transition-colors duration-300">
+                                                    <Phone className="w-4 h-4" />
+                                                </div>
                                             </Link>
                                         </div>
                                     </div>
@@ -634,41 +709,60 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 4. Process Timeline (Process) --- */}
-                <section className="py-24 bg-[#FDFCF8] relative overflow-hidden">
-                    {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#bca876_1px,transparent_1px)] [background-size:20px_20px]" />
+                {/* --- 4. Process Timeline (Process) - Premium Redesign --- */}
+                <section className="py-24 md:py-32 bg-[#FDFCF8] relative overflow-hidden">
+                    {/* Background Elements */}
+                    <div className="absolute inset-0 bg-[radial-gradient(#E8B430_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.05]" />
+                    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+                    <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
                     <div className="container-wide px-4 sm:px-6 relative z-10">
-                        <RevealOnScroll animation="fade-up" delay={100}>
-                            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                        <RevealOnScroll animation="fade-up">
+                            <div className="text-center md:text-left mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-6">
                                 <div>
-                                    <span className="text-gold font-bold text-sm uppercase tracking-widest mb-3 block">Itinerary / Process</span>
-                                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary">Booking & Travel</h2>
+                                    <div className="flex items-center gap-2 justify-center md:justify-start mb-4">
+                                        <span className="h-px w-8 bg-gold" />
+                                        <span className="text-gold font-bold text-xs uppercase tracking-[0.2em]">The Journey</span>
+                                    </div>
+                                    <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+                                        Seamless <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Booking</span> Process
+                                    </h2>
                                 </div>
-                                <p className="text-muted-foreground max-w-md text-right md:text-left leading-relaxed">
-                                    A simple, transparent process to get you from planning to exploring {data.name}.
+                                <p className="text-muted-foreground text-lg max-w-md text-center md:text-left leading-relaxed">
+                                    From your first click to your flight home, we’ve orchestrated every detail for effortless luxury.
                                 </p>
                             </div>
 
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                            <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {/* Connecting Line (Desktop) */}
+                                <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-gray-100 via-gold/30 to-gray-100 -z-10" />
+
                                 {data.process.map((step, i) => (
                                     <div
                                         key={i}
-                                        className="group relative bg-white p-8 rounded-3xl border border-gray-100 hover:border-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                        className="group relative bg-white p-8 md:p-10 rounded-[2rem] border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(232,180,48,0.15)] hover:border-gold/30 transition-all duration-500 flex flex-col items-center md:items-start text-center md:text-left"
                                     >
-                                        {/* Number Badge */}
-                                        <div className="absolute -top-6 left-8 w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg shadow-primary/20 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                                            {step.step}
+                                        {/* Step Number - Stylish & Large */}
+                                        <div className="mb-6 relative">
+                                            <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center font-heading text-2xl font-bold relative z-10 group-hover:bg-gold transition-colors duration-500 shadow-xl shadow-primary/10 group-hover:shadow-gold/20">
+                                                0{step.step}
+                                            </div>
+                                            {/* Decorative Ring */}
+                                            <div className="absolute -inset-2 border border-gray-100 rounded-[1.2rem] -z-0 scale-90 group-hover:scale-100 transition-transform duration-500" />
                                         </div>
 
-                                        <div className="mt-6">
-                                            <h3 className="font-heading text-2xl font-bold text-primary mb-3 group-hover:text-gold transition-colors">{step.title}</h3>
-                                            <p className="text-gray-500 leading-relaxed font-medium">{step.description}</p>
-                                        </div>
+                                        <h3 className="font-heading text-2xl font-bold text-primary mb-3 group-hover:text-gold transition-colors duration-300">
+                                            {step.title}
+                                        </h3>
 
-                                        {/* Subtle decorative corner */}
-                                        <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-gray-50 to-transparent rounded-br-3xl -z-10 group-hover:from-gold/5 transition-colors" />
+                                        <div className="w-12 h-1 bg-gray-100 rounded-full mb-4 group-hover:bg-gold/50 group-hover:w-20 transition-all duration-500" />
+
+                                        <p className="text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors">
+                                            {step.description}
+                                        </p>
+
+                                        {/* Hover Gradient Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] pointer-events-none" />
                                     </div>
                                 ))}
                             </div>
@@ -712,31 +806,74 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 5. Testimonials --- */}
-                <section className="py-24 bg-background">
+                {/* --- 5. Testimonials - Premium Redesign --- */}
+                <section className="py-24 md:py-32 bg-[#FAFAFA] relative overflow-hidden">
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2" />
+
                     <RevealOnScroll animation="fade-in">
-                        <div className="container-wide px-4 sm:px-6 text-center mb-16">
-                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Traveler Stories</h2>
-                            <p className="text-muted-foreground max-w-2xl mx-auto">
-                                Hear from those who have explored {data.name} with us.
-                            </p>
-                        </div>
-                        <div className="container-wide px-4 sm:px-6 grid md:grid-cols-2 gap-8">
-                            {data.testimonials.map((t, i) => (
-                                <div key={i} className="bg-secondary/10 p-8 rounded-3xl relative">
-                                    <span className="text-6xl text-gold/20 font-serif absolute top-4 left-6">“</span>
-                                    <p className="text-lg text-foreground italic mb-6 relative z-10">"{t.content}"</p>
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                                            {t.name[0]}
+                        <div className="container-wide px-4 sm:px-6 relative z-10">
+                            <div className="text-center mb-16 md:mb-24">
+                                <span className="inline-block py-1 px-4 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-4 border border-blue-100">
+                                    Community
+                                </span>
+                                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
+                                    Traveler <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Stories</span>
+                                </h2>
+                                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                                    Real experiences from those who have explored {data.name} with Europe Bound.
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                                {data.testimonials.map((t, i) => (
+                                    <div
+                                        key={i}
+                                        className="group relative bg-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-gold/30 hover:shadow-[0_20px_60px_-15px_rgba(232,180,48,0.1)] transition-all duration-500 hover:-translate-y-1"
+                                    >
+                                        {/* Quote Icon */}
+                                        <div className="absolute top-8 right-8 text-gold/20 group-hover:text-gold/40 transition-colors duration-500">
+                                            <Quote className="w-12 h-12 rotate-180 fill-current" />
                                         </div>
-                                        <div className="text-left">
-                                            <h4 className="font-bold text-foreground">{t.name}</h4>
-                                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{t.role} • {t.location}</p>
+
+                                        {/* Stars */}
+                                        <div className="flex gap-1 mb-6">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-5 h-5 text-gold fill-gold" />
+                                            ))}
+                                        </div>
+
+                                        {/* Content */}
+                                        <p className="text-xl md:text-2xl text-gray-700 italic font-serif leading-relaxed mb-8 relative z-10">
+                                            "{t.content}"
+                                        </p>
+
+                                        {/* Divider */}
+                                        <div className="w-full h-px bg-gray-100 mb-8 group-hover:bg-gold/20 transition-colors duration-500" />
+
+                                        {/* Author */}
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 p-[2px] shadow-inner">
+                                                <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-primary font-bold text-xl">
+                                                    {t.name[0]}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-primary text-lg">{t.name}</h4>
+                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                    <span>{t.role}</span>
+                                                    <span className="w-1 h-1 rounded-full bg-gray-300" />
+                                                    <span className="text-gold font-medium uppercase text-xs tracking-wider border border-gold/20 px-2 py-0.5 rounded-full bg-gold/5">
+                                                        Verified Trip
+                                                    </span>
+                                                </div>
+                                                <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">{t.location}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </RevealOnScroll>
                 </section>

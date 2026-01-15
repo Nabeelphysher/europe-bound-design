@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 // Import images
-import azerbaijanImg from "@/assets/destination-azerbaijan.png";
-import kazakhstanImg from "@/assets/destination-kazakhstan.png";
-import armeniaImg from "@/assets/destination-armenia.png";
+import azerbaijanImg from "@/assets/a3.png";
+import kazakhstanImg from "@/assets/a2 (1).png";
+import armeniaImg from "@/assets/a4.png";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
-import kyrgyzstanImg from "@/assets/destination-kyrgyzstan.png";
-import uzbekistanImg from "@/assets/destination-uzbekistan.png";
-import franceImg from "@/assets/destination-france.jpg";
+import kyrgyzstanImg from "@/assets/a1.png";
+import uzbekistanImg from "@/assets/uzbekistan.jpg";
+import franceImg from "@/assets/france.jpg";
 
 const destinations = [
     {
@@ -113,7 +113,7 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                             <img
                                 src={dest.image}
                                 alt={dest.name}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out-expo scale-100 group-hover:scale-110 will-change-transform opacity-90 group-hover:opacity-100"
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out-expo scale-[1.01] group-hover:scale-110 will-change-transform opacity-90 group-hover:opacity-100"
                             />
 
                             {/* Gradient Overlay - Cinematic Bottom Fade */}

@@ -1,8 +1,8 @@
 import germanyImg from "@/assets/destination-germany.jpg";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
-import kazakhstanImg from "@/assets/destination-kazakhstan.png";
-import armeniaImg from "@/assets/destination-armenia.png";
+import kazakhstanImg from "@/assets/a2 (1).png";
+import armeniaImg from "@/assets/a4.png";
 import franceImg from "@/assets/destination-france.jpg";
 
 export const news = [

@@ -97,7 +97,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
       />
 
       {/* Modal Container - Clean White Card */}
-      <div className="relative bg-white w-full max-w-[26rem] rounded-3xl shadow-2xl p-5 md:p-8 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto custom-scrollbar">
+      <div className="relative bg-white w-full max-w-[26rem] rounded-3xl shadow-2xl p-5 md:p-6 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
 
         {/* Header - Clean & Simple */}
         <div className="mb-4 md:mb-6">
