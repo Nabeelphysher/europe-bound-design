@@ -54,7 +54,7 @@ const Services = () => {
           <div className="container-wide px-4 relative z-10">
             <RevealOnScroll animation="fade-up">
               <div className="text-center max-w-2xl mx-auto mb-16">
-                <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#E8B430] block mb-2">Complete Support</span>
+                <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#FF6B00] block mb-2">Complete Support</span>
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-[black] mb-4">Additional Services</h2>
                 <p className="text-muted-foreground">Beyond the package, we offer specific services to smooth your transition.</p>
               </div>

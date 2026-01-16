@@ -120,10 +120,10 @@ export function HeroSectionV2() {
                         </div>
 
                         {/* Gold Divider */}
-                        <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#ffd700] to-transparent my-4 md:my-8 animate-scale-in" />
+                        <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#FF6B00] to-transparent my-4 md:my-8 animate-scale-in" />
 
                         {/* Subtitle */}
-                        <p className="font-heading italic text-lg md:text-3xl text-[#EAD083] font-light tracking-widest drop-shadow-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                        <p className="font-heading italic text-lg md:text-3xl text-white font-light tracking-widest drop-shadow-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                             {slide.subtitle}
                         </p>
                     </div>

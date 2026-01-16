@@ -72,7 +72,7 @@ export function WhyChooseUs() {
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#0F172A] mb-4 leading-tight tracking-tight animate-fade-in-up text-shadow-premium">
             Why Travelers Choose
           </h2>
-          <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#EAB308] block mb-8 animate-fade-in-up animation-delay-100 text-shadow-premium">
+          <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#FF6B00] block mb-8 animate-fade-in-up animation-delay-100 text-shadow-premium">
             Europe Calling
           </span>
 

@@ -97,7 +97,7 @@ const About = () => {
         {/* Founder's Note Section - Premium Redesign */}
         <section className="py-12 lg:py-32 relative overflow-hidden bg-[#FAFAFA]">
           {/* Decorative Background Elements - Premium & Subtle */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#E8B430]/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#FF6B00]/5 via-transparent to-transparent pointer-events-none" />
           <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-[#0B1E3F]/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="container px-4 sm:px-6 relative z-10">
@@ -108,15 +108,15 @@ const About = () => {
                 <RevealOnScroll animation="slide-in-left">
                   <div className="space-y-4 relative">
                     <div className="flex items-center gap-4 mb-6">
-                      <span className="h-[1px] w-12 bg-[#E8B430]"></span>
-                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-[#E8B430] uppercase">
+                      <span className="h-[1px] w-12 bg-[#FF6B00]"></span>
+                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-[#FF6B00] uppercase">
                         Welcome to Europe Bound
                       </p>
                     </div>
 
                     <h2 className="font-heading text-5xl lg:text-[4rem] font-bold text-[#0B1E3F] leading-[1.1] tracking-tight">
                       Hi, I'm <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E8B430] to-[#B48811]">Najath Sharafudeen</span>
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#FF6B00]">Najath Sharafudeen</span>
                     </h2>
                     <p className="font-serif italic text-2xl text-[#0B1E3F]/60 font-light mt-2">
                       Founder of Europe Calling.
@@ -124,8 +124,8 @@ const About = () => {
                   </div>
 
                   <div className="relative pt-8 group">
-                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-[#E8B430]/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
-                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-[#E8B430]/30">
+                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-[#FF6B00]/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
+                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-[#FF6B00]/30">
                       "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
                     </p>
                   </div>
@@ -146,7 +146,7 @@ const About = () => {
                           className="group relative w-14 h-14 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(232,180,48,0.15)] transition-all duration-500 overflow-hidden"
                           aria-label={label}
                         >
-                          <div className="absolute inset-0 bg-[#E8B430] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                          <div className="absolute inset-0 bg-[#FF6B00] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                           <Icon className="w-5 h-5 text-gray-600 group-hover:text-white relative z-10 transition-colors duration-500" strokeWidth={1.5} />
                         </a>
                       ))}
@@ -194,10 +194,10 @@ const About = () => {
 
                       {/* Geometric Decoration */}
                       <div className="absolute -top-8 -left-8 -z-10">
-                        <div className="w-32 h-32 border-2 border-[#E8B430]/20 rounded-full"></div>
+                        <div className="w-32 h-32 border-2 border-[#FF6B00]/20 rounded-full"></div>
                       </div>
                       <div className="absolute -bottom-8 -left-4 -z-10">
-                        <div className="w-24 h-24 bg-[#E8B430]/5 rounded-full blur-2xl"></div>
+                        <div className="w-24 h-24 bg-[#FF6B00]/5 rounded-full blur-2xl"></div>
                       </div>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ const About = () => {
                 <RevealOnScroll animation="slide-in-right" className="w-full relative h-full flex items-center justify-center">
 
                   {/* Decorative Background Blur */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#E8B430]/10 rounded-full blur-[60px] -z-10" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#FF6B00]/10 rounded-full blur-[60px] -z-10" />
 
                   {/* Main Person Image */}
                   <div className="relative w-[85%] max-w-[500px] aspect-[4/5] z-10 mx-auto">
@@ -244,10 +244,10 @@ const About = () => {
                     {/* Floating Quote Card (Bottom Left) */}
                     <div className="absolute bottom-10 -left-6 md:-left-16 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] max-w-[280px] z-20 border border-gray-50 hidden sm:block">
                       <div className="flex items-center gap-3 mb-4">
-                        <img src={founderImage} alt="Najath Sharafudeen" className="w-12 h-12 rounded-full object-cover border-2 border-[#E8B430]/20" />
+                        <img src={founderImage} alt="Najath Sharafudeen" className="w-12 h-12 rounded-full object-cover border-2 border-[#FF6B00]/20" />
                         <div>
                           <h4 className="text-sm font-extrabold text-[#0B1E3F]">Najath Sharafudeen</h4>
-                          <p className="text-[10px] text-[#E8B430] font-bold uppercase tracking-wider">FOUNDER</p>
+                          <p className="text-[10px] text-[#FF6B00] font-bold uppercase tracking-wider">FOUNDER</p>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500 italic leading-relaxed font-medium">
@@ -295,7 +295,7 @@ const About = () => {
                           suffix="K"
                           duration={1500}
                           isVisible={statsVisible}
-                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8B430] leading-tight"
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF6B00] leading-tight"
                         />
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">SATISFIED USERS</p>
                       </div>
@@ -305,7 +305,7 @@ const About = () => {
                           suffix="M"
                           duration={1500}
                           isVisible={statsVisible}
-                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#E8B430] leading-tight"
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF6B00] leading-tight"
                         />
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">TOTAL EARNINGS</p>
                       </div>
@@ -336,7 +336,7 @@ const About = () => {
           <div className="container-wide relative z-10">
             <RevealOnScroll animation="fade-up">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#E8B430] block mb-2">
+                <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#FF6B00] block mb-2">
                   Our Values
                 </span>
                 <h2 className="font-heading text-[48px] font-bold text-[black] mb-6">Driven by Purpose</h2>
@@ -581,7 +581,7 @@ const About = () => {
             <RevealOnScroll animation="fade-up">
               <div className="text-center mb-24 relative">
                 {/* Decorative Element */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#E8B430]/10 rounded-full blur-3xl -z-10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FF6B00]/10 rounded-full blur-3xl -z-10" />
 
                 <h2 className="font-heading text-5xl md:text-7xl font-bold text-[#0B1E3F] mb-6 tracking-tight drop-shadow-sm">
                   A wholesome team that <br className="hidden md:block" /> stands for success!

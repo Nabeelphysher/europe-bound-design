@@ -53,54 +53,13 @@ interface CountryData {
 }
 
 const countryData: Record<string, CountryData> = {
-    germany: {
-        title: "Germany Heritage Tour",
-        name: "Germany",
-        tagline: "Experience the Heart of Europe",
-        image: germanyImg,
-        description: "Explore medieval castles, vibrant cities, and the scenic Rhine Valley. From the history of Berlin to the festivities of Munich, discover Germany's rich culture.",
-        stats: { price: "€1,200", duration: "7 Days", visa: "Schengen Visa" },
-        whyChoose: [
-            { title: "Neuschwanstein Castle visit", description: "Experience the fairytale architecture." },
-            { title: "Berlin historic tour", description: "Walk through history in the capital." },
-            { title: "Rhine River cruise", description: "Relax on scenic river waters." },
-            { title: "Black Forest excursion", description: "Discover nature's untouched beauty." },
-            { title: "Oktoberfest vibes", description: "Celebrate culture and tradition." },
-            { title: "Premium transport", description: "Travel in comfort and style." }
-        ],
-        eligibility: ["Valid Passport (6mo+)", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds Proof"],
-        benefits: [
-            { title: "Guided City Tours", description: "Explore locally with experts." },
-            { title: "4-Star Accommodation", description: "Premium comfort included." },
-            { title: "Breakfast Daily", description: "Start your day right." },
-            { title: "Inter-city Transfers", description: "Travel between cities with ease." },
-            { title: "Museum Entries", description: "All entry tickets covered." },
-            { title: "English Speaking Guide", description: "Full assistance throughout the trip." }
-        ],
-        process: [
-            { step: 1, title: "Inquire", description: "Select your travel dates." },
-            { step: 2, title: "Customize", description: "Choose add-ons." },
-            { step: 3, title: "Book", description: "Pay deposit." },
-            { step: 4, title: "Visa", description: "Submit documents." },
-            { step: 5, title: "Briefing", description: "Pre-departure guide." },
-            { step: 6, title: "Fly", description: "Arrive in Berlin." }
-        ],
-        testimonials: [
-            { name: "Rahul S.", role: "Tourist", content: "The castle tour was magical. Perfectly organized.", location: "Berlin" },
-            { name: "Anita K.", role: "Traveler", content: "Loved the food and culture. Great guide.", location: "Munich" }
-        ],
-        faqs: [
-            { question: "Best time to visit?", answer: "Summer (Jun-Aug) or December for markets." },
-            { question: "Visa included?", answer: "We provide assistance, fees separate." },
-            { question: "Vegetarian food?", answer: "Yes, available everywhere." }
-        ]
-    },
+
     france: {
         title: "France Heritage & Romance",
         name: "France",
         tagline: "Art, Culture & Cuisine",
         image: franceImg,
-        description: "Experience the romance of Paris, the history of Normandy, and the charm of the French Riviera. From the Eiffel Tower to the lavender fields of Provence, immerse yourself in art, fashion, and world-renowned cuisine.",
+        description: "France offers a perfect blend of romance, culture, and world-class experiences—from iconic landmarks in Paris to charming villages and stunning coastlines. With rich history, legendary cuisine, and timeless art, it’s a destination that never goes out of style.",
         stats: { price: "€1,250", duration: "6 Days", visa: "Schengen Visa" },
         whyChoose: [
             { title: "Eiffel Tower Visit", description: "Iconic landmark of Paris." },
@@ -132,51 +91,9 @@ const countryData: Record<string, CountryData> = {
             { name: "James L.", role: "History Buff", content: "Versailles is breathtaking.", location: "Versailles" }
         ],
         faqs: [
-            { question: "Best time to visit?", answer: "Spring (Apr-Jun) and Fall (Sep-Nov)." },
-            { question: "Visa required?", answer: "Schengen visa for non-EU citizens." },
-            { question: "Language?", answer: "French, but English is widely spoken in tourist areas." }
-        ]
-    },
-    poland: {
-        title: "Poland Discovery Package",
-        name: "Poland",
-        tagline: "Cathedrals & Historic Squares",
-        image: polandImg,
-        description: "Journey through Krakow's old town, visit the historic salt mines, and explore the vibrant capital of Warsaw. A land of history and resilience.",
-        stats: { price: "€950", duration: "6 Days", visa: "Schengen Visa" },
-        whyChoose: [
-            { title: "Krakow Old Town", description: "Wander through medieval streets." },
-            { title: "Wieliczka Salt Mine", description: "Explore underground wonders." },
-            { title: "Auschwitz Memorial", description: "A touching historical site." },
-            { title: "Warsaw City Tour", description: "Discover the resilient capital." },
-            { title: "Traditional Pierogi Dinner", description: "Taste authentic local cuisine." },
-            { title: "Affordable Luxury", description: "Premium experience at great value." }
-        ],
-        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Flight Itinerary", "Hotel Voucher", "Bank Statement"],
-        benefits: [
-            { title: "Centrally Located Hotels", description: "Stay in the heart of the city." },
-            { title: "Entrance Fees Included", description: "No hidden costs." },
-            { title: "Airport Transfers", description: "Stress-free arrival & departure." },
-            { title: "Local Expert Guide", description: "Discover hidden gems." },
-            { title: "Daily Breakfast", description: "Delicious start to the day." },
-            { title: "Comfortable Transport", description: "Travel in modern vehicles." }
-        ],
-        process: [
-            { step: 1, title: "Plan", description: "Select itinerary." },
-            { step: 2, title: "Confirm", description: "Lock price." },
-            { step: 3, title: "Visa", description: "Easy application." },
-            { step: 4, title: "Pack", description: "Travel checklist." },
-            { step: 5, title: "Fly", description: "Land in Warsaw." },
-            { step: 6, title: "Enjoy", description: "Start the tour." }
-        ],
-        testimonials: [
-            { name: "Manpreet G.", role: "Family Trip", content: "Very affordable and beautiful country.", location: "Krakow" },
-            { name: "John D.", role: "Solo Traveler", content: "The salt mines were breathtaking.", location: "Warsaw" }
-        ],
-        faqs: [
-            { question: "Currency?", answer: "Polish Zloty (PLN)." },
-            { question: "Is English spoken?", answer: "Widely in tourist areas." },
-            { question: "Transport?", answer: "Private coach included." }
+            { question: "Do I need a visa to visit France?", answer: "If you’re from a Schengen visa-free country, you can enter without a visa for short stays. Others need a Schengen tourist visa." },
+            { question: "Is France safe for tourists?", answer: "Yes. France is generally safe for visitors, especially in major tourist areas. As in any big destination, basic precautions against pickpocketing are advised." },
+            { question: "When is the best time to visit France?", answer: "The best time is April to June and September to October for pleasant weather, fewer crowds, and great sightseeing." }
         ]
     },
     azerbaijan: {
@@ -184,7 +101,7 @@ const countryData: Record<string, CountryData> = {
         name: "Azerbaijan",
         tagline: "Where East Meets West",
         image: azerbaijanImg,
-        description: "Discover the Land of Fire with unmatched expertise. We specialize in crafting seamless Azerbaijan experiences, blending the futuristic allure of Baku's skyline with the timeless charm of its ancient heritage. With local insights, premium comfort, and a commitment to transparency, we ensure every moment of your journey is as captivating as the destination itself.",
+        description: "Azerbaijan blends ancient heritage with modern flair—where Silk Road history meets futuristic Baku. From dramatic Caucasus landscapes to warm hospitality, it offers rich culture, unique cuisine, and great value for unforgettable travel experiences.",
         stats: { price: "$650", duration: "5 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Local Knowledge", description: "Deep insights into local culture and hidden gems." },
@@ -214,9 +131,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Sarah L.", role: "Traveler", content: "Very clean city and friendly people.", location: "Gabala" }
         ],
         faqs: [
-            { question: "Visa on arrival?", answer: "For some nationalities, others E-visa." },
-            { question: "Best food?", answer: "Try the Plov and Kebabs." },
-            { question: "Currency?", answer: "Manat (AZN)." }
+            { question: "Do I need a visa to visit Azerbaijan?", answer: "Yes, most travelers can easily apply for an e-visa online before travel. The process is quick and simple." },
+            { question: "Is Azerbaijan safe for tourists?", answer: "Yes. Azerbaijan is considered a safe country for visitors, especially in major cities like Baku, with friendly locals and good public security." },
+            { question: "What is the best time to visit Azerbaijan?", answer: "The best time is April to June and September to October when the weather is pleasant for sightseeing and outdoor activities." }
         ]
     },
     kazakhstan: {
@@ -224,7 +141,7 @@ const countryData: Record<string, CountryData> = {
         name: "Kazakhstan",
         tagline: "Mountains, Lakes & Canyons",
         image: kazakhstanImg,
-        description: "Experience the perfect blend of modern city life and breathtaking natural wonders in Almaty. From the snowy peaks of Shymbulak to the dramatic landscapes of Charyn Canyon, we curate seamless family journeys with premium comfort and expert guidance. Trust us to turn your Kazakhstan dream into an unforgettable reality.",
+        description: "Kazakhstan offers vast natural beauty and modern cities in one journey—from the endless steppes and alpine lakes to the futuristic skyline of Astana. Rich nomadic culture, warm hospitality, and great value make it a unique destination for travelers seeking something truly different.",
         stats: { price: "$850", duration: "5 Days", visa: "Visa Free/E-Visa" },
         whyChoose: [
             { title: "Expert Local Guides", description: "Learn more with our professional English-speaking guides." },
@@ -254,9 +171,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Maria S.", role: "Family", content: "Shymbulak was great for kids.", location: "Astana" }
         ],
         faqs: [
-            { question: "Best season?", answer: "May to September for nature." },
-            { question: "Is it cold?", answer: "Winters are snowy, Summers pleasant." },
-            { question: "Language?", answer: "Russian/Kazakh. Guides speak English." }
+            { question: "Do I need a visa to visit Kazakhstan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply online for an e-visa. Always verify your eligibility before travel." },
+            { question: "Is Kazakhstan safe for tourists?", answer: "Yes. Major cities like Almaty and Astana are generally safe, with good infrastructure and helpful locals." },
+            { question: "When is the best time to visit Kazakhstan?", answer: "The best time is May to September for pleasant weather, outdoor activities, and sightseeing." }
         ]
     },
     armenia: {
@@ -264,7 +181,7 @@ const countryData: Record<string, CountryData> = {
         name: "Armenia",
         tagline: "The First Christian Nation",
         image: armeniaImg,
-        description: "Explore ancient monasteries, the stunning Lake Sevan, and the vibrant streets of Yerevan. A journey through history and hospitality.",
+        description: "Armenia is a land of timeless history and heartfelt hospitality, where ancient monasteries meet breathtaking mountain landscapes. With rich culture, soulful cuisine, and deep traditions, it offers an authentic and meaningful travel experience beyond the usual tourist trails.",
         stats: { price: "$700", duration: "5 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Yerevan City Tour", description: "Visit the pink city." },
@@ -296,9 +213,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Mark T.", role: "Foodie", content: "Best bread and wine ever.", location: "Dilijan" }
         ],
         faqs: [
-            { question: "Is it safe?", answer: "One of the safest countries." },
-            { question: "Currency?", answer: "Armenian Dram (AMD)." },
-            { question: "Visa fee?", answer: "Very low or free for some." }
+            { question: "Do I need a visa to visit Armenia?", answer: "Many travelers can enter visa-free or get a visa on arrival / e-visa depending on nationality. Check eligibility before you go." },
+            { question: "Is Armenia safe for tourists?", answer: "Yes. Armenia is considered very safe, with friendly locals and low crime rates, especially in Yerevan and tourist areas." },
+            { question: "When is the best time to visit Armenia?", answer: "The best months are May to October for pleasant weather, sightseeing, and mountain travel." }
         ]
     },
     kyrgyzstan: {
@@ -306,7 +223,7 @@ const countryData: Record<string, CountryData> = {
         name: "Kyrgyzstan",
         tagline: "4 Nights / 5 Days - The Nomadic Spirit",
         image: kyrgyzstanImg,
-        description: "Experience the untouched beauty of Kyrgyzstan with our curated mountain tours. From the stunning valleys of Chunkhurchak to the alpine landscapes of Ala-Archa, we provide seamless private journeys with premium comfort and expert local guidance.",
+        description: "Kyrgyzstan is a paradise for nature lovers, offering dramatic mountains, crystal-clear alpine lakes, and vast open landscapes. With its strong nomadic culture, warm hospitality, and peaceful atmosphere, it’s perfect for travelers seeking adventure and authenticity off the beaten path.",
         stats: { price: "$1,210", duration: "5 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Multi-lingual Guides", description: "Professional Arabic or English-speaking drivers for your trip." },
@@ -343,9 +260,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Sarah K.", role: "Traveler", content: "The driver was excellent and the mountains stunning.", location: "UK" }
         ],
         faqs: [
-            { question: "What is included?", answer: "Hotels, Breakfast, Car, Driver, Tours, Transfers." },
-            { question: "Price for 5 Pax?", answer: "$1210 (Art Hotel) or $1250 (Resident Hotel)." },
-            { question: "Tour timings?", answer: "All tours start 10:00 AM and finish 6:00 PM." }
+            { question: "Do I need a visa to visit Kyrgyzstan?", answer: "Many nationalities can enter visa-free for 30–60 days. Others can apply for an e-visa online. Always confirm based on your passport." },
+            { question: "Is Kyrgyzstan safe for tourists?", answer: "Yes. Kyrgyzstan is generally safe and peaceful, especially in Bishkek and popular tourist regions. Locals are known for warm hospitality." },
+            { question: "When is the best time to visit Kyrgyzstan?", answer: "The best time is June to September for trekking, lake visits, and mountain travel due to good weather conditions." }
         ]
     },
     netherlands: {
@@ -353,7 +270,7 @@ const countryData: Record<string, CountryData> = {
         name: "Netherlands",
         tagline: "Windmills, Canals & Culture",
         image: netherlandsImg,
-        description: "Cruise the canals of Amsterdam, visit the Keukenhof tulip gardens (seasonal), and see the historic windmills of Zaanse Schans.",
+        description: "The Netherlands blends charming canals, historic towns, and cutting-edge design into one easy-to-explore destination. From Amsterdam’s culture to peaceful countryside windmills, it offers rich experiences, excellent transport, and a welcoming atmosphere for every traveler.",
         stats: { price: "€1,100", duration: "5 Days", visa: "Schengen Visa" },
         whyChoose: [
             { title: "Amsterdam Canal Cruise", description: "See the city from water." },
@@ -385,9 +302,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Priya M.", role: "Traveler", content: "Tulips were amazing.", location: "Lisse" }
         ],
         faqs: [
-            { question: "Best for Tulips?", answer: "Mid-April is peak season." },
-            { question: "Transport?", answer: "Trams and Trains are excellent." },
-            { question: "Visa?", answer: "Schengen visa required." }
+            { question: "Do I need a visa to visit the Netherlands?", answer: "If you’re from a Schengen visa-free country, you can enter for short stays without a visa. Others need a Schengen tourist visa." },
+            { question: "Is the Netherlands safe for tourists?", answer: "Yes. It’s one of Europe’s safest destinations, with excellent public transport and well-organized tourist services." },
+            { question: "When is the best time to visit the Netherlands?", answer: "The best time is April to September — spring for tulips, summer for festivals and pleasant weather." }
         ]
     },
     georgia: {
@@ -395,7 +312,7 @@ const countryData: Record<string, CountryData> = {
         name: "Georgia",
         tagline: "Wine, Mountains & History",
         image: georgiaImg,
-        description: "Experience the soul of the Caucasus with our expertly curated Georgia tours. From the cobblestone streets of Old Tbilisi to the majestic heights of Kazbegi, we offer a perfect blend of adventure and comfort. Let us guide you through breathtaking landscapes and ancient heritage with a touch of local hospitality.",
+        description: "Georgia is where ancient traditions meet stunning natural beauty—from medieval towns and mountain valleys to world-famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
         stats: { price: "$600", duration: "5 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Expert Local Insights", description: "Discover hidden gems in Tbilisi and Kazbegi with our knowledgeable guides." },
@@ -425,9 +342,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Anna K.", role: "Photographer", content: "Kazbegi is picture perfect.", location: "Kazbegi" }
         ],
         faqs: [
-            { question: "Visa policy?", answer: "1 Year visa free for many nations." },
-            { question: "Is it safe?", answer: "Extremely safe for tourists." },
-            { question: "Best food?", answer: "Khachapuri and Khinkali." }
+            { question: "Do I need a visa to visit Georgia?", answer: "Many nationalities can enter visa-free for up to 1 year. Others can apply for an e-visa online. Always check your eligibility before travel." },
+            { question: "Is Georgia safe for tourists?", answer: "Yes. Georgia is considered very safe, especially in cities like Tbilisi and Batumi, with friendly locals and good tourist support." },
+            { question: "When is the best time to visit Georgia?", answer: "The best time is May to October — perfect for sightseeing, mountain trips, and outdoor activities." }
         ]
     },
     uzbekistan: {
@@ -435,7 +352,7 @@ const countryData: Record<string, CountryData> = {
         name: "Uzbekistan",
         tagline: "Samarkand, Bukhara & Tashkent",
         image: uzbekistanImg,
-        description: "Uzbekistan is the definitive heart of the Great Silk Road, where 2,500 years of history meet modern high-speed infrastructure. From the iconic blue-tiled mosques of Samarkand to the serene heights of the Chimgan Mountains, it offers an authentic, uncrowded escape for history enthusiasts and nature lovers alike.",
+        description: "Uzbekistan is the heart of the Silk Road, home to breathtaking cities like Samarkand and Bukhara filled with timeless architecture and rich history. With vibrant culture, warm hospitality, and unforgettable flavors, it offers a journey into the soul of Central Asia.",
         stats: { price: "$900", duration: "7 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "All-Inclusive Transport", description: "Private cars and Samarkand train tickets provided." },
@@ -465,9 +382,9 @@ const countryData: Record<string, CountryData> = {
             { name: "Fatima R.", role: "Traveler", content: "Beautiful architecture.", location: "Bukhara" }
         ],
         faqs: [
-            { question: "Best time?", answer: "Spring (Apr-Jun) and Autumn (Sep-Nov)." },
-            { question: "Dress code?", answer: "Modest dress recommended." },
-            { question: "Safety?", answer: "Very safe and welcoming." }
+            { question: "Do I need a visa to visit Uzbekistan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply for a quick e-visa online. Always check current rules for your passport." },
+            { question: "Is Uzbekistan safe for tourists?", answer: "Yes. Uzbekistan is considered very safe, especially in tourist cities like Tashkent, Samarkand, and Bukhara, with welcoming locals." },
+            { question: "When is the best time to visit Uzbekistan?", answer: "The best time is April–May and September–October when the weather is comfortable for sightseeing and travel." }
         ]
     }
 };
@@ -709,63 +626,140 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 4. Process Timeline (Process) - Premium Redesign --- */}
+                {/* --- 4. Process Timeline (Snake/Wave) - Premium Redesign --- */}
                 <section className="py-24 md:py-32 bg-[#FDFCF8] relative overflow-hidden">
                     {/* Background Elements */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#E8B430_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.05]" />
-                    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-                    <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+                    <div className="absolute inset-0 bg-[radial-gradient(#FF6B00_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.03]" />
 
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <RevealOnScroll animation="fade-up">
-                            <div className="text-center md:text-left mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-6">
-                                <div>
-                                    <div className="flex items-center gap-2 justify-center md:justify-start mb-4">
-                                        <span className="h-px w-8 bg-gold" />
-                                        <span className="text-gold font-bold text-xs uppercase tracking-[0.2em]">The Journey</span>
-                                    </div>
-                                    <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-                                        Seamless <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Booking</span> Process
-                                    </h2>
+                            <div className="text-center mb-20 md:mb-32">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold border border-gold/20 mb-4">
+                                    <span className="text-xs font-bold uppercase tracking-widest">The Journey</span>
                                 </div>
-                                <p className="text-muted-foreground text-lg max-w-md text-center md:text-left leading-relaxed">
-                                    From your first click to your flight home, we’ve orchestrated every detail for effortless luxury.
-                                </p>
+                                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+                                    Seamless <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Booking</span> Process
+                                </h2>
                             </div>
 
-                            <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {/* Connecting Line (Desktop) */}
-                                <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-gray-100 via-gold/30 to-gray-100 -z-10" />
+                            {/* --- Desktop View: Snake Wave --- */}
+                            <div className="hidden lg:block relative w-full h-[500px] max-w-7xl mx-auto">
+                                {/* SVG Wave Line */}
+                                <svg className="absolute top-0 left-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stopColor="#0B1E3F" stopOpacity="0.1" />
+                                            <stop offset="50%" stopColor="#FF6B00" stopOpacity="0.6" />
+                                            <stop offset="100%" stopColor="#0B1E3F" stopOpacity="0.1" />
+                                        </linearGradient>
+                                        <filter id="glow">
+                                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                                            <feMerge>
+                                                <feMergeNode in="coloredBlur" />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+                                    {/* The Path - Smooth Sine Wave passing through the nodes */}
+                                    {/* Nodes approx at: x=5%, 23%, 41%, 59%, 77%, 95%. y alternating 80 (top) and 320 (bottom) */}
+                                    <path
+                                        d="M50,150 C150,150 180,350 280,350 S 410,150 510,150 S 640,350 740,350 S 870,150 970,150"
+                                        fill="none"
+                                        stroke="url(#waveGradient)"
+                                        strokeWidth="4"
+                                        vectorEffect="non-scaling-stroke"
+                                        strokeDasharray="12 8"
+                                        className="animate-pulse-slow"
+                                        transform="scale(1.2 1)"
+                                        style={{ transformOrigin: 'center' }} // Adjust scale for mapping
+                                    />
+                                    {/* Note: Vector path is approximate relative to 1000x400 viewbox concept mapped to %. Using CSS lines logic below is safer for responsiveness, but SVG allows curve. 
+                                        Let's switch to a simpler Bezier Curve rendering that matches the absolute positions below.
+                                        Points:
+                                        1: 8% (Top)
+                                        2: 25% (Bottom)
+                                        3: 42% (Top)
+                                        4: 59% (Bottom)
+                                        5: 75% (Top)
+                                        6: 92% (Bottom)
+                                    */}
+                                    <path
+                                        d="M80,120 C 150,120, 180,380, 250,380 S 350,120, 420,120 S 520,380, 590,380 S 680,120, 750,120 S 850,380, 920,380"
+                                        fill="none"
+                                        stroke="url(#waveGradient)"
+                                        strokeWidth="3"
+                                        strokeLinecap="round"
+                                        vectorEffect="non-scaling-stroke"
+                                        // We basically stretch this SVG to fit container
+                                        transform-origin="center"
+                                    />
+                                </svg>
 
-                                {data.process.map((step, i) => (
-                                    <div
-                                        key={i}
-                                        className="group relative bg-white p-8 md:p-10 rounded-[2rem] border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(232,180,48,0.15)] hover:border-gold/30 transition-all duration-500 flex flex-col items-center md:items-start text-center md:text-left"
-                                    >
-                                        {/* Step Number - Stylish & Large */}
-                                        <div className="mb-6 relative">
-                                            <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center font-heading text-2xl font-bold relative z-10 group-hover:bg-gold transition-colors duration-500 shadow-xl shadow-primary/10 group-hover:shadow-gold/20">
-                                                0{step.step}
+                                {data.process.map((step, i) => {
+                                    const isTop = i % 2 === 0; // 0, 2, 4 -> Top
+                                    const leftPos = (i * 17) + 8; // Spread out: 8%, 25%, 42%, 59%, 76%, 93%
+
+                                    return (
+                                        <div
+                                            key={i}
+                                            className="absolute w-64 group"
+                                            style={{
+                                                left: `${leftPos}%`,
+                                                top: isTop ? '10%' : '60%', // Top vs Bottom Row
+                                                transform: 'translateX(-50%)'
+                                            }}
+                                        >
+                                            <div className={`flex flex-col items-center text-center ${isTop ? 'flex-col' : 'flex-col-reverse'}`}>
+
+                                                {/* Node Point */}
+                                                <div className={`relative z-10 w-16 h-16 rounded-full bg-white border-4 border-[#FDFCF8] shadow-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:border-gold ${isTop ? 'mb-6' : 'mt-6'}`}>
+                                                    <div className="absolute inset-0 rounded-full bg-gold/20 animate-ping opacity-0 group-hover:opacity-100" />
+                                                    <span className="font-heading font-bold text-xl text-primary group-hover:text-gold">{i + 1}</span>
+                                                </div>
+
+                                                {/* Content Card */}
+                                                <div className={`relative bg-white p-6 rounded-2xl shadow-lg border border-gray-100 w-full hover:shadow-xl hover:border-gold/30 transition-all duration-300 ${isTop ? '' : ''}`}>
+                                                    <h3 className="font-heading text-lg font-bold text-primary mb-2">{step.title}</h3>
+                                                    <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+
+                                                    {/* Arrow Pointer */}
+                                                    <div
+                                                        className={`absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-r border-b border-gray-100 rotate-45 
+                                                        ${isTop ? '-bottom-2' : '-top-2 border-t border-l border-r-0 border-b-0'}`}
+                                                    />
+                                                </div>
+
                                             </div>
-                                            {/* Decorative Ring */}
-                                            <div className="absolute -inset-2 border border-gray-100 rounded-[1.2rem] -z-0 scale-90 group-hover:scale-100 transition-transform duration-500" />
                                         </div>
-
-                                        <h3 className="font-heading text-2xl font-bold text-primary mb-3 group-hover:text-gold transition-colors duration-300">
-                                            {step.title}
-                                        </h3>
-
-                                        <div className="w-12 h-1 bg-gray-100 rounded-full mb-4 group-hover:bg-gold/50 group-hover:w-20 transition-all duration-500" />
-
-                                        <p className="text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors">
-                                            {step.description}
-                                        </p>
-
-                                        {/* Hover Gradient Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] pointer-events-none" />
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
+
+                            {/* --- Mobile View: Vertical Timeline --- */}
+                            <div className="lg:hidden relative">
+                                {/* Vertical Line */}
+                                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/10 via-gold/50 to-primary/10" />
+
+                                <div className="space-y-12">
+                                    {data.process.map((step, i) => (
+                                        <div key={i} className="relative flex gap-8">
+                                            {/* Node */}
+                                            <div className="sticky top-32 shrink-0 w-16 h-16 rounded-full bg-white border-4 border-[#FDFCF8] shadow-lg flex items-center justify-center z-10">
+                                                <span className="font-heading font-bold text-xl text-primary">{i + 1}</span>
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="pt-2">
+                                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                                                    <h3 className="font-heading text-xl font-bold text-primary mb-2">{step.title}</h3>
+                                                    <p className="text-muted-foreground">{step.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
                         </RevealOnScroll>
                     </div>
                 </section>
@@ -806,77 +800,7 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 5. Testimonials - Premium Redesign --- */}
-                <section className="py-24 md:py-32 bg-[#FAFAFA] relative overflow-hidden">
-                    {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2" />
 
-                    <RevealOnScroll animation="fade-in">
-                        <div className="container-wide px-4 sm:px-6 relative z-10">
-                            <div className="text-center mb-16 md:mb-24">
-                                <span className="inline-block py-1 px-4 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-4 border border-blue-100">
-                                    Community
-                                </span>
-                                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
-                                    Traveler <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Stories</span>
-                                </h2>
-                                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                                    Real experiences from those who have explored {data.name} with Europe Bound.
-                                </p>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                                {data.testimonials.map((t, i) => (
-                                    <div
-                                        key={i}
-                                        className="group relative bg-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-gold/30 hover:shadow-[0_20px_60px_-15px_rgba(232,180,48,0.1)] transition-all duration-500 hover:-translate-y-1"
-                                    >
-                                        {/* Quote Icon */}
-                                        <div className="absolute top-8 right-8 text-gold/20 group-hover:text-gold/40 transition-colors duration-500">
-                                            <Quote className="w-12 h-12 rotate-180 fill-current" />
-                                        </div>
-
-                                        {/* Stars */}
-                                        <div className="flex gap-1 mb-6">
-                                            {[...Array(5)].map((_, i) => (
-                                                <Star key={i} className="w-5 h-5 text-gold fill-gold" />
-                                            ))}
-                                        </div>
-
-                                        {/* Content */}
-                                        <p className="text-xl md:text-2xl text-gray-700 italic font-serif leading-relaxed mb-8 relative z-10">
-                                            "{t.content}"
-                                        </p>
-
-                                        {/* Divider */}
-                                        <div className="w-full h-px bg-gray-100 mb-8 group-hover:bg-gold/20 transition-colors duration-500" />
-
-                                        {/* Author */}
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 p-[2px] shadow-inner">
-                                                <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-primary font-bold text-xl">
-                                                    {t.name[0]}
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-primary text-lg">{t.name}</h4>
-                                                <div className="flex items-center gap-2 text-sm text-gray-500">
-                                                    <span>{t.role}</span>
-                                                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                                                    <span className="text-gold font-medium uppercase text-xs tracking-wider border border-gold/20 px-2 py-0.5 rounded-full bg-gold/5">
-                                                        Verified Trip
-                                                    </span>
-                                                </div>
-                                                <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">{t.location}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </RevealOnScroll>
-                </section>
 
                 {/* --- 4.6 Inquiry Form Section --- */}
                 <section className="py-24 bg-slate-50 relative overflow-hidden" id="booking-form">

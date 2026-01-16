@@ -36,8 +36,8 @@
     --accent: 18 65% 50%;
     --accent-foreground: 0 0% 100%;
 
-    /* Gold highlight (More metallic, less yellow) */
-    --gold: 42 60% 55%;
+    /* Gold highlight - Updated to Orange #FF6B00 */
+    --gold: 25 100% 50%;
     --gold-foreground: 224 64% 12%;
 
     /* Champagne - Light gold/beige */
@@ -190,7 +190,7 @@
 
   /* Text Gradients */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C6A355] via-[#EAD083] to-[#C6A355];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B00] via-[#FF8533] to-[#FF6B00];
   }
 
   .text-gradient-primary {

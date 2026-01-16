@@ -190,7 +190,7 @@ export function Header() {
                         >
                           {/* Active Indicator Line (Left) */}
                           {isActive && (
-                            <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[60%] w-1 bg-[#E8B430] rounded-r-full" />
+                            <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[60%] w-1 bg-[#FF6B00] rounded-r-full" />
                           )}
 
                           {/* Icon Container */}
@@ -237,27 +237,27 @@ export function Header() {
                 </nav>
 
                 <div className="mt-10 pt-8 text-center">
-                  <p className="text-[10px] font-bold text-[#E8B430] uppercase tracking-[0.2em] mb-6 opacity-100">
+                  <p className="text-[10px] font-bold text-[#FF6B00] uppercase tracking-[0.2em] mb-6 opacity-100">
                     Social Media
                   </p>
                   <div className="flex items-center justify-center gap-4">
                     <a href="tel:+918590404857" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#E8B430] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Phone className="w-4 h-4" />
                       </div>
                     </a>
                     <a href="mailto:sales@europecalling.co" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#E8B430] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Mail className="w-4 h-4" />
                       </div>
                     </a>
                     <a href="#" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#E8B430] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Instagram className="w-4 h-4" />
                       </div>
                     </a>
                     <a href="#" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#E8B430] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Facebook className="w-4 h-4" />
                       </div>
                     </a>

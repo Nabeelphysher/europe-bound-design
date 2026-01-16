@@ -45,7 +45,7 @@ function AnimatedCounter({
   }, [value, duration, isVisible]);
 
   return (
-    <span className="text-4xl sm:text-5xl font-bold text-[#C59D5F] tracking-tight">
+    <span className="text-4xl sm:text-5xl font-bold text-[#FF6B00] tracking-tight">
       {count.toLocaleString()}
       {suffix}
     </span>
@@ -86,7 +86,7 @@ export function StatsSection() {
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
           <div className="text-center mb-20 px-4 sm:px-0 max-w-2xl mx-auto">
-            <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#E8B430] block mb-2">Our Achievements</span>
+            <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-[#FF6B00] block mb-2">Our Achievements</span>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-[black] mb-6 text-shadow-premium">
               Excellence in Every <br /> Number
             </h2>
