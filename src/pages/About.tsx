@@ -34,15 +34,15 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Muhammed Sha AP", role: "Travel Consultant", location: "Calicut, India", img: poster6 },
-  { name: "Aysha Thaslee E.C", role: "Travel Consultant ", location: "Berlin", img: poster7 },
-  { name: "Akhila", role: "Accounts", location: "London", img: poster8 },
-  { name: "Najiya binu", role: "Travel Consultant", location: "Paris", img: poster9 },
-  { name: "Muhammed Navaf P", role: "Senior Travel Consultant", location: "Dubai", img: poster5 },
-  { name: "Shammas K T", role: "Digital Marketing / Media ", location: "Berlin", img: poster4 },
   { name: "Aysha Nasrin P", role: "Sales Adviser ", location: "Mumbai", img: poster3 },
   { name: "Muhsin Mubarak P", role: " Sales Adviser", location: "Delhi", img: poster2 },
+  { name: "Muhammed Navaf P", role: "Senior Travel Consultant", location: "Dubai", img: poster5 },
+  { name: "Aysha Thaslee E.C", role: "Travel Consultant ", location: "Berlin", img: poster7 },
+  { name: "Najiya binu", role: "Travel Consultant", location: "Paris", img: poster9 },
+  { name: "Muhammed Sha AP", role: "Travel Consultant", location: "Calicut, India", img: poster6 },
   { name: "Nihala Sherin K", role: "Operations Department Head", location: "Dubai", img: poster1 },
+  { name: "Akhila", role: "Accounts", location: "London", img: poster8 },
+  { name: "Shammas K T", role: "Digital Marketing / Media ", location: "Berlin", img: poster4 },
 ];
 
 const values = [

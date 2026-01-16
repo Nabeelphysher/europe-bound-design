@@ -10,7 +10,7 @@ export const PageSkeleton = () => {
                     <Skeleton className="h-10 w-10 rounded-full" />
                     <Skeleton className="h-6 w-32 hidden sm:block" />
                 </div>
-                <div className="flex gap-8 hidden md:flex">
+                <div className="hidden md:flex gap-8">
                     <Skeleton className="h-4 w-20" />
                     <Skeleton className="h-4 w-20" />
                     <Skeleton className="h-4 w-20" />
