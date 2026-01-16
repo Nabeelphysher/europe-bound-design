@@ -134,7 +134,7 @@ export const PackagesSection = () => {
                 </div>
 
                 {/* Right: Custom Package (Premium) */}
-                <div className="w-full lg:w-7/12 bg-[#0B1120] p-8 md:p-12 lg:p-16 text-white relative flex flex-col overflow-hidden">
+                <div className="w-full lg:w-7/12 bg-primary p-8 md:p-12 lg:p-16 text-white relative flex flex-col overflow-hidden">
                     {/* Decorative Background */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl opacity-30 translate-y-1/3 -translate-x-1/3 pointer-events-none" />

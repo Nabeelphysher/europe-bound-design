@@ -65,7 +65,9 @@ const slides = [
     }
 ];
 
-export function HeroSectionV2() {
+import { cn } from "@/lib/utils";
+
+export function HeroSectionV2({ className }: { className?: string }) {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
@@ -80,7 +82,7 @@ export function HeroSectionV2() {
     const [popupDestination, setPopupDestination] = useState("");
 
     return (
-        <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#050511]">
+        <section className={cn("relative h-screen w-full overflow-hidden flex items-center justify-center bg-primary", className)}>
             {/* Background Image Slideshow */}
             {slides.map((s, index) => (
                 <div
@@ -120,7 +122,7 @@ export function HeroSectionV2() {
                         </div>
 
                         {/* Gold Divider */}
-                        <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#FF6B00] to-transparent my-4 md:my-8 animate-scale-in" />
+                        <div className="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent my-4 md:my-8 animate-scale-in" />
 
                         {/* Subtitle */}
                         <p className="font-heading italic text-lg md:text-3xl text-white font-light tracking-widest drop-shadow-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -136,11 +138,11 @@ export function HeroSectionV2() {
                             setPopupDestination(slide.title);
                             setIsLeadPopupOpen(true);
                         }}
-                        className="group relative inline-flex items-center gap-3 md:gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 md:px-10 md:py-5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:bg-white hover:text-[#0B1E3F] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95"
+                        className="group relative inline-flex items-center gap-3 md:gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 md:px-10 md:py-5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:bg-white hover:text-primary hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95"
                     >
                         <span className="font-medium text-sm md:text-lg tracking-widest relative z-10">{slide.cta}</span>
 
-                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#0B1E3F] group-hover:text-white transition-colors duration-300 relative z-10">
+                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 relative z-10">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-45 transition-transform duration-300 md:w-[14px] md:h-[14px]">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
                                 <polyline points="7 7 17 7 17 17"></polyline>

@@ -34,7 +34,7 @@ export function Header() {
   const location = useLocation();
 
   // Pages without dark hero sections need header styling from the start
-  const pagesWithoutHero = ["/about", "/destinations", "/testimonials", "/newsroom", "/contact", "/gallery", "/privacy", "/terms"];
+  const pagesWithoutHero = ["/", "/about", "/destinations", "/testimonials", "/newsroom", "/contact", "/gallery", "/privacy", "/terms"];
   const hasDarkHero = !pagesWithoutHero.includes(location.pathname);
   const shouldShowScrolledStyle = isScrolled || !hasDarkHero;
 
@@ -65,7 +65,7 @@ export function Header() {
               alt="Europe Calling Logo"
               className={cn(
                 "w-auto object-contain transition-all duration-500",
-                shouldShowScrolledStyle ? "h-14 lg:h-16" : "h-20 lg:h-28 drop-shadow-2xl"
+                shouldShowScrolledStyle ? "h-10 lg:h-12" : "h-12 lg:h-16 drop-shadow-2xl"
               )}
             />
           </div>
@@ -183,7 +183,7 @@ export function Header() {
                           className={cn(
                             "relative flex items-center gap-3 px-6 py-3 transition-all duration-300 rounded-r-[50px] mr-4",
                             isActive
-                              ? "bg-gradient-to-r from-primary to-[#0B1E3F] text-white shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] translate-x-0"
+                              ? "bg-gradient-to-r from-primary to-primary text-white shadow-[0_10px_20px_-5px_hsl(var(--primary)/0.3)] translate-x-0"
                               : "text-primary/60 hover:bg-gray-50 hover:text-primary"
                           )}
                           style={{ transitionDelay: `${index * 50}ms` }}
@@ -237,27 +237,27 @@ export function Header() {
                 </nav>
 
                 <div className="mt-10 pt-8 text-center">
-                  <p className="text-[10px] font-bold text-[#FF6B00] uppercase tracking-[0.2em] mb-6 opacity-100">
+                  <p className="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-6 opacity-100">
                     Social Media
                   </p>
                   <div className="flex items-center justify-center gap-4">
                     <a href="tel:+918590404857" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Phone className="w-4 h-4" />
                       </div>
                     </a>
                     <a href="mailto:sales@europecalling.co" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Mail className="w-4 h-4" />
                       </div>
                     </a>
-                    <a href="#" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
+                    <a href="https://www.instagram.com/europe__calling/" target="_blank" rel="noopener noreferrer" className="group" aria-label="Instagram">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Instagram className="w-4 h-4" />
                       </div>
                     </a>
-                    <a href="#" className="group">
-                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 border border-primary/10">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="group" aria-label="Facebook">
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-all duration-300 border border-primary/10">
                         <Facebook className="w-4 h-4" />
                       </div>
                     </a>
@@ -272,7 +272,7 @@ export function Header() {
                   onClick={() => setIsOpen(false)}
                   className="group relative w-full h-12 rounded-full flex items-center justify-center overflow-hidden"
                 >
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-[#0B1E3F] transition-transform duration-300 group-hover:scale-105" />
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-primary transition-transform duration-300 group-hover:scale-105" />
                   <span className="relative text-white text-sm uppercase font-bold tracking-widest group-hover:tracking-[0.15em] transition-all duration-300 flex items-center gap-2">
                     Get Consultation
                   </span>

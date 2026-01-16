@@ -69,10 +69,10 @@ export function WhyChooseUs() {
       <div className="container-wide relative z-10 px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 px-4">
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#0F172A] mb-4 leading-tight tracking-tight animate-fade-in-up text-shadow-premium">
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-4 leading-tight tracking-tight animate-fade-in-up text-shadow-premium">
             Why Travelers Choose
           </h2>
-          <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#FF6B00] block mb-8 animate-fade-in-up animation-delay-100 text-shadow-premium">
+          <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-gold block mb-8 animate-fade-in-up animation-delay-100 text-shadow-premium">
             Europe Calling
           </span>
 
@@ -107,7 +107,7 @@ export function WhyChooseUs() {
                     <item.icon className="w-7 h-7 text-slate-700" strokeWidth={1.5} />
                   </div>
 
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F172A] mb-3 leading-tight text-shadow-elegant">
+                  <h3 className="font-heading text-xl md:text-2xl font-bold text-primary mb-3 leading-tight text-shadow-elegant">
                     {item.title}
                   </h3>
 

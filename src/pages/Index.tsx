@@ -4,19 +4,15 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { LeadPopup, useLeadPopup } from "@/components/ui/LeadPopup";
 import { HeroSectionV2 } from "@/components/home/HeroSectionV2";
+import { HomeIntroHero } from "@/components/home/HomeIntroHero";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { DestinationsSection } from "@/components/home/DestinationsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { StatsSection } from "@/components/home/StatsSection";
-
 import { FAQSection } from "@/components/home/FAQSection";
-
-
-
 import { VisaPromoSection } from "@/components/home/VisaPromoSection";
-
 import { GallerySection } from "@/components/home/GallerySection";
 
 const Index = () => {
@@ -26,7 +22,11 @@ const Index = () => {
     <>
       <Header />
       <main>
-        <HeroSectionV2 />
+        {/* New Intro Hero with Mini-Hero Preview */}
+        <HomeIntroHero />
+
+
+
         {/* <HeroSection /> */} {/* Hero usually has its own animations */}
         <DestinationsSection />
         <ServicesPreview />

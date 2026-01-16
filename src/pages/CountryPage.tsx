@@ -416,68 +416,10 @@ const CountryPage = () => {
         <>
             <Header />
             <main>
-                {/* --- 1. Immersive Hero Section (Banner) --- */}
-                <section className="relative h-[60vh] md:h-[85vh] min-h-[500px] md:min-h-[600px] flex items-end justify-center overflow-hidden">
-                    {/* Background Image with optimized scale annimation */}
-                    <div className="absolute inset-0 z-0 select-none">
-                        <img
-                            src={data.image}
-                            alt={`${data.name} Landscape`}
-                            className="w-full h-full object-cover scale-110 animate-pulse-gentle"
-                            style={{ animationDuration: '30s' }}
-                        />
-                        {/* Modern Gradient Overlays - Darkened for White Text Readability */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 opacity-70" />
-                        <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
-                    </div>
 
-                    <div className="container-wide relative z-10 w-full mb-16 md:mb-24 px-4 sm:px-6">
-                        <div className="max-w-4xl mx-auto text-center">
-                            {/* Animated Eyebrow */}
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 animate-fade-in-up">
-                                <Globe className="w-4 h-4 text-gold" />
-                                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">{data.tagline}</span>
-                            </div>
 
-                            {/* Main Title */}
-                            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up animation-delay-100 drop-shadow-2xl px-2 max-w-[95%] mx-auto">
-                                {data.title}
-                            </h1>
+                {/* --- 2. Original Hero (Now Secondary Overview) --- */}
 
-                            {/* Key Stats Bar - Compact Mobile */}
-                            <div className="inline-flex flex-row flex-wrap justify-center items-center gap-4 sm:gap-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-[2rem] md:rounded-full py-4 px-6 md:px-10 mt-6 md:mt-10 animate-fade-in-up animation-delay-200 shadow-2xl hover:bg-black/50 transition-all duration-500 max-w-full">
-
-                                <div className="flex items-center gap-3 md:gap-4 text-left group min-w-[120px]">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300 shrink-0">
-                                        <Clock className="w-4 h-4 md:w-5 md:h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Duration</p>
-                                        <p className="text-white font-bold text-sm md:text-lg whitespace-nowrap">{data.stats.duration}</p>
-                                    </div>
-                                </div>
-
-                                <div className="w-px h-8 md:h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden sm:block" />
-
-                                <div className="flex items-center gap-3 md:gap-4 text-left group min-w-[120px]">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shrink-0">
-                                        <ShieldCheck className="w-4 h-4 md:w-5 md:h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[9px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium mb-0.5">Visa Type</p>
-                                        <p className="text-white font-bold text-sm md:text-lg whitespace-nowrap">{data.stats.visa}</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Scroll Indicator */}
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
-                        <ArrowRight className="w-6 h-6 text-white/50 rotate-90" />
-                    </div>
-                </section>
 
                 {/* --- 2. Overview & Why Choose (Why choose this country) - Premium Redesign --- */}
                 <section className="py-10 md:py-20 bg-white relative overflow-hidden">
@@ -509,7 +451,7 @@ const CountryPage = () => {
                                         {/* Premium Button Match */}
                                         <a
                                             href="#booking-form"
-                                            className="group relative px-8 py-4 bg-[#0B1E3F] text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
+                                            className="group relative px-8 py-4 bg-primary text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
                                         >
                                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                                             <span className="font-bold relative z-10">Check Availability</span>
@@ -531,7 +473,7 @@ const CountryPage = () => {
                                         <div
                                             key={i}
                                             className={`group p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] flex flex-col justify-between h-full relative overflow-hidden
-                                                ${i === 1 || i === 2 ? 'bg-[#0B1E3F] text-white border-transparent' : 'bg-white border-gray-100 hover:border-gold/30'}
+                                                ${i === 1 || i === 2 ? 'bg-primary text-white border-transparent' : 'bg-white border-gray-100 hover:border-gold/30'}
                                                 ${i === 1 ? 'sm:translate-y-8' : ''}
                                                 ${i === 2 ? 'sm:-translate-y-8' : ''}
                                             `}
@@ -586,7 +528,7 @@ const CountryPage = () => {
                                             {/* Primary Action - Premium Dark with Shine */}
                                             <a
                                                 href="#booking-form"
-                                                className="group relative px-8 py-4 bg-[#0B1E3F] text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
+                                                className="group relative px-8 py-4 bg-primary text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
                                             >
                                                 {/* Shine Effect */}
                                                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
@@ -597,7 +539,7 @@ const CountryPage = () => {
                                             {/* Secondary Action - Elegant Outline */}
                                             <Link
                                                 to="/contact"
-                                                className="group px-8 py-4 bg-white border border-gray-200 text-[#0B1E3F] rounded-xl font-bold hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:shadow-md w-full sm:w-auto text-center"
+                                                className="group px-8 py-4 bg-white border border-gray-200 text-primary rounded-xl font-bold hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:shadow-md w-full sm:w-auto text-center"
                                             >
                                                 <span>Talk to an Expert</span>
                                                 <div className="hidden xs:flex w-8 h-8 rounded-full bg-gray-100 items-center justify-center group-hover:bg-gold group-hover:text-white transition-colors duration-300">
@@ -629,7 +571,7 @@ const CountryPage = () => {
                 {/* --- 4. Process Timeline (Snake/Wave) - Premium Redesign --- */}
                 <section className="py-24 md:py-32 bg-[#FDFCF8] relative overflow-hidden">
                     {/* Background Elements */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#FF6B00_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.03]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(#ff7700_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.03]" />
 
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <RevealOnScroll animation="fade-up">
@@ -648,9 +590,9 @@ const CountryPage = () => {
                                 <svg className="absolute top-0 left-0 w-full h-full overflow-visible" preserveAspectRatio="none">
                                     <defs>
                                         <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stopColor="#0B1E3F" stopOpacity="0.1" />
-                                            <stop offset="50%" stopColor="#FF6B00" stopOpacity="0.6" />
-                                            <stop offset="100%" stopColor="#0B1E3F" stopOpacity="0.1" />
+                                            <stop offset="0%" stopColor="#000000" stopOpacity="0.1" />
+                                            <stop offset="50%" stopColor="#FF7700" stopOpacity="0.6" />
+                                            <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
                                         </linearGradient>
                                         <filter id="glow">
                                             <feGaussianBlur stdDeviation="4" result="coloredBlur" />
@@ -872,7 +814,7 @@ const CountryPage = () => {
                                     </form>
                                 </div>
                                 {/* Visual Side */}
-                                <div className="md:col-span-2 bg-[#0B1120] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                                <div className="md:col-span-2 bg-primary p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                                     <div className="relative z-10">
                                         <h4 className="text-xl font-bold mb-6 text-gold">Why Book With Us?</h4>

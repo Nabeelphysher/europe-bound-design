@@ -45,7 +45,7 @@ export function VisaPromoSection() {
                                 <div className="pt-2">
                                     <Link
                                         to="/services"
-                                        className="group inline-flex items-center gap-3 bg-[#FF6B00] hover:bg-[#D4AF37] text-primary-foreground font-bold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(197,157,95,0.3)] hover:-translate-y-0.5"
+                                        className="group inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-primary-foreground font-bold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
                                     >
                                         <span className="tracking-wide text-xs sm:text-sm uppercase">Apply Now</span>
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

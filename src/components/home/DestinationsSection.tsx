@@ -91,13 +91,13 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                 {/* Header Content */}
                 {showHeader && (
                     <div className="text-center mb-16">
-                        <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-[#FF6B00] block mb-4 animate-fade-in-up">
+                        <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-gold block mb-4 animate-fade-in-up">
                             Top Destinations
                         </span>
-                        <h2 className="font-heading text-4xl md:text-6xl font-bold text-[#0F172A] mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
+                        <h2 className="font-heading text-4xl md:text-6xl font-bold text-primary mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
                             Most Favorite Destinations
                         </h2>
-                        <div className="w-20 h-1 bg-[#FF6B00] mx-auto rounded-full animate-scale-in animation-delay-300" />
+                        <div className="w-20 h-1 bg-gold mx-auto rounded-full animate-scale-in animation-delay-300" />
                     </div>
                 )}
 
@@ -107,7 +107,7 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                         <Link
                             key={index}
                             to={dest.path}
-                            className="group relative h-[240px] sm:h-[320px] w-full rounded-[24px] overflow-hidden cursor-pointer block transform-gpu bg-[#0F172A] shadow-md hover:shadow-2xl transition-all duration-700 ease-out-expo hover:-translate-y-2"
+                            className="group relative h-[240px] sm:h-[320px] w-full rounded-[24px] overflow-hidden cursor-pointer block transform-gpu bg-primary shadow-md hover:shadow-2xl transition-all duration-700 ease-out-expo hover:-translate-y-2"
                         >
                             {/* Background Image with Slow Zoom */}
                             <img
@@ -129,7 +129,7 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                             {/* Bottom Content */}
                             <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-20 flex flex-col items-center text-center">
 
-                                <h3 className="font-heading text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-1.5 drop-shadow-lg tracking-wide group-hover:text-[#FF6B00] transition-colors duration-300">
+                                <h3 className="font-heading text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-1.5 drop-shadow-lg tracking-wide group-hover:text-gold transition-colors duration-300">
                                     {dest.name}
                                 </h3>
 
@@ -138,7 +138,7 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                                 </p>
 
                                 {/* Hover Line Decor */}
-                                <div className="w-8 sm:w-10 h-[2px] bg-[#FF6B00] scale-0 group-hover:scale-100 transition-transform duration-500 ease-out-expo origin-center" />
+                                <div className="w-8 sm:w-10 h-[2px] bg-gold scale-0 group-hover:scale-100 transition-transform duration-500 ease-out-expo origin-center" />
                             </div>
                         </Link>
                     ))}

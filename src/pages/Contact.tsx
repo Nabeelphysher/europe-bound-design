@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -531,9 +532,9 @@ const Contact = () => {
                   <p className="text-muted-foreground mb-4 text-sm">
                     Find quick answers to common questions about visas, processing times, and documents.
                   </p>
-                  <a href="#" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                  <Link to="/about" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
                     Visit FAQ Page <ArrowRight className="w-3 h-3" />
-                  </a>
+                  </Link>
                 </div>
               </RevealOnScroll>
 

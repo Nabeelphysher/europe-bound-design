@@ -129,7 +129,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
               placeholder="e.g. Sarah Jenkins"
             />
           </div>
@@ -144,7 +144,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
               placeholder="sarah@example.com"
             />
           </div>
@@ -161,7 +161,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
                 required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all duration-200 text-sm"
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
@@ -175,7 +175,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
                 value={formData.country}
                 onValueChange={(value) => setFormData({ ...formData, country: value })}
               >
-                <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold">
                   <SelectValue placeholder="Select Destination" />
                 </SelectTrigger>
                 <SelectContent position="popper" sideOffset={5} className="max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
@@ -183,7 +183,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
                     <SelectItem
                       key={country.value}
                       value={country.value}
-                      className="cursor-pointer focus:bg-[#D4AF37]/10 focus:text-[#0B1E3F]"
+                      className="cursor-pointer focus:bg-gold/10 focus:text-primary"
                     >
                       {country.label}
                     </SelectItem>
@@ -199,7 +199,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
               type="submit"
               disabled={isSubmitting}
               className={cn(
-                "w-full bg-[#D4AF37] hover:bg-[#B8860B] text-white font-bold py-3 md:py-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/20 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm",
+                "w-full bg-gold hover:bg-gold/90 text-white font-bold py-3 md:py-3.5 rounded-2xl shadow-lg border border-gold/20 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm",
                 isSubmitting && "opacity-80 cursor-not-allowed transform-none"
               )}
             >

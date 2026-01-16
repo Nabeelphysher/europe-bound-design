@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,59 +8,59 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - Navy & Gold European Palette */
-    /* Background: Very soft warm white/cream for luxury feel, not stark white */
-    --background: 40 20% 99%;
-    --foreground: 224 64% 12%;
-    /* Deep Navy text */
+    /* Core Brand Colors - New Premium Palette */
+    /* Background: Cream #faf4e5 */
+    --background: 43 65% 94%;
+    --foreground: 0 0% 0%;
+    /* Black text */
 
     --card: 0 0% 100%;
-    --card-foreground: 224 64% 12%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 64% 12%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Navy - Primary brand color (Deep Midnight Blue) */
-    --primary: 224 64% 12%;
-    --primary-foreground: 40 20% 98%;
+    /* Black - Primary brand color */
+    --primary: 0 0% 0%;
+    --primary-foreground: 43 65% 94%;
 
-    /* Champagne Gold - Secondary accent */
-    --secondary: 40 30% 96%;
-    --secondary-foreground: 224 64% 12%;
+    /* Cream - Secondary accent/background variation */
+    --secondary: 43 65% 96%;
+    /* Slightly lighter cream */
+    --secondary-foreground: 0 0% 0%;
 
-    /* Muted - Soft warm grays */
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 10% 40%;
+    /* Muted - Warm grays */
+    --muted: 43 20% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    /* Accent - Terracotta warmth (slightly deeper/richer) */
-    --accent: 18 65% 50%;
+    /* Accent - Orange #ff7700 */
+    --accent: 28 100% 50%;
     --accent-foreground: 0 0% 100%;
 
-    /* Gold highlight - Updated to Orange #FF6B00 */
-    --gold: 25 100% 50%;
-    --gold-foreground: 224 64% 12%;
+    /* Gold/Orange highlight - Orange #ff7700 */
+    --gold: 28 100% 50%;
+    --gold-foreground: 0 0% 100%;
 
-    /* Champagne - Light gold/beige */
-    --champagne: 42 50% 94%;
-    --champagne-foreground: 224 64% 12%;
+    /* Champagne - Keeping as light variation */
+    --champagne: 43 65% 94%;
+    --champagne-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 224 64% 12%;
+    --border: 43 20% 85%;
+    --input: 43 20% 85%;
+    --ring: 0 0% 0%;
 
     --radius: 0.75rem;
-    /* Slightly tighter radius for professional look */
 
-    /* Shadows - Ultra Soft & Premium */
-    --shadow-sm: 0 1px 2px 0 hsl(224 64% 12% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(224 64% 12% / 0.08), 0 2px 4px -2px hsl(224 64% 12% / 0.08);
-    --shadow-lg: 0 10px 15px -3px hsl(224 64% 12% / 0.08), 0 4px 6px -4px hsl(224 64% 12% / 0.08);
-    --shadow-xl: 0 20px 25px -5px hsl(224 64% 12% / 0.08), 0 8px 10px -6px hsl(224 64% 12% / 0.08);
-    --shadow-2xl: 0 25px 50px -12px hsl(224 64% 12% / 0.15);
-    --shadow-glow: 0 0 40px hsl(42 60% 55% / 0.15);
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.08), 0 2px 4px -2px hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.08), 0 4px 6px -4px hsl(0 0% 0% / 0.08);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.08), 0 8px 10px -6px hsl(0 0% 0% / 0.08);
+    --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.15);
+    --shadow-glow: 0 0 40px hsl(28 100% 50% / 0.25);
 
     /* Animation durations */
     --duration-fast: 200ms;

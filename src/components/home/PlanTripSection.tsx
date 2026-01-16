@@ -62,38 +62,38 @@ export function PlanTripSection() {
                     <div className="col-span-12 lg:col-span-4 space-y-8 text-center lg:text-left pt-8 lg:pt-0">
                         <RevealOnScroll animation="fade-up">
                             <div>
-                                <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-[#334155] block mb-3 font-medium">
+                                <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-gold block mb-3 font-medium">
                                     Let's Go Together
                                 </span>
-                                <h2 className="font-heading text-4xl md:text-6xl font-bold text-[#0F172A] leading-[1.15] tracking-tight">
+                                <h2 className="font-heading text-4xl md:text-6xl font-bold text-primary leading-[1.15] tracking-tight">
                                     Plan Your Trip <br />
-                                    <span className="text-[#0F172A]">With Us</span>
+                                    <span className="text-primary">With Us</span>
                                 </h2>
                             </div>
 
-                            <p className="text-slate-500 text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 font-light">
+                            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 font-light">
                                 There are many variations of passages of available but the majority have suffered alteration in some form, by injected hum randomised words which don't look even slightly.
                             </p>
 
-                            {/* Feature List - Cyan/Blue Icons */}
+                            {/* Feature List - Gold Icons */}
                             <div className="space-y-8">
                                 <div className="flex items-center gap-5 group justify-center lg:justify-start">
-                                    <div className="w-16 h-16 rounded-full bg-[#0284C7] text-white flex items-center justify-center shadow-lg shadow-sky-200 transition-transform group-hover:scale-110 duration-300">
+                                    <div className="w-16 h-16 rounded-full bg-gold text-white flex items-center justify-center shadow-lg shadow-orange-200 transition-transform group-hover:scale-110 duration-300">
                                         <Map className="w-7 h-7" strokeWidth={1.5} />
                                     </div>
                                     <div className="text-left">
-                                        <h3 className="font-heading text-xl font-bold text-[#0F172A]">Exclusive Trip</h3>
-                                        <p className="text-sm text-slate-500 font-light">There are many variations of passages of available but the majority.</p>
+                                        <h3 className="font-heading text-xl font-bold text-primary">Exclusive Trip</h3>
+                                        <p className="text-sm text-muted-foreground font-light">There are many variations of passages of available but the majority.</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-5 group justify-center lg:justify-start">
-                                    <div className="w-16 h-16 rounded-full bg-[#0284C7] text-white flex items-center justify-center shadow-lg shadow-sky-200 transition-transform group-hover:scale-110 duration-300">
+                                    <div className="w-16 h-16 rounded-full bg-gold text-white flex items-center justify-center shadow-lg shadow-orange-200 transition-transform group-hover:scale-110 duration-300">
                                         <Users className="w-7 h-7" strokeWidth={1.5} />
                                     </div>
                                     <div className="text-left">
-                                        <h3 className="font-heading text-xl font-bold text-[#0F172A]">Professional Guide</h3>
-                                        <p className="text-sm text-slate-500 font-light">There are many variations of passages of available but the majority.</p>
+                                        <h3 className="font-heading text-xl font-bold text-primary">Professional Guide</h3>
+                                        <p className="text-sm text-muted-foreground font-light">There are many variations of passages of available but the majority.</p>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ export function PlanTripSection() {
                             <div className="pt-8 flex justify-center lg:justify-start">
                                 <Link
                                     to="/contact"
-                                    className="bg-[#0F172A] text-white rounded-full px-12 py-5 font-semibold text-base shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group"
+                                    className="bg-primary text-white rounded-full px-12 py-5 font-semibold text-base shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group"
                                 >
                                     Learn More
                                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -127,7 +127,7 @@ export function PlanTripSection() {
                                 {/* Floating Badge: Star Rating (Top Right of Circle) */}
                                 <div className="absolute top-28 -right-2 bg-white w-16 h-16 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center animate-bounce duration-[3000ms] z-20">
                                     <span className="text-red-500 text-sm">★</span>
-                                    <span className="font-bold text-xs text-[#0F172A]">4.9k</span>
+                                    <span className="font-bold text-xs text-primary">4.9k</span>
                                 </div>
 
                                 {/* Floating Badge: Love Emoji (Left of Lady) */}

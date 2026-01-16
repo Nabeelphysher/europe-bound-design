@@ -96,9 +96,9 @@ const About = () => {
         {/* Founder's Note Section - Redesigned */}
         {/* Founder's Note Section - Premium Redesign */}
         <section className="py-12 lg:py-32 relative overflow-hidden bg-[#FAFAFA]">
-          {/* Decorative Background Elements - Premium & Subtle */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#FF6B00]/5 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-[#0B1E3F]/5 rounded-full blur-[120px] pointer-events-none" />
+          {/* Floating Elements - Adjusted for better responsiveness */}
+          <div className="absolute top-1/4 -right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="container px-4 sm:px-6 relative z-10">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
@@ -108,24 +108,24 @@ const About = () => {
                 <RevealOnScroll animation="slide-in-left">
                   <div className="space-y-4 relative">
                     <div className="flex items-center gap-4 mb-6">
-                      <span className="h-[1px] w-12 bg-[#FF6B00]"></span>
-                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-[#FF6B00] uppercase">
+                      <span className="h-[1px] w-12 bg-gold"></span>
+                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-gold uppercase">
                         Welcome to Europe Bound
                       </p>
                     </div>
 
-                    <h2 className="font-heading text-5xl lg:text-[4rem] font-bold text-[#0B1E3F] leading-[1.1] tracking-tight">
+                    <h2 className="font-heading text-5xl lg:text-[4rem] font-bold text-primary leading-[1.1] tracking-tight">
                       Hi, I'm <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#FF6B00]">Najath Sharafudeen</span>
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold">Najath Sharafudeen</span>
                     </h2>
-                    <p className="font-serif italic text-2xl text-[#0B1E3F]/60 font-light mt-2">
+                    <p className="font-serif italic text-2xl text-primary/60 font-light mt-2">
                       Founder of Europe Calling.
                     </p>
                   </div>
 
                   <div className="relative pt-8 group">
-                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-[#FF6B00]/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
-                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-[#FF6B00]/30">
+                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-gold/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
+                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-gold/30">
                       "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
                     </p>
                   </div>
@@ -136,17 +136,19 @@ const About = () => {
                     </span>
                     <div className="flex gap-4">
                       {[
-                        { Icon: Instagram, label: "Instagram", href: "#" },
-                        { Icon: Facebook, label: "Facebook", href: "#" },
-                        { Icon: Linkedin, label: "LinkedIn", href: "#" }
+                        { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/europe__calling/" },
+                        { Icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+                        { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" }
                       ].map(({ Icon, label, href }, i) => (
                         <a
                           key={i}
                           href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="group relative w-14 h-14 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(232,180,48,0.15)] transition-all duration-500 overflow-hidden"
                           aria-label={label}
                         >
-                          <div className="absolute inset-0 bg-[#FF6B00] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                          <div className="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                           <Icon className="w-5 h-5 text-gray-600 group-hover:text-white relative z-10 transition-colors duration-500" strokeWidth={1.5} />
                         </a>
                       ))}
@@ -224,7 +226,7 @@ const About = () => {
 
                   {/* Main Person Image */}
                   <div className="relative w-[85%] max-w-[500px] aspect-[4/5] z-10 mx-auto">
-                    <div className="absolute inset-0 bg-[#0B1E3F] rounded-[2.5rem] rotate-3 opacity-5"></div>
+                    <div className="absolute inset-0 bg-primary rounded-[2.5rem] rotate-3 opacity-5"></div>
                     <img
                       src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
                       alt="Modern Office Space"
@@ -238,16 +240,16 @@ const About = () => {
                           <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
                         </svg>
                       </div>
-                      <span className="text-sm font-bold text-[#0B1E3F]">Watch Video</span>
+                      <span className="text-sm font-bold text-primary">Watch Video</span>
                     </div>
 
                     {/* Floating Quote Card (Bottom Left) */}
                     <div className="absolute bottom-10 -left-6 md:-left-16 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] max-w-[280px] z-20 border border-gray-50 hidden sm:block">
                       <div className="flex items-center gap-3 mb-4">
-                        <img src={founderImage} alt="Najath Sharafudeen" className="w-12 h-12 rounded-full object-cover border-2 border-[#FF6B00]/20" />
+                        <img src={founderImage} alt="Najath Sharafudeen" className="w-12 h-12 rounded-full object-cover border-2 border-gold/20" />
                         <div>
-                          <h4 className="text-sm font-extrabold text-[#0B1E3F]">Najath Sharafudeen</h4>
-                          <p className="text-[10px] text-[#FF6B00] font-bold uppercase tracking-wider">FOUNDER</p>
+                          <h4 className="text-sm font-extrabold text-primary">Najath Sharafudeen</h4>
+                          <p className="text-[10px] text-gold font-bold uppercase tracking-wider">FOUNDER</p>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500 italic leading-relaxed font-medium">
@@ -271,9 +273,9 @@ const About = () => {
                     </div>
 
                     {/* Headline */}
-                    <h2 className="font-heading text-5xl lg:text-[4rem] font-medium text-[#0B1E3F] leading-[1.1] mb-8">
+                    <h2 className="font-heading text-5xl lg:text-[4rem] font-medium text-primary leading-[1.1] mb-8">
                       Why Europe Calling <br />
-                      <span className="font-serif italic text-[#0B1E3F]">Was Created</span>
+                      <span className="font-serif italic text-primary">Was Created</span>
                     </h2>
 
                     {/* Description */}
@@ -286,7 +288,7 @@ const About = () => {
                     {/* Stats Row */}
                     <div ref={statsRef} className="grid grid-cols-3 gap-2 md:gap-8 divide-x divide-gray-100">
                       <div className="space-y-1 md:space-y-2 pr-2 md:pr-4 text-center md:text-left">
-                        <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B1E3F] leading-tight">Top 1</h3>
+                        <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">Top 1</h3>
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">IN THE INDUSTRY</p>
                       </div>
                       <div className="space-y-1 md:space-y-2 px-2 md:px-4 text-center md:text-left">
@@ -295,7 +297,7 @@ const About = () => {
                           suffix="K"
                           duration={1500}
                           isVisible={statsVisible}
-                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF6B00] leading-tight"
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gold leading-tight"
                         />
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">SATISFIED USERS</p>
                       </div>
@@ -305,7 +307,7 @@ const About = () => {
                           suffix="M"
                           duration={1500}
                           isVisible={statsVisible}
-                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#FF6B00] leading-tight"
+                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gold leading-tight"
                         />
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">TOTAL EARNINGS</p>
                       </div>
@@ -583,7 +585,7 @@ const About = () => {
                 {/* Decorative Element */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FF6B00]/10 rounded-full blur-3xl -z-10" />
 
-                <h2 className="font-heading text-5xl md:text-7xl font-bold text-[#0B1E3F] mb-6 tracking-tight drop-shadow-sm">
+                <h2 className="font-heading text-5xl md:text-7xl font-bold text-primary mb-6 tracking-tight drop-shadow-sm">
                   A wholesome team that <br className="hidden md:block" /> stands for success!
                 </h2>
                 <p className="font-serif text-xl md:text-2xl italic text-gray-500 max-w-2xl mx-auto">
@@ -615,7 +617,7 @@ const About = () => {
                     {/* Content Section */}
                     <div className="flex justify-between items-end">
                       <div>
-                        <h3 className="font-heading text-xl font-bold text-[#0B1E3F] leading-tight mb-2">
+                        <h3 className="font-heading text-xl font-bold text-primary leading-tight mb-2">
                           {member.name}
                         </h3>
                         <p className="font-bold text-[10px] text-teal-600 uppercase tracking-widest">
@@ -623,7 +625,7 @@ const About = () => {
                         </p>
                       </div>
 
-                      <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-[#0B1E3F] text-white group-hover:bg-teal-600 transition-colors duration-300 shadow-lg cursor-pointer">
+                      <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white group-hover:bg-teal-600 transition-colors duration-300 shadow-lg cursor-pointer">
                         <ChevronRight className="w-5 h-5" />
                       </div>
                     </div>
