@@ -5,6 +5,7 @@ import azerbaijanBg from "../../assets/a3.png";
 import armeniaBg from "../../assets/a4.png";
 import kyrgyzstanBg from "../../assets/a1.png";
 import kazakhstanBg from "../../assets/a2 (1).png";
+import russiaBg from "../../assets/russia.jpg";
 
 const slides = [
     {
@@ -30,10 +31,10 @@ const slides = [
     },
     {
         id: 4,
-        title: "NETHERLANDS",
-        subtitle: "Canals & Culture",
-        image: "https://images.unsplash.com/photo-1459679749680-18eb1eb37418?q=80&w=2670&auto=format&fit=crop",
-        cta: "Book Netherlands Tour"
+        title: "RUSSIA",
+        subtitle: "Imperial Splendor",
+        image: russiaBg,
+        cta: "Book Russia Tour"
     },
     {
         id: 5,

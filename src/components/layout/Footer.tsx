@@ -29,7 +29,7 @@ export function Footer() {
 
             <div className="flex flex-wrap gap-3">
               {[
-                { icon: <Facebook className="w-4 h-4" />, href: "https://facebook.com" },
+                { icon: <Facebook className="w-4 h-4" />, href: "https://www.facebook.com/share/19qGz8sdbi/?mibextid=wwXIfr" },
                 { icon: <Instagram className="w-4 h-4" />, href: "https://www.instagram.com/europe__calling/" },
                 { icon: <Twitter className="w-4 h-4" />, href: "https://twitter.com" },
                 { icon: <Linkedin className="w-4 h-4" />, href: "https://linkedin.com" },
@@ -71,15 +71,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Resources */}
+          {/* Column 3: Top Destinations */}
           <div className="col-span-1">
-            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide">Resources</h4>
+            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide">Top Destinations</h4>
             <ul className="space-y-4">
               {[
-                { name: 'Terms of Use', path: '/terms' },
-                { name: 'Privacy Policy', path: '/privacy' },
-                { name: 'Refund Policy', path: '/refund' },
-                { name: 'Shipping Policy', path: '/shipping' },
+                { name: 'Azerbaijan', path: '/destinations/azerbaijan' },
+                { name: 'Kazakhstan', path: '/destinations/kazakhstan' },
+                { name: 'Russia', path: '/destinations/russia' },
+                { name: 'Georgia', path: '/destinations/georgia' },
+                { name: 'Uzbekistan', path: '/destinations/uzbekistan' },
               ].map((item) => (
                 <li key={item.name}>
                   <Link to={item.path} className="text-muted-foreground hover:text-gold text-sm transition-colors duration-300 flex items-center gap-2 group">
@@ -146,11 +147,17 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary/5 flex justify-center items-center text-center">
+        <div className="pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-muted-foreground/60 text-xs tracking-wide">
             © {currentYear} Europe Calling. All Rights Reserved.
           </p>
 
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link to="/terms" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Terms of Use</Link>
+            <Link to="/privacy" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Privacy Policy</Link>
+            <Link to="/refund" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Refund Policy</Link>
+            <Link to="/shipping" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Shipping Policy</Link>
+          </div>
         </div>
       </div>
     </footer>

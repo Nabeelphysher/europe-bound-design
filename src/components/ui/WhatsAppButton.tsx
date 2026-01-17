@@ -6,7 +6,7 @@ export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    const phoneNumber = "49123456789"; // Replace with actual number
+    const phoneNumber = "994519737056"; // Updated number
     const message = encodeURIComponent(
       "Hello! I'm interested in learning more about Europe Calling services."
     );

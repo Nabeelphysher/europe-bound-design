@@ -11,33 +11,25 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 const faqs = [
   {
     question: "What documents are required to begin the application?",
-    answer: "We initiate the process with a personalized consultation to generate a specific checklist for your destination. Typically, you will need a valid passport, academic transcripts, work experience letters, and a CV in the European format. We assist with verification and translation services.",
+    answer: "Typically, you will need a valid passport, academic transcripts, work experience letters, and a European-format CV. We provide a tailored checklist during consultation.",
   },
   {
     question: "How does the Europe Calling package process work?",
-    answer: "Our process is systematic and transparent. It begins with profile evaluation, followed by package selection tailored to your goals. We then manage the entire workflow—from documentation and job search assistance to visa filing and pre-departure briefings—keeping you informed at every milestone.",
+    answer: "Our transparent process moves from profile evaluation to visa filing. We handle documentation, strategy, and submission, keeping you updated at every milestone.",
   },
   {
     question: "Do you offer interview preparation or job placement support?",
-    answer: "Yes, our comprehensive packages include dedicated career support. We provide resume enhancement, LinkedIn profile optimization, and rigorous mock interview sessions designed to meet European employer standards, significantly boosting your placement chances.",
-  },
-  {
-    question: "Do you provide assistance with travel arrangements?",
-    answer: "Absolutely. To ensure a seamless transition, we offer detailed travel guides, assistance with flight bookings at competitive rates, and guidance on finding initial accommodation in your new city.",
-  },
-  {
-    question: "What are your payment terms and refund policies?",
-    answer: "We operate with full transparency. Our payment plans are flexible and structure-based on process milestones. Detailed refund policies are outlined in our service agreement, providing you with financial protection if specific service deliverables are not met.",
+    answer: "Yes, we provide dedicated career support including resume enhancement, LinkedIn optimization, and mock interviews to meet European standards.",
   },
   {
     question: "What is the typical timeline for the entire process?",
-    answer: "Timelines can vary depending on the destination country and specific visa category, generally ranging from 3 to 6 months. We provide a realistic, estimated timeline at the outset and ensure you are updated on progress throughout the journey.",
+    answer: "Timelines generally range from 3 to 6 months depending on the country and visa category. We provide a realistic estimate at the start of your journey.",
   },
 ];
 
 export function FAQSection() {
   return (
-    <section className="py-24 bg-secondary/30 relative overflow-hidden" id="faq">
+    <section className="py-24 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden" id="faq">
 
       {/* Premium Decorative Background Elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[800px] h-[800px] bg-white/40 rounded-full blur-[100px] pointer-events-none" />
@@ -68,7 +60,7 @@ export function FAQSection() {
                     <MessageCircle className="w-4 h-4" />
                     Contact Support
                   </a>
-                  <a href="mailto:support@europecalling.co" className="btn-outline inline-flex items-center justify-center gap-2 w-full sm:w-auto font-medium tracking-wide">
+                  <a href="mailto:sales@europecalling.com" className="btn-outline inline-flex items-center justify-center gap-2 w-full sm:w-auto font-medium tracking-wide">
                     <Mail className="w-4 h-4" />
                     Email Us
                   </a>
@@ -100,12 +92,22 @@ export function FAQSection() {
             </RevealOnScroll>
 
             <RevealOnScroll animation="fade-in" delay={300}>
-              <div className="mt-10 text-center lg:text-left inline-flex flex-col sm:flex-row items-center gap-2 text-sm text-muted-foreground bg-white/50 p-4 rounded-lg backdrop-blur-sm border border-white/60">
-                <HelpCircle className="w-4 h-4 text-gold" />
-                <span className="font-light">Still have questions?</span>
-                <a href="/contact" className="text-primary font-medium hover:text-gold transition-colors underline decoration-gold/30 underline-offset-4">Chat with us</a>
-                <span className="font-light">or email</span>
-                <a href="mailto:support@europecalling.co" className="text-primary font-medium hover:text-gold transition-colors underline decoration-gold/30 underline-offset-4">support@europecalling.co</a>
+              <div className="mt-8 w-full bg-white/60 backdrop-blur-sm border border-white/80 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                    <HelpCircle className="w-5 h-5 text-gold" />
+                  </div>
+                  <div className="text-sm">
+                    <p className="font-semibold text-primary">Still have questions?</p>
+                    <p className="font-light text-xs">We're here to help.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 text-sm font-medium">
+                  <a href="/contact" className="text-primary hover:text-gold transition-colors underline decoration-gold/30 underline-offset-4">Chat with us</a>
+                  <span className="text-gold/40">|</span>
+                  <a href="mailto:sales@europecalling.com" className="text-primary hover:text-gold transition-colors underline decoration-gold/30 underline-offset-4">Email Support</a>
+                </div>
               </div>
             </RevealOnScroll>
           </div>

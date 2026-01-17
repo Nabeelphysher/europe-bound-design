@@ -1,37 +1,51 @@
 import { useState } from "react";
-import { Play, Star } from "lucide-react";
+import { Play, Star, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import netherlandsImg from "@/assets/destination-netherlands.png";
 import testimonialVideo from "@/assets/video/WhatsApp Video 2025-12-15 at 1.17.17 PM (2).mp4";
 
 const testimonials = [
     {
         id: 1,
-        name: "Sophia L.",
+        name: "Aashiq M K",
         date: "31 July 2025",
-        text: "I just got France visa their service was just amazing soooo professional and great follow up with the team, I got rejected before but they made it happen.",
-        initial: "S"
+        text: "Wonderful experience, nice arrangements and frequently follow up from the team (Jelsa and Aysha). Well done team and special mention to the guides (Arif and Eishan) for the wonder support",
+        initial: "A"
     },
     {
         id: 2,
-        name: "James D.",
+        name: "Fulayil Arthaf K.H",
         date: "15 Aug 2025",
-        text: "Truly luxurious. Every detail was perfectly curated. The best trip of our lives were made possible by them. Highly recommended for families!",
-        initial: "J"
+        text: "We had an amazing experience with the team at Kazakhstan. Guides are very friendly, which offered us a hassle free experience throughout our trip.",
+        initial: "F"
     },
     {
         id: 3,
-        name: "Elena R.",
+        name: "Adv.Jeshma Akthar",
         date: "02 Sept 2025",
-        text: "Highly recommend! The locations were cinematic and the guide was amazing. A seamless experience from start to finish.",
-        initial: "E"
+        text: "Thank you, Europe Calling Team, for your great hospitality, caring service, and budget-friendly pricing. Highly appreciated!",
+        initial: "J"
     },
     {
         id: 4,
-        name: "Michael B.",
+        name: "vijesh kelangath",
         date: "12 Oct 2025",
-        text: "Seamless and efficient. The team handled everything perfectly, allowing me to focus on work. Will definitely use their services again.",
-        initial: "M"
+        text: "Very very highly recommended travels . We had a good experience with them.good supporting from sales ,operation team(sherin ). Good hotels . Great team",
+        initial: "V"
+    },
+    {
+        id: 5,
+        name: "Shaji Pallana",
+        date: "20 Nov 2025",
+        text: "We booked our family vacation package to Georgia through Europe Calling and it was an absolutely incredible experience , Good dealings ,cheap and best. Thanks Europe calling for your great trip .",
+        initial: "S"
+    },
+    {
+        id: 6,
+        name: "Asarus Mk",
+        date: "05 Dec 2025",
+        text: "Excellent service, professionalism, and punctuality. The beekeeping and honey production are truly remarkable, may God bless them.",
+        initial: "A"
     },
 ];
 
@@ -47,7 +61,6 @@ const GoogleLogo = () => (
 const VerifiedBadge = () => (
     <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-500 fill-current ml-1" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-        {/* Simple checkmark, standard badge often has a shape behind it, but user image shows a blue checkmark-like icon, assuming standard 'verified' look */}
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
     </svg>
 );
@@ -59,7 +72,7 @@ const StarIcon = ({ className }: { className?: string }) => (
 );
 
 export function TestimonialsSection() {
-    const [isPlaying, setIsPlaying] = useState(false);
+    // Removed isPlaying state as video is removed
 
     const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
         <div
@@ -75,7 +88,6 @@ export function TestimonialsSection() {
                     <div className="relative">
                         <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
                             {/* Placeholder Avatar */}
-                            {/* In a real app, use item.image */}
                             <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
                                 {item.initial}
                             </div>
@@ -131,65 +143,19 @@ export function TestimonialsSection() {
                 </RevealOnScroll>
 
                 <RevealOnScroll animation="fade-up" delay={200}>
-                    <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-
-                        {/* Left Column: Testimonials 1-2 */}
-                        <div className="lg:col-span-4 flex flex-col gap-6">
-                            {testimonials.slice(0, 2).map((item) => (
-                                <TestimonialCard key={item.id} item={item} />
-                            ))}
-                        </div>
-
-                        {/* Center Column: Cinematic Video Card */}
-                        <div className="lg:col-span-4 min-h-[400px]">
-                            <div
-                                className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl cursor-pointer group"
-                                onClick={() => setIsPlaying(true)}
-                            >
-                                {isPlaying ? (
-                                    <video
-                                        src={testimonialVideo}
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                        controls
-                                        autoPlay
-                                        playsInline
-                                    />
-                                ) : (
-                                    <>
-                                        <img
-                                            src={netherlandsImg}
-                                            alt="Happy Clients"
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-
-                                        {/* Play Button */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 transition-transform group-hover:scale-110">
-                                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
-                                                    <Play className="w-5 h-5 text-primary fill-current ml-0.5" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="absolute bottom-6 left-6 text-white">
-                                            <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Watch Story</p>
-                                            <h3 className="text-xl font-bold">Client Experiences</h3>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Right Column: Testimonials 3-4 */}
-                        <div className="lg:col-span-4 flex flex-col gap-6">
-                            {testimonials.slice(2, 4).map((item) => (
-                                <TestimonialCard key={item.id} item={item} />
-                            ))}
-                        </div>
-
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {testimonials.map((item) => (
+                            <TestimonialCard key={item.id} item={item} />
+                        ))}
                     </div>
                 </RevealOnScroll>
+
+                <div className="flex justify-center mt-12">
+                    <Link to="/testimonials" className="group flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300">
+                        <span>View all</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </div>
             </div>
         </section>
     );

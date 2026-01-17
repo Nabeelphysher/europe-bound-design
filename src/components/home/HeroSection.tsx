@@ -12,12 +12,12 @@ import { cn } from "@/lib/utils";
 import azerbaijanImg from "@/assets/destination-azerbaijan.png";
 import kazakhstanImg from "@/assets/destination-kazakhstan.png";
 import armeniaImg from "@/assets/destination-armenia.png";
-import netherlandsImg from "@/assets/destination-netherlands.png";
+import russiaImg from "@/assets/russia.jpg";
 import franceImg from "@/assets/destination-france.jpg";
 
 const heroDestinations = [
   { id: "azerbaijan", name: "AZERBAIJAN", location: "Baku - Azerbaijan", description: "Discover the Land of Fire, where ancient history meets modern architecture.", image: azerbaijanImg },
-  { id: "netherlands", name: "THE NETHERLANDS", location: "Amsterdam - Netherlands", description: "Explore the picturesque canals, historic windmills, and vibrant tulip fields.", image: netherlandsImg },
+  { id: "russia", name: "RUSSIA", location: "Moscow - Russia", description: "Discover the vast beauty of Russia, from the colorful onion domes of St. Basil's to the imperial canals.", image: russiaImg },
   { id: "france", name: "FRANCE", location: "Paris - France", description: "Immerse yourself in art, fashion, and gastronomy.", image: franceImg },
   { id: "kazakhstan", name: "KAZAKHSTAN", location: "Almaty - Kazakhstan", description: "Journey through the Heart of Eurasia. Explore vast steppes and mountains.", image: kazakhstanImg },
   { id: "armenia", name: "ARMENIA", location: "Yerevan - Armenia", description: "Visit the world's first Christian nation and its ancient monasteries.", image: armeniaImg }

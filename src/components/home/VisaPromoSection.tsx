@@ -1,10 +1,13 @@
-
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { LeadPopup } from "@/components/ui/LeadPopup";
 import visaExpertImg from "@/assets/Gemini_Generated_Image_szihweszihweszih.png";
 
 export function VisaPromoSection() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     return (
         <section className="py-12 px-4 md:px-6 bg-white">
             <div className="container-wide">
@@ -43,13 +46,13 @@ export function VisaPromoSection() {
 
                                 {/* Button */}
                                 <div className="pt-2">
-                                    <Link
-                                        to="/services"
+                                    <button
+                                        onClick={() => setIsPopupOpen(true)}
                                         className="group inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-primary-foreground font-bold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
                                     >
                                         <span className="tracking-wide text-xs sm:text-sm uppercase">Apply Now</span>
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -75,6 +78,8 @@ export function VisaPromoSection() {
                     </div>
                 </RevealOnScroll>
             </div>
+
+            <LeadPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
         </section>
     );
 }

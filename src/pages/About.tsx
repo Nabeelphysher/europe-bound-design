@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote, Instagram, Facebook, Linkedin } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote, Instagram, Facebook, Linkedin, Volume2, VolumeX, Maximize, Play, Pause } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { FlightAnimation } from "@/components/ui/FlightAnimation";
 import { CTASection } from "@/components/home/CTASection";
@@ -74,7 +74,51 @@ function AnimatedCounter({ value, suffix, duration, isVisible, className }: { va
 const About = () => {
   const [statsVisible, setStatsVisible] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+
+  const sendVideoCommand = (command: string, args: any[] = []) => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: command,
+        args: args
+      }), '*');
+    }
+  };
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      sendVideoCommand('pauseVideo');
+      setIsPlaying(false);
+    } else {
+      sendVideoCommand('playVideo');
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = () => {
+    if (isMuted) {
+      sendVideoCommand('unMute');
+      setIsMuted(false);
+    } else {
+      sendVideoCommand('mute');
+      setIsMuted(true);
+    }
+  };
+
+  const toggleFullScreen = () => {
+    if (containerRef.current) {
+      if (!document.fullscreenElement) {
+        containerRef.current.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -95,113 +139,127 @@ const About = () => {
 
         {/* Founder's Note Section - Redesigned */}
         {/* Founder's Note Section - Premium Redesign */}
-        <section className="py-12 lg:py-32 relative overflow-hidden bg-[#FAFAFA]">
-          {/* Floating Elements - Adjusted for better responsiveness */}
-          <div className="absolute top-1/4 -right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute -left-[10%] top-[20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Founder's Note Section - Redesigned to match Premium Reference */}
+        <section className="py-16 lg:py-28 relative overflow-hidden bg-white">
+          {/* Subtle Background Elements */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-orange-50/50 to-transparent rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
           <div className="container px-4 sm:px-6 relative z-10">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-              {/* Content Column */}
-              <div className="lg:col-span-6 space-y-8 lg:space-y-12 order-2 lg:order-1">
-                <RevealOnScroll animation="slide-in-left">
-                  <div className="space-y-4 relative">
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="h-[1px] w-12 bg-gold"></span>
-                      <p className="font-sans text-xs font-bold tracking-[0.25em] text-gold uppercase">
+              {/* Text Content - Right Aligned (Swapped) */}
+              <div className="order-2 lg:order-2 text-left lg:pl-10">
+                <RevealOnScroll animation="fade-left">
+                  <div className="space-y-6">
+
+                    {/* Badge / Label */}
+                    <div className="flex items-center gap-4 mb-2">
+                      <span className="h-[2px] w-10 bg-orange-500"></span>
+                      <span className="font-sans text-xs font-bold tracking-[0.25em] text-orange-500 uppercase">
                         Welcome to Europe Bound
-                      </p>
+                      </span>
                     </div>
 
-                    <h2 className="font-heading text-5xl lg:text-[4rem] font-bold text-primary leading-[1.1] tracking-tight">
-                      Hi, I'm <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold">Najath Sharafudeen</span>
-                    </h2>
-                    <p className="font-serif italic text-2xl text-primary/60 font-light mt-2">
+                    {/* Leading Text */}
+                    <div className="space-y-1">
+                      <h2 className="font-heading text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                        Hi, I'm
+                      </h2>
+                      <h2 className="font-heading text-5xl lg:text-7xl font-bold text-orange-500 leading-tight">
+                        Najath Sharafudeen
+                      </h2>
+                    </div>
+
+                    {/* Subtitle */}
+                    <p className="font-serif italic text-xl md:text-2xl text-gray-500 font-light">
                       Founder of Europe Calling.
                     </p>
-                  </div>
 
-                  <div className="relative pt-8 group">
-                    <Quote className="absolute -top-4 -left-6 w-16 h-16 text-gold/10 -z-10 transform -scale-x-100 transition-transform duration-700 group-hover:scale-x-[-1.1] group-hover:scale-y-[1.1]" />
-                    <p className="text-xl text-gray-600 leading-[1.8] font-light relative z-10 pl-8 border-l-2 border-gold/30">
-                      "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
-                    </p>
-                  </div>
+                    {/* Quote Block */}
+                    <div className="relative mt-8 md:mt-10 group max-w-lg">
+                      {/* Background Quote Icon */}
+                      <Quote className="absolute -top-6 -left-4 w-20 h-20 text-orange-100/50 -z-10 rotate-180" />
 
-                  <div className="pt-8 border-t border-gray-100">
-                    <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-8">
-                      CONNECT WITH ME
-                    </span>
-                    <div className="flex gap-4">
-                      {[
-                        { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/europe__calling/" },
-                        { Icon: Facebook, label: "Facebook", href: "https://facebook.com" },
-                        { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" }
-                      ].map(({ Icon, label, href }, i) => (
-                        <a
-                          key={i}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group relative w-14 h-14 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(232,180,48,0.15)] transition-all duration-500 overflow-hidden"
-                          aria-label={label}
-                        >
-                          <div className="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                          <Icon className="w-5 h-5 text-gray-600 group-hover:text-white relative z-10 transition-colors duration-500" strokeWidth={1.5} />
-                        </a>
-                      ))}
+                      <div className="pl-8 border-l-[3px] border-orange-400 py-1">
+                        <p className="font-serif text-lg md:text-xl text-gray-600 leading-[1.8] italic">
+                          "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
+                        </p>
+                      </div>
                     </div>
+
+                    {/* Socials Connection */}
+                    <div className="pt-10 mt-2">
+                      <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-5">
+                        CONNECT WITH ME
+                      </span>
+                      <div className="flex gap-4">
+                        {[
+                          { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/naj.ath?igsh=MTd0cWJzNzQwcjJtdg==" },
+                          { Icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+                          { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" }
+                        ].map(({ Icon, label, href }, i) => (
+                          <a
+                            key={i}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                            aria-label={label}
+                          >
+                            <Icon className="w-5 h-5" strokeWidth={1.5} />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
                 </RevealOnScroll>
               </div>
 
-              {/* Image Column - Matches Reference Image Style */}
-              <div className="lg:col-span-6 relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                <RevealOnScroll animation="slide-in-right" className="w-full max-w-[500px]">
-                  <div className="relative z-10">
+              {/* Image Column - Left Side (Swapped) */}
+              <div className="order-1 lg:order-1 relative flex justify-center lg:justify-start">
+                <RevealOnScroll animation="scale-up" className="w-full max-w-[500px]">
+                  <div className="relative group">
                     {/* Main Card Container */}
-                    <div className="relative p-6 bg-white rounded-[3rem] shadow-[0_30px_60px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(11,30,63,0.12)]">
+                    <div className="relative p-4 md:p-6 bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(11,30,63,0.15)] ring-1 ring-gray-100">
+
                       {/* Inner Image Frame */}
-                      <div className="relative rounded-[2.5rem] overflow-hidden bg-gray-50 aspect-[4/5]">
-                        {/* Subtle Grain/Texture Overlay */}
-                        <div className="absolute inset-0 bg-noise opacity-[0.03] z-10 pointer-events-none mix-blend-overlay"></div>
-
-                        {/* Gradient Background for Image */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#f3f4f6] to-[#e5e7eb] z-0"></div>
-
+                      <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-gray-50 aspect-[4/5] isolate">
+                        {/* Image */}
                         <img
                           src={founderImage}
                           alt="Najath Sharafudeen"
-                          className="relative z-10 w-full h-full object-cover object-top transform transition-transform duration-1000 hover:scale-105"
+                          className="relative z-10 w-full h-full object-cover object-top transform transition-transform duration-1000 group-hover:scale-105"
                         />
 
-                        {/* Overlay Gradient at bottom for text readability if needed, though clean is better */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10 pointer-events-none" />
+                        {/* Inner Shadow Overlay */}
+                        <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[2rem] md:rounded-[2.5rem] z-20 pointer-events-none"></div>
                       </div>
 
-                      {/* Floating 'Open for Consultation' Badge */}
-                      <div className="absolute bottom-10 -right-6 md:-right-12 z-30">
-                        <div className="bg-white py-4 px-8 rounded-full shadow-[0_15px_40px_-5px_rgba(0,0,0,0.1)] border border-gray-50 flex items-center gap-4 animate-float hover:scale-105 transition-transform duration-300">
-                          <div className="relative flex h-3 w-3">
+                      {/* Floating Badge */}
+                      <div className="absolute bottom-8 right-8 md:-right-6 z-30">
+                        <div className="bg-white/95 backdrop-blur-sm py-3 px-6 rounded-full shadow-xl border border-white/50 flex items-center gap-3 animate-float">
+                          <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                          </div>
-                          <span className="text-sm font-bold text-[#0B1E3F] tracking-wide whitespace-nowrap">
+                          </span>
+                          <span className="text-xs font-bold text-primary tracking-wide">
                             Open for Consultation
                           </span>
                         </div>
                       </div>
 
-                      {/* Geometric Decoration */}
-                      <div className="absolute -top-8 -left-8 -z-10">
-                        <div className="w-32 h-32 border-2 border-[#FF6B00]/20 rounded-full"></div>
-                      </div>
-                      <div className="absolute -bottom-8 -left-4 -z-10">
-                        <div className="w-24 h-24 bg-[#FF6B00]/5 rounded-full blur-2xl"></div>
-                      </div>
                     </div>
+
+                    {/* Geometric Decoration */}
+                    <div className="absolute -top-6 -right-6 md:-right-12 -z-10 opacity-60">
+                      <div className="w-24 h-24 rounded-full border-[1.5px] border-orange-200"></div>
+                      <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-orange-50"></div>
+                    </div>
+                    <div className="absolute bottom-10 -left-6 md:-left-12 -z-10">
+                      <div className="w-20 h-20 bg-blue-50/80 rounded-full blur-2xl"></div>
+                    </div>
+
                   </div>
                 </RevealOnScroll>
               </div>
@@ -217,8 +275,8 @@ const About = () => {
           <div className="container px-4 sm:px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
 
-              {/* Left: Visuals (Matches reference Left side) */}
-              <div className="relative order-1 lg:h-auto min-h-[500px] flex items-center justify-center">
+              {/* Left: Visuals (Swapped to Right) */}
+              <div className="relative order-2 lg:h-auto min-h-[500px] flex items-center justify-center">
                 <RevealOnScroll animation="slide-in-right" className="w-full relative h-full flex items-center justify-center">
 
                   {/* Decorative Background Blur */}
@@ -234,7 +292,7 @@ const About = () => {
                     />
 
                     {/* Floating 'Watch Video' Pill (Top Left) */}
-                    <div className="absolute top-10 -left-6 md:-left-12 bg-white py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50">
+                    <div className="absolute top-10 -left-6 md:-left-12 bg-[#faf4e5] py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50/50">
                       <div className="w-10 h-10 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-0.5">
                           <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
@@ -260,8 +318,8 @@ const About = () => {
                 </RevealOnScroll>
               </div>
 
-              {/* Right: Content (Matches reference Right side) */}
-              <div className="order-2 relative z-10">
+              {/* Right: Content (Swapped to Left) */}
+              <div className="order-1 relative z-10">
                 <RevealOnScroll animation="fade-up">
                   <div className="mb-8 text-left">
                     {/* Eyebrow */}
@@ -323,11 +381,12 @@ const About = () => {
         </section>
 
         {/* Core Values */}
-        <section className="section-padding relative overflow-hidden bg-[#fdfbf7]"
+        <section className="section-padding relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]"
           style={{
-            backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px)',
-            backgroundSize: '100% 40px',
-            backgroundAttachment: 'local'
+            backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(180deg, #ffffff 0%, #faf4e5 150px, #faf4e5 100%)',
+            backgroundSize: '100% 40px, 100% 100%',
+            backgroundAttachment: 'local, scroll',
+            backgroundBlendMode: 'overlay, normal'
           }}
         >
           {/* Dashed Connecting Lines (Decorative) */}
@@ -520,14 +579,40 @@ const About = () => {
                           </div>
                         </>
                       ) : (
-                        /* Embedded YouTube Video */
-                        <iframe
-                          src="https://www.youtube.com/embed/g_vqnB18DYM?si=_Exak7dT8RZHd0y-&autoplay=1&controls=1&rel=0"
-                          title="The Europe Bound Video Podcast"
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                        />
+                        /* Embedded YouTube Video with Custom Controls */
+                        <div ref={containerRef} className="relative w-full h-full group/video">
+                          <iframe
+                            ref={iframeRef}
+                            src={`https://www.youtube.com/embed/g_vqnB18DYM?enablejsapi=1&autoplay=1&controls=0&rel=0&showinfo=0&iv_load_policy=3&origin=${window.location.origin}`}
+                            title="The Europe Bound Video Podcast"
+                            className="w-full h-full pointer-events-none"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                          />
+
+                          {/* Invisible Overlay for Click-to-Pause */}
+                          <div
+                            className="absolute inset-0 z-10 cursor-pointer"
+                            onClick={togglePlay}
+                          />
+
+                          {/* Custom Controls Bar */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent z-20 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <button onClick={(e) => { e.stopPropagation(); togglePlay(); }} className="text-white hover:text-gold transition-colors">
+                                {isPlaying ? <Pause className="w-6 h-6" fill="currentColor" /> : <Play className="w-6 h-6" fill="currentColor" />}
+                              </button>
+
+                              <button onClick={(e) => { e.stopPropagation(); toggleMute(); }} className="text-white hover:text-gold transition-colors">
+                                {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+                              </button>
+                            </div>
+
+                            <button onClick={(e) => { e.stopPropagation(); toggleFullScreen(); }} className="text-white hover:text-gold transition-colors">
+                              <Maximize className="w-6 h-6" />
+                            </button>
+                          </div>
+                        </div>
                       )}
                     </div>
 
@@ -567,19 +652,20 @@ const About = () => {
 
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Team Grid */}
-        <section className="py-24 relative overflow-hidden bg-white">
+        < section className="py-24 relative overflow-hidden bg-white" >
           {/* Dotted Grid Background Pattern */}
-          <div className="absolute inset-0 z-0 opacity-[0.2]"
+          < div className="absolute inset-0 z-0 opacity-[0.2]"
             style={{
               backgroundImage: 'radial-gradient(#10B981 1px, transparent 1px)',
               backgroundSize: '32px 32px'
-            }}
+            }
+            }
           />
 
-          <div className="container px-4 sm:px-6 relative z-10">
+          < div className="container px-4 sm:px-6 relative z-10" >
             <RevealOnScroll animation="fade-up">
               <div className="text-center mb-24 relative">
                 {/* Decorative Element */}
@@ -634,13 +720,13 @@ const About = () => {
                 </RevealOnScroll>
               ))}
             </div>
-          </div>
-        </section>
+          </div >
+        </section >
 
         <RevealOnScroll animation="fade-up">
           <CTASection />
         </RevealOnScroll>
-      </main>
+      </main >
       <Footer />
       <WhatsAppButton />
       <StickyEnquireButton />

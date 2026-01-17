@@ -119,7 +119,7 @@ const Gallery = () => {
                     description="Explore our collection of breathtaking moments, happy clients, and stunning destinations."
                 />
 
-                <section className="section-padding pt-0 -mt-10 relative z-10">
+                <section className="section-padding pt-8 relative z-10 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]">
                     <div className="container-wide px-4">
 
                         {/* Filter Tabs */}

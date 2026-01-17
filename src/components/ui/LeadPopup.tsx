@@ -55,7 +55,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
     { value: "azerbaijan", label: "Azerbaijan" },
     { value: "kazakhstan", label: "Kazakhstan" },
     { value: "armenia", label: "Armenia" },
-    { value: "netherlands", label: "Netherlands" },
+    { value: "russia", label: "Russia" },
     { value: "georgia", label: "Georgia" },
     { value: "kyrgyzstan", label: "Kyrgyzstan" },
     { value: "uzbekistan", label: "Uzbekistan" },

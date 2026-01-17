@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import azerbaijanImg from "@/assets/a3.png";
 import kazakhstanImg from "@/assets/a2 (1).png";
 import armeniaImg from "@/assets/a4.png";
-import netherlandsImg from "@/assets/dest1ination-netherlands.png";
+import russiaImg from "@/assets/russia.jpg";
 import georgiaImg from "@/assets/1destination-georgia.png";
 import kyrgyzstanImg from "@/assets/a1.png";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
@@ -20,18 +20,25 @@ const destinations = [
         path: "/destinations/azerbaijan",
     },
     {
-        name: "Uzbekistan",
-        tagline: "SILK ROAD JEWEL",
-        image: uzbekistanImg,
-        tours: "2 TOURS",
-        path: "/destinations/uzbekistan",
-    },
-    {
         name: "Kazakhstan",
         tagline: "HEART OF EURASIA",
         image: kazakhstanImg,
         tours: "7 TOURS",
         path: "/destinations/kazakhstan",
+    },
+    {
+        name: "Georgia",
+        tagline: "WINE & MOUNTAINS",
+        image: georgiaImg,
+        tours: "4 TOURS",
+        path: "/destinations/georgia",
+    },
+    {
+        name: "Uzbekistan",
+        tagline: "SILK ROAD JEWEL",
+        image: uzbekistanImg,
+        tours: "2 TOURS",
+        path: "/destinations/uzbekistan",
     },
     {
         name: "Kyrgyzstan",
@@ -41,11 +48,11 @@ const destinations = [
         path: "/destinations/kyrgyzstan",
     },
     {
-        name: "Netherlands",
-        tagline: "CANALS & CULTURE",
-        image: netherlandsImg,
-        tours: "5 TOURS",
-        path: "/destinations/netherlands",
+        name: "Russia",
+        tagline: "IMPERIAL SPLENDOR",
+        image: russiaImg,
+        tours: "6 TOURS",
+        path: "/destinations/russia",
     },
     {
         name: "Armenia",
@@ -53,13 +60,6 @@ const destinations = [
         image: armeniaImg,
         tours: "6 TOURS",
         path: "/destinations/armenia",
-    },
-    {
-        name: "Georgia",
-        tagline: "WINE & MOUNTAINS",
-        image: georgiaImg,
-        tours: "4 TOURS",
-        path: "/destinations/georgia",
     },
     {
         name: "France",
@@ -78,7 +78,7 @@ interface DestinationsSectionProps {
 
 export function DestinationsSection({ className = "", showViewAll = true, showHeader = true }: DestinationsSectionProps) {
     return (
-        <section className={cn("py-32 bg-background relative overflow-hidden", className)}>
+        <section className={cn("py-32 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden", className)}>
 
             {/* Background Glows (Subtle & Premium) */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">

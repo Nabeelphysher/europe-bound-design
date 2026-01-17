@@ -5,7 +5,7 @@ import { ArrowRight, Map, Users } from "lucide-react";
 // Images
 import img1 from "@/assets/destination-france.jpg";
 import img2 from "@/assets/destination-georgia.png";
-import img3 from "@/assets/destination-netherlands.png";
+import img3 from "@/assets/russia.jpg";
 import travelerImg from "@/assets/1766227243591-removebg-preview.png"; // Distinctive Lady Image
 
 export function PlanTripSection() {

@@ -283,7 +283,7 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
 
   return (
     <div
-      className="relative w-full py-12 md:py-20 overflow-hidden flex flex-col justify-center items-center bg-background min-h-[600px]"
+      className="relative w-full py-12 md:py-20 overflow-hidden flex flex-col justify-center items-center bg-transparent min-h-[600px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -453,177 +453,179 @@ const Testimonials = () => {
           description="Real stories from real people who turned their European dreams into reality with our guidance."
         />
 
-        {/* Filter Navigation */}
-        <div className="sticky top-[72px] z-40 bg-background/80 backdrop-blur-md border-b border-border shadow-sm py-3 transition-all duration-300">
-          <div className="container-wide">
-            {/* Mobile Filter Toggle */}
-            <div className="md:hidden px-4 flex items-center justify-between">
-              <span className="text-sm font-medium text-foreground">
-                Active: <span className="text-primary font-bold">{activeFilter}</span>
-              </span>
-              <button
-                onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
-                className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-md active:scale-95 transition-all"
-              >
-                {isFilterMenuOpen ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
-                {isFilterMenuOpen ? "Close" : "Filters"}
-              </button>
-            </div>
-
-            {/* Filter Buttons */}
-            {/* Filter Buttons */}
-            <div className={cn(
-              "md:flex md:flex-wrap md:justify-center md:gap-3 md:opacity-100 md:max-h-full transition-all duration-500 ease-in-out overflow-hidden md:overflow-visible",
-              isFilterMenuOpen
-                ? "max-h-[400px] opacity-100 mt-3 border-t border-border/50 pt-3 flex flex-col gap-2 mx-4"
-                : "max-h-0 opacity-0 md:mt-0 md:pt-0 md:border-t-0 md:mx-0"
-            )}>
-              {filters.map((filter) => (
+        <div className="relative bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]">
+          {/* Filter Navigation */}
+          <div className="sticky top-[72px] z-40 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm py-3 transition-all duration-300">
+            <div className="container-wide">
+              {/* Mobile Filter Toggle */}
+              <div className="md:hidden px-4 flex items-center justify-between">
+                <span className="text-sm font-medium text-foreground">
+                  Active: <span className="text-primary font-bold">{activeFilter}</span>
+                </span>
                 <button
-                  key={filter}
-                  onClick={() => {
-                    setActiveFilter(filter);
-                    setIsFilterMenuOpen(false);
-                  }}
-                  className={cn(
-                    "whitespace-nowrap px-5 py-3 md:py-2 rounded-xl md:rounded-full text-sm font-medium transition-all duration-300 transform md:hover:scale-105 shrink-0 snap-center text-left md:text-center w-full md:w-auto",
-                    activeFilter === filter
-                      ? "bg-primary text-primary-foreground shadow-md ring-1 ring-gold/30"
-                      : "bg-white text-foreground border border-border/60 hover:bg-champagne/30"
-                  )}
+                  onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
+                  className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-md active:scale-95 transition-all"
                 >
-                  <div className="flex items-center justify-between w-full">
-                    {filter}
-                    {activeFilter === filter && <CheckCircle2 className="w-4 h-4 md:hidden text-gold" />}
-                  </div>
+                  {isFilterMenuOpen ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+                  {isFilterMenuOpen ? "Close" : "Filters"}
                 </button>
-              ))}
+              </div>
+
+              {/* Filter Buttons */}
+              {/* Filter Buttons */}
+              <div className={cn(
+                "md:flex md:flex-wrap md:justify-center md:gap-3 md:opacity-100 md:max-h-full transition-all duration-500 ease-in-out overflow-hidden md:overflow-visible",
+                isFilterMenuOpen
+                  ? "max-h-[400px] opacity-100 mt-3 border-t border-border/50 pt-3 flex flex-col gap-2 mx-4"
+                  : "max-h-0 opacity-0 md:mt-0 md:pt-0 md:border-t-0 md:mx-0"
+              )}>
+                {filters.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => {
+                      setActiveFilter(filter);
+                      setIsFilterMenuOpen(false);
+                    }}
+                    className={cn(
+                      "whitespace-nowrap px-5 py-3 md:py-2 rounded-xl md:rounded-full text-sm font-medium transition-all duration-300 transform md:hover:scale-105 shrink-0 snap-center text-left md:text-center w-full md:w-auto",
+                      activeFilter === filter
+                        ? "bg-primary text-primary-foreground shadow-md ring-1 ring-gold/30"
+                        : "bg-white text-foreground border border-border/60 hover:bg-champagne/30"
+                    )}
+                  >
+                    <div className="flex items-center justify-between w-full">
+                      {filter}
+                      {activeFilter === filter && <CheckCircle2 className="w-4 h-4 md:hidden text-gold" />}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="pb-20 pt-10">
+          <div className="pb-20 pt-10">
 
-          {/* New Video Carousel Section */}
-          {videoTestimonials.length > 0 && (
-            <RevealOnScroll className="w-full mb-20 relative">
-              <section className="w-full">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-32 bg-gold/5 blur-[100px] -z-10 rounded-full"></div>
+            {/* New Video Carousel Section */}
+            {videoTestimonials.length > 0 && (
+              <RevealOnScroll className="w-full mb-20 relative">
+                <section className="w-full">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-32 bg-gold/5 blur-[100px] -z-10 rounded-full"></div>
 
-                <div className="container-wide px-4 mb-12 sm:mb-16 text-center">
-                  <div className="flex flex-col items-center justify-center animate-fade-in-up">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">
-                      <Play className="w-3 h-3 fill-gold" />
-                      Watch Now
+                  <div className="container-wide px-4 mb-12 sm:mb-16 text-center">
+                    <div className="flex flex-col items-center justify-center animate-fade-in-up">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">
+                        <Play className="w-3 h-3 fill-gold" />
+                        Watch Now
+                      </div>
+
+                      <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary mb-4 drop-shadow-sm">
+                        Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-400 to-gold">Stories</span>
+                      </h2>
+
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-gold/50"></div>
+                        <Star className="w-5 h-5 text-gold fill-gold animate-pulse-gentle" />
+                        <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-gold/50"></div>
+                      </div>
+
+                      <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+                        Hear directly from our clients as they share their journey to success in Europe.
+                      </p>
                     </div>
-
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary mb-4 drop-shadow-sm">
-                      Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-400 to-gold">Stories</span>
-                    </h2>
-
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-gold/50"></div>
-                      <Star className="w-5 h-5 text-gold fill-gold animate-pulse-gentle" />
-                      <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-gold/50"></div>
-                    </div>
-
-                    <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-                      Hear directly from our clients as they share their journey to success in Europe.
-                    </p>
                   </div>
-                </div>
 
-                <VideoCarousel items={videoTestimonials} />
-              </section>
-            </RevealOnScroll>
-          )}
-
-          {/* Written Testimonials Section */}
-          {textTestimonials.length > 0 && (
-            <section className="container-wide px-4">
-              <RevealOnScroll animation="fade-up">
-                <div className="flex items-center gap-4 mb-10">
-                  <div className="h-px bg-border flex-grow"></div>
-                  <h2 className="text-2xl sm:text-3xl font-heading font-bold text-primary flex items-center gap-3">
-                    <Quote className="fill-gold text-gold w-6 h-6" />
-                    Client Reviews
-                  </h2>
-                  <div className="h-px bg-border flex-grow"></div>
-                </div>
+                  <VideoCarousel items={videoTestimonials} />
+                </section>
               </RevealOnScroll>
+            )}
 
-              <div className="w-full max-w-[1400px] mx-auto">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4">
-                    {textTestimonials.map((t, index) => (
-                      <CarouselItem key={t.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                        <div className="h-full">
-                          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col hover:shadow-md transition-all duration-300 font-sans min-h-[250px]">
+            {/* Written Testimonials Section */}
+            {textTestimonials.length > 0 && (
+              <section className="container-wide px-4">
+                <RevealOnScroll animation="fade-up">
+                  <div className="flex items-center gap-4 mb-10">
+                    <div className="h-px bg-border flex-grow"></div>
+                    <h2 className="text-2xl sm:text-3xl font-heading font-bold text-primary flex items-center gap-3">
+                      <Quote className="fill-gold text-gold w-6 h-6" />
+                      Client Reviews
+                    </h2>
+                    <div className="h-px bg-border flex-grow"></div>
+                  </div>
+                </RevealOnScroll>
 
-                            {/* Header */}
-                            <div className="flex items-start justify-between mb-4">
-                              <div className="flex items-center gap-4">
-                                <div className="relative">
-                                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
-                                    {t.name.charAt(0)}
+                <div className="w-full max-w-[1400px] mx-auto">
+                  <Carousel
+                    opts={{
+                      align: "start",
+                      loop: true,
+                    }}
+                    className="w-full"
+                  >
+                    <CarouselContent className="-ml-4">
+                      {textTestimonials.map((t, index) => (
+                        <CarouselItem key={t.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                          <div className="h-full">
+                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col hover:shadow-md transition-all duration-300 font-sans min-h-[250px]">
+
+                              {/* Header */}
+                              <div className="flex items-start justify-between mb-4">
+                                <div className="flex items-center gap-4">
+                                  <div className="relative">
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                                      {t.name.charAt(0)}
+                                    </div>
+                                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                      <Star className="w-2.5 h-2.5 text-white fill-white" />
+                                    </div>
                                   </div>
-                                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                                    <Star className="w-2.5 h-2.5 text-white fill-white" />
+                                  <div>
+                                    <h3 className="font-bold text-gray-900 text-base leading-tight">{t.name}</h3>
+                                    <p className="text-xs text-gray-400 mt-1">{t.role || '2025 Client'}</p>
                                   </div>
                                 </div>
-                                <div>
-                                  <h3 className="font-bold text-gray-900 text-base leading-tight">{t.name}</h3>
-                                  <p className="text-xs text-gray-400 mt-1">{t.role || '2025 Client'}</p>
+                                <GoogleLogo />
+                              </div>
+
+                              {/* Stars & Verified */}
+                              <div className="flex items-center gap-1 mb-4">
+                                <div className="flex gap-1">
+                                  {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className={`w-4 h-4 ${i < t.rating ? 'fill-[#fbbf24] text-[#fbbf24]' : 'fill-gray-200 text-gray-200'}`} />
+                                  ))}
                                 </div>
+                                <VerifiedBadge />
                               </div>
-                              <GoogleLogo />
-                            </div>
 
-                            {/* Stars & Verified */}
-                            <div className="flex items-center gap-1 mb-4">
-                              <div className="flex gap-1">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star key={i} className={`w-4 h-4 ${i < t.rating ? 'fill-[#fbbf24] text-[#fbbf24]' : 'fill-gray-200 text-gray-200'}`} />
-                                ))}
+                              {/* Content */}
+                              <div className="flex-grow">
+                                <p className="text-gray-600 text-[15px] leading-relaxed">
+                                  {t.content}
+                                </p>
                               </div>
-                              <VerifiedBadge />
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-grow">
-                              <p className="text-gray-600 text-[15px] leading-relaxed">
-                                {t.content}
-                              </p>
                             </div>
                           </div>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <div className="flex justify-end gap-2 mt-8 pr-4">
-                    <CarouselPrevious className="static translate-y-0" />
-                    <CarouselNext className="static translate-y-0" />
-                  </div>
-                </Carousel>
-              </div>
-            </section>
-          )}
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <div className="flex justify-end gap-2 mt-8 pr-4">
+                      <CarouselPrevious className="static translate-y-0" />
+                      <CarouselNext className="static translate-y-0" />
+                    </div>
+                  </Carousel>
+                </div>
+              </section>
+            )}
 
-          {filteredData.length === 0 && (
-            <div className="text-center py-20 pb-40">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                <User className="w-8 h-8 text-muted-foreground" />
+            {filteredData.length === 0 && (
+              <div className="text-center py-20 pb-40">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <User className="w-8 h-8 text-muted-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">No testimonials found</h3>
+                <p className="text-muted-foreground">Try adjusting your filters to see more results.</p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">No testimonials found</h3>
-              <p className="text-muted-foreground">Try adjusting your filters to see more results.</p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </main >
       <Footer />

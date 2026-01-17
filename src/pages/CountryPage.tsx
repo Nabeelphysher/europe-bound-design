@@ -35,7 +35,10 @@ import armeniaImg from "@/assets/a4.png";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
 import kyrgyzstanImg from "@/assets/a1.png";
+import { DestinationBanner } from "@/components/country/DestinationBanner";
+import { CountryHero } from "@/components/country/CountryHero";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
+import russiaImg from "@/assets/russia.jpg";
 
 interface CountryData {
     title: string;
@@ -266,45 +269,87 @@ const countryData: Record<string, CountryData> = {
         ]
     },
     netherlands: {
-        title: "Netherlands Classic Tour",
+        title: "Netherlands - Canals & Culture",
         name: "Netherlands",
-        tagline: "Windmills, Canals & Culture",
+        tagline: "Windmills, Art & Iconic Waterways",
         image: netherlandsImg,
-        description: "The Netherlands blends charming canals, historic towns, and cutting-edge design into one easy-to-explore destination. From Amsterdam’s culture to peaceful countryside windmills, it offers rich experiences, excellent transport, and a welcoming atmosphere for every traveler.",
-        stats: { price: "€1,100", duration: "5 Days", visa: "Schengen Visa" },
+        description: "Experience the Netherlands in its full glory—from the UNESCO-listed canals of Amsterdam to the historic windmills of Zaanse Schans. Immerse yourself in a land where artistic heritage meets modern innovation, featuring world-class museums, vibrant tulip fields, and a cycling culture that invites you to explore at your own pace.",
+        stats: { price: "€1,250", duration: "6 Days", visa: "Schengen Visa" },
         whyChoose: [
-            { title: "Amsterdam Canal Cruise", description: "See the city from water." },
-            { title: "Zaanse Schans Windmills", description: "Historic Dutch countryside." },
-            { title: "Van Gogh Museum", description: "World-class art collection." },
-            { title: "Keukenhof Gardens", description: "Millions of blooming tulips." },
-            { title: "Cheese Factory Visit", description: "Taste authentic Dutch gouda." },
-            { title: "Volendam Village", description: "Traditional fishing village charm." }
+            { title: "Canal Cruise Experience", description: "Navigate the iconic waterways of Amsterdam." },
+            { title: "Zaanse Schans Windmills", description: "Step back in time to 18th-century Holland." },
+            { title: "Rijksmuseum & Van Gogh", description: "Masterpieces of Dutch art and history." },
+            { title: "Keukenhof Gardens", description: "The world's most beautiful spring garden." },
+            { title: "Giethoorn Village", description: "The fairytale 'Venice of the North'." },
+            { title: "Royal Delft Pottery", description: "Discover the iconic blue and white earthenware." }
         ],
-        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds"],
+        eligibility: ["Valid Passport", "Schengen Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds Proof"],
         benefits: [
-            { title: "Centrally Located Hotel", description: "Convenient stay options." },
-            { title: "Breakfast Daily", description: "Start day with good food." },
-            { title: "Public Transport Card", description: "Easy city travel." },
-            { title: "Museum Entries", description: "Skip the line tickets." },
-            { title: "Canal Cruise Ticket", description: "Experience the city waters." },
-            { title: "Airport Transfers", description: "Hassle-free commute." }
+            { title: "Central 4-Star Stays", description: "Accommodation in the heart of the city." },
+            { title: "Daily Buffet Breakfast", description: "Start every day with a premium meal." },
+            { title: "Unlimited Travel Card", description: "Access to tram, bus, and metro networks." },
+            { title: "Museum Skip-the-Line", description: "Priority entry to major art museums." },
+            { title: "Guided Countryside Tour", description: "Expert-led visits to windmills and villages." },
+            { title: "Private Airport Transfer", description: "Seamless arrival and departure experience." }
         ],
         process: [
-            { step: 1, title: "Dates", description: "Pick your season." },
-            { step: 2, title: "Package", description: "Select hotel class." },
-            { step: 3, title: "Book", description: "Confirm details." },
-            { step: 4, title: "Visa", description: "Schengen process." },
-            { step: 5, title: "Arrive", description: "Schiphol pick-up." },
-            { step: 6, title: "Tour", description: "Explore the Dutch way." }
+            { step: 1, title: "Inquire", description: "Share your travel dates." },
+            { step: 2, title: "Customize", description: "Tailor your Dutch experience." },
+            { step: 3, title: "Secure", description: "Book your package." },
+            { step: 4, title: "Visa", description: "Assistance with Schengen." },
+            { step: 5, title: "Arrive", description: "Welcome to Amsterdam." },
+            { step: 6, title: "Discover", description: "Enjoy the Dutch charm." }
         ],
         testimonials: [
-            { name: "Suresh K.", role: "Tourist", content: "Amsterdam is beautiful. The cruise was highlight.", location: "Amsterdam" },
-            { name: "Priya M.", role: "Traveler", content: "Tulips were amazing.", location: "Lisse" }
+            { name: "Emma W.", role: "Art Lover", content: "The museums were breathtaking. Perfectly organized.", location: "The Hague" },
+            { name: "Michael R.", role: "Photographer", content: "Giethoorn is a dream. Great itinerary.", location: "Giethoorn" }
         ],
         faqs: [
-            { question: "Do I need a visa to visit the Netherlands?", answer: "If you’re from a Schengen visa-free country, you can enter for short stays without a visa. Others need a Schengen tourist visa." },
-            { question: "Is the Netherlands safe for tourists?", answer: "Yes. It’s one of Europe’s safest destinations, with excellent public transport and well-organized tourist services." },
-            { question: "When is the best time to visit the Netherlands?", answer: "The best time is April to September — spring for tulips, summer for festivals and pleasant weather." }
+            { question: "Do I need a visa for the Netherlands?", answer: "Travelers from non-visa-exempt countries need a Schengen Visa. We provide full assistance with your application documentation." },
+            { question: "Is English widely spoken?", answer: "Yes, the Netherlands has one of the highest English-proficiency rates in the world, making travel very easy." },
+            { question: "When is the tulip season?", answer: "The best time to see tulips, especially at Keukenhof, is from mid-April to early May." }
+        ]
+    },
+    russia: {
+        title: "Russia - The Imperial Splendor",
+        name: "Russia",
+        tagline: "History, Art & Grandeur",
+        image: russiaImg,
+        description: "Discover the vast beauty of Russia, from the colorful onion domes of St. Basil's in Moscow to the imperial canals of St. Petersburg. A land of deep history, world-class ballet, and architectural marvels, Russia offers a journey through the grandeur of tsars and the soul of the Slavic world.",
+        stats: { price: "$1,150", duration: "7 Days", visa: "E-Visa/Consult" },
+        whyChoose: [
+            { title: "Red Square & Kremlin", description: "The historic heart of Moscow." },
+            { title: "Hermitage Museum", description: "One of the world's largest art collections." },
+            { title: "Peterhof Palace", description: "The 'Russian Versailles' with stunning fountains." },
+            { title: "Moscow Metro Tour", description: "Underground palaces of architecture." },
+            { title: "Bolshoi Theatre", description: "Home of the world's most famous ballet." },
+            { title: "St. Petersburg Canals", description: "Cruise through the 'Venice of the North'." }
+        ],
+        eligibility: ["Valid Passport", "Russian Visa", "Travel Insurance", "Return Ticket", "Hotel Booking", "Funds Proof"],
+        benefits: [
+            { title: "Premium City Hotels", description: "Stay in top-rated central locations." },
+            { title: "Sapsan Train Tickets", description: "High-speed train between Moscow & St. Pete." },
+            { title: "Private Guided Tours", description: "English-speaking expert guides." },
+            { title: "Theater Tickets", description: "Reservation assistance for shows." },
+            { title: "Visa Support", description: "Invitation letter for visa application." },
+            { title: "All Entry Fees", description: "Tickets to major museums included." }
+        ],
+        process: [
+            { step: 1, title: "Select", description: "Choose your cities." },
+            { step: 2, title: "Visa", description: "Apply for entry." },
+            { step: 3, title: "Book", description: "Confirm itinerary." },
+            { step: 4, title: "Fly", description: "Arrival in Moscow." },
+            { step: 5, title: "Explore", description: "Tour the capitals." },
+            { step: 6, title: "Depart", description: "Safe styling." }
+        ],
+        testimonials: [
+            { name: "John D.", role: "History Buff", content: "The Kremlin is awe-inspiring. A trip of a lifetime.", location: "Moscow" },
+            { name: "Sarah P.", role: "Traveler", content: "St. Petersburg is simply magical. Great service.", location: "St. Petersburg" }
+        ],
+        faqs: [
+            { question: "Do I need a visa for Russia?", answer: "Yes, most travelers require a visa. Electronic visas (E-visas) are available for citizens of many countries." },
+            { question: "Is it safe to travel to Russia?", answer: "Yes, major tourist cities like Moscow and St. Petersburg are generally safe with high security, but standard travel precautions apply." },
+            { question: "What is the best time to visit?", answer: "Late spring (May-June) for White Nights in St. Petersburg, or winter for a classic snowy experience." }
         ]
     },
     georgia: {
@@ -417,6 +462,14 @@ const CountryPage = () => {
             <Header />
             <main>
 
+
+                {/* --- 1. Hero Section --- */}
+                <CountryHero
+                    image={data.image}
+                    name={data.name}
+                    tagline={data.tagline}
+                    stats={data.stats}
+                />
 
                 {/* --- 2. Original Hero (Now Secondary Overview) --- */}
 
@@ -707,6 +760,7 @@ const CountryPage = () => {
                 </section>
 
                 {/* --- 4.5. Benefits (What's Included) --- */}
+
                 <section className="py-24 bg-slate-50/50 relative">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')] opacity-40 mx-auto" />
                     <div className="container-wide px-4 sm:px-6 relative z-10">
@@ -867,26 +921,9 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 7. Call to Action --- */}
-                <section id="inquire" className="py-24 bg-primary text-secondary relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
-                    <div className="container-wide px-4 sm:px-6 text-center relative z-10">
-                        <h2 className="font-heading text-4xl md:text-6xl font-bold mb-8 text-white">
-                            Ready to Visit {data.name}?
-                        </h2>
-                        <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
-                            Book your {data.stats.duration} tour now. Spots are filling up fast for the upcoming season.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Link to="/contact" className="px-8 py-4 bg-gold text-primary font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-xl shadow-gold/20">
-                                Book This Tour
-                            </Link>
-                            <Link to="/contact" className="px-8 py-4 bg-transparent border border-white/30 text-white font-bold text-lg rounded-full hover:bg-white/10 transition-colors">
-                                Download Itinerary
-                            </Link>
-                        </div>
-                    </div>
-                </section>
+                <DestinationBanner countryName={data.name} image={data.image} />
+
+
 
             </main>
             <Footer />

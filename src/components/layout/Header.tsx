@@ -33,10 +33,15 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  // Pages without dark hero sections need header styling from the start
-  const pagesWithoutHero = ["/", "/about", "/destinations", "/testimonials", "/newsroom", "/contact", "/gallery", "/privacy", "/terms"];
-  const hasDarkHero = !pagesWithoutHero.includes(location.pathname);
-  const shouldShowScrolledStyle = isScrolled || !hasDarkHero;
+  // Determine header state
+  const isHomePage = location.pathname === "/";
+
+  // Pages that have LIGHT background heroes (Transparent header, DARK text)
+  const lightHeroPages = ["/", "/about", "/newsroom", "/contact", "/destinations", "/gallery", "/privacy", "/terms", "/testimonials"];
+  const isLightHeroPage = lightHeroPages.includes(location.pathname);
+
+  // Pages that have DARK background heroes (Transparent header, WHITE text)
+  // implied by !isLightHeroPage if we assume binary classification, or strictly defined for others.
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,45 +51,51 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const shouldUseDarkText = isScrolled || isLightHeroPage || isHomePage;
+
+  // Determine background styling:
+  // - Scrolled: Always White
+  // - Standard Pages (Right Hero Pages EXCEPT Home): Always White (as requested)
+  // - Home Page (Unscrolled): Transparent
+  // - Dark Hero Pages (Unscrolled): Transparent
+  const shouldHaveWhiteBackground = isScrolled || (isLightHeroPage && !isHomePage);
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out",
-        shouldShowScrolledStyle
-          ? "bg-white/80 backdrop-blur-lg shadow-sm border-b border-white/20 py-3"
-          : "bg-transparent py-5 lg:py-6"
+        shouldHaveWhiteBackground
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 py-3"
+          : "bg-transparent py-5 lg:py-8"
       )}
     >
-      <div className="container-wide flex items-start justify-between">
+      <div className="container-wide flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 relative z-50 group">
-          <div className={cn("transition-transform duration-500 relative animate-scale-in origin-left", shouldShowScrolledStyle ? "scale-90" : "scale-100")}>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[250%] bg-[radial-gradient(closest-side,rgba(255,255,255,1)_0%,rgba(255,255,255,0.8)_40%,transparent_100%)] blur-2xl -z-10" />
+          <div className={cn("transition-transform duration-500 relative animate-scale-in origin-left", isScrolled ? "scale-90" : "scale-100")}>
+            {/* Subtler/Removed Glow for better blending */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[radial-gradient(closest-side,rgba(255,255,255,0.6)_0%,transparent_100%)] blur-xl -z-10 opacity-50" />
             <img
               src={logoImg}
               alt="Europe Calling Logo"
               className={cn(
                 "w-auto object-contain transition-all duration-500",
-                shouldShowScrolledStyle ? "h-10 lg:h-12" : "h-12 lg:h-16 drop-shadow-2xl"
+                isScrolled ? "h-10 lg:h-12" : "h-12 lg:h-16 drop-shadow-xl"
               )}
             />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className={cn(
-          "hidden lg:flex items-center gap-10 transition-all duration-300",
-          shouldShowScrolledStyle ? "mt-5" : "mt-2" // Adjust vertical alignment
-        )}>
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-12 transition-all duration-300">
           {navItems.map((item) => (
             <div key={item.name} className="relative group">
               <Link
                 to={item.path}
                 className={cn(
-                  "relative flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 py-2",
-                  shouldShowScrolledStyle
-                    ? "text-primary/70 hover:text-primary"
-                    : "text-white/80 hover:text-white",
+                  "relative flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 py-2",
+                  // Text Color Logic
+                  shouldUseDarkText ? "text-primary/80 hover:text-primary" : "text-white/90 hover:text-white",
                   location.pathname === item.path && "text-gold"
                 )}
               >
@@ -99,8 +110,8 @@ export function Header() {
 
               {/* Dropdown Menu */}
               {item.children && (
-                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  <div className="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-primary/5 p-2 w-48 overflow-hidden">
+                <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-primary/5 p-2 w-52 overflow-hidden">
                     {item.children.map((child) => (
                       <Link
                         key={child.name}
@@ -108,7 +119,7 @@ export function Header() {
                         className="flex items-center gap-3 px-4 py-3 hover:bg-gold/5 text-primary rounded-lg transition-colors group/item"
                       >
                         <child.icon className="w-4 h-4 text-gold/70 group-hover/item:text-gold" />
-                        <span className="text-[11px] font-bold uppercase tracking-wider">{child.name}</span>
+                        <span className="text-xs font-bold uppercase tracking-wider">{child.name}</span>
                       </Link>
                     ))}
                   </div>
@@ -122,11 +133,11 @@ export function Header() {
         <Link
           to="/contact"
           className={cn(
-            "hidden lg:flex items-center justify-center px-6 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300",
-            shouldShowScrolledStyle ? "mt-4" : "mt-1", // Adjust vertical alignment
-            shouldShowScrolledStyle
-              ? "bg-primary text-white hover:bg-gold hover:shadow-lg hover:-translate-y-0.5"
-              : "bg-white text-primary hover:bg-gold hover:text-white hover:shadow-glow hover:-translate-y-0.5"
+            "hidden lg:flex items-center justify-center px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300",
+            // Button Style Logic
+            shouldUseDarkText
+              ? "bg-black text-white hover:bg-gold hover:shadow-lg hover:-translate-y-0.5" // Scrolled or Light Page -> Black Button
+              : "bg-white text-primary hover:bg-gold hover:text-white hover:shadow-glow hover:-translate-y-0.5" // Dark Hero -> White Button
           )}
         >
           Get Consultation
@@ -142,7 +153,7 @@ export function Header() {
               <Menu
                 className={cn(
                   "w-7 h-7",
-                  shouldShowScrolledStyle ? "text-primary" : "text-white"
+                  shouldUseDarkText ? "text-primary" : "text-white"
                 )}
               />
             </button>
