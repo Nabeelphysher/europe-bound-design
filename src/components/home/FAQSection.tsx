@@ -29,7 +29,7 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="py-24 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden" id="faq">
+    <section className="py-24 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_300px,#faf4e5_100%)] relative overflow-hidden" id="faq">
 
       {/* Premium Decorative Background Elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[800px] h-[800px] bg-white/40 rounded-full blur-[100px] pointer-events-none" />

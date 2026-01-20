@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
-import { PageHeader } from "@/components/ui/PageHeader";
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -447,61 +447,10 @@ const Testimonials = () => {
     <>
       <Header />
       <main className="bg-background min-h-screen pt-20">
-        <PageHeader
-          eyebrow="Client Success Stories"
-          title={<>Voices of <span className="text-gold italic">Triumph</span></>}
-          description="Real stories from real people who turned their European dreams into reality with our guidance."
-        />
+
 
         <div className="relative bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]">
-          {/* Filter Navigation */}
-          <div className="sticky top-[72px] z-40 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm py-3 transition-all duration-300">
-            <div className="container-wide">
-              {/* Mobile Filter Toggle */}
-              <div className="md:hidden px-4 flex items-center justify-between">
-                <span className="text-sm font-medium text-foreground">
-                  Active: <span className="text-primary font-bold">{activeFilter}</span>
-                </span>
-                <button
-                  onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
-                  className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-md active:scale-95 transition-all"
-                >
-                  {isFilterMenuOpen ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
-                  {isFilterMenuOpen ? "Close" : "Filters"}
-                </button>
-              </div>
 
-              {/* Filter Buttons */}
-              {/* Filter Buttons */}
-              <div className={cn(
-                "md:flex md:flex-wrap md:justify-center md:gap-3 md:opacity-100 md:max-h-full transition-all duration-500 ease-in-out overflow-hidden md:overflow-visible",
-                isFilterMenuOpen
-                  ? "max-h-[400px] opacity-100 mt-3 border-t border-border/50 pt-3 flex flex-col gap-2 mx-4"
-                  : "max-h-0 opacity-0 md:mt-0 md:pt-0 md:border-t-0 md:mx-0"
-              )}>
-                {filters.map((filter) => (
-                  <button
-                    key={filter}
-                    onClick={() => {
-                      setActiveFilter(filter);
-                      setIsFilterMenuOpen(false);
-                    }}
-                    className={cn(
-                      "whitespace-nowrap px-5 py-3 md:py-2 rounded-xl md:rounded-full text-sm font-medium transition-all duration-300 transform md:hover:scale-105 shrink-0 snap-center text-left md:text-center w-full md:w-auto",
-                      activeFilter === filter
-                        ? "bg-primary text-primary-foreground shadow-md ring-1 ring-gold/30"
-                        : "bg-white text-foreground border border-border/60 hover:bg-champagne/30"
-                    )}
-                  >
-                    <div className="flex items-center justify-between w-full">
-                      {filter}
-                      {activeFilter === filter && <CheckCircle2 className="w-4 h-4 md:hidden text-gold" />}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
 
           <div className="pb-20 pt-10">
 
@@ -528,9 +477,53 @@ const Testimonials = () => {
                         <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-gold/50"></div>
                       </div>
 
-                      <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+                      <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg leading-relaxed mb-10">
                         Hear directly from our clients as they share their journey to success in Europe.
                       </p>
+
+                      {/* Filter Navigation */}
+                      <div className="w-full max-w-4xl mx-auto mb-10">
+                        <div className="md:hidden px-4 flex items-center justify-between mb-4">
+                          <span className="text-sm font-medium text-foreground">
+                            Active: <span className="text-primary font-bold">{activeFilter}</span>
+                          </span>
+                          <button
+                            onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
+                            className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-md active:scale-95 transition-all"
+                          >
+                            {isFilterMenuOpen ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+                            {isFilterMenuOpen ? "Close" : "Filters"}
+                          </button>
+                        </div>
+
+                        <div className={cn(
+                          "md:flex md:flex-wrap md:justify-center md:gap-3 md:opacity-100 md:max-h-full transition-all duration-500 ease-in-out overflow-hidden md:overflow-visible",
+                          isFilterMenuOpen
+                            ? "max-h-[400px] opacity-100 mt-3 border-t border-border/50 pt-3 flex flex-col gap-2"
+                            : "max-h-0 opacity-0 md:mt-0 md:pt-0 md:border-t-0 md:mx-0"
+                        )}>
+                          {filters.map((filter) => (
+                            <button
+                              key={filter}
+                              onClick={() => {
+                                setActiveFilter(filter);
+                                setIsFilterMenuOpen(false);
+                              }}
+                              className={cn(
+                                "whitespace-nowrap px-5 py-3 md:py-2 rounded-xl md:rounded-full text-sm font-medium transition-all duration-300 transform md:hover:scale-105 shrink-0 snap-center text-left md:text-center w-full md:w-auto",
+                                activeFilter === filter
+                                  ? "bg-primary text-primary-foreground shadow-md ring-1 ring-gold/30"
+                                  : "bg-white text-foreground border border-border/60 hover:bg-champagne/30"
+                              )}
+                            >
+                              <div className="flex items-center justify-between w-full gap-3">
+                                {filter}
+                                {activeFilter === filter && <CheckCircle2 className="w-4 h-4 md:hidden text-gold" />}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 

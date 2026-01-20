@@ -50,7 +50,7 @@ const Services = () => {
         <DestinationsSection showViewAll={false} />
 
 
-        <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <section className="py-24 bg-[linear-gradient(180deg,#faf4e5_0%,#f8fafc_150px,#f8fafc_100%)] relative overflow-hidden">
           <div className="container-wide px-4 relative z-10">
             <RevealOnScroll animation="fade-up">
               <div className="text-center max-w-2xl mx-auto mb-16">

@@ -149,7 +149,7 @@ const About = () => {
 
               {/* Text Content - Right Aligned (Swapped) */}
               <div className="order-2 lg:order-2 text-left lg:pl-10">
-                <RevealOnScroll animation="fade-left">
+                <RevealOnScroll animation="slide-in-left">
                   <div className="space-y-6">
 
                     {/* Badge / Label */}
@@ -456,7 +456,7 @@ const About = () => {
 
 
         {/* Timeline */}
-        <section className="py-20 bg-secondary/20">
+        <section className="py-20 bg-[linear-gradient(180deg,#faf4e5_0%,hsl(var(--secondary)/0.2)_150px)]">
           <div className="container px-4 sm:px-6">
             <RevealOnScroll animation="fade-up">
               <div className="text-center mb-16">

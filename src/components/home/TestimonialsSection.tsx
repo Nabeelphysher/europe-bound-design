@@ -128,7 +128,7 @@ export function TestimonialsSection() {
     );
 
     return (
-        <section id="testimonials-preview" className="py-20 bg-white relative overflow-hidden">
+        <section id="testimonials-preview" className="py-20 bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_300px,#ffffff_100%)] relative overflow-hidden">
             {/* Simple Background */}
             <div className="absolute top-0 left-0 w-full h-full bg-white -z-10" />
 

@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { HeroSectionV2 } from "./HeroSectionV2";
 import { ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { Link } from "react-router-dom";
+import { LeadPopup } from "../ui/LeadPopup";
 
 export const HomeIntroHero = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
     return (
         <section className="relative min-h-[90vh] bg-[#FAFAFA] flex items-center pt-32 lg:pt-48 pb-20 overflow-hidden">
             {/* Background Decoration - softer and more premium */}
@@ -35,10 +38,13 @@ export const HomeIntroHero = () => {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
-                                <Link to="/contact" className="px-8 py-3 bg-black text-white rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group min-w-[180px]">
+                                <button
+                                    onClick={() => setIsPopupOpen(true)}
+                                    className="px-8 py-3 bg-black text-white rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group min-w-[180px]"
+                                >
                                     Start Your Journey
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                                </button>
                                 <Link to="/about" className="px-8 py-3 bg-white text-black rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-w-[180px]">
                                     Read Our Story
                                 </Link>
@@ -69,6 +75,7 @@ export const HomeIntroHero = () => {
 
                 </div>
             </div>
+            <LeadPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
         </section>
     );
 };
