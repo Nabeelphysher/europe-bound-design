@@ -93,23 +93,34 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                                 </div>
                                             ) : (
                                                 /* ODD [Row 2]: Text on Left */
-                                                <div className="relative z-10 p-8 md:p-10 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:-translate-y-2">
+                                                <div className={cn(
+                                                    "relative z-10 p-8 md:p-12 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:-translate-y-2 flex flex-col justify-center min-h-[250px]",
+                                                    !item.description && "items-center text-center bg-gradient-to-br from-white to-gray-50/50"
+                                                )}>
                                                     {/* Golden Number Watermark - Right aligned */}
-                                                    <span className="absolute -top-6 -right-4 text-[8rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-50">
+                                                    <span className={cn(
+                                                        "absolute -top-6 -right-4 text-[8rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-50",
+                                                        !item.description && "text-[6rem] opacity-30 right-4"
+                                                    )}>
                                                         {item.day}
                                                     </span>
 
-                                                    <div className="relative z-10 flex flex-col h-full justify-center">
-                                                        <h3 className="font-heading text-3xl font-bold text-primary mb-4 leading-tight">
+                                                    <div className="relative z-10 w-full">
+                                                        <h3 className={cn(
+                                                            "font-heading font-bold text-primary mb-4 leading-tight",
+                                                            item.description ? "text-3xl" : "text-3xl md:text-4xl tracking-tight uppercase"
+                                                        )}>
                                                             {item.title}
                                                         </h3>
-                                                        {item.description && (
+                                                        {item.description ? (
                                                             <>
                                                                 <div className="w-12 h-0.5 bg-gold/50 ml-auto mb-6" />
                                                                 <p className="text-muted-foreground text-lg leading-relaxed font-light">
                                                                     {item.description}
                                                                 </p>
                                                             </>
+                                                        ) : (
+                                                            <div className="w-16 h-1 bg-gold mx-auto mt-6 rounded-full opacity-30" />
                                                         )}
                                                     </div>
                                                 </div>
@@ -123,23 +134,34 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                         )}>
                                             {isEven ? (
                                                 /* EVEN [Row 1]: Text on Right */
-                                                <div className="relative z-10 p-8 md:p-10 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:-translate-y-2">
+                                                <div className={cn(
+                                                    "relative z-10 p-8 md:p-12 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:-translate-y-2 flex flex-col justify-center min-h-[250px]",
+                                                    !item.description && "items-center text-center bg-gradient-to-bl from-white to-gray-50/50"
+                                                )}>
                                                     {/* Golden Number Watermark - Left aligned */}
-                                                    <span className="absolute -top-6 -left-4 text-[8rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-50">
+                                                    <span className={cn(
+                                                        "absolute -top-6 -left-4 text-[8rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-50",
+                                                        !item.description && "text-[6rem] opacity-30 left-4"
+                                                    )}>
                                                         {item.day}
                                                     </span>
 
-                                                    <div className="relative z-10 flex flex-col h-full justify-center">
-                                                        <h3 className="font-heading text-3xl font-bold text-primary mb-4 leading-tight">
+                                                    <div className="relative z-10 w-full">
+                                                        <h3 className={cn(
+                                                            "font-heading font-bold text-primary mb-4 leading-tight",
+                                                            item.description ? "text-3xl" : "text-3xl md:text-4xl tracking-tight uppercase"
+                                                        )}>
                                                             {item.title}
                                                         </h3>
-                                                        {item.description && (
+                                                        {item.description ? (
                                                             <>
                                                                 <div className="w-12 h-0.5 bg-gold/50 mr-auto mb-6" />
                                                                 <p className="text-muted-foreground text-lg leading-relaxed font-light">
                                                                     {item.description}
                                                                 </p>
                                                             </>
+                                                        ) : (
+                                                            <div className="w-16 h-1 bg-gold mx-auto mt-6 rounded-full opacity-30" />
                                                         )}
                                                     </div>
                                                 </div>

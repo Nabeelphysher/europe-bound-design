@@ -43,8 +43,22 @@ import uzbekistanCityImg from "@/assets/city-china-building-scenery-water-skyscr
 import uzbekistanSamarkandImg from "@/assets/view-barcelona-from-palau-nacional-cloudy-sky-spain (1).jpg";
 import uzbekistanTrainImg from "@/assets/beautiful-czech-passenger-train-with-carriages (1).jpg";
 import uzbekistanBukharaImg from "@/assets/modern-arabic-style-building-blue-sky (1).jpg";
-import uzbekistanDeparture from "@/assets/full-shot-couple-walking-with-baggage (1).jpg"
+import DepartureImg from "@/assets/full-shot-couple-walking-with-baggage (1).jpg";
 import russiaImg from "@/assets/russia.jpg";
+import azerbaijanBakuImg from "@/assets/background-chinese-illumination-ancient-china (1).jpg";
+import azerbaijanShahadagImg from "@/assets/64 (1).jpg";
+import azerbaijanQubaImg from "@/assets/5c (1).jpg";
+import azerbaijanAbsheronImg from "@/assets/towers-apsheron (1).jpg";
+import azerbaijanTransferImg from "@/assets/de (1).jpg";
+import kazakhstanAlmatyImg from "@/assets/beautiful-view-rice-fields-lush-green-leepa-valley-kashmir-pakistan (1).jpg";
+import kazakhstanShymbulak from "@/assets/b5 (1).jpg";
+import kazakhstanCanyonImg from "@/assets/image1 (1).jpg";
+import kazakhstanMoonCanyonImg from "@/assets/getlstd-property-photo (1).jpg";
+import kazakhstanKokImg from "@/assets/Kok-Tobe-Mountain-Almaty (1).jpg";
+import kazakhstanAlmarasanImg from "@/assets/images (1).jpg";
+import kyrgyzstanHotelImg from "@/assets/images (2) (1).jpg";
+import kyrgyzstanChunkImg from "@/assets/chunkurchak-valley-is (1).jpg";
+import kyrgyzstanAlarchaImg from "@/assets/fa (1).jpg";
 
 interface CountryData {
     title: string;
@@ -175,11 +189,11 @@ const countryData: Record<string, CountryData> = {
             { step: 6, title: "Tour", description: "Airport pickup." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Baku", description: "Airport pickup and transfer to hotel. Evening panoramic tour of Highland Park.", image: azerbaijanImg },
-            { day: 2, title: "Baku City Tour", description: "Old City (Icherisheher), Maiden Tower, and Shirvanshahs' Palace.", image: azerbaijanImg },
-            { day: 3, title: "Gabala Day Trip", description: "Full day tour to Gabala. Visit Tufandag Mountain Resort and Nohur Lake.", image: azerbaijanImg },
-            { day: 4, title: "Absheron Peninsula", description: "Fire Temple (Ateshgah) and Burning Mountain (Yanardag).", image: azerbaijanImg },
-            { day: 5, title: "Departure", description: "Shopping at Yashil Bazaar and transfer to airport.", image: azerbaijanImg }
+            { day: 1, title: "ARRIVAL / BAKU CITY TOUR", description: "", image: azerbaijanBakuImg },
+            { day: 2, title: "SHAHADAG CITY TOUR", description: "", image: azerbaijanShahadagImg },
+            { day: 3, title: "QUBA CITY TOUR /BACK TO BAKU", description: "", image: azerbaijanQubaImg },
+            { day: 4, title: "ABSHERON /GOBUSTAN", description: "", image: azerbaijanAbsheronImg },
+            { day: 5, title: "AIRPORT TRANSFER", description: "", image: azerbaijanTransferImg }
         ],
         testimonials: [
             { name: "Ahmed K.", role: "Tourist", content: "Baku is dazzling at night. Great service.", location: "Baku" },
@@ -197,7 +211,7 @@ const countryData: Record<string, CountryData> = {
         tagline: "Mountains, Lakes & Canyons",
         image: kazakhstanImg,
         description: "Kazakhstan offers vast natural beauty and modern cities in one journey—from the endless steppes and alpine lakes to the futuristic skyline of Astana. Rich nomadic culture, warm hospitality, and great value make it a unique destination for travelers seeking something truly different.",
-        stats: { price: "$850", duration: "5 Days", visa: "Visa Free/E-Visa" },
+        stats: { price: "$850", duration: "7 Days", visa: "Visa Free/E-Visa" },
         whyChoose: [
             { title: "Expert Local Guides", description: "Learn more with our professional English-speaking guides." },
             { title: "Private & Premium Travel", description: "Travel in comfort with private sedan vehicles." },
@@ -231,11 +245,13 @@ const countryData: Record<string, CountryData> = {
             { question: "When is the best time to visit Kazakhstan?", answer: "The best time is May to September for pleasant weather, outdoor activities, and sightseeing." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Almaty", description: "Welcome to Kazakhstan! Transfer to your hotel and enjoy a welcome dinner with traditional Kazakh cuisine.", image: kazakhstanImg },
-            { day: 2, title: "Almaty City Tour", description: "Visit Panfilov Park, Zenkov Cathedral, and take a cable car ride to Kok Tobe for panoramic views of the city.", image: kazakhstanImg },
-            { day: 3, title: "Charyn Canyon Adventure", description: "Full-day excursion to the dramatic Charyn Canyon, often called the 'Grand Canyon's little brother'.", image: kazakhstanImg },
-            { day: 4, title: "Kolsai & Kaindy Lakes", description: "Explore the stunning 'Sunken Forest' of Lake Kaindy and the pristine alpine waters of Kolsai Lakes.", image: kazakhstanImg },
-            { day: 5, title: "Departure", description: "Breakfast at the hotel, last-minute souvenir shopping at the Green Bazaar, and transfer to the airport.", image: kazakhstanImg }
+            { day: 1, title: "Arrival in Almaty", description: "", image: kazakhstanAlmatyImg },
+            { day: 2, title: "Shymbulak & Arbat Street Tour", description: "", image: kazakhstanShymbulak },
+            { day: 3, title: "Charyn Canyon – Kolsai Lake – Black Canyon", description: "", image: kazakhstanCanyonImg },
+            { day: 4, title: "Moon canyon & kaindly lake", description: "", image: kazakhstanMoonCanyonImg },
+            { day: 5, title: "Almaty City Tour KoK-Tobe hill", description: "", image: kazakhstanKokImg },
+            { day: 6, title: "Almarasan & Ayusai", description: "", image: kazakhstanAlmarasanImg },
+            { day: 7, title: "Airport Transfer", description: "", image: DepartureImg }
         ]
     },
     armenia: {
@@ -290,10 +306,10 @@ const countryData: Record<string, CountryData> = {
     kyrgyzstan: {
         title: "Kyrgyzstan Exclusive 5-Day Tour",
         name: "Kyrgyzstan",
-        tagline: "4 Nights / 5 Days - The Nomadic Spirit",
+        tagline: "3 Nights / 4 Days - The Nomadic Spirit",
         image: kyrgyzstanImg,
         description: "Kyrgyzstan is a paradise for nature lovers, offering dramatic mountains, crystal-clear alpine lakes, and vast open landscapes. With its strong nomadic culture, warm hospitality, and peaceful atmosphere, it’s perfect for travelers seeking adventure and authenticity off the beaten path.",
-        stats: { price: "$1,210", duration: "5 Days", visa: "E-Visa" },
+        stats: { price: "$1,210", duration: "4 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Multi-lingual Guides", description: "Professional Arabic or English-speaking drivers for your trip." },
             { title: "Private Group Travel", description: "Exclusive travel in a private minivan for your group." },
@@ -334,11 +350,10 @@ const countryData: Record<string, CountryData> = {
             { question: "When is the best time to visit Kyrgyzstan?", answer: "The best time is June to September for trekking, lake visits, and mountain travel due to good weather conditions." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Bishkek", description: "Meet your guide at majestic Manas Airport. Transfer to hotel. Afternoon city tour including Ala-Too Square and Oak Park.", image: kyrgyzstanImg },
-            { day: 2, title: "Ala Archa National Park", description: "A day in nature! Light trekking in the stunning Ala Archa gorge, surrounded by snow-capped peaks and juniper forests.", image: kyrgyzstanImg },
-            { day: 3, title: "Burana & Issyk Kul", description: "Visit the ancient Burana Tower on the Silk Road, then proceed to the pearl of Central Asia, Lake Issyk Kul.", image: kyrgyzstanImg },
-            { day: 4, title: "Nomadic Culture", description: "Experience eagle hunting demonstrations and yurt building. Return to Bishkek for a farewell dinner.", image: kyrgyzstanImg },
-            { day: 5, title: "Departure", description: "Transfer to the airport for your flight home, carrying memories of the nomadic spirit.", image: kyrgyzstanImg }
+            { day: 1, title: "TRANSFER TO BISHKEK HOTEL", description: "", image: kyrgyzstanHotelImg },
+            { day: 2, title: "CHUNKHURCHANK TOUR", description: "", image: kyrgyzstanChunkImg },
+            { day: 3, title: "ALA-ARCHA TOUR", description: "", image: kyrgyzstanAlarchaImg },
+            { day: 4, title: "TRANSFER TO AIRPORT", description: "", image: DepartureImg }
         ]
     },
     netherlands: {
@@ -495,7 +510,7 @@ const countryData: Record<string, CountryData> = {
         tagline: "Samarkand, Bukhara & Tashkent",
         image: uzbekistanImg,
         description: "Uzbekistan is the heart of the Silk Road, home to breathtaking cities like Samarkand and Bukhara filled with timeless architecture and rich history. With vibrant culture, warm hospitality, and unforgettable flavors, it offers a journey into the soul of Central Asia.",
-        stats: { price: "$900", duration: "7 Days", visa: "E-Visa" },
+        stats: { price: "$900", duration: "6 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "All-Inclusive Transport", description: "Private cars and Samarkand train tickets provided." },
             { title: "Expert Local Guides", description: "Professional English-speaking guides for every tour." },
@@ -534,7 +549,7 @@ const countryData: Record<string, CountryData> = {
             { day: 3, title: "Tashkent / Samarkand (by Train)", description: "", image: uzbekistanSamarkandImg },
             { day: 4, title: "Samarkand / Bukhara (by Bullet Train/Coach)", description: "", image: uzbekistanTrainImg },
             { day: 5, title: "Bukhara / Tashkent", description: "", image: uzbekistanBukharaImg },
-            { day: 6, title: "Departure from Tashkent", description: "", image: uzbekistanDeparture }
+            { day: 6, title: "Departure from Tashkent", description: "", image: DepartureImg }
         ]
     }
 }

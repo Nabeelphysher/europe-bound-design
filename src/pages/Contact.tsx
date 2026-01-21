@@ -132,7 +132,7 @@ const Contact = () => {
         />
 
         {/* Contact Info Cards */}
-        <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-20">
+        <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-32 lg:mb-40">
           <div className="container-wide">
             <div className="flex flex-wrap justify-center gap-6">
               {contactInfo.map((info, index) => (

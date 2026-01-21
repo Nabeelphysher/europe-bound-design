@@ -41,7 +41,7 @@ const packages = [
 
 export function ServicesPreview() {
   return (
-    <section className="relative pt-4 pb-0 lg:pt-8 lg:pb-0 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_150px,#ffffff_100%)]">
+    <section className="relative pt-8 pb-24 lg:pt-12 lg:pb-32 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_150px,#ffffff_100%)]">
       <div className="container-wide relative z-10 px-6">
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
