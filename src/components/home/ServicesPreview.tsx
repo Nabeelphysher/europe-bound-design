@@ -17,6 +17,7 @@ const packages = [
       "Basic accommodation assistance",
     ],
     highlighted: false,
+    link: "/destinations",
   },
   {
     title: "Customized Package",
@@ -34,22 +35,23 @@ const packages = [
       "Personalized Luxury Touches",
     ],
     highlighted: true,
+    link: "/services",
   },
 ];
 
 export function ServicesPreview() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_150px,#ffffff_100%)]">
+    <section className="relative pt-4 pb-0 lg:pt-8 lg:pb-0 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_150px,#ffffff_100%)]">
       <div className="container-wide relative z-10 px-6">
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
-          <div className="text-center max-w-4xl mx-auto mb-20">
+          <div className="text-center max-w-4xl mx-auto mb-10">
             <span className="inline-block py-1 px-3 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Exclusive Journeys
             </span>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
               Tailored Packages for <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] italic pr-2 pb-2">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FF7700] to-[#FFD700] italic pr-2 pb-2">
                 Every Traveler
               </span>
             </h2>
@@ -81,8 +83,8 @@ export function ServicesPreview() {
                   <>
                     <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-[#FFD700]/5 to-transparent pointer-events-none" />
                     <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-[#0f172a] px-8 py-2.5 rounded-full text-sm font-bold shadow-[0_10px_20px_rgba(253,185,49,0.3)] flex items-center gap-2 uppercase tracking-wider">
-                        <Star className="w-4 h-4 fill-[#0f172a]" />
+                      <div className="bg-gradient-to-r from-[#FFD700] to-[#FF7700] text-[#0f172a] px-6 py-2 sm:px-8 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-[0_10px_20px_rgba(253,185,49,0.3)] flex items-center gap-2 uppercase tracking-wider whitespace-nowrap">
+                        <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-[#0f172a]" />
                         Most Popular
                       </div>
                     </div>
@@ -120,11 +122,11 @@ export function ServicesPreview() {
 
                 {/* Button */}
                 <Link
-                  to="/services"
-                  className={`w-full py-5 rounded-2xl font-bold text-center tracking-widest uppercase text-sm transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative group/btn
+                  to={pkg.link}
+                  className={`w-full py-3 md:py-5 rounded-2xl font-bold text-center tracking-widest uppercase text-sm transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden relative group/btn
                     ${pkg.highlighted
-                      ? "bg-[#FFD700] text-[#0f172a] hover:bg-white hover:text-black shadow-[0_10px_30px_rgba(255,215,0,0.2)]"
-                      : "bg-[#0f172a] text-white hover:bg-[#FFD700] hover:text-[#0f172a] shadow-xl"
+                      ? "bg-[#FF7700] text-white hover:bg-white hover:text-[#FF7700] shadow-[0_10px_30px_rgba(255,119,0,0.3)]"
+                      : "bg-[#0f172a] text-white hover:bg-[#FF7700] hover:text-white shadow-xl"
                     }
                   `}
                 >

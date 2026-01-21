@@ -78,7 +78,7 @@ interface DestinationsSectionProps {
 
 export function DestinationsSection({ className = "", showViewAll = true, showHeader = true }: DestinationsSectionProps) {
     return (
-        <section className={cn("py-32 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden", className)}>
+        <section className={cn("pt-32 pb-4 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden", className)}>
 
             {/* Background Glows (Subtle & Premium) */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">

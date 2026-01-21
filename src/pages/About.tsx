@@ -293,7 +293,7 @@ const About = () => {
 
                     {/* Floating 'Watch Video' Pill (Top Left) */}
                     <div className="absolute top-10 -left-6 md:-left-12 bg-[#faf4e5] py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50/50">
-                      <div className="w-10 h-10 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                      <div className="w-10 h-10 bg-[#FF7700] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#FF7700]/30">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-0.5">
                           <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
                         </svg>

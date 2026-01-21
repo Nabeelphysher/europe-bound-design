@@ -80,12 +80,12 @@ export function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 bg-white relative overflow-hidden"
+      className="pt-0 pb-12 bg-white relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
-          <div className="text-center mb-20 px-4 sm:px-0 max-w-2xl mx-auto">
+          <div className="text-center mb-10 px-4 sm:px-0 max-w-2xl mx-auto">
             <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-gold block mb-2">Our Achievements</span>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-primary mb-6 text-shadow-premium">
               Excellence in Every <br /> Number

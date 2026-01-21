@@ -8,91 +8,9 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import img1 from "@/assets/WhatsApp Image 2025-12-05 at 4.03.57 PM.jpeg";
-import img2 from "@/assets/WhatsApp Image 2025-12-05 at 4.03.58 PM.jpeg";
-import img3 from "@/assets/WhatsApp Image 2025-12-05 at 4.03.59 PM.jpeg";
-import img4 from "@/assets/WhatsApp Image 2025-12-05 at 4.04.00 PM (1).jpeg";
-import img5 from "@/assets/WhatsApp Image 2025-12-05 at 4.04.00 PM.jpeg";
-import img6 from "@/assets/WhatsApp Image 2025-12-05 at 4.06.10 PM (1).jpeg";
-import img7 from "@/assets/WhatsApp Image 2025-12-05 at 4.06.10 PM.jpeg";
-import img8 from "@/assets/WhatsApp Image 2025-12-05 at 4.06.11 PM (1).jpeg";
-import img9 from "@/assets/WhatsApp Image 2025-12-05 at 4.06.11 PM.jpeg";
+const imageModules = import.meta.glob('@/assets/WhatsApp Image*.jpeg', { eager: true });
 
-// Mock Data for Gallery Images
-const galleryImages = [
-    {
-        id: 1,
-        src: img1,
-        category: "tours",
-        title: "Europe Tour Group",
-        location: "Europe",
-        aspect: "aspect-[4/3]"
-    },
-    {
-        id: 2,
-        src: img2,
-        category: "clients",
-        title: "Happy Travelers",
-        location: "Europe",
-        aspect: "aspect-[3/4]"
-    },
-    {
-        id: 3,
-        src: img3,
-        category: "scenic",
-        title: "Scenic Views",
-        location: "Europe",
-        aspect: "aspect-[4/3]"
-    },
-    {
-        id: 4,
-        src: img4,
-        category: "tours",
-        title: "City Adventure",
-        location: "Europe",
-        aspect: "aspect-[3/4]"
-    },
-    {
-        id: 5,
-        src: img5,
-        category: "clients",
-        title: "Group Experience",
-        location: "Europe",
-        aspect: "aspect-[4/5]"
-    },
-    {
-        id: 6,
-        src: img6,
-        category: "scenic",
-        title: "Beautiful Destination",
-        location: "Europe",
-        aspect: "aspect-[16/9]"
-    },
-    {
-        id: 7,
-        src: img7,
-        category: "tours",
-        title: "Travel Moments",
-        location: "Europe",
-        aspect: "aspect-[3/4]"
-    },
-    {
-        id: 8,
-        src: img8,
-        category: "clients",
-        title: "Memorable Trip",
-        location: "Europe",
-        aspect: "aspect-[4/3]"
-    },
-    {
-        id: 9,
-        src: img9,
-        category: "clients",
-        title: "Client Smiles",
-        location: "Europe",
-        aspect: "aspect-[3/4]"
-    }
-];
+const images = Object.values(imageModules).map((mod: any) => mod.default);
 
 const categories = [
     { id: "all", label: "All Photos" },
@@ -101,13 +19,30 @@ const categories = [
     { id: "scenic", label: "Scenery" },
 ];
 
-const Gallery = () => {
-    const [activeCategory, setActiveCategory] = useState("all");
-    const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+const aspectRatios = ["aspect-[4/3]", "aspect-[3/4]", "aspect-[16/9]", "aspect-[1/1]"];
+const locations = ["Paris, France", "Swiss Alps", "Rome, Italy", "Amsterdam, Netherlands", "Berlin, Germany", "Santorini, Greece"];
+const titles = ["Unforgettable Journey", "Client Smiles", "Beautiful Scenery", "Group Adventure", "City Exploration", "Hidden Gems"];
 
-    const filteredImages = activeCategory === "all"
-        ? galleryImages
-        : galleryImages.filter(img => img.category === activeCategory);
+// Dynamically generated gallery images
+const galleryImages = images.map((src, index) => {
+    // Deterministic random-like selection based on index
+    const categoryId = categories[Math.floor((index % (categories.length - 1)) + 1)].id;
+    const aspect = aspectRatios[index % aspectRatios.length];
+    const location = locations[index % locations.length];
+    const title = titles[index % titles.length];
+
+    return {
+        id: index + 1,
+        src,
+        category: categoryId,
+        title: title,
+        location: location,
+        aspect: aspect
+    };
+});
+
+const Gallery = () => {
+    const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
     return (
         <>
@@ -122,27 +57,9 @@ const Gallery = () => {
                 <section className="section-padding pt-8 relative z-10 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]">
                     <div className="container-wide px-4">
 
-                        {/* Filter Tabs */}
-                        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-                            {categories.map((cat) => (
-                                <button
-                                    key={cat.id}
-                                    onClick={() => setActiveCategory(cat.id)}
-                                    className={cn(
-                                        "px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border",
-                                        activeCategory === cat.id
-                                            ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
-                                            : "bg-white text-muted-foreground border-border hover:border-gold hover:text-primary hover:bg-gold/5"
-                                    )}
-                                >
-                                    {cat.label}
-                                </button>
-                            ))}
-                        </div>
-
                         {/* Masonry Grid */}
                         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                            {filteredImages.map((image, index) => (
+                            {galleryImages.map((image, index) => (
                                 <RevealOnScroll key={image.id} delay={index * 100} className="break-inside-avoid">
                                     <div
                                         className="group relative rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_10px_20px_-5px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.35)] transition-all duration-500"
@@ -177,11 +94,7 @@ const Gallery = () => {
                             ))}
                         </div>
 
-                        {filteredImages.length === 0 && (
-                            <div className="text-center py-20">
-                                <p className="text-muted-foreground text-lg">No images found in this category.</p>
-                            </div>
-                        )}
+
                     </div>
                 </section>
             </main>

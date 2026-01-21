@@ -68,12 +68,6 @@ export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
                             </span>
                         </a>
 
-                        <a
-                            href="#overview"
-                            className="group px-8 py-4 bg-transparent border border-white/30 text-white rounded-full font-bold hover:bg-white/10 hover:border-white transition-all duration-300 w-full sm:w-auto min-w-[200px] backdrop-blur-sm"
-                        >
-                            Explore Itinerary
-                        </a>
                     </div>
                 </RevealOnScroll>
             </div>

@@ -54,21 +54,32 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section className="pt-12 pb-8 lg:pt-16 lg:pb-8 bg-white relative overflow-hidden">
+      {/* Top Gradient Overlay for Smooth Transition */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-white via-white/95 to-transparent z-[5] pointer-events-none" />
+
       {/* Background with Notebook Lines Effect */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.4]"
         style={{
           backgroundImage: 'linear-gradient(#E5E7EB 1px, transparent 1px)',
-          backgroundSize: '100% 40px'
+          backgroundSize: '100% 40px',
+          maskImage: 'linear-gradient(to bottom, transparent 15%, black 250px)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 15%, black 250px)'
         }}
       />
       {/* Decorative Dashed Arch */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl h-64 border-t-2 border-dashed border-gray-200 rounded-t-full opacity-60 pointer-events-none" />
+      <div
+        className="absolute top-10 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl h-64 border-t-2 border-dashed border-gray-200 rounded-t-full opacity-60 pointer-events-none"
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent, black 100px)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 100px)'
+        }}
+      />
 
       <div className="container-wide relative z-10 px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 px-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 px-4">
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-4 leading-tight tracking-tight animate-fade-in-up text-shadow-premium">
             Why Travelers Choose
           </h2>

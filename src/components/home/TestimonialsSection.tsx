@@ -128,7 +128,7 @@ export function TestimonialsSection() {
     );
 
     return (
-        <section id="testimonials-preview" className="py-20 bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_300px,#ffffff_100%)] relative overflow-hidden">
+        <section id="testimonials-preview" className="pt-10 pb-8 md:pb-20 bg-[linear-gradient(180deg,#faf4e5_0%,#ffffff_300px,#ffffff_100%)] relative overflow-hidden">
             {/* Simple Background */}
             <div className="absolute top-0 left-0 w-full h-full bg-white -z-10" />
 
@@ -150,7 +150,7 @@ export function TestimonialsSection() {
                     </div>
                 </RevealOnScroll>
 
-                <div className="flex justify-center mt-12">
+                <div className="flex justify-center mt-8 md:mt-12">
                     <Link to="/testimonials" className="group flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300">
                         <span>View all</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

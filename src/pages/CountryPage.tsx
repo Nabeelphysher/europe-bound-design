@@ -3,6 +3,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
+import { DestinationBanner } from "@/components/country/DestinationBanner";
+import { CountryHero } from "@/components/country/CountryHero";
+import { RoadmapSection } from "@/components/country/RoadmapSection";
 import {
     ArrowRight, CheckCircle2, Globe, Award,
     User, Mail, Phone, Clock, Wallet, ShieldCheck, Star, Quote
@@ -34,10 +37,13 @@ import kazakhstanImg from "@/assets/a2 (1).png";
 import armeniaImg from "@/assets/a4.png";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
-import kyrgyzstanImg from "@/assets/a1.png";
-import { DestinationBanner } from "@/components/country/DestinationBanner";
-import { CountryHero } from "@/components/country/CountryHero";
+import kyrgyzstanImg from "@/assets/snow-dusts-teton-range-peaks (1).jpg";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
+import uzbekistanCityImg from "@/assets/city-china-building-scenery-water-skyscraper (1).jpg";
+import uzbekistanSamarkandImg from "@/assets/view-barcelona-from-palau-nacional-cloudy-sky-spain (1).jpg";
+import uzbekistanTrainImg from "@/assets/beautiful-czech-passenger-train-with-carriages (1).jpg";
+import uzbekistanBukharaImg from "@/assets/modern-arabic-style-building-blue-sky (1).jpg";
+import uzbekistanDeparture from "@/assets/full-shot-couple-walking-with-baggage (1).jpg"
 import russiaImg from "@/assets/russia.jpg";
 
 interface CountryData {
@@ -53,6 +59,7 @@ interface CountryData {
     process: { step: number; title: string; description: string }[];
     testimonials: { name: string; role: string; content: string; location: string }[];
     faqs: { question: string; answer: string }[];
+    itinerary?: { day: number; title: string; description: string; image?: string }[];
 }
 
 const countryData: Record<string, CountryData> = {
@@ -88,6 +95,44 @@ const countryData: Record<string, CountryData> = {
             { step: 4, title: "Visa", description: "Application support." },
             { step: 5, title: "Fly", description: "Arrive in Paris." },
             { step: 6, title: "Enjoy", description: "Bon voyage!" }
+        ],
+        itinerary: [
+            {
+                day: 1,
+                title: "Arrival in Paris",
+                description: "Touch down in the City of Light. Private transfer to your central hotel. Evening free to explore the Champs-Élysées.",
+                image: franceImg
+            },
+            {
+                day: 2,
+                title: "Classic Paris City Tour",
+                description: "Guided tour of the Eiffel Tower, Arc de Triomphe, and Notre Dame. Afternoon Seine River Cruise.",
+                image: franceImg
+            },
+            {
+                day: 3,
+                title: "Louvre & Culture",
+                description: "Skip-the-line access to the Louvre Museum to see the Mona Lisa. Afternoon walk through Montmartre.",
+                image: franceImg
+            },
+            {
+                day: 4,
+                title: "Royal Versailles",
+                description: "Half-day trip to the Palace of Versailles. Explore the Hall of Mirrors and the magnificent gardens.",
+                image: franceImg
+            },
+            {
+                day: 5,
+                title: "Shopping & Leisure",
+                description: "Free day for shopping at Galeries Lafayette or a food tour in Le Marais.",
+                image: franceImg
+            },
+            {
+                day: 6,
+                title: "Departure",
+                description: "Breakfast at the hotel. Transfer to Charles de Gaulle Airport for your flight home.",
+                image: franceImg
+            }
         ],
         testimonials: [
             { name: "Sophie M.", role: "Couple", content: "Paris was a dream come true.", location: "Paris" },
@@ -128,6 +173,13 @@ const countryData: Record<string, CountryData> = {
             { step: 4, title: "Pay", description: "Secure booking." },
             { step: 5, title: "Fly", description: "Arrival in Baku." },
             { step: 6, title: "Tour", description: "Airport pickup." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Baku", description: "Airport pickup and transfer to hotel. Evening panoramic tour of Highland Park.", image: azerbaijanImg },
+            { day: 2, title: "Baku City Tour", description: "Old City (Icherisheher), Maiden Tower, and Shirvanshahs' Palace.", image: azerbaijanImg },
+            { day: 3, title: "Gabala Day Trip", description: "Full day tour to Gabala. Visit Tufandag Mountain Resort and Nohur Lake.", image: azerbaijanImg },
+            { day: 4, title: "Absheron Peninsula", description: "Fire Temple (Ateshgah) and Burning Mountain (Yanardag).", image: azerbaijanImg },
+            { day: 5, title: "Departure", description: "Shopping at Yashil Bazaar and transfer to airport.", image: azerbaijanImg }
         ],
         testimonials: [
             { name: "Ahmed K.", role: "Tourist", content: "Baku is dazzling at night. Great service.", location: "Baku" },
@@ -177,6 +229,13 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa to visit Kazakhstan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply online for an e-visa. Always verify your eligibility before travel." },
             { question: "Is Kazakhstan safe for tourists?", answer: "Yes. Major cities like Almaty and Astana are generally safe, with good infrastructure and helpful locals." },
             { question: "When is the best time to visit Kazakhstan?", answer: "The best time is May to September for pleasant weather, outdoor activities, and sightseeing." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Almaty", description: "Welcome to Kazakhstan! Transfer to your hotel and enjoy a welcome dinner with traditional Kazakh cuisine.", image: kazakhstanImg },
+            { day: 2, title: "Almaty City Tour", description: "Visit Panfilov Park, Zenkov Cathedral, and take a cable car ride to Kok Tobe for panoramic views of the city.", image: kazakhstanImg },
+            { day: 3, title: "Charyn Canyon Adventure", description: "Full-day excursion to the dramatic Charyn Canyon, often called the 'Grand Canyon's little brother'.", image: kazakhstanImg },
+            { day: 4, title: "Kolsai & Kaindy Lakes", description: "Explore the stunning 'Sunken Forest' of Lake Kaindy and the pristine alpine waters of Kolsai Lakes.", image: kazakhstanImg },
+            { day: 5, title: "Departure", description: "Breakfast at the hotel, last-minute souvenir shopping at the Green Bazaar, and transfer to the airport.", image: kazakhstanImg }
         ]
     },
     armenia: {
@@ -219,6 +278,13 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa to visit Armenia?", answer: "Many travelers can enter visa-free or get a visa on arrival / e-visa depending on nationality. Check eligibility before you go." },
             { question: "Is Armenia safe for tourists?", answer: "Yes. Armenia is considered very safe, with friendly locals and low crime rates, especially in Yerevan and tourist areas." },
             { question: "When is the best time to visit Armenia?", answer: "The best months are May to October for pleasant weather, sightseeing, and mountain travel." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Yerevan", description: "Arrive in the Pink City. Private transfer to your hotel and evening walk around Republic Square to see the singing fountains.", image: armeniaImg },
+            { day: 2, title: "Garni & Geghard", description: "Visit the Hellenistic Garni Temple and the UNESCO-listed cave monastery of Geghard. Bread baking masterclass included.", image: armeniaImg },
+            { day: 3, title: "Lake Sevan & Dilijan", description: "Drive to the azure Lake Sevan, then explore the 'Armenian Switzerland' town of Dilijan and Haghartsin Monastery.", image: armeniaImg },
+            { day: 4, title: "Khor Virap & Noravank", description: "Enjoy the best views of Mount Ararat from Khor Virap and visit the stunning red-rock monastery of Noravank.", image: armeniaImg },
+            { day: 5, title: "Departure", description: "Visit the Vernissage open-air market for unique handicrafts before your transfer to Zvartnots Airport.", image: armeniaImg }
         ]
     },
     kyrgyzstan: {
@@ -266,6 +332,13 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa to visit Kyrgyzstan?", answer: "Many nationalities can enter visa-free for 30–60 days. Others can apply for an e-visa online. Always confirm based on your passport." },
             { question: "Is Kyrgyzstan safe for tourists?", answer: "Yes. Kyrgyzstan is generally safe and peaceful, especially in Bishkek and popular tourist regions. Locals are known for warm hospitality." },
             { question: "When is the best time to visit Kyrgyzstan?", answer: "The best time is June to September for trekking, lake visits, and mountain travel due to good weather conditions." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Bishkek", description: "Meet your guide at majestic Manas Airport. Transfer to hotel. Afternoon city tour including Ala-Too Square and Oak Park.", image: kyrgyzstanImg },
+            { day: 2, title: "Ala Archa National Park", description: "A day in nature! Light trekking in the stunning Ala Archa gorge, surrounded by snow-capped peaks and juniper forests.", image: kyrgyzstanImg },
+            { day: 3, title: "Burana & Issyk Kul", description: "Visit the ancient Burana Tower on the Silk Road, then proceed to the pearl of Central Asia, Lake Issyk Kul.", image: kyrgyzstanImg },
+            { day: 4, title: "Nomadic Culture", description: "Experience eagle hunting demonstrations and yurt building. Return to Bishkek for a farewell dinner.", image: kyrgyzstanImg },
+            { day: 5, title: "Departure", description: "Transfer to the airport for your flight home, carrying memories of the nomadic spirit.", image: kyrgyzstanImg }
         ]
     },
     netherlands: {
@@ -308,6 +381,14 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa for the Netherlands?", answer: "Travelers from non-visa-exempt countries need a Schengen Visa. We provide full assistance with your application documentation." },
             { question: "Is English widely spoken?", answer: "Yes, the Netherlands has one of the highest English-proficiency rates in the world, making travel very easy." },
             { question: "When is the tulip season?", answer: "The best time to see tulips, especially at Keukenhof, is from mid-April to early May." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Amsterdam", description: "Welcome to the Dutch capital! Private transfer to your hotel. Evening canal cruise to see the city lights.", image: netherlandsImg },
+            { day: 2, title: "Amsterdam Highlights", description: "Guided walking tour of the historic center, Dam Square, and the Jordaan district. Visit the Anne Frank House.", image: netherlandsImg },
+            { day: 3, title: "Windmills & Countryside", description: "Half-day tour to Zaanse Schans to see working windmills, clog making, and cheese farms.", image: netherlandsImg },
+            { day: 4, title: "Art & Culture", description: "Priority access to the Rijksmuseum to see the Night Watch. Afternoon at leisure or Van Gogh Museum visit.", image: netherlandsImg },
+            { day: 5, title: "Giethoorn Day Trip", description: "Full day excursion to the fairytale village of Giethoorn with a boat ride on its peaceful canals.", image: netherlandsImg },
+            { day: 6, title: "Departure", description: "Breakfast at hotel. Private transfer to Schiphol Airport for your onward journey.", image: netherlandsImg }
         ]
     },
     russia: {
@@ -350,6 +431,15 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa for Russia?", answer: "Yes, most travelers require a visa. Electronic visas (E-visas) are available for citizens of many countries." },
             { question: "Is it safe to travel to Russia?", answer: "Yes, major tourist cities like Moscow and St. Petersburg are generally safe with high security, but standard travel precautions apply." },
             { question: "What is the best time to visit?", answer: "Late spring (May-June) for White Nights in St. Petersburg, or winter for a classic snowy experience." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Moscow", description: "Privet from Moscow! Transfer to your central hotel. Evening walk along Arbat Street.", image: russiaImg },
+            { day: 2, title: "Kremlin & Red Square", description: "Detailed tour of the Kremlin grounds, Armory Chamber, and St. Basil's Cathedral.", image: russiaImg },
+            { day: 3, title: "Underground Palaces", description: "Tour of the famous Moscow Metro stations, followed by a visit to the astronautics museum or VDNKh park.", image: russiaImg },
+            { day: 4, title: "Train to St. Petersburg", description: "High-speed Sapsan train journey. Arrival in the Northern Capital and transfer to hotel.", image: russiaImg },
+            { day: 5, title: "The Hermitage", description: "Guided tour of the Winter Palace and the Hermitage Museum, one of the world's greatest art repositories.", image: russiaImg },
+            { day: 6, title: "Peterhof Gardens", description: "Day trip to the 'Russian Versailles'. Explore the Grand Palace and the famous cascade of fountains.", image: russiaImg },
+            { day: 7, title: "Departure", description: "Farewell to Russia. Transfer to Pulkovo Airport for your departure flight.", image: russiaImg }
         ]
     },
     georgia: {
@@ -390,6 +480,13 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa to visit Georgia?", answer: "Many nationalities can enter visa-free for up to 1 year. Others can apply for an e-visa online. Always check your eligibility before travel." },
             { question: "Is Georgia safe for tourists?", answer: "Yes. Georgia is considered very safe, especially in cities like Tbilisi and Batumi, with friendly locals and good tourist support." },
             { question: "When is the best time to visit Georgia?", answer: "The best time is May to October — perfect for sightseeing, mountain trips, and outdoor activities." }
+        ],
+        itinerary: [
+            { day: 1, title: "Arrival in Tbilisi", description: "Arrival in Tbilisi. Transfer to your hotel. Evening cable car ride to Narikala Fortress for city views.", image: georgiaImg },
+            { day: 2, title: "Tbilisi Old & New", description: "Walking tour of the Old Town, visiting the sulfur baths, Peace Bridge, and key historical churches.", image: georgiaImg },
+            { day: 3, title: "Mtskheta & Jvari", description: "Visit the ancient capital Mtskheta and Jvari Monastery, offering breathtaking views of the river confluence.", image: georgiaImg },
+            { day: 4, title: "Kazbegi Mountains", description: "Scenic drive along the Military Highway to Kazbegi. Visit Gergeti Trinity Church with Mount Kazbek backdrop.", image: georgiaImg },
+            { day: 5, title: "Departure", description: "Check out and transfer to Tbilisi International Airport for your flight.", image: georgiaImg }
         ]
     },
     uzbekistan: {
@@ -415,12 +512,12 @@ const countryData: Record<string, CountryData> = {
             { title: "Daily Water", description: "Complimentary bottled water during tours." }
         ],
         process: [
-            { step: 1, title: "Plan", description: "Choose cities." },
-            { step: 2, title: "Visa", description: "Apply online." },
-            { step: 3, title: "Book", description: "Reserve package." },
-            { step: 4, title: "Fly", description: "Tashkent arrival." },
-            { step: 5, title: "Train", description: "Samarkand express." },
-            { step: 6, title: "Explore", description: "Discover history." }
+            { step: 1, title: "Day 1", description: "Airport Transfer + Panoramic City Tour." },
+            { step: 2, title: "Day 2", description: "Tashkent / Chimgan Mountains / Charvak Lake Excursion." },
+            { step: 3, title: "Day 3", description: "Tashkent / Samarkand (by Train)." },
+            { step: 4, title: "Day 4", description: "Samarkand / Bukhara (by Bullet Train/Coach)." },
+            { step: 5, title: "Day 5", description: "Bukhara / Tashkent." },
+            { step: 6, title: "Day 6", description: "Departure from Tashkent." }
         ],
         testimonials: [
             { name: "Kevin L.", role: "Historian", content: "Samarkand exceeded expectations.", location: "Samarkand" },
@@ -430,9 +527,17 @@ const countryData: Record<string, CountryData> = {
             { question: "Do I need a visa to visit Uzbekistan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply for a quick e-visa online. Always check current rules for your passport." },
             { question: "Is Uzbekistan safe for tourists?", answer: "Yes. Uzbekistan is considered very safe, especially in tourist cities like Tashkent, Samarkand, and Bukhara, with welcoming locals." },
             { question: "When is the best time to visit Uzbekistan?", answer: "The best time is April–May and September–October when the weather is comfortable for sightseeing and travel." }
+        ],
+        itinerary: [
+            { day: 1, title: "Airport Transfer + Panoramic City Tour", description: "", image: uzbekistanCityImg },
+            { day: 2, title: "Tashkent / Chimgan Mountains / Charvak Lake Excursion", description: "", image: kyrgyzstanImg },
+            { day: 3, title: "Tashkent / Samarkand (by Train)", description: "", image: uzbekistanSamarkandImg },
+            { day: 4, title: "Samarkand / Bukhara (by Bullet Train/Coach)", description: "", image: uzbekistanTrainImg },
+            { day: 5, title: "Bukhara / Tashkent", description: "", image: uzbekistanBukharaImg },
+            { day: 6, title: "Departure from Tashkent", description: "", image: uzbekistanDeparture }
         ]
     }
-};
+}
 
 const CountryPage = () => {
     const { country } = useParams();
@@ -556,212 +661,22 @@ const CountryPage = () => {
                     </div>
                 </section>
 
-                {/* --- 3. Eligibility (Travel Requirements) --- */}
-                <section className="py-10 md:py-16 bg-slate-50/50">
-                    <div className="container-wide px-4 sm:px-6">
-                        <RevealOnScroll animation="fade-up" delay={100}>
-                            <div className="max-w-7xl mx-auto bg-white rounded-[3rem] shadow-xl border border-gray-100 p-8 md:p-12 lg:p-16 relative overflow-hidden">
-                                {/* Decorative Background */}
-                                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                {/* --- 3. Roadmap Timeline (Itinerary) --- */}
+                {data.itinerary && <RoadmapSection itinerary={data.itinerary} />}
 
-                                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-                                    <div>
-                                        <div className="flex items-center gap-2 mb-4">
-                                            <div className="w-8 h-1 bg-gold rounded-full" />
-                                            <span className="text-gold font-bold text-xs uppercase tracking-widest">Essential Documents</span>
-                                        </div>
-                                        <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-primary leading-tight">
-                                            Travel <span className="text-gold italic">Requirements</span>
-                                        </h2>
-                                        <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-md">
-                                            Ensure a smooth journey by preparing these necessary documents for {data.title}.
-                                            Our team provides full visa assistance and guidance.
-                                        </p>
-                                        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                                            {/* Primary Action - Premium Dark with Shine */}
-                                            <a
-                                                href="#booking-form"
-                                                className="group relative px-8 py-4 bg-primary text-white rounded-xl overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,30,63,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(11,30,63,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto"
-                                            >
-                                                {/* Shine Effect */}
-                                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-                                                <span className="font-bold relative z-10">Start Booking</span>
-                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10 text-gold" />
-                                            </a>
 
-                                            {/* Secondary Action - Elegant Outline */}
-                                            <Link
-                                                to="/contact"
-                                                className="group px-8 py-4 bg-white border border-gray-200 text-primary rounded-xl font-bold hover:border-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:shadow-md w-full sm:w-auto text-center"
-                                            >
-                                                <span>Talk to an Expert</span>
-                                                <div className="hidden xs:flex w-8 h-8 rounded-full bg-gray-100 items-center justify-center group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                                                    <Phone className="w-4 h-4" />
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </div>
 
-                                    <div className="grid sm:grid-cols-2 gap-4">
-                                        {data.eligibility.map((item, i) => (
-                                            <div
-                                                key={i}
-                                                className="group flex items-center gap-4 bg-gray-50 hover:bg-white p-5 rounded-2xl border border-gray-100 hover:border-gold/30 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                                            >
-                                                <div className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
-                                                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                                                </div>
-                                                <span className="font-semibold text-primary group-hover:text-gold transition-colors">{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </RevealOnScroll>
-                    </div>
-                </section>
 
-                {/* --- 4. Process Timeline (Snake/Wave) - Premium Redesign --- */}
-                <section className="py-24 md:py-32 bg-[#FDFCF8] relative overflow-hidden">
-                    {/* Background Elements */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#ff7700_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.03]" />
 
-                    <div className="container-wide px-4 sm:px-6 relative z-10">
-                        <RevealOnScroll animation="fade-up">
-                            <div className="text-center mb-20 md:mb-32">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold border border-gold/20 mb-4">
-                                    <span className="text-xs font-bold uppercase tracking-widest">The Journey</span>
-                                </div>
-                                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-                                    Seamless <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-500">Booking</span> Process
-                                </h2>
-                            </div>
 
-                            {/* --- Desktop View: Snake Wave --- */}
-                            <div className="hidden lg:block relative w-full h-[500px] max-w-7xl mx-auto">
-                                {/* SVG Wave Line */}
-                                <svg className="absolute top-0 left-0 w-full h-full overflow-visible" preserveAspectRatio="none">
-                                    <defs>
-                                        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stopColor="#000000" stopOpacity="0.1" />
-                                            <stop offset="50%" stopColor="#FF7700" stopOpacity="0.6" />
-                                            <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
-                                        </linearGradient>
-                                        <filter id="glow">
-                                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                                            <feMerge>
-                                                <feMergeNode in="coloredBlur" />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
-                                        </filter>
-                                    </defs>
-                                    {/* The Path - Smooth Sine Wave passing through the nodes */}
-                                    {/* Nodes approx at: x=5%, 23%, 41%, 59%, 77%, 95%. y alternating 80 (top) and 320 (bottom) */}
-                                    <path
-                                        d="M50,150 C150,150 180,350 280,350 S 410,150 510,150 S 640,350 740,350 S 870,150 970,150"
-                                        fill="none"
-                                        stroke="url(#waveGradient)"
-                                        strokeWidth="4"
-                                        vectorEffect="non-scaling-stroke"
-                                        strokeDasharray="12 8"
-                                        className="animate-pulse-slow"
-                                        transform="scale(1.2 1)"
-                                        style={{ transformOrigin: 'center' }} // Adjust scale for mapping
-                                    />
-                                    {/* Note: Vector path is approximate relative to 1000x400 viewbox concept mapped to %. Using CSS lines logic below is safer for responsiveness, but SVG allows curve. 
-                                        Let's switch to a simpler Bezier Curve rendering that matches the absolute positions below.
-                                        Points:
-                                        1: 8% (Top)
-                                        2: 25% (Bottom)
-                                        3: 42% (Top)
-                                        4: 59% (Bottom)
-                                        5: 75% (Top)
-                                        6: 92% (Bottom)
-                                    */}
-                                    <path
-                                        d="M80,120 C 150,120, 180,380, 250,380 S 350,120, 420,120 S 520,380, 590,380 S 680,120, 750,120 S 850,380, 920,380"
-                                        fill="none"
-                                        stroke="url(#waveGradient)"
-                                        strokeWidth="3"
-                                        strokeLinecap="round"
-                                        vectorEffect="non-scaling-stroke"
-                                        // We basically stretch this SVG to fit container
-                                        transform-origin="center"
-                                    />
-                                </svg>
 
-                                {data.process.map((step, i) => {
-                                    const isTop = i % 2 === 0; // 0, 2, 4 -> Top
-                                    const leftPos = (i * 17) + 8; // Spread out: 8%, 25%, 42%, 59%, 76%, 93%
 
-                                    return (
-                                        <div
-                                            key={i}
-                                            className="absolute w-64 group"
-                                            style={{
-                                                left: `${leftPos}%`,
-                                                top: isTop ? '10%' : '60%', // Top vs Bottom Row
-                                                transform: 'translateX(-50%)'
-                                            }}
-                                        >
-                                            <div className={`flex flex-col items-center text-center ${isTop ? 'flex-col' : 'flex-col-reverse'}`}>
 
-                                                {/* Node Point */}
-                                                <div className={`relative z-10 w-16 h-16 rounded-full bg-white border-4 border-[#FDFCF8] shadow-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:border-gold ${isTop ? 'mb-6' : 'mt-6'}`}>
-                                                    <div className="absolute inset-0 rounded-full bg-gold/20 animate-ping opacity-0 group-hover:opacity-100" />
-                                                    <span className="font-heading font-bold text-xl text-primary group-hover:text-gold">{i + 1}</span>
-                                                </div>
 
-                                                {/* Content Card */}
-                                                <div className={`relative bg-white p-6 rounded-2xl shadow-lg border border-gray-100 w-full hover:shadow-xl hover:border-gold/30 transition-all duration-300 ${isTop ? '' : ''}`}>
-                                                    <h3 className="font-heading text-lg font-bold text-primary mb-2">{step.title}</h3>
-                                                    <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-
-                                                    {/* Arrow Pointer */}
-                                                    <div
-                                                        className={`absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-r border-b border-gray-100 rotate-45 
-                                                        ${isTop ? '-bottom-2' : '-top-2 border-t border-l border-r-0 border-b-0'}`}
-                                                    />
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {/* --- Mobile View: Vertical Timeline --- */}
-                            <div className="lg:hidden relative">
-                                {/* Vertical Line */}
-                                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/10 via-gold/50 to-primary/10" />
-
-                                <div className="space-y-12">
-                                    {data.process.map((step, i) => (
-                                        <div key={i} className="relative flex gap-8">
-                                            {/* Node */}
-                                            <div className="sticky top-32 shrink-0 w-16 h-16 rounded-full bg-white border-4 border-[#FDFCF8] shadow-lg flex items-center justify-center z-10">
-                                                <span className="font-heading font-bold text-xl text-primary">{i + 1}</span>
-                                            </div>
-
-                                            {/* Content */}
-                                            <div className="pt-2">
-                                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                                                    <h3 className="font-heading text-xl font-bold text-primary mb-2">{step.title}</h3>
-                                                    <p className="text-muted-foreground">{step.description}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                        </RevealOnScroll>
-                    </div>
-                </section>
 
                 {/* --- 4.5. Benefits (What's Included) --- */}
 
-                <section className="py-24 bg-slate-50/50 relative">
+                < section className="py-24 bg-slate-50/50 relative" >
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')] opacity-40 mx-auto" />
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <RevealOnScroll animation="scale-up" delay={200}>
@@ -794,12 +709,12 @@ const CountryPage = () => {
                             </div>
                         </RevealOnScroll>
                     </div>
-                </section>
+                </section >
 
 
 
                 {/* --- 4.6 Inquiry Form Section --- */}
-                <section className="py-24 bg-slate-50 relative overflow-hidden" id="booking-form">
+                < section className="py-24 bg-slate-50 relative overflow-hidden" id="booking-form" >
                     <div className="absolute left-0 top-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
@@ -896,10 +811,10 @@ const CountryPage = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section >
 
                 {/* --- 6. FAQ Section --- */}
-                <section className="py-24 bg-white">
+                < section className="py-24 bg-white" >
                     <div className="container-wide px-4 sm:px-6 max-w-4xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Common Questions</h2>
@@ -919,13 +834,13 @@ const CountryPage = () => {
                             ))}
                         </Accordion>
                     </div>
-                </section>
+                </section >
 
                 <DestinationBanner countryName={data.name} image={data.image} />
 
 
 
-            </main>
+            </main >
             <Footer />
             <WhatsAppButton />
             <StickyEnquireButton />
