@@ -94,8 +94,9 @@ export function HeroSectionV2({ className }: { className?: string }) {
                     <img
                         src={s.image}
                         alt={`${s.title} Landscape`}
-                        className={`w-full h-full object-cover object-center transform transition-transform duration-[10000ms] ease-linear ${currentSlide === index ? "scale-110" : "scale-100"
+                        className={`w-full h-full object-cover object-center transform transition-transform ease-linear ${currentSlide === index ? "scale-110" : "scale-100"
                             }`}
+                        style={{ transitionDuration: '10000ms' }}
                     />
                     {/* Cinematic Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />

@@ -24,15 +24,15 @@ export const HomeIntroHero = () => {
                         <RevealOnScroll animation="slide-in-left">
                             {/* Title Section */}
                             <div className="mb-8 relative z-20">
-                                <span className="block font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-black mb-2 tracking-tight">
+                                <span className="block font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-black mb-2 tracking-tight">
                                     Welcome to
                                 </span>
-                                <span className="block font-heading font-black italic text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-[#FF6B00] tracking-tighter drop-shadow-sm filter pr-4">
+                                <span className="block font-heading font-black italic text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#FF6B00] tracking-tighter drop-shadow-sm filter pr-4">
                                     Europe Calling
                                 </span>
                             </div>
 
-                            <p className="text-base md:text-lg text-gray-500 leading-relaxed font-light max-w-lg mx-auto lg:mx-0 tracking-wide mb-10">
+                            <p className="text-sm md:text-base text-gray-500 leading-relaxed font-light max-w-lg mx-auto lg:mx-0 tracking-wide mb-10">
                                 For over a decade, we've been the bridge between dreams and destinations.
                                 Experience Europe's finest landscapes, cultures, and opportunities with the industry's most trusted partner.
                             </p>

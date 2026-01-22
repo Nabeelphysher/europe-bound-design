@@ -27,7 +27,8 @@ export function PlanTripSection() {
                                     <img
                                         src={img1}
                                         alt="Scenic View"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                        style={{ transitionDuration: '1.5s' }}
                                     />
                                     {/* Subtle Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60" />
@@ -40,7 +41,8 @@ export function PlanTripSection() {
                                         <img
                                             src={img2}
                                             alt="Culture"
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                        style={{ transitionDuration: '1.5s' }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60" />
                                     </div>
@@ -49,7 +51,8 @@ export function PlanTripSection() {
                                         <img
                                             src={img3}
                                             alt="Nature"
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                        style={{ transitionDuration: '1.5s' }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60" />
                                     </div>
@@ -125,13 +128,15 @@ export function PlanTripSection() {
                                 />
 
                                 {/* Floating Badge: Star Rating (Top Right of Circle) */}
-                                <div className="absolute top-28 -right-2 bg-white w-16 h-16 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center animate-bounce duration-[3000ms] z-20">
+                                <div className="absolute top-28 -right-2 bg-white w-16 h-16 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center animate-bounce z-20"
+                                    style={{ animationDuration: '3000ms' }}>
                                     <span className="text-red-500 text-sm">★</span>
                                     <span className="font-bold text-xs text-primary">4.9k</span>
                                 </div>
 
                                 {/* Floating Badge: Love Emoji (Left of Lady) */}
-                                <div className="absolute bottom-1/3 left-0 bg-white w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex items-center justify-center animate-bounce duration-[4000ms] delay-700 z-20">
+                                <div className="absolute bottom-1/3 left-0 bg-white w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex items-center justify-center animate-bounce delay-700 z-20"
+                                    style={{ animationDuration: '4000ms' }}>
                                     <span className="text-2xl">😍</span>
                                 </div>
                             </div>

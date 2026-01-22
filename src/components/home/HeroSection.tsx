@@ -73,7 +73,8 @@ export function HeroSection() {
         <img
           src={activeDest.image}
           alt={activeDest.name}
-          className="w-full h-full object-cover transition-transform duration-[2000ms] ease-out scale-105"
+          className="w-full h-full object-cover transition-transform ease-out scale-105"
+          style={{ transitionDuration: '2000ms' }}
         />
         {/* Gradients to Ensure Text & Nav Visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80" />

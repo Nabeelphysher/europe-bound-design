@@ -49,13 +49,13 @@ export function ServicesPreview() {
             <span className="inline-block py-1 px-3 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Exclusive Journeys
             </span>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-5 leading-tight">
               Tailored Packages for <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FF7700] to-[#FFD700] italic pr-2 pb-2">
+              <span className="text-[#FF7700] italic pr-2 pb-2">
                 Every Traveler
               </span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
               Whether you seek essential guidance or a completely bespoke luxury experience, we craft the perfect European journey for you.
             </p>
           </div>
@@ -83,7 +83,7 @@ export function ServicesPreview() {
                   <>
                     <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-[#FFD700]/5 to-transparent pointer-events-none" />
                     <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-[#FFD700] to-[#FF7700] text-[#0f172a] px-6 py-2 sm:px-8 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-[0_10px_20px_rgba(253,185,49,0.3)] flex items-center gap-2 uppercase tracking-wider whitespace-nowrap">
+                      <div className="bg-[#FF7700] text-[#0f172a] px-6 py-2 sm:px-8 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-[0_10px_20px_rgba(255,119,0,0.3)] flex items-center gap-2 uppercase tracking-wider whitespace-nowrap">
                         <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-[#0f172a]" />
                         Most Popular
                       </div>
@@ -107,8 +107,8 @@ export function ServicesPreview() {
                     <li key={i} className="flex items-start gap-4 group/item">
                       <div className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
                         ${pkg.highlighted
-                          ? "bg-[#FFD700]/20 text-[#FFD700]"
-                          : "bg-slate-100 text-slate-900 group-hover/item:bg-[#FFD700] group-hover/item:text-white"
+                          ? "bg-[#FF7700]/20 text-[#FF7700]"
+                          : "bg-slate-100 text-slate-900 group-hover/item:bg-[#FF7700] group-hover/item:text-white"
                         }`
                       }>
                         <CheckCircle2 className="w-3.5 h-3.5" />

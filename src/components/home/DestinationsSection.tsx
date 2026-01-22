@@ -6,7 +6,7 @@ import azerbaijanImg from "@/assets/a3.png";
 import kazakhstanImg from "@/assets/a2 (1).png";
 import armeniaImg from "@/assets/a4.png";
 import russiaImg from "@/assets/russia.jpg";
-import georgiaImg from "@/assets/1destination-georgia.png";
+import georgiaImg from "@/assets/1destination-georgia.jpg";
 import kyrgyzstanImg from "@/assets/a1.png";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
 import franceImg from "@/assets/france.jpg";
@@ -91,10 +91,10 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                 {/* Header Content */}
                 {showHeader && (
                     <div className="text-center mb-16">
-                        <span className="font-['Dancing_Script'] text-3xl md:text-5xl text-gold block mb-4 animate-fade-in-up">
+                        <span className="font-['Dancing_Script'] text-2xl md:text-3xl text-gold block mb-3 animate-fade-in-up">
                             Top Destinations
                         </span>
-                        <h2 className="font-heading text-4xl md:text-6xl font-bold text-primary mb-6 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
+                        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-5 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
                             Most Favorite Destinations
                         </h2>
                         <div className="w-20 h-1 bg-gold mx-auto rounded-full animate-scale-in animation-delay-300" />
@@ -113,7 +113,8 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
                             <img
                                 src={dest.image}
                                 alt={dest.name}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out-expo scale-[1.01] group-hover:scale-110 will-change-transform opacity-90 group-hover:opacity-100"
+                                className="absolute inset-0 w-full h-full object-cover transition-transform ease-out-expo scale-[1.01] group-hover:scale-110 will-change-transform opacity-90 group-hover:opacity-100"
+                                style={{ transitionDuration: '2s' }}
                             />
 
                             {/* Gradient Overlay - Cinematic Bottom Fade */}

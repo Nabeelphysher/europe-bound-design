@@ -46,7 +46,8 @@ export function GallerySection() {
                             <img
                                 src={img1}
                                 alt="Gallery 1"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                             />
                             <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>
@@ -59,7 +60,8 @@ export function GallerySection() {
                                 <img
                                     src={img2}
                                     alt="Gallery 2"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                                 />
                                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
@@ -69,7 +71,8 @@ export function GallerySection() {
                                 <img
                                     src={img3}
                                     alt="Gallery 3"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                                 />
                                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
@@ -82,7 +85,8 @@ export function GallerySection() {
                             <img
                                 src={img4}
                                 alt="Gallery Center"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
 
@@ -102,7 +106,8 @@ export function GallerySection() {
                                 <img
                                     src={img5}
                                     alt="Gallery 5"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                                 />
                                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
@@ -112,7 +117,8 @@ export function GallerySection() {
                                 <img
                                     src={img6}
                                     alt="Gallery 6"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                                 />
                                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
@@ -125,7 +131,8 @@ export function GallerySection() {
                             <img
                                 src={img7}
                                 alt="Gallery 7"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out-expo"
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out-expo"
+                                style={{ transitionDuration: '1.5s' }}
                             />
                             <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>

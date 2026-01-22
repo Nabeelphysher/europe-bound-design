@@ -9,7 +9,7 @@ export function StickyEnquireButton() {
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center justify-center bg-gold text-gold-foreground font-semibold shadow-glow transition-all duration-300 hover:bg-accent hover:text-accent-foreground px-3 py-8 rounded-l-lg hover:pr-4 hover:pl-5 hover:tracking-wide"
+          className="flex items-center justify-center bg-black text-white font-semibold shadow-glow transition-all duration-300 hover:bg-[#FF7700] hover:text-white px-3 py-8 rounded-l-lg hover:pr-4 hover:pl-5 hover:tracking-wide"
           style={{
             writingMode: "vertical-rl",
             textOrientation: "mixed",

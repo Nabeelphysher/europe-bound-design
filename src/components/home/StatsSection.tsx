@@ -86,11 +86,11 @@ export function StatsSection() {
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
           <div className="text-center mb-10 px-4 sm:px-0 max-w-2xl mx-auto">
-            <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-gold block mb-2">Our Achievements</span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[48px] font-bold text-primary mb-6 text-shadow-premium">
+            <span className="font-['Dancing_Script'] text-2xl sm:text-3xl text-gold block mb-2">Our Achievements</span>
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-5 text-shadow-premium">
               Excellence in Every <br /> Number
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base font-medium">
+            <p className="text-gray-600 text-xs sm:text-sm font-medium">
               We take pride in our numbers. They represent the trust and dreams of thousands of travelers we've served.
             </p>
           </div>

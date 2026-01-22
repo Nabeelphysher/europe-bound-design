@@ -42,10 +42,10 @@ export function FAQSection() {
           <div className="lg:col-span-4 lg:sticky lg:top-32">
             <RevealOnScroll animation="fade-up">
               <div className="relative">
-                <span className="font-['Dancing_Script'] text-3xl sm:text-4xl text-gold block mb-3 pl-1">
+                <span className="font-['Dancing_Script'] text-2xl sm:text-3xl text-gold block mb-3 pl-1">
                   Need Help?
                 </span>
-                <h2 className="font-heading text-4xl md:text-5xl font-medium text-primary mb-6 leading-tight tracking-tight">
+                <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary mb-5 leading-tight tracking-tight">
                   Frequently Asked <br /> Questions
                 </h2>
                 <div className="w-16 h-[2px] bg-gold/60 rounded-full mb-8"></div>
