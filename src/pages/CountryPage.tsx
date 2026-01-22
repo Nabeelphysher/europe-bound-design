@@ -39,7 +39,7 @@ import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
 import kyrgyzstanImg from "@/assets/snow-dusts-teton-range-peaks (1).jpg";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
-import uzbekistanCityImg from "@/assets/city-china-building-scenery-water-skyscraper (1).jpg";
+import uzbekistanCityImg from "@/assets/de (1).jpg";
 import uzbekistanSamarkandImg from "@/assets/view-barcelona-from-palau-nacional-cloudy-sky-spain (1).jpg";
 import uzbekistanTrainImg from "@/assets/beautiful-czech-passenger-train-with-carriages (1).jpg";
 import uzbekistanBukharaImg from "@/assets/modern-arabic-style-building-blue-sky (1).jpg";
@@ -48,8 +48,10 @@ import russiaImg from "@/assets/russia.jpg";
 import azerbaijanBakuImg from "@/assets/background-chinese-illumination-ancient-china (1).jpg";
 import azerbaijanShahadagImg from "@/assets/64 (1).jpg";
 import azerbaijanQubaImg from "@/assets/5c (1).jpg";
+import azerbaijanShakiImg from "@/assets/shaki (1).jpg";
 import azerbaijanAbsheronImg from "@/assets/towers-apsheron (1).jpg";
-import azerbaijanTransferImg from "@/assets/de (1).jpg";
+import azerbaijanGabalaImg from "@/assets/gabala (1).jpg";
+import azerbaijanMountainImg from "@/assets/mountain.jpg";
 import kazakhstanAlmatyImg from "@/assets/beautiful-view-rice-fields-lush-green-leepa-valley-kashmir-pakistan (1).jpg";
 import kazakhstanShymbulak from "@/assets/b5 (1).jpg";
 import kazakhstanCanyonImg from "@/assets/image1 (1).jpg";
@@ -59,6 +61,13 @@ import kazakhstanAlmarasanImg from "@/assets/images (1).jpg";
 import kyrgyzstanHotelImg from "@/assets/images (2) (1).jpg";
 import kyrgyzstanChunkImg from "@/assets/chunkurchak-valley-is (1).jpg";
 import kyrgyzstanAlarchaImg from "@/assets/fa (1).jpg";
+import georgiaTbilisiImg from "@/assets/Untitled design (47).jpg";
+import georgiaGudauriImg from "@/assets/e9 (1).jpg";
+import georgiaKazbegiImg from "@/assets/dd (1).jpg";
+import georgiaGoriImg from "@/assets/uflistsikhe_w_h.jpg";
+import georgiaKutaisiImg from "@/assets/kutaisi-georgia-travel-photo-20240912141135261-main-image (1).jpg";
+import georgiaBakurianiImg from "@/assets/a0 (1).jpg";
+
 
 interface CountryData {
     title: string;
@@ -73,7 +82,7 @@ interface CountryData {
     process: { step: number; title: string; description: string }[];
     testimonials: { name: string; role: string; content: string; location: string }[];
     faqs: { question: string; answer: string }[];
-    itinerary?: { day: number; title: string; description: string; image?: string }[];
+    itinerary?: { day: number; title: string; description?: string; image?: string }[];
 }
 
 const countryData: Record<string, CountryData> = {
@@ -189,11 +198,14 @@ const countryData: Record<string, CountryData> = {
             { step: 6, title: "Tour", description: "Airport pickup." }
         ],
         itinerary: [
-            { day: 1, title: "ARRIVAL / BAKU CITY TOUR", description: "", image: azerbaijanBakuImg },
-            { day: 2, title: "SHAHADAG CITY TOUR", description: "", image: azerbaijanShahadagImg },
-            { day: 3, title: "QUBA CITY TOUR /BACK TO BAKU", description: "", image: azerbaijanQubaImg },
-            { day: 4, title: "ABSHERON /GOBUSTAN", description: "", image: azerbaijanAbsheronImg },
-            { day: 5, title: "AIRPORT TRANSFER", description: "", image: azerbaijanTransferImg }
+            { day: 1, title: "Transfer / Panoramic Tour", description: "", image: azerbaijanBakuImg },
+            { day: 2, title: "Baku to Gabala Tour", description: "", image: azerbaijanGabalaImg },
+            { day: 3, title: "Tufandag Mountain Tour", description: "", image: azerbaijanMountainImg },
+            { day: 4, title: "Sheki To Baku", description: "", image: azerbaijanShakiImg },
+            { day: 5, title: "Baku City Tour / Absheron Tour", description: "", image: azerbaijanAbsheronImg },
+            { day: 6, title: "Shahdag Tour", description: "", image: azerbaijanShahadagImg },
+            { day: 7, title: " Guba To Baku / Gobustan", description: "", image: azerbaijanQubaImg },
+            { day: 8, title: " Departure", description: "", image: DepartureImg },
         ],
         testimonials: [
             { name: "Ahmed K.", role: "Tourist", content: "Baku is dazzling at night. Great service.", location: "Baku" },
@@ -463,7 +475,7 @@ const countryData: Record<string, CountryData> = {
         tagline: "Wine, Mountains & History",
         image: georgiaImg,
         description: "Georgia is where ancient traditions meet stunning natural beauty—from medieval towns and mountain valleys to world-famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
-        stats: { price: "$600", duration: "5 Days", visa: "Visa on Arrival" },
+        stats: { price: "$600", duration: "7 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Expert Local Insights", description: "Discover hidden gems in Tbilisi and Kazbegi with our knowledgeable guides." },
             { title: "Handpicked Stays", description: "Enjoy unique accommodations, from premium city hotels to cozy mountain cottages." },
@@ -497,11 +509,13 @@ const countryData: Record<string, CountryData> = {
             { question: "When is the best time to visit Georgia?", answer: "The best time is May to October — perfect for sightseeing, mountain trips, and outdoor activities." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Tbilisi", description: "Arrival in Tbilisi. Transfer to your hotel. Evening cable car ride to Narikala Fortress for city views.", image: georgiaImg },
-            { day: 2, title: "Tbilisi Old & New", description: "Walking tour of the Old Town, visiting the sulfur baths, Peace Bridge, and key historical churches.", image: georgiaImg },
-            { day: 3, title: "Mtskheta & Jvari", description: "Visit the ancient capital Mtskheta and Jvari Monastery, offering breathtaking views of the river confluence.", image: georgiaImg },
-            { day: 4, title: "Kazbegi Mountains", description: "Scenic drive along the Military Highway to Kazbegi. Visit Gergeti Trinity Church with Mount Kazbek backdrop.", image: georgiaImg },
-            { day: 5, title: "Departure", description: "Check out and transfer to Tbilisi International Airport for your flight.", image: georgiaImg }
+            { day: 1, title: "TBILISI CITY TOUR", image: georgiaTbilisiImg },
+            { day: 2, title: "GUDAURI TOUR", image: georgiaGudauriImg },
+            { day: 3, title: "KAZBEGI TOUR", image: georgiaKazbegiImg },
+            { day: 4, title: "GORI TOUR", image: georgiaGoriImg },
+            { day: 5, title: "KUTAISI TOUR", image: georgiaKutaisiImg },
+            { day: 6, title: "BAKURIANI TOUR", image: georgiaBakurianiImg },
+            { day: 7, title: "ADIOS GEORGIA", image: DepartureImg }
         ]
     },
     uzbekistan: {

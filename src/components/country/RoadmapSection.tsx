@@ -5,7 +5,7 @@ import { Clock, MapPin, Calendar, Camera } from "lucide-react";
 interface RoadmapItem {
     day: number;
     title: string;
-    description: string;
+    description?: string;
     image?: string;
 }
 
