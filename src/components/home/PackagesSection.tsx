@@ -19,12 +19,16 @@ const packages = [
         icon: FileText,
         highlighted: false,
         features: [
-            "Visa documentation guidance",
-            "Travel itinerary planning",
-            "Airport pickup coordination",
-            "24/7 customer support phone/email",
-            "Basic accommodation recommendations",
-            "Pre-departure orientation"
+            "Airport pickup and dropping",
+            "Hotel Accommodation",
+            "Breakfast",
+            "Road trip. Sightseeing",
+            "Personal assistance",
+            "Personal driver",
+            "Private transportation",
+            "All including taxes",
+            "Car rent",
+            "Car fuel",
         ],
         benefits: [
             "Cost-effective solution",
@@ -48,13 +52,18 @@ const packages = [
         icon: Crown,
         highlighted: true,
         features: [
-            "Dedicated personal consultant",
-            "Premium accommodation booking",
-            "VIP airport lounge access",
-            "Job placement assistance",
-            "Family reunification support",
-            "Local experience curation",
-            "Business networking support"
+            "Luxury Accommodation",
+            "Premium Transfers & Comfort",
+            "Exclusive Dining Experiences",
+            "Private Tours & Expert Guides",
+            "Curated Cultural Experiences",
+            "Bespoke Excursions Across Destinations",
+            "Leisure & Wellness Experiences",
+            "Personalized Luxury Touches",
+            "Flight tickets",
+            "Visa",
+            "Lunch and dinner",
+            "Entry ticket"
         ],
         benefits: [
             "Completely stress-free experience",

@@ -335,17 +335,26 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
                 {isActive && isPlaying && item.videoSrc ? (
                   <video
                     src={item.videoSrc}
-                    className="w-full h-full object-contain bg-black"
+                    className="w-full h-full object-cover bg-black"
                     controls
                     autoPlay
                     onEnded={() => setPlayingVideoId(null)}
                   />
-                ) : (
-                  <img
-                    src={item.thumbnail}
-                    alt={item.name}
+                ) : item.videoSrc ? (
+                  <video
+                    src={item.videoSrc}
                     className="w-full h-full object-cover"
+                    preload="metadata"
+                    muted
+                    playsInline
+                    onLoadedMetadata={(e) => {
+                      // Seek to first frame to ensure thumbnail shows
+                      const video = e.target as HTMLVideoElement;
+                      video.currentTime = 0.1;
+                    }}
                   />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary via-primary/90 to-black" />
                 )}
 
                 {/* Overlay only if not playing */}
@@ -355,8 +364,8 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
 
                 {isActive && !isPlaying ? (
                   /* Active Card Content */
-                  <div className="absolute inset-0 flex flex-col justify-between p-8 pointer-events-none">
-                    <div className="self-center mt-auto mb-auto transform transition-transform duration-300 hover:scale-110 pointer-events-auto">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="transform transition-transform duration-300 hover:scale-110 pointer-events-auto">
                       <button
                         onClick={(e) => handleVideoToggle(item.id, e)}
                         className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FF7700] backdrop-blur-md rounded-full flex items-center justify-center border border-[#FF7700]/50 group shadow-[0_0_30px_rgba(255,119,0,0.3)] hover:bg-white hover:text-[#FF7700] transition-all"
@@ -364,23 +373,6 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
                         <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white ml-1 group-hover:text-[#FF7700] group-hover:fill-[#FF7700]" />
                       </button>
                     </div>
-                    <div className="text-left animate-fade-in-up">
-                      <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 uppercase tracking-wider drop-shadow-lg">{item.name}</h3>
-                      <p className="text-gold text-xs sm:text-sm font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-                        <span className="w-8 h-[2px] bg-gold inline-block"></span>
-                        {item.role}
-                      </p>
-                    </div>
-                  </div>
-                ) : !isActive ? (
-                  /* Side Strip Content - Rotated Text */
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <h3
-                      className="text-white/60 font-bold tracking-[0.3em] uppercase text-xs sm:text-sm whitespace-nowrap"
-                      style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-                    >
-                      {item.name}
-                    </h3>
                   </div>
                 ) : null}
 

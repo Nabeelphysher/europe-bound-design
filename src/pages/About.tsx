@@ -195,7 +195,7 @@ const About = () => {
                       <div className="flex gap-4">
                         {[
                           { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/naj.ath?igsh=MTd0cWJzNzQwcjJtdg==" },
-                          { Icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+                          { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/share/1D3oGMZS5V/" },
                           { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" }
                         ].map(({ Icon, label, href }, i) => (
                           <a

@@ -31,8 +31,8 @@ export function Footer() {
               {[
                 { icon: <Facebook className="w-4 h-4" />, href: "https://www.facebook.com/share/19qGz8sdbi/?mibextid=wwXIfr" },
                 { icon: <Instagram className="w-4 h-4" />, href: "https://www.instagram.com/europe__calling/" },
-                { icon: <Twitter className="w-4 h-4" />, href: "https://twitter.com" },
-                { icon: <Linkedin className="w-4 h-4" />, href: "https://linkedin.com" },
+                { icon: <Twitter className="w-4 h-4" />, href: "https://x.com/europe__calling?s=21" },
+                { icon: <Linkedin className="w-4 h-4" />, href: "https://www.linkedin.com/in/europe-calling-494b7b3a7/" },
                 { icon: <Youtube className="w-4 h-4" />, href: "https://www.youtube.com/@europe_calling" },
               ].map((social, width) => (
                 <a

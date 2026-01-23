@@ -67,6 +67,12 @@ import georgiaKazbegiImg from "@/assets/dd (1).jpg";
 import georgiaGoriImg from "@/assets/uflistsikhe_w_h.jpg";
 import georgiaKutaisiImg from "@/assets/kutaisi-georgia-travel-photo-20240912141135261-main-image (1).jpg";
 import georgiaBakurianiImg from "@/assets/a0 (1).jpg";
+import russiaPetersburgImg from "@/assets/Petersburg.jpg";
+import russiaHermitagemuseumImg from "@/assets/Hermitage Museum.jpg";
+import russiaPeterhofGrandPalaceImg from "@/assets/PeterhofGrandPalace.jpg";
+import russiaPetersburgCityImg from "@/assets/st-petersburg-gezi-rehberi (1).jpg";
+import russiaPetersburgHiddenImg from "@/assets/1e_edited (1).jpg";
+import russiaPetersburgCapitalImg from "@/assets/St-Petersburg-2.1 (1).jpg";
 
 
 interface CountryData {
@@ -173,7 +179,7 @@ const countryData: Record<string, CountryData> = {
         tagline: "Where East Meets West",
         image: azerbaijanImg,
         description: "Azerbaijan blends ancient heritage with modern flair—where Silk Road history meets futuristic Baku. From dramatic Caucasus landscapes to warm hospitality, it offers rich culture, unique cuisine, and great value for unforgettable travel experiences.",
-        stats: { price: "$650", duration: "5 Days", visa: "E-Visa" },
+        stats: { price: "$650", duration: "8 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Local Knowledge", description: "Deep insights into local culture and hidden gems." },
             { title: "Tailor-Made Itineraries", description: "Custom travel plans designed for your pace." },
@@ -460,13 +466,13 @@ const countryData: Record<string, CountryData> = {
             { question: "What is the best time to visit?", answer: "Late spring (May-June) for White Nights in St. Petersburg, or winter for a classic snowy experience." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Moscow", description: "Privet from Moscow! Transfer to your central hotel. Evening walk along Arbat Street.", image: russiaImg },
-            { day: 2, title: "Kremlin & Red Square", description: "Detailed tour of the Kremlin grounds, Armory Chamber, and St. Basil's Cathedral.", image: russiaImg },
-            { day: 3, title: "Underground Palaces", description: "Tour of the famous Moscow Metro stations, followed by a visit to the astronautics museum or VDNKh park.", image: russiaImg },
-            { day: 4, title: "Train to St. Petersburg", description: "High-speed Sapsan train journey. Arrival in the Northern Capital and transfer to hotel.", image: russiaImg },
-            { day: 5, title: "The Hermitage", description: "Guided tour of the Winter Palace and the Hermitage Museum, one of the world's greatest art repositories.", image: russiaImg },
-            { day: 6, title: "Peterhof Gardens", description: "Day trip to the 'Russian Versailles'. Explore the Grand Palace and the famous cascade of fountains.", image: russiaImg },
-            { day: 7, title: "Departure", description: "Farewell to Russia. Transfer to Pulkovo Airport for your departure flight.", image: russiaImg }
+            { day: 1, title: "Arrival in St. Petersburg", description: "", image: russiaPetersburgImg },
+            { day: 2, title: "City Tour of St. Petersburg And Hermitage Museum", description: "", image: russiaHermitagemuseumImg },
+            { day: 3, title: "Excursion to Peterhof Grand Palace", description: "", image: russiaPeterhofGrandPalaceImg },
+            { day: 4, title: "Free Day in St. Petersburg", description: "", image: russiaPetersburgCityImg },
+            { day: 5, title: "Free Day in St. Petersburg", description: "", image: russiaPetersburgHiddenImg },
+            { day: 6, title: "Free Day in St. Petersburg", description: "", image: russiaPetersburgCapitalImg },
+            { day: 7, title: "Departure from St. Petersburg", description: "", image: DepartureImg }
         ]
     },
     georgia: {
