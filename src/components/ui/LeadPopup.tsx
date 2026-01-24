@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface LeadPopupProps {
   isOpen: boolean;
@@ -38,28 +39,45 @@ export const useLeadPopup = (delay: number = 5000) => {
 export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProps) {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    country: initialDestination ? initialDestination.toLowerCase() : "",
+    whatsappSame: true,
+    whatsappNumber: "",
+    travelMonth: "",
+    destination: initialDestination ? initialDestination.toLowerCase() : "",
   });
 
   useEffect(() => {
     if (initialDestination) {
-      setFormData(prev => ({ ...prev, country: initialDestination.toLowerCase() }));
+      setFormData(prev => ({ ...prev, destination: initialDestination.toLowerCase() }));
     }
   }, [initialDestination, isOpen]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const countries = [
+  const destinations = [
     { value: "azerbaijan", label: "Azerbaijan" },
-    { value: "kazakhstan", label: "Kazakhstan" },
-    { value: "armenia", label: "Armenia" },
-    { value: "russia", label: "Russia" },
     { value: "georgia", label: "Georgia" },
-    { value: "kyrgyzstan", label: "Kyrgyzstan" },
+    { value: "kazakhstan", label: "Kazakhstan" },
+    { value: "russia", label: "Russia" },
     { value: "uzbekistan", label: "Uzbekistan" },
+    { value: "kyrgyzstan", label: "Kyrgyzstan" },
+    { value: "armenia", label: "Armenia" },
     { value: "france", label: "France" },
+  ];
+
+  const travelMonths = [
+    { value: "january", label: "January" },
+    { value: "february", label: "February" },
+    { value: "march", label: "March" },
+    { value: "april", label: "April" },
+    { value: "may", label: "May" },
+    { value: "june", label: "June" },
+    { value: "july", label: "July" },
+    { value: "august", label: "August" },
+    { value: "september", label: "September" },
+    { value: "october", label: "October" },
+    { value: "november", label: "November" },
+    { value: "december", label: "December" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -78,7 +96,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
 
     setIsSubmitting(false);
     onClose();
-    setFormData({ name: "", email: "", phone: "", country: "" });
+    setFormData({ name: "", phone: "", whatsappSame: true, whatsappNumber: "", travelMonth: "", destination: "" });
   };
 
   if (!isOpen) return null;
@@ -134,63 +152,104 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
             />
           </div>
 
-          {/* Email Address */}
+          {/* Mobile Number */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Email Address
+              Mobile Number (with country code)
             </label>
             <input
-              type="email"
+              type="tel"
               required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
-              placeholder="sarah@example.com"
+              placeholder="+1 (555) 000-0000"
             />
           </div>
 
-          {/* Phone & Destination Row? Or Stacked? Reference shows grid. Let's stack for mobile safety or grid if space allows. */}
-          <div className="grid grid-cols-1 gap-3 md:gap-5">
-            {/* Phone Number */}
+          {/* WhatsApp Number Checkbox */}
+          <div className="relative flex items-center space-x-2">
+            <Checkbox
+              id="whatsapp-same"
+              checked={formData.whatsappSame}
+              onCheckedChange={(checked) => setFormData({ ...formData, whatsappSame: checked === true, whatsappNumber: checked === true ? "" : formData.whatsappNumber })}
+              className="border-gray-300 data-[state=checked]:bg-gold data-[state=checked]:border-gold"
+            />
+            <label
+              htmlFor="whatsapp-same"
+              className="text-sm font-medium text-gray-900 cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              WhatsApp Number (same as mobile)
+            </label>
+          </div>
+
+          {/* WhatsApp Number Input - Show when checkbox is unchecked */}
+          {!formData.whatsappSame && (
             <div className="relative">
               <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                Phone Number
+                WhatsApp Number (with country code)
               </label>
               <input
                 type="tel"
-                required
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required={!formData.whatsappSame}
+                value={formData.whatsappNumber}
+                onChange={(e) => setFormData({ ...formData, whatsappNumber: e.target.value })}
                 className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
+          )}
 
-            {/* Destination Dropdown */}
-            <div className="relative">
-              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                Destination
-              </label>
-              <Select
-                value={formData.country}
-                onValueChange={(value) => setFormData({ ...formData, country: value })}
-              >
-                <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold">
-                  <SelectValue placeholder="Select Destination" />
-                </SelectTrigger>
-                <SelectContent position="popper" sideOffset={5} className="max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
-                  {countries.map((country) => (
-                    <SelectItem
-                      key={country.value}
-                      value={country.value}
-                      className="cursor-pointer focus:bg-gold/10 focus:text-primary"
-                    >
-                      {country.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+          {/* Travel Month */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Travel Month
+            </label>
+            <Select
+              value={formData.travelMonth}
+              onValueChange={(value) => setFormData({ ...formData, travelMonth: value })}
+            >
+              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold [&>span]:line-clamp-none">
+                <SelectValue placeholder="Select Travel Month" />
+              </SelectTrigger>
+              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                {travelMonths.map((month) => (
+                  <SelectItem
+                    key={month.value}
+                    value={month.value}
+                    className="cursor-pointer focus:bg-gold/10 focus:text-primary whitespace-nowrap"
+                  >
+                    {month.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Destination of Interest */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Destination of Interest
+            </label>
+            <Select
+              value={formData.destination}
+              onValueChange={(value) => setFormData({ ...formData, destination: value })}
+            >
+              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold [&>span]:line-clamp-none">
+                <SelectValue placeholder="Select Destination" />
+              </SelectTrigger>
+              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                {destinations.map((destination) => (
+                  <SelectItem
+                    key={destination.value}
+                    value={destination.value}
+                    className="cursor-pointer focus:bg-gold/10 focus:text-primary whitespace-nowrap"
+                  >
+                    {destination.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Action Button */}
@@ -206,7 +265,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
               {isSubmitting ? (
                 "Processing..."
               ) : (
-                "Get My Free Quote"
+                "Talk to Travel Expert"
               )}
             </button>
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { LeadPopup } from "@/components/ui/LeadPopup";
+import { TripPlannerForm } from "@/components/ui/TripPlannerForm";
 import visaExpertImg from "@/assets/Gemini_Generated_Image_szihweszihweszih.png";
 
 export function VisaPromoSection() {
@@ -48,9 +48,9 @@ export function VisaPromoSection() {
                                 <div className="pt-2">
                                     <button
                                         onClick={() => setIsPopupOpen(true)}
-                                        className="group inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-primary-foreground font-bold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
+                                        className="group inline-flex items-center gap-3 bg-[#FF7700] hover:bg-[#FF7700]/90 text-white font-bold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#FF7700]/30 hover:-translate-y-0.5"
                                     >
-                                        <span className="tracking-wide text-xs sm:text-sm uppercase">Apply Now</span>
+                                        <span className="tracking-wide text-xs sm:text-sm uppercase">Visit Now</span>
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                                     </button>
                                 </div>
@@ -79,7 +79,7 @@ export function VisaPromoSection() {
                 </RevealOnScroll>
             </div>
 
-            <LeadPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+            <TripPlannerForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
         </section>
     );
 }

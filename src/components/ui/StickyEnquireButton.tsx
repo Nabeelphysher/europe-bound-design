@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LeadPopup } from "./LeadPopup";
+import { EnquiryForm } from "./EnquiryForm";
 
 export function StickyEnquireButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ export function StickyEnquireButton() {
         </button>
       </div>
 
-      <LeadPopup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EnquiryForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

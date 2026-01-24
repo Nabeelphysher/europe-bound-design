@@ -46,9 +46,9 @@ const team = [
 ];
 
 const values = [
-  { icon: Target, title: "Mission", text: "To democratize access to European opportunities through transparent, expert guidance." },
-  { icon: Eye, title: "Vision", text: "To be the world's most trusted partner for European migration and travel." },
-  { icon: Heart, title: "Philosophy", text: "We treat every client's dream with the same care and dedication as if it were our own." },
+  { icon: Target, title: "Mission", text: "Our mission is to thoughtfully curate exceptional destinations and refined experiences that bring genuine happiness to our clients. Every journey we design reflects attention to detail, seamless planning, and a commitment to delivering understated luxury and lasting value." },
+  { icon: Eye, title: "Vision", text: "Our vision is to become a distinguished travel brand known for elegance, trust, and excellence. By aligning every decision with our core purpose, maintaining absolute clarity in our processes, and upholding the highest standards, we aim to set a benchmark in premium travel experiences." },
+  { icon: Heart, title: "Philosophy", text: "We believe true luxury lies in authenticity, precision, and care. Our philosophy is rooted in quality over quantity, honesty over promises, and experiences over extravagance. We showcase only what we truly trust, plan with intention, and deliver journeys that feel personal, effortless, and tim" },
 ];
 
 function AnimatedCounter({ value, suffix, duration, isVisible, className }: { value: number; suffix: string; duration: number; isVisible: boolean; className?: string }) {

@@ -37,7 +37,7 @@ import kazakhstanImg from "@/assets/a2 (1).png";
 import armeniaImg from "@/assets/a4.png";
 import netherlandsImg from "@/assets/destination-netherlands.png";
 import georgiaImg from "@/assets/destination-georgia.png";
-import kyrgyzstanImg from "@/assets/snow-dusts-teton-range-peaks (1).jpg";
+import kyrgyzstanImg from "@/assets/a1.png";
 import uzbekistanImg from "@/assets/uzbekistan.jpg";
 import uzbekistanCityImg from "@/assets/de (1).jpg";
 import uzbekistanSamarkandImg from "@/assets/view-barcelona-from-palau-nacional-cloudy-sky-spain (1).jpg";
