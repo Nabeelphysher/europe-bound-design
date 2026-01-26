@@ -80,7 +80,7 @@ export function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-0 pb-12 bg-white relative overflow-hidden"
+      className="pt-0 pb-12 bg-[#faf4e5] relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         {/* Section Header */}

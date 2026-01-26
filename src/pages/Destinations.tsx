@@ -10,7 +10,7 @@ const Destinations = () => {
     return (
         <>
             <Header />
-            <main className="bg-gradient-to-b from-gray-50 to-white min-h-screen pt-20">
+            <main className="bg-[#faf4e5] min-h-screen pt-20">
                 <PageHeader
                     eyebrow="Explore Europe"
                     title={<>Our <span className="text-gold italic">Destinations</span></>}

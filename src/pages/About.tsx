@@ -134,13 +134,13 @@ const About = () => {
   return (
     <>
       <Header />
-      <main className="overflow-hidden pt-20">
+      <main className="bg-[#faf4e5] overflow-hidden pt-20">
 
 
         {/* Founder's Note Section - Redesigned */}
         {/* Founder's Note Section - Premium Redesign */}
         {/* Founder's Note Section - Redesigned to match Premium Reference */}
-        <section className="py-16 lg:py-28 relative overflow-hidden bg-white">
+        <section className="py-16 lg:py-28 relative overflow-hidden bg-[#faf4e5]">
           {/* Subtle Background Elements */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-orange-50/50 to-transparent rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
@@ -271,7 +271,7 @@ const About = () => {
 
 
         {/* Our Origins Section - Redesigned */}
-        <section className="py-12 lg:py-24 relative bg-white overflow-hidden">
+        <section className="py-12 lg:py-24 relative bg-[#faf4e5] overflow-hidden">
           <div className="container px-4 sm:px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
 
@@ -381,7 +381,7 @@ const About = () => {
         </section>
 
         {/* Core Values */}
-        <section className="section-padding relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]"
+        <section className="section-padding relative overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)]"
           style={{
             backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(180deg, #ffffff 0%, #faf4e5 150px, #faf4e5 100%)',
             backgroundSize: '100% 40px, 100% 100%',
@@ -487,15 +487,15 @@ const About = () => {
         </section>
 
         {/* Founder Podcast Section - Video Redesign */}
-        <section className="relative py-24 overflow-hidden bg-white">
+        <section className="relative py-24 overflow-hidden bg-[#faf4e5]">
           {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
             <img
               src="https://images.unsplash.com/photo-1478737270239-2f52b27fa345?auto=format&fit=crop&q=80&w=2000"
               alt="Podcast Studio"
-              className="w-full h-full object-cover opacity-10"
+              className="w-full h-full object-cover opacity-5"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#faf4e5] via-[#faf4e5]/95 to-[#faf4e5]/80" />
           </div>
 
           <div className="container-wide relative z-10">
@@ -655,7 +655,7 @@ const About = () => {
         </section >
 
         {/* Team Grid */}
-        < section className="py-24 relative overflow-hidden bg-white" >
+        <section className="py-24 relative overflow-hidden bg-[#faf4e5]">
           {/* Dotted Grid Background Pattern */}
           < div className="absolute inset-0 z-0 opacity-[0.2]"
             style={{

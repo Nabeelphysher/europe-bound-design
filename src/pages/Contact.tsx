@@ -124,7 +124,7 @@ const Contact = () => {
   return (
     <>
       <Header />
-      <main className="bg-background min-h-screen pt-20">
+      <main className="bg-[#faf4e5] min-h-screen pt-20">
         <PageHeader
           eyebrow="Contact Us"
           title="Get in Touch"

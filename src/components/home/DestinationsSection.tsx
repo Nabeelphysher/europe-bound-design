@@ -78,7 +78,7 @@ interface DestinationsSectionProps {
 
 export function DestinationsSection({ className = "", showViewAll = true, showHeader = true }: DestinationsSectionProps) {
     return (
-        <section className={cn("pt-32 pb-4 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden", className)}>
+        <section className={cn("pt-12 sm:pt-20 md:pt-28 lg:pt-32 pb-4 bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden", className)}>
 
             {/* Background Glows (Subtle & Premium) */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
@@ -90,11 +90,11 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
 
                 {/* Header Content */}
                 {showHeader && (
-                    <div className="text-center mb-16">
-                        <span className="font-['Dancing_Script'] text-2xl md:text-3xl text-gold block mb-3 animate-fade-in-up">
+                    <div className="text-center mb-8 sm:mb-12 md:mb-16">
+                        <span className="font-['Dancing_Script'] text-2xl md:text-3xl text-gold block mb-2 sm:mb-3 animate-fade-in-up">
                             Top Destinations
                         </span>
-                        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-5 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
+                        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4 md:mb-5 animate-fade-in-up animation-delay-200 tracking-tight text-shadow-premium">
                             Most Favorite Destinations
                         </h2>
                         <div className="w-20 h-1 bg-gold mx-auto rounded-full animate-scale-in animation-delay-300" />

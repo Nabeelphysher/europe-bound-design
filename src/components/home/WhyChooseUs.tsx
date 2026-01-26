@@ -54,9 +54,7 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="pt-12 pb-8 lg:pt-16 lg:pb-8 bg-white relative overflow-hidden">
-      {/* Top Gradient Overlay for Smooth Transition */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-white via-white/95 to-transparent z-[5] pointer-events-none" />
+    <section className="pt-12 pb-8 lg:pt-16 lg:pb-8 bg-[#faf4e5] relative overflow-hidden">
 
       {/* Background with Notebook Lines Effect */}
       <div

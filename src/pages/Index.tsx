@@ -5,6 +5,7 @@ import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { LeadPopup, useLeadPopup } from "@/components/ui/LeadPopup";
 import { HeroSectionV2 } from "@/components/home/HeroSectionV2";
 import { HomeIntroHero } from "../components/home/HomeIntroHero";
+import { HeroSectionV3 } from "../components/home/HeroSectionV3";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { DestinationsSection } from "@/components/home/DestinationsSection";
@@ -21,11 +22,12 @@ const Index = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="bg-[#faf4e5]">
         {/* New Intro Hero with Mini-Hero Preview */}
         <HomeIntroHero />
 
-
+        {/* New Hero Section V3 - Full Background Image */}
+        <HeroSectionV3 />
 
         {/* <HeroSection /> */} {/* Hero usually has its own animations */}
         <DestinationsSection />

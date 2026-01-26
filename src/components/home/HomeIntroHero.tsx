@@ -8,7 +8,7 @@ import { LeadPopup } from "../ui/LeadPopup";
 export const HomeIntroHero = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     return (
-        <section className="relative min-h-[90vh] bg-[#FAFAFA] flex items-center pt-32 lg:pt-48 pb-20 overflow-hidden">
+        <section className="relative min-h-[90vh] bg-[#faf4e5] flex items-center pt-16 sm:pt-24 md:pt-32 lg:pt-48 pb-12 sm:pb-16 md:pb-20 overflow-hidden">
             {/* Background Decoration - softer and more premium */}
             <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-gold/5 rounded-full blur-[150px] pointer-events-none opacity-60" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[150px] pointer-events-none opacity-60" />
@@ -20,11 +20,11 @@ export const HomeIntroHero = () => {
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
                     {/* Left Content (Text) - Spans 5 columns */}
-                    <div className="lg:col-span-5 space-y-8 text-center lg:text-left order-2 lg:order-1">
+                    <div className="lg:col-span-5 space-y-4 sm:space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
                         <RevealOnScroll animation="slide-in-left">
                             {/* Title Section */}
-                            <div className="mb-8 relative z-20">
-                                <span className="block font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-black mb-2 tracking-tight">
+                            <div className="mb-4 sm:mb-6 md:mb-8 relative z-20">
+                                <span className="block font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-black mb-1 sm:mb-2 tracking-tight">
                                     Welcome to
                                 </span>
                                 <span className="block font-heading font-black italic text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#FF6B00] tracking-tighter drop-shadow-sm filter pr-4">
@@ -32,12 +32,12 @@ export const HomeIntroHero = () => {
                                 </span>
                             </div>
 
-                            <p className="text-sm md:text-base text-gray-500 leading-relaxed font-light max-w-lg mx-auto lg:mx-0 tracking-wide mb-10">
+                            <p className="text-sm md:text-base text-gray-500 leading-relaxed font-light max-w-lg mx-auto lg:mx-0 tracking-wide mb-6 sm:mb-8 md:mb-10">
                                 For over a decade, we've been the bridge between dreams and destinations.
                                 Experience Europe's finest landscapes, cultures, and opportunities with the industry's most trusted partner.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 md:pt-6 justify-center lg:justify-start">
                                 <button
                                     onClick={() => setIsPopupOpen(true)}
                                     className="px-8 py-3 bg-black text-white rounded-full font-bold text-sm md:text-base shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group min-w-[180px]"

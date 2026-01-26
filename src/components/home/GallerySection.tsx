@@ -13,7 +13,7 @@ import img7 from "@/assets/WhatsApp Image 2025-12-05 at 4.03.57 PM.jpeg"; // Lan
 
 export function GallerySection() {
     return (
-        <section className="pt-32 pb-10 bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden">
+        <section className="pt-12 sm:pt-20 md:pt-28 lg:pt-32 pb-10 bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)] relative overflow-hidden">
             {/* Background Decorative Line - More Subtle */}
             <div className="absolute top-1/2 left-0 w-[120%] -translate-x-[10%] -translate-y-1/2 -z-10 pointer-events-none text-gold/10 hidden md:block opacity-50">
                 <svg viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">

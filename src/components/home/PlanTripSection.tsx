@@ -10,7 +10,7 @@ import travelerImg from "@/assets/1766227243591-removebg-preview.png"; // Distin
 
 export function PlanTripSection() {
     return (
-        <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+        <section className="py-24 lg:py-32 bg-[#faf4e5] relative overflow-hidden">
             {/* Decorative Background Elements - Soft Blue/Cyan Theme */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E0F2FE]/50 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#E0F2FE]/50 rounded-full blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2" />

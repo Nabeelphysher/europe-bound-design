@@ -600,7 +600,7 @@ const CountryPage = () => {
     return (
         <>
             <Header />
-            <main>
+            <main className="bg-[#faf4e5]">
 
 
                 {/* --- 1. Hero Section --- */}
@@ -615,7 +615,7 @@ const CountryPage = () => {
 
 
                 {/* --- 2. Overview & Why Choose (Why choose this country) - Premium Redesign --- */}
-                <section className="py-10 md:py-20 bg-white relative overflow-hidden">
+                <section className="py-10 md:py-20 bg-[#faf4e5] relative overflow-hidden">
                     {/* Background Texture */}
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.4]" />
                     <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50/50 to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -849,7 +849,7 @@ const CountryPage = () => {
                 </section >
 
                 {/* --- 6. FAQ Section --- */}
-                < section className="py-24 bg-white" >
+                <section className="py-24 bg-[#faf4e5]">
                     <div className="container-wide px-4 sm:px-6 max-w-4xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Common Questions</h2>

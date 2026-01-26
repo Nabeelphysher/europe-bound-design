@@ -427,7 +427,7 @@ const Testimonials = () => {
   return (
     <>
       <Header />
-      <main className="bg-background min-h-screen pt-20">
+      <main className="bg-[#faf4e5] min-h-screen pt-20">
 
 
         <div className="relative bg-[linear-gradient(180deg,#ffffff_0%,#faf4e5_150px,#faf4e5_100%)]">

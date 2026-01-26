@@ -9,7 +9,7 @@ export function VisaPromoSection() {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     return (
-        <section className="pt-4 pb-12 px-4 md:px-6 bg-white">
+        <section className="pt-4 pb-12 px-4 md:px-6 bg-[#faf4e5]">
             <div className="container-wide">
                 <RevealOnScroll animation="scale-up">
                     <div

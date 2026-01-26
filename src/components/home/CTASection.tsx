@@ -5,7 +5,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export function CTASection() {
   return (
-    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#faf4e5] relative overflow-hidden">
       <FlightAnimation className="text-primary/5" />
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />

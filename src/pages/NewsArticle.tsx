@@ -27,7 +27,7 @@ const NewsArticle = () => {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-[#FDFDFD]">
+            <main className="min-h-screen bg-[#faf4e5]">
 
                 {/* --- Hero Section --- */}
                 <section className="relative h-[60vh] min-h-[500px] w-full">

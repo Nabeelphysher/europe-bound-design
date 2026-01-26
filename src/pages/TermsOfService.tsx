@@ -14,7 +14,7 @@ export default function TermsOfService() {
         <div className="min-h-screen bg-background flex flex-col">
             <Header />
 
-            <main className="flex-grow">
+            <main className="bg-[#faf4e5] flex-grow">
                 <PageHeader
                     eyebrow="Legal"
                     title="Terms of Use"

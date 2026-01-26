@@ -64,7 +64,7 @@ const Newsroom = () => {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#FDFDFD] pt-20">
+      <main className="min-h-screen bg-[#faf4e5] pt-20">
         <PageHeader
           eyebrow="Insights & Updates"
           title="Newsroom"
