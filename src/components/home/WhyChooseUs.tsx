@@ -6,48 +6,60 @@ const features = [
     icon: Globe,
     title: "Europe-focused expertise",
     description: "Deep knowledge of European immigration policies and cultural nuances.",
-    bgColor: "bg-[#F3E8FF]", // Purple
-    pinColor: "bg-[#9333EA]", // Dark Purple
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 0,
   },
   {
     icon: Headphones,
     title: "24/7 dedicated support",
     description: "Round-the-clock assistance from pre-departure to your first week abroad.",
-    bgColor: "bg-[#FFF7ED]", // Beige/Orange
-    pinColor: "bg-[#EA580C]", // Dark Orange
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 100,
   },
   {
     icon: ShieldCheck,
     title: "High visa and placement success",
     description: "Industry-leading visa approval rates backed by meticulous documentation.",
-    bgColor: "bg-[#ECFEFF]", // Cyan/Blue
-    pinColor: "bg-[#0891B2]", // Dark Cyan
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 200,
   },
   {
     icon: FileText,
     title: "Transparent process",
     description: "Clear timelines, honest pricing, and real-time updates at every stage.",
-    bgColor: "bg-[#F0FDF4]", // Green
-    pinColor: "bg-[#16A34A]", // Dark Green
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 300,
   },
   {
     icon: Users,
     title: "Experienced team",
     description: "Diverse experts who understand both your background and destination.",
-    bgColor: "bg-[#FDF2F8]", // Pink
-    pinColor: "bg-[#BE185D]", // Dark Pink
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 400,
   },
   {
     icon: Clock,
     title: "100% documentation aid",
     description: "Complete legal and documentation support leaving no room for errors.",
-    bgColor: "bg-[#FEFCE8]", // Yellow
-    pinColor: "bg-[#CA8A04]", // Dark Yellow
+    bgColor: "bg-black",
+    pinColor: "bg-[#FF7700]",
+    textColor: "text-white",
+    iconBg: "bg-[#FF7700]",
     delay: 500,
   },
 ];
@@ -109,18 +121,18 @@ export function WhyChooseUs() {
 
                 {/* Card Content - Premium Paper Texture */}
                 <div
-                  className={`${item.bgColor} rounded-[24px] p-8 h-full relative shadow-[0_8px_20px_-6px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 border border-white/60 flex flex-col items-start`}
+                  className={`${item.bgColor} rounded-[24px] p-8 h-full relative shadow-[0_8px_20px_-6px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 border border-white/10 flex flex-col items-start`}
                 >
                   {/* Icon Box */}
-                  <div className="w-14 h-14 bg-white rounded-[18px] flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <item.icon className="w-7 h-7 text-slate-700" strokeWidth={1.5} />
+                  <div className={`w-14 h-14 ${item.iconBg} rounded-[18px] flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                    <item.icon className={`w-7 h-7 text-white`} strokeWidth={1.5} />
                   </div>
 
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-primary mb-3 leading-tight text-shadow-elegant">
+                  <h3 className={`font-heading text-xl md:text-2xl font-bold mb-3 leading-tight ${item.textColor}`}>
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-600/90 leading-relaxed text-[15px] font-medium tracking-wide">
+                  <p className={`leading-relaxed text-[15px] font-medium tracking-wide text-white`}>
                     {item.description}
                   </p>
                 </div>

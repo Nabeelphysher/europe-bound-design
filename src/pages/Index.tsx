@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <>
       <Header />
-      <main className="bg-[#faf4e5]">
+      <main className="bg-[#faf4e5] overflow-x-hidden w-full max-w-full">
         {/* New Intro Hero with Mini-Hero Preview */}
         <HomeIntroHero />
 

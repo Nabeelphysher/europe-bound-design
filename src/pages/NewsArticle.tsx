@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { toast } from "sonner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -80,17 +81,48 @@ const NewsArticle = () => {
                                 <div className="border-t border-border mt-12 pt-8 flex items-center justify-between">
                                     <span className="font-heading font-bold text-lg">Share this article:</span>
                                     <div className="flex gap-4">
-                                        <button className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-colors">
-                                            <Facebook className="w-5 h-5" />
+                                        <button
+                                            onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
+                                            className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-[#FF7700] hover:text-white transition-all duration-300 group"
+                                            aria-label="Share on Facebook"
+                                        >
+                                            <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                         </button>
-                                        <button className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-colors">
-                                            <Twitter className="w-5 h-5" />
+                                        <button
+                                            onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
+                                            className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-[#FF7700] hover:text-white transition-all duration-300 group"
+                                            aria-label="Share on Twitter"
+                                        >
+                                            <Twitter className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                         </button>
-                                        <button className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-colors">
-                                            <Linkedin className="w-5 h-5" />
+                                        <button
+                                            onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
+                                            className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-[#FF7700] hover:text-white transition-all duration-300 group"
+                                            aria-label="Share on LinkedIn"
+                                        >
+                                            <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                         </button>
-                                        <button className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-gold hover:text-primary transition-colors">
-                                            <Share2 className="w-5 h-5" />
+                                        <button
+                                            onClick={async () => {
+                                                if (navigator.share) {
+                                                    try {
+                                                        await navigator.share({
+                                                            title: article.title,
+                                                            text: article.excerpt,
+                                                            url: window.location.href,
+                                                        });
+                                                    } catch (err) {
+                                                        console.error("Share failed:", err);
+                                                    }
+                                                } else {
+                                                    await navigator.clipboard.writeText(window.location.href);
+                                                    toast.success("Link copied to clipboard!");
+                                                }
+                                            }}
+                                            className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center hover:bg-[#FF7700] hover:text-white transition-all duration-300 group"
+                                            aria-label="Copy Link or Share"
+                                        >
+                                            <Share2 className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                                         </button>
                                     </div>
                                 </div>

@@ -197,7 +197,7 @@ const Contact = () => {
                       {/* Sliding Bg */}
                       <div
                         className={cn(
-                          "absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#0B1532] rounded-lg transition-all duration-300 ease-out shadow-sm",
+                          "absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#FF7700] rounded-lg transition-all duration-300 ease-out shadow-sm",
                           activeTab === 'feedback' ? "left-[calc(50%)]" : "left-1"
                         )}
                       />
@@ -425,7 +425,7 @@ const Contact = () => {
                                     <Star
                                       className={cn(
                                         "w-8 h-8 transition-colors duration-300",
-                                        formData.rating >= star ? "fill-[#0B1532] text-[#0B1532]" : "text-gray-300 hover:text-[#0B1532]/50"
+                                        formData.rating >= star ? "fill-[#FF7700] text-[#FF7700]" : "text-gray-300 hover:text-[#FF7700]/50"
                                       )}
                                     />
                                   </button>
@@ -465,7 +465,7 @@ const Contact = () => {
                         type="submit"
                         disabled={isSubmitting}
                         className={cn(
-                          "w-full bg-[#0B1221] hover:bg-[#152035] text-white font-bold py-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_-15px_rgba(11,18,33,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group text-sm",
+                          "w-full bg-[#FF7700] hover:bg-[#e66b00] text-white font-bold py-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_-15px_rgba(255,119,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group text-sm",
                           isSubmitting && "opacity-70 cursor-not-allowed"
                         )}
 

@@ -10,7 +10,7 @@ export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => 
     return (
         <section className="relative py-20 md:py-32 text-center px-4 overflow-visible">
             {/* Smooth Gradient Background that blends into page content */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-transparent -z-20" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#faf4e5] via-[#faf4e5] to-transparent -z-20" />
             {/* Decorative Background Blobs */}
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl opacity-50 -z-10" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl opacity-50 -z-10" />

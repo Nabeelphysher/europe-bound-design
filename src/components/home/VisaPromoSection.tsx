@@ -66,11 +66,7 @@ export function VisaPromoSection() {
                                 <img
                                     src={visaExpertImg}
                                     alt="Visa Application Support"
-                                    className="w-full h-full object-cover object-top"
-                                    style={{
-                                        maskImage: 'linear-gradient(to right, transparent 0%, black 40%, black 100%)',
-                                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 40%, black 100%)'
-                                    }}
+                                    className="w-full h-full object-cover object-top [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_100%)] md:[mask-image:linear-gradient(to_right,transparent_0%,black_40%,black_100%)] md:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_40%,black_100%)]"
                                 />
                             </div>
                         </div>

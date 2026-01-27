@@ -73,12 +73,16 @@ import russiaPeterhofGrandPalaceImg from "@/assets/PeterhofGrandPalace.jpg";
 import russiaPetersburgCityImg from "@/assets/st-petersburg-gezi-rehberi (1).jpg";
 import russiaPetersburgHiddenImg from "@/assets/1e_edited (1).jpg";
 import russiaPetersburgCapitalImg from "@/assets/St-Petersburg-2.1 (1).jpg";
-
-
+import ArmeniaYerevanImg from "@/assets/651289 (1).jpg";
+import ArmeniaMountainImg from "@/assets/454566 (1).jpg";
+import ArmeniaAdventureImg from "@/assets/325293 (1).jpg";
+import ArmeniaHeritageImg from "@/assets/1.-Geghard-Monastery-Armenia (1).jpg";
+import ArmeniaCultureImg from "@/assets/651289 (1).jpg";
+import ArmeniaHighlightImg from "@/assets/activity_904-1600-650-20231003142518 (1) (1).jpg";
 interface CountryData {
     title: string;
     name: string;
-    tagline: string;
+    tagline: string
     image: string;
     description: string;
     stats: { price: string; duration: string; visa: string };
@@ -278,7 +282,7 @@ const countryData: Record<string, CountryData> = {
         tagline: "The First Christian Nation",
         image: armeniaImg,
         description: "Armenia is a land of timeless history and heartfelt hospitality, where ancient monasteries meet breathtaking mountain landscapes. With rich culture, soulful cuisine, and deep traditions, it offers an authentic and meaningful travel experience beyond the usual tourist trails.",
-        stats: { price: "$700", duration: "5 Days", visa: "Visa on Arrival" },
+        stats: { price: "$700", duration: "6 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Yerevan City Tour", description: "Visit the pink city." },
             { title: "Lake Sevan", description: "The jewel of Armenia." },
@@ -314,11 +318,12 @@ const countryData: Record<string, CountryData> = {
             { question: "When is the best time to visit Armenia?", answer: "The best months are May to October for pleasant weather, sightseeing, and mountain travel." }
         ],
         itinerary: [
-            { day: 1, title: "Arrival in Yerevan", description: "Arrive in the Pink City. Private transfer to your hotel and evening walk around Republic Square to see the singing fountains.", image: armeniaImg },
-            { day: 2, title: "Garni & Geghard", description: "Visit the Hellenistic Garni Temple and the UNESCO-listed cave monastery of Geghard. Bread baking masterclass included.", image: armeniaImg },
-            { day: 3, title: "Lake Sevan & Dilijan", description: "Drive to the azure Lake Sevan, then explore the 'Armenian Switzerland' town of Dilijan and Haghartsin Monastery.", image: armeniaImg },
-            { day: 4, title: "Khor Virap & Noravank", description: "Enjoy the best views of Mount Ararat from Khor Virap and visit the stunning red-rock monastery of Noravank.", image: armeniaImg },
-            { day: 5, title: "Departure", description: "Visit the Vernissage open-air market for unique handicrafts before your transfer to Zvartnots Airport.", image: armeniaImg }
+            { day: 1, title: "Yerevan City Tour", description: "", image: ArmeniaYerevanImg },
+            { day: 2, title: "Nature & Mountain Escape", description: "", image: ArmeniaMountainImg },
+            { day: 3, title: "Culture & Adventure", description: "", image: ArmeniaAdventureImg },
+            { day: 4, title: "Heritage Exploration", description: "", image: ArmeniaHeritageImg },
+            { day: 5, title: "Cultural Highlights (Alternative Day)", description: "", image: ArmeniaHighlightImg },
+            { day: 6, title: "Airport Drop", description: "", image: DepartureImg }
         ]
     },
     kyrgyzstan: {

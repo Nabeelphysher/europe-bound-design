@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary/30 pt-12 pb-6 border-t border-gold/10">
+    <footer className="bg-[#faf4e5] pt-16 pb-8 border-t border-gold/20 overflow-hidden">
       <div className="container-wide px-6 md:px-12">
 
 
@@ -49,22 +49,23 @@ export function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="col-span-1">
-            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide">Quick Links</h4>
-            <ul className="space-y-4">
+          <div className="col-span-2 md:col-span-1">
+            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide text-center md:text-left">Quick Links</h4>
+            <ul className="space-y-3.5">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'About', path: '/about' },
                 { name: 'Destinations', path: '/destinations' },
                 { name: 'Contact', path: '/contact' }
               ].map((item) => (
-                <li key={item.name}>
+                <li key={item.name} className="flex justify-center md:justify-start">
                   <Link
                     to={item.path}
-                    className="text-muted-foreground hover:text-gold text-sm transition-colors duration-300 flex items-center gap-2 group"
+                    className="relative text-slate-600 hover:text-gold text-sm font-medium transition-all duration-300 flex items-center gap-2.5 group py-1.5 px-2 -mx-2 rounded-md hover:bg-gold/5"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gold/50 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item.name}
+                    <span className="absolute left-0 w-1 h-1 rounded-full bg-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></span>
+                    <span className="relative flex-1 tracking-wide">{item.name}</span>
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold text-xs">→</span>
                   </Link>
                 </li>
               ))}
@@ -72,47 +73,53 @@ export function Footer() {
           </div>
 
           {/* Column 3: Top Destinations */}
-          <div className="col-span-1">
-            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide">Top Destinations</h4>
-            <ul className="space-y-4">
+          <div className="col-span-2 md:col-span-1">
+            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide text-center">Top Destinations</h4>
+            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-5 md:gap-x-6 gap-y-3.5 justify-items-center">
               {[
                 { name: 'Azerbaijan', path: '/destinations/azerbaijan' },
-                { name: 'Kazakhstan', path: '/destinations/kazakhstan' },
                 { name: 'Russia', path: '/destinations/russia' },
+                { name: 'Kazakhstan', path: '/destinations/kazakhstan' },
                 { name: 'Georgia', path: '/destinations/georgia' },
                 { name: 'Uzbekistan', path: '/destinations/uzbekistan' },
+                { name: 'Armenia', path: '/destinations/armenia' },
+                { name: 'Kyrgyzstan', path: '/destinations/kyrgyzstan' },
+                { name: 'France', path: '/destinations/france' },
               ].map((item) => (
-                <li key={item.name}>
-                  <Link to={item.path} className="text-muted-foreground hover:text-gold text-sm transition-colors duration-300 flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-gold/50 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item.name}
-                  </Link>
-                </li>
+                <Link 
+                  key={item.name} 
+                  to={item.path} 
+                  className="relative text-slate-600 hover:text-gold text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 sm:gap-2.5 group py-1.5 px-2 sm:px-2 rounded-md hover:bg-gold/5 whitespace-nowrap"
+                >
+                  <span className="absolute left-0 w-1 h-1 rounded-full bg-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></span>
+                  <span className="relative tracking-wide text-xs sm:text-sm text-center">{item.name}</span>
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold text-xs hidden sm:inline shrink-0">→</span>
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Column 4: Get In Touch */}
           <div className="col-span-2 md:col-span-1">
-            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide">Get In Touch</h4>
+            <h4 className="font-heading font-semibold text-primary mb-6 text-lg tracking-wide text-center md:text-left">Get In Touch</h4>
             <div className="space-y-6">
 
               {/* Phone */}
-              <div className="flex gap-4 group">
-                <div className="shrink-0 mt-1 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 group text-center md:text-left">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   <Phone className="w-4 h-4 text-gold fill-current" />
                 </div>
                 <div>
                   <h5 className="font-semibold text-primary text-xs uppercase tracking-widest mb-1">Call Us</h5>
-                  <a href="tel:+918590404857" className="block text-muted-foreground hover:text-gold text-sm transition-colors font-medium">
-                    +91 85904 04857
+                  <a href="tel:+994555533744" className="block text-muted-foreground hover:text-gold text-sm transition-colors font-medium">
+                    +994 55 553 37 44
                   </a>
                 </div>
               </div>
 
               {/* Mail */}
-              <div className="flex gap-4 group">
-                <div className="shrink-0 mt-1 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 group text-center md:text-left">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   <Mail className="w-4 h-4 text-gold fill-current" />
                 </div>
                 <div>
@@ -124,8 +131,8 @@ export function Footer() {
               </div>
 
               {/* Location */}
-              <div className="flex gap-4 group">
-                <div className="shrink-0 mt-1 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 group text-center md:text-left">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   <MapPin className="w-4 h-4 text-gold fill-current" />
                 </div>
                 <div>
@@ -134,7 +141,7 @@ export function Footer() {
                     href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-muted-foreground hover:text-gold text-sm max-w-[220px] transition-colors leading-relaxed"
+                    className="block text-muted-foreground hover:text-gold text-sm max-w-[220px] md:max-w-[220px] mx-auto md:mx-0 transition-colors leading-relaxed"
                   >
                     2nd Floor, Paravath Arcade, opp. Budget Hypermarket, Varangode, Down Hill, Malappuram, Kerala 676519
                   </a>

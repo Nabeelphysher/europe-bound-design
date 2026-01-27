@@ -135,7 +135,7 @@ export function ServicesPreview() {
                   className={`w-full py-2 sm:py-2.5 md:py-3.5 rounded-xl sm:rounded-2xl font-bold text-center tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden relative group/btn
                     ${pkg.highlighted
                       ? "bg-[#FF7700] text-white hover:bg-white hover:text-[#FF7700] shadow-[0_10px_30px_rgba(255,119,0,0.3)]"
-                      : "bg-[#0f172a] text-white hover:bg-[#FF7700] hover:text-white shadow-xl"
+                      : "bg-[#FF7700] text-white hover:bg-[#FF6B00] hover:text-white shadow-xl"
                     }
                   `}
                 >

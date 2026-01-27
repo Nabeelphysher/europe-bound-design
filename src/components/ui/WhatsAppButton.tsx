@@ -14,10 +14,10 @@ export function WhatsAppButton() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-4 sm:right-6 z-50">
       <button
         onClick={handleClick}
-        className="group flex items-center justify-center bg-[#25D366] text-white w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ease-out"
+        className="group flex items-center justify-center bg-[#25D366] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ease-out"
         aria-label="Chat on WhatsApp"
       >
         <svg

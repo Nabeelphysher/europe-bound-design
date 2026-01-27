@@ -118,7 +118,7 @@ export function PlanTripSection() {
                         <RevealOnScroll animation="slide-in-right">
                             <div className="relative w-full h-full flex items-center justify-center">
                                 {/* Circular Background - Faint Blue Gradient */}
-                                <div className="absolute w-[420px] h-[420px] bg-gradient-to-tr from-[#E0F2FE] to-white rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_60px_rgba(14,165,233,0.1)]" />
+                                <div className="absolute w-[420px] h-[420px] bg-gradient-to-tr from-[#E0F2FE] to-[#faf4e5] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_60px_rgba(14,165,233,0.1)]" />
 
                                 {/* Traveler Image - The Lady */}
                                 <img

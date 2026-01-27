@@ -95,7 +95,7 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                                 /* ODD [Row 2]: Text on Left */
                                                 <div className={cn(
                                                     "relative z-10 p-6 md:p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[200px]",
-                                                    !item.description && "items-center text-center bg-gradient-to-br from-white to-gray-50/50"
+                                                    !item.description && "items-center text-center bg-gradient-to-br from-[#faf4e5] to-[#faf4e5]/80"
                                                 )}>
                                                     {/* Golden Number Watermark - Right aligned */}
                                                     <span className={cn(
@@ -136,7 +136,7 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                                 /* EVEN [Row 1]: Text on Right */
                                                 <div className={cn(
                                                     "relative z-10 p-6 md:p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[200px]",
-                                                    !item.description && "items-center text-center bg-gradient-to-bl from-white to-gray-50/50"
+                                                    !item.description && "items-center text-center bg-gradient-to-bl from-[#faf4e5] to-[#faf4e5]/80"
                                                 )}>
                                                     {/* Golden Number Watermark - Left aligned */}
                                                     <span className={cn(

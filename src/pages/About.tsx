@@ -4,13 +4,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
-import { Link } from "react-router-dom";
-import { ArrowRight, Target, Eye, Heart, Globe, Award, Quote, Instagram, Facebook, Linkedin, Volume2, VolumeX, Maximize, Play, Pause } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Quote, Instagram, Facebook, Linkedin, Volume2, VolumeX, Maximize, Play, Pause } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { FlightAnimation } from "@/components/ui/FlightAnimation";
 import { CTASection } from "@/components/home/CTASection";
-import heroImage from "@/assets/hero-europe.jpg";
-
 
 import poster1 from "@/assets/CODO 5 THEME POSTERS copy (1).png";
 import poster2 from "@/assets/CODO 5 THEME POSTERS 2 copy.png";
@@ -137,8 +133,6 @@ const About = () => {
       <main className="bg-[#faf4e5] overflow-hidden pt-20">
 
 
-        {/* Founder's Note Section - Redesigned */}
-        {/* Founder's Note Section - Premium Redesign */}
         {/* Founder's Note Section - Redesigned to match Premium Reference */}
         <section className="py-16 lg:py-28 relative overflow-hidden bg-[#faf4e5]">
           {/* Subtle Background Elements */}
@@ -182,7 +176,10 @@ const About = () => {
 
                       <div className="pl-8 border-l-[3px] border-orange-400 py-1">
                         <p className="font-serif text-lg md:text-xl text-gray-600 leading-[1.8] italic">
-                          "I build bridges for talent to cross borders. Europe Bound isn't just a consultancy; it's the partner I wish I had when I started my own journey. We treat your ambition with the sanctity it deserves."
+                          "From an early age, I believed in one simple idea: “Do what makes you happy.”
+                          My journey took me through sales in Dubai, solo travel across Georgia, studies in the UK, and entrepreneurship shaped by real world experiences. Living among travelers, hosting strangers who became friends, and exploring cultures deeply helped me understand that travel is not just movement, it’s a connection.
+
+                          Europe Calling was born from lived experiences, personal struggles, and a genuine love for hosting people. Every journey we create is guided by trust, authenticity, and the belief that happiness grows when shared."
                         </p>
                       </div>
                     </div>
@@ -381,12 +378,11 @@ const About = () => {
         </section>
 
         {/* Core Values */}
-        <section className="section-padding relative overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)]"
+        <section className="section-padding relative overflow-hidden bg-[#faf4e5]"
           style={{
-            backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(180deg, #ffffff 0%, #faf4e5 150px, #faf4e5 100%)',
-            backgroundSize: '100% 40px, 100% 100%',
-            backgroundAttachment: 'local, scroll',
-            backgroundBlendMode: 'overlay, normal'
+            backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px)',
+            backgroundSize: '100% 40px',
+            backgroundAttachment: 'local'
           }}
         >
           {/* Dashed Connecting Lines (Decorative) */}
@@ -409,9 +405,9 @@ const About = () => {
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
               {[
-                { ...values[0], color: { bg: "bg-[#FEFCE8]", pin: "bg-[#CA8A04]" } }, // Yellow
-                { ...values[1], color: { bg: "bg-[#FFF7ED]", pin: "bg-[#EA580C]" } }, // Orange
-                { ...values[2], color: { bg: "bg-[#FDF2F8]", pin: "bg-[#DB2777]" } }  // Pink
+                { ...values[0], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } },
+                { ...values[1], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } },
+                { ...values[2], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } }
               ].map((item, index) => (
                 <RevealOnScroll animation="fade-up" delay={index * 100} key={item.title}>
                   <div
@@ -552,7 +548,7 @@ const About = () => {
                               target.src = "https://img.youtube.com/vi/g_vqnB18DYM/hqdefault.jpg";
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#faf4e5]/90 via-transparent to-transparent" />
 
                           {/* Centered Play Button */}
                           <button
