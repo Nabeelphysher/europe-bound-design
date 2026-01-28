@@ -31,33 +31,31 @@ const Contact = () => {
 
     try {
       if (activeTab === 'feedback') {
-        const payload = {
-          author: formData.name,
-          text: formData.message,
-          rating: formData.rating === 0 ? 5 : formData.rating,
-          email: formData.email,
+        // Feedback Submission using Lead API
+        const result = await submitLead({
+          name: formData.name,
           phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+          rating: formData.rating === 0 ? 5 : formData.rating,
+          form_type: "Feedback Form",
           source: "Website Form"
-        };
-
-        // Using the proxy path with trailing slash as preferred by the backend.
-        const response = await fetch("/api/proxy/feedbacks/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
-          body: JSON.stringify(payload),
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to submit feedback");
+        if (result.status === "success") {
+          toast({
+            title: "Thank You!",
+            description: "Your feedback has been successfully submitted.",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: result.message || "Failed to submit feedback",
+          });
+          setIsSubmitting(false);
+          return;
         }
-
-        toast({
-          title: "Thank You!",
-          description: "Your feedback has been successfully submitted.",
-        });
       } else {
         // Contact Form Submission
         const result = await submitLead({
@@ -435,11 +433,12 @@ const Contact = () => {
                               </label>
                             </div>
 
-                            {/* Phone Input (Optional) */}
+                            {/* Phone Input (Required for API) */}
                             <div className="relative">
                               <input
                                 id="feedback-phone"
                                 type="tel"
+                                required
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 onFocus={() => setActiveField('feedback-phone')}
@@ -455,7 +454,7 @@ const Contact = () => {
                                   formData.phone && "top-1 text-[10px] font-semibold"
                                 )}
                               >
-                                Phone Number (Optional)
+                                Phone Number
                               </label>
                             </div>
 

@@ -20,7 +20,7 @@ export interface APIResponse {
 
 export const submitLead = async (data: LeadSubmissionData): Promise<APIResponse> => {
     try {
-        const response = await fetch("https://crm.europecalling.co/api/leads/public/submit/", {
+        const response = await fetch("https://api.europecalling.co/api/leads/public/submit/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
