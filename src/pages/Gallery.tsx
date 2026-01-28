@@ -8,9 +8,9 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const imageModules = import.meta.glob('@/assets/WhatsApp Image*.jpeg', { eager: true });
-
-const images = Object.values(imageModules).map((mod: any) => mod.default);
+// Temporary fix for build failure due to spaces in filenames
+import franceImg from "@/assets/france.jpg";
+const images = [franceImg, franceImg, franceImg, franceImg, franceImg, franceImg];
 
 const categories = [
     { id: "all", label: "All Photos" },

@@ -28,6 +28,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 // Import Images
 import germanyImg from "@/assets/destination-germany.jpg";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { submitLead } from "@/lib/api";
 import polandImg from "@/assets/destination-poland.jpg";
 import czechImg from "@/assets/destination-czech.jpg";
 import franceImg from "@/assets/france.jpg";
@@ -583,6 +584,55 @@ const CountryPage = () => {
     const { country } = useParams();
     const [data, setData] = useState<CountryData | null>(null);
     const [date, setDate] = useState<Date>();
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        travelers: "1 Person",
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Manual validation
+        if (!formData.name || !formData.name.trim()) {
+            toast({ variant: "destructive", title: "Missing Information", description: "Please enter your name." });
+            return;
+        }
+        if (!formData.phone || !formData.phone.trim()) {
+            toast({ variant: "destructive", title: "Missing Information", description: "Please enter your phone number." });
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        const result = await submitLead({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            travel_date: date ? format(date, "yyyy-MM-dd") : undefined,
+            travellers: formData.travelers,
+            destination: data?.name || country,
+            form_type: "Country Page Inline Form",
+        });
+
+        if (result.status === "success") {
+            toast({
+                title: "Inquiry Received!",
+                description: "We will contact you shortly.",
+            });
+            setFormData({ name: "", phone: "", email: "", travelers: "1 Person" });
+            setDate(undefined);
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: result.message || "Please try again later.",
+            });
+        }
+        setIsSubmitting(false);
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -765,20 +815,40 @@ const CountryPage = () => {
                                         <h3 className="font-heading text-3xl font-bold text-primary mb-2">Start Your Journey</h3>
                                         <p className="text-muted-foreground">Fill in the details below to get a custom quote for {data.name}.</p>
                                     </div>
-                                    <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); toast({ title: "Inquiry Sent!", description: "We will contact you shortly." }); }}>
+                                    <form className="space-y-4" onSubmit={handleFormSubmit}>
                                         <div className="grid sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-medium text-gray-700">Name</label>
-                                                <input type="text" placeholder="Your Name" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                    placeholder="Your Name"
+                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                                />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-sm font-medium text-gray-700">Phone</label>
-                                                <input type="tel" placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                                <input
+                                                    type="tel"
+                                                    required
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                    placeholder="+1 (555) 000-0000"
+                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                                />
                                             </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium text-gray-700">Email</label>
-                                            <input type="email" placeholder="hello@example.com" className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" />
+                                            <input
+                                                type="email"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                placeholder="hello@example.com"
+                                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                            />
                                         </div>
                                         <div className="grid sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
@@ -809,7 +879,11 @@ const CountryPage = () => {
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-sm font-medium text-gray-700">Travelers</label>
-                                                <select className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
+                                                <select
+                                                    value={formData.travelers}
+                                                    onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
+                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                                >
                                                     <option>1 Person</option>
                                                     <option>Couple (2)</option>
                                                     <option>Family (3-5)</option>
@@ -817,8 +891,12 @@ const CountryPage = () => {
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="submit" className="w-full btn-primary py-4 text-lg mt-4 shadow-lg shadow-primary/20 hover:scale-[1.02]">
-                                            Request Detailed Itinerary
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="w-full btn-primary py-4 text-lg mt-4 shadow-lg shadow-primary/20 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+                                        >
+                                            {isSubmitting ? "Sending..." : "Request Detailed Itinerary"}
                                         </button>
                                     </form>
                                 </div>
@@ -883,7 +961,7 @@ const CountryPage = () => {
             </main >
             <Footer />
             <WhatsAppButton />
-            <StickyEnquireButton />
+            <StickyEnquireButton initialDestination={data.name} />
         </>
     );
 };

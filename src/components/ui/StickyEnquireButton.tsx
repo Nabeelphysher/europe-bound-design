@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { EnquiryForm } from "./EnquiryForm";
 
-export function StickyEnquireButton() {
+interface StickyEnquireButtonProps {
+  initialDestination?: string;
+}
+
+export function StickyEnquireButton({ initialDestination }: StickyEnquireButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -19,7 +23,7 @@ export function StickyEnquireButton() {
         </button>
       </div>
 
-      <EnquiryForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EnquiryForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} initialDestination={initialDestination} />
     </>
   );
 }
