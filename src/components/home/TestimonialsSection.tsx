@@ -88,7 +88,7 @@ export function TestimonialsSection() {
                     <div className="relative">
                         <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
                             {/* Placeholder Avatar */}
-                            <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                            <div className="w-full h-full bg-[#FF7700] flex items-center justify-center text-white font-bold text-sm">
                                 {item.initial}
                             </div>
                         </div>

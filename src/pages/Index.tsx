@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { LeadPopup, useLeadPopup } from "@/components/ui/LeadPopup";
-import { HeroSectionV2 } from "@/components/home/HeroSectionV2";
-import { HomeIntroHero } from "../components/home/HomeIntroHero";
+
+
 import { HeroSectionV3 } from "../components/home/HeroSectionV3";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
@@ -23,8 +23,7 @@ const Index = () => {
     <>
       <Header />
       <main className="bg-[#faf4e5] overflow-x-hidden w-full max-w-full">
-        {/* New Intro Hero with Mini-Hero Preview */}
-        <HomeIntroHero />
+
 
         {/* New Hero Section V3 - Full Background Image */}
         <HeroSectionV3 />

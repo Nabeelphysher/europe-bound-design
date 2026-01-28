@@ -631,7 +631,7 @@ const CountryPage = () => {
 
                                 {/* Content Column */}
                                 <div className="order-2 lg:order-1 relative">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mb-6">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-black border border-black/10 mb-6">
                                         <Globe className="w-3.5 h-3.5" />
                                         <span className="text-xs font-bold uppercase tracking-widest">Tour Overview</span>
                                     </div>
@@ -657,7 +657,7 @@ const CountryPage = () => {
                                         </a>
 
                                         <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
-                                            <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                            <div className="w-8 h-8 rounded-full bg-[#FF7700]/10 flex items-center justify-center text-[#FF7700]">
                                                 <CheckCircle2 className="w-4 h-4" />
                                             </div>
                                             <span className="max-w-[150px] leading-tight">Best Price Guarantee & Verified Tours</span>
@@ -716,7 +716,7 @@ const CountryPage = () => {
 
                 {/* --- 4.5. Benefits (What's Included) --- */}
 
-                < section className="py-24 bg-slate-50/50 relative" >
+                < section className="py-24 bg-[#faf4e5] relative" >
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')] opacity-40 mx-auto" />
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <RevealOnScroll animation="scale-up" delay={200}>
@@ -754,7 +754,7 @@ const CountryPage = () => {
 
 
                 {/* --- 4.6 Inquiry Form Section --- */}
-                < section className="py-24 bg-slate-50 relative overflow-hidden" id="booking-form" >
+                < section className="py-24 bg-[#faf4e5] relative overflow-hidden" id="booking-form" >
                     <div className="absolute left-0 top-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
                     <div className="container-wide px-4 sm:px-6 relative z-10">
                         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
@@ -863,8 +863,8 @@ const CountryPage = () => {
 
                         <Accordion type="single" collapsible className="w-full">
                             {data.faqs.map((faq, i) => (
-                                <AccordionItem key={i} value={`item-${i}`} className="border-b border-border/50">
-                                    <AccordionTrigger className="text-left font-bold text-lg hover:text-gold transition-colors py-6">
+                                <AccordionItem key={i} value={`item-${i}`} className="border-b border-black">
+                                    <AccordionTrigger className="text-left font-bold text-lg text-[#FF7700] hover:text-black transition-colors py-6">
                                         {faq.question}
                                     </AccordionTrigger>
                                     <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">

@@ -222,21 +222,22 @@ const filters = ["All", "India Clients", "Azerbaijan Clients", "Other Countries"
 
 const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  // Removed isPaused state
   const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Auto-rotation logic
+  // Auto-rotation logic
   useEffect(() => {
-    // Don't auto-rotate if a video is playing or if user is hovering (paused)
-    if (isPaused || playingVideoId !== null || items.length < 2) return;
+    // Don't auto-rotate if a video is playing
+    if (playingVideoId !== null || items.length < 2) return;
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % items.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [items.length, isPaused, playingVideoId]);
+  }, [items.length, playingVideoId]);
 
   // Reset active index when items array changes
   useEffect(() => {
@@ -284,8 +285,6 @@ const VideoCarousel = ({ items }: { items: typeof testimonials }) => {
   return (
     <div
       className="relative w-full py-4 md:py-8 overflow-hidden flex flex-col justify-center items-center bg-transparent min-h-[600px]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="relative h-[400px] sm:h-[450px] w-full max-w-7xl mx-auto flex justify-center items-center perspective-[1000px]">
         {items.map((item, index) => {
@@ -502,7 +501,7 @@ const Testimonials = () => {
                               <div className="flex items-start justify-between mb-4">
                                 <div className="flex items-center gap-4">
                                   <div className="relative">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                                    <div className="w-12 h-12 rounded-full bg-[#FF7700] flex items-center justify-center text-white font-bold text-lg">
                                       {t.name.charAt(0)}
                                     </div>
                                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">

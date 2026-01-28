@@ -114,10 +114,31 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Office",
-      content: "Kerala, India",
-      description: "Visit our headquarters for a personal consultation.",
-      link: "https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519",
-      subtext: "2nd Floor, Paravath Arcade, opp. Budget Hypermarket, Varangode, Down Hill, Malappuram, Kerala 676519"
+      content: (
+        <div className="flex flex-col gap-4 text-sm md:text-base w-full">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Bashir+safar-oghlu,+Baku,+Azerbaijan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center border-b border-gray-100 pb-3 hover:bg-gray-50/50 rounded-lg transition-colors p-2 block group/link"
+          >
+            <span className="block font-bold text-[#FF7700] mb-1 group-hover/link:underline">Baku, Azerbaijan</span>
+            <span className="block opacity-80 text-sm leading-relaxed">Bashir safar-oghlu, Baku, Azerbaijan</span>
+          </a>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center hover:bg-gray-50/50 rounded-lg transition-colors p-2 block group/link"
+          >
+            <span className="block font-bold text-[#FF7700] mb-1 group-hover/link:underline">Kerala, India</span>
+            <span className="block opacity-80 text-sm leading-relaxed">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
+          </a>
+        </div>
+      ),
+      description: "",
+      link: "#",
+      subtext: ""
     }
   ];
 
@@ -141,18 +162,26 @@ const Contact = () => {
                   delay={index * 100}
                   key={index}
                 >
-                  <a
-                    href={info.link}
-                    className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center backdrop-blur-sm h-full min-h-[380px]"
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-gold text-primary flex items-center justify-center mb-6 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
-                      <info.icon className="w-7 h-7" />
-                    </div>
-                    <h3 className="font-heading text-xl font-bold mb-2 text-gold transition-colors">{info.title}</h3>
-                    <div className="text-foreground font-medium text-lg mb-2 break-words w-full px-2">{info.content}</div>
-                    <p className="text-muted-foreground/80 text-sm mb-4 px-4">{info.description}</p>
-                    <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">{info.subtext}</p>
-                  </a>
+                  {(() => {
+                    const isOffice = info.title === "Office";
+                    const Wrapper = isOffice ? "div" : "a";
+                    const wrapperProps = isOffice ? {} : { href: info.link };
+
+                    return (
+                      <Wrapper
+                        {...wrapperProps}
+                        className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center backdrop-blur-sm h-full min-h-[380px]"
+                      >
+                        <div className="w-16 h-16 rounded-2xl bg-gold text-primary flex items-center justify-center mb-6 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
+                          <info.icon className="w-7 h-7" />
+                        </div>
+                        <h3 className="font-heading text-xl font-bold mb-2 text-gold transition-colors">{info.title}</h3>
+                        <div className="text-foreground font-medium text-lg mb-2 break-words w-full px-2">{info.content}</div>
+                        <p className="text-muted-foreground/80 text-sm mb-4 px-4">{info.description}</p>
+                        <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">{info.subtext}</p>
+                      </Wrapper>
+                    );
+                  })()}
                 </RevealOnScroll>
               ))}
             </div>
@@ -173,13 +202,13 @@ const Contact = () => {
                 <div className="bg-white rounded-3xl shadow-xl border border-border/50 overflow-hidden relative group">
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#C6A87C] via-[#F3E7C9] to-[#C6A87C]" />
 
-                  <div className="p-6 sm:p-8">
+                  <div className="p-5 sm:p-6">
                     {/* Tab Switcher */}
-                    <div className="flex bg-muted/50 p-1 rounded-xl mb-8 relative">
+                    <div className="flex bg-muted/50 p-1 rounded-xl mb-6 relative">
                       <button
                         onClick={() => setActiveTab('contact')}
                         className={cn(
-                          "flex-1 py-2.5 text-sm font-bold rounded-lg transition-all duration-300 z-10",
+                          "flex-1 py-2 text-sm font-bold rounded-lg transition-all duration-300 z-10",
                           activeTab === 'contact' ? "text-white shadow-md" : "text-muted-foreground hover:text-foreground"
                         )}
                       >
@@ -188,7 +217,7 @@ const Contact = () => {
                       <button
                         onClick={() => setActiveTab('feedback')}
                         className={cn(
-                          "flex-1 py-2.5 text-sm font-bold rounded-lg transition-all duration-300 z-10",
+                          "flex-1 py-2 text-sm font-bold rounded-lg transition-all duration-300 z-10",
                           activeTab === 'feedback' ? "text-white shadow-md" : "text-muted-foreground hover:text-foreground"
                         )}
                       >
@@ -203,23 +232,23 @@ const Contact = () => {
                       />
                     </div>
 
-                    <div className="mb-6">
-                      <h2 className="font-heading text-3xl font-bold text-primary mb-4 flex items-center gap-3">
-                        {activeTab === 'contact' ? <MessageSquare className="w-6 h-6 text-gold" /> : <Star className="w-6 h-6 text-gold" />}
+                    <div className="mb-4">
+                      <h2 className="font-heading text-2xl font-bold text-primary mb-2 flex items-center gap-2">
+                        {activeTab === 'contact' ? <MessageSquare className="w-5 h-5 text-gold" /> : <Star className="w-5 h-5 text-gold" />}
                         {activeTab === 'contact' ? 'Send a Message' : 'Share Feedback'}
                       </h2>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-xs md:text-sm">
                         {activeTab === 'contact'
                           ? "Fill out the form below and verify your specific requirements. We respect your privacy."
                           : "We value your opinion. Please let us know about your experience with us."}
                       </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       {activeTab === 'contact' ? (
                         /* Contact Form Fields */
                         <>
-                          <div className="grid grid-cols-1 gap-5">
+                          <div className="grid grid-cols-1 gap-3">
                             {/* Name Input */}
                             <div className="relative">
                               <input
@@ -230,7 +259,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 onFocus={() => setActiveField('name')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Full Name"
                               />
                               <label
@@ -255,7 +284,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 onFocus={() => setActiveField('email')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Email Address"
                               />
                               <label
@@ -271,7 +300,7 @@ const Contact = () => {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-1 gap-4">
+                          <div className="grid grid-cols-1 gap-3">
                             {/* Phone Input */}
                             <div className="relative">
                               <input
@@ -282,7 +311,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 onFocus={() => setActiveField('phone')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Phone Number"
                               />
                               <label
@@ -306,7 +335,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                                 onFocus={() => setActiveField('country')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium shadow-sm hover:border-gray-300 appearance-none cursor-pointer"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium shadow-sm hover:border-gray-300 appearance-none cursor-pointer"
                               >
                                 <option value=""></option>
                                 <option value="germany">Germany</option>
@@ -328,7 +357,7 @@ const Contact = () => {
                                 Country of Interest
                               </label>
                               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
-                                <Globe className="w-5 h-5 opacity-50" />
+                                <Globe className="w-4 h-4 opacity-50" />
                               </div>
                             </div>
                           </div>
@@ -336,7 +365,7 @@ const Contact = () => {
                       ) : (
                         /* Feedback Form Fields */
                         <>
-                          <div className="grid grid-cols-1 gap-5">
+                          <div className="grid grid-cols-1 gap-3">
                             {/* Name Input */}
                             <div className="relative">
                               <input
@@ -347,7 +376,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 onFocus={() => setActiveField('feedback-name')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Full Name"
                               />
                               <label
@@ -372,7 +401,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 onFocus={() => setActiveField('feedback-email')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Email Address"
                               />
                               <label
@@ -396,7 +425,7 @@ const Contact = () => {
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 onFocus={() => setActiveField('feedback-phone')}
                                 onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                                 placeholder="Phone Number"
                               />
                               <label
@@ -441,12 +470,12 @@ const Contact = () => {
                         <textarea
                           id="message"
                           required
-                          rows={4}
+                          rows={3}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           onFocus={() => setActiveField('message')}
                           onBlur={() => setActiveField(null)}
-                          className="peer w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 resize-none pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
+                          className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 resize-none pt-5 font-medium placeholder-transparent shadow-sm hover:border-gray-300"
                           placeholder={activeTab === 'contact' ? "Your Message" : "Tell us about your experience"}
                         />
                         <label
@@ -465,7 +494,7 @@ const Contact = () => {
                         type="submit"
                         disabled={isSubmitting}
                         className={cn(
-                          "w-full bg-[#FF7700] hover:bg-[#e66b00] text-white font-bold py-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_-15px_rgba(255,119,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group text-sm",
+                          "w-full bg-[#FF7700] hover:bg-[#e66b00] text-white font-bold py-3.5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_-15px_rgba(255,119,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group text-sm",
                           isSubmitting && "opacity-70 cursor-not-allowed"
                         )}
 

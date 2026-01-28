@@ -8,7 +8,7 @@ const features = [
     description: "Deep knowledge of European immigration policies and cultural nuances.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 0,
   },
@@ -18,7 +18,7 @@ const features = [
     description: "Round-the-clock assistance from pre-departure to your first week abroad.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 100,
   },
@@ -28,7 +28,7 @@ const features = [
     description: "Industry-leading visa approval rates backed by meticulous documentation.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 200,
   },
@@ -38,7 +38,7 @@ const features = [
     description: "Clear timelines, honest pricing, and real-time updates at every stage.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 300,
   },
@@ -48,7 +48,7 @@ const features = [
     description: "Diverse experts who understand both your background and destination.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 400,
   },
@@ -58,7 +58,7 @@ const features = [
     description: "Complete legal and documentation support leaving no room for errors.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
-    textColor: "text-white",
+    textColor: "text-[#FF7700]",
     iconBg: "bg-[#FF7700]",
     delay: 500,
   },
@@ -119,20 +119,20 @@ export function WhyChooseUs() {
                 {/* Pin Shadow on Paper */}
                 <div className="absolute top-5 left-1/2 -translate-x-1/2 z-10 w-5 h-2 bg-black/20 blur-[2px] rounded-full" />
 
-                {/* Card Content - Premium Paper Texture */}
+                {/* Card Content - Premium Dark Card */}
                 <div
-                  className={`${item.bgColor} rounded-[24px] p-8 h-full relative shadow-[0_8px_20px_-6px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 border border-white/10 flex flex-col items-start`}
+                  className={`${item.bgColor} rounded-[24px] p-8 h-full relative shadow-[0_4px_20px_-4px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(255,119,0,0.15)] transition-all duration-500 hover:-translate-y-2 border border-[#FF7700]/20 flex flex-col items-start bg-gradient-to-br from-[#121212] to-black`}
                 >
                   {/* Icon Box */}
-                  <div className={`w-14 h-14 ${item.iconBg} rounded-[18px] flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <div className={`w-14 h-14 ${item.iconBg} rounded-[18px] flex items-center justify-center shadow-[0_4px_15px_-4px_rgba(255,119,0,0.4)] mb-6 group-hover:scale-110 transition-transform duration-500`}>
                     <item.icon className={`w-7 h-7 text-white`} strokeWidth={1.5} />
                   </div>
 
-                  <h3 className={`font-heading text-xl md:text-2xl font-bold mb-3 leading-tight ${item.textColor}`}>
+                  <h3 className={`font-heading text-xl md:text-2xl font-bold mb-3 leading-tight ${item.textColor} drop-shadow-[0_2px_10px_rgba(255,119,0,0.15)]`}>
                     {item.title}
                   </h3>
 
-                  <p className={`leading-relaxed text-[15px] font-medium tracking-wide text-white`}>
+                  <p className={`leading-relaxed text-[15px] font-medium tracking-wide text-[#FF7700]/90`}>
                     {item.description}
                   </p>
                 </div>

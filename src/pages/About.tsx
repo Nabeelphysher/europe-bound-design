@@ -139,43 +139,43 @@ const About = () => {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-orange-50/50 to-transparent rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
           <div className="container px-4 sm:px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
               {/* Text Content - Right Aligned (Swapped) */}
               <div className="order-2 lg:order-2 text-left lg:pl-10">
                 <RevealOnScroll animation="slide-in-left">
-                  <div className="space-y-6">
+                  <div className="space-y-4">
 
                     {/* Badge / Label */}
                     <div className="flex items-center gap-4 mb-2">
-                      <span className="h-[2px] w-10 bg-orange-500"></span>
-                      <span className="font-sans text-xs font-bold tracking-[0.25em] text-orange-500 uppercase">
+                      <span className="h-[2px] w-8 bg-orange-500"></span>
+                      <span className="font-sans text-[10px] font-bold tracking-[0.25em] text-orange-500 uppercase">
                         Welcome to Europe Bound
                       </span>
                     </div>
 
                     {/* Leading Text */}
-                    <div className="space-y-1">
-                      <h2 className="font-heading text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                    <div className="space-y-0">
+                      <h2 className="font-heading text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                         Hi, I'm
                       </h2>
-                      <h2 className="font-heading text-5xl lg:text-7xl font-bold text-orange-500 leading-tight">
+                      <h2 className="font-heading text-4xl lg:text-6xl font-bold text-orange-500 leading-tight">
                         Najath Sharafudeen
                       </h2>
                     </div>
 
                     {/* Subtitle */}
-                    <p className="font-serif italic text-xl md:text-2xl text-gray-500 font-light">
+                    <p className="font-serif italic text-lg md:text-xl text-gray-500 font-light">
                       Founder of Europe Calling.
                     </p>
 
                     {/* Quote Block */}
-                    <div className="relative mt-8 md:mt-10 group max-w-lg">
+                    <div className="relative mt-6 md:mt-8 group max-w-lg">
                       {/* Background Quote Icon */}
-                      <Quote className="absolute -top-6 -left-4 w-20 h-20 text-orange-100/50 -z-10 rotate-180" />
+                      <Quote className="absolute -top-4 -left-4 w-16 h-16 text-orange-100/50 -z-10 rotate-180" />
 
-                      <div className="pl-8 border-l-[3px] border-orange-400 py-1">
-                        <p className="font-serif text-lg md:text-xl text-gray-600 leading-[1.8] italic">
+                      <div className="pl-6 border-l-[3px] border-orange-400 py-1">
+                        <p className="font-serif text-base md:text-lg text-gray-600 leading-relaxed italic">
                           "From an early age, I believed in one simple idea: “Do what makes you happy.”
                           My journey took me through sales in Dubai, solo travel across Georgia, studies in the UK, and entrepreneurship shaped by real world experiences. Living among travelers, hosting strangers who became friends, and exploring cultures deeply helped me understand that travel is not just movement, it’s a connection.
 
@@ -185,8 +185,8 @@ const About = () => {
                     </div>
 
                     {/* Socials Connection */}
-                    <div className="pt-10 mt-2">
-                      <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-5">
+                    <div className="pt-6 mt-2">
+                      <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-3">
                         CONNECT WITH ME
                       </span>
                       <div className="flex gap-4">
@@ -200,10 +200,10 @@ const About = () => {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                             aria-label={label}
                           >
-                            <Icon className="w-5 h-5" strokeWidth={1.5} />
+                            <Icon className="w-4 h-4" strokeWidth={1.5} />
                           </a>
                         ))}
                       </div>
@@ -268,12 +268,28 @@ const About = () => {
 
 
         {/* Our Origins Section - Redesigned */}
-        <section className="py-12 lg:py-24 relative bg-[#faf4e5] overflow-hidden">
+        <section className="py-8 lg:py-24 relative bg-[#faf4e5] overflow-hidden">
           <div className="container px-4 sm:px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-24 items-center">
 
-              {/* Left: Visuals (Swapped to Right) */}
-              <div className="relative order-2 lg:h-auto min-h-[500px] flex items-center justify-center">
+              {/* Mobile Title (Order 1) */}
+              <div className="col-span-1 lg:hidden order-1 mb-2 text-left">
+                <RevealOnScroll animation="fade-up">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#3B82F6]"></div>
+                    <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#9CA3AF] uppercase">
+                      WHO WE ARE
+                    </span>
+                  </div>
+                  <h2 className="font-heading text-5xl font-medium text-primary leading-[1.1]">
+                    Why Europe Calling <br />
+                    <span className="font-serif italic text-primary">Was Created</span>
+                  </h2>
+                </RevealOnScroll>
+              </div>
+
+              {/* Left: Visuals (Swapped to Right on Desktop, Middle on Mobile) */}
+              <div className="relative order-2 lg:order-2 h-auto lg:min-h-[500px] flex items-center justify-center">
                 <RevealOnScroll animation="slide-in-right" className="w-full relative h-full flex items-center justify-center">
 
                   {/* Decorative Background Blur */}
@@ -315,12 +331,12 @@ const About = () => {
                 </RevealOnScroll>
               </div>
 
-              {/* Right: Content (Swapped to Left) */}
-              <div className="order-1 relative z-10">
+              {/* Right: Content (Swapped to Left on Desktop, Last on Mobile) */}
+              <div className="order-3 lg:order-1 relative z-10">
                 <RevealOnScroll animation="fade-up">
                   <div className="mb-8 text-left">
                     {/* Eyebrow */}
-                    <div className="flex items-center gap-3 mb-6">
+                    <div className="hidden lg:flex items-center gap-3 mb-6">
                       <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#3B82F6]"></div>
                       <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#9CA3AF] uppercase">
                         WHO WE ARE
@@ -328,25 +344,26 @@ const About = () => {
                     </div>
 
                     {/* Headline */}
-                    <h2 className="font-heading text-5xl lg:text-[4rem] font-medium text-primary leading-[1.1] mb-8">
+                    <h2 className="hidden lg:block font-heading text-5xl lg:text-[4rem] font-medium text-primary leading-[1.1] mb-8">
                       Why Europe Calling <br />
                       <span className="font-serif italic text-primary">Was Created</span>
                     </h2>
 
                     {/* Description */}
-                    <p className="text-lg text-gray-500 leading-[1.8] mb-12 font-light max-w-lg">
+                    <p className="text-lg text-gray-500 leading-[1.8] mb-8 lg:mb-12 font-light max-w-lg">
                       It began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy. Europe Calling was born to bridge this gap.
                     </p>
 
-                    <div className="w-full h-px bg-gray-100 mb-12"></div>
+                    <div className="w-full h-px bg-gray-100 mb-8 lg:mb-12"></div>
 
                     {/* Stats Row */}
-                    <div ref={statsRef} className="grid grid-cols-3 gap-2 md:gap-8 divide-x divide-gray-100">
-                      <div className="space-y-1 md:space-y-2 pr-2 md:pr-4 text-center md:text-left">
+                    <div ref={statsRef} className="flex flex-row items-center justify-start gap-8 md:gap-12">
+                      <div className="space-y-1 md:space-y-2 text-left">
                         <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">Top 1</h3>
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">IN THE INDUSTRY</p>
                       </div>
-                      <div className="space-y-1 md:space-y-2 px-2 md:px-4 text-center md:text-left">
+                      <div className="w-px h-12 bg-gray-200"></div>
+                      <div className="space-y-1 md:space-y-2 text-left">
                         <AnimatedCounter
                           value={25}
                           suffix="K"
@@ -355,16 +372,6 @@ const About = () => {
                           className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gold leading-tight"
                         />
                         <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">SATISFIED USERS</p>
-                      </div>
-                      <div className="space-y-1 md:space-y-2 pl-2 md:pl-4 text-center md:text-left">
-                        <AnimatedCounter
-                          value={50}
-                          suffix="M"
-                          duration={1500}
-                          isVisible={statsVisible}
-                          className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gold leading-tight"
-                        />
-                        <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">TOTAL EARNINGS</p>
                       </div>
                     </div>
 
@@ -378,7 +385,7 @@ const About = () => {
         </section>
 
         {/* Core Values */}
-        <section className="section-padding relative overflow-hidden bg-[#faf4e5]"
+        <section className="py-10 md:py-32 relative overflow-hidden bg-[#faf4e5]"
           style={{
             backgroundImage: 'linear-gradient(#e5e5e5 1px, transparent 1px)',
             backgroundSize: '100% 40px',
@@ -405,9 +412,9 @@ const About = () => {
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
               {[
-                { ...values[0], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } },
-                { ...values[1], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } },
-                { ...values[2], color: { bg: "bg-gradient-to-b from-white via-white to-[#FF7700]/30 border border-[#FF7700]/10", pin: "bg-[#FF7700]" } }
+                { ...values[0], color: { bg: "bg-black border border-[#FF7700]/30", pin: "bg-[#FF7700]" } },
+                { ...values[1], color: { bg: "bg-black border border-[#FF7700]/30", pin: "bg-[#FF7700]" } },
+                { ...values[2], color: { bg: "bg-black border border-[#FF7700]/30", pin: "bg-[#FF7700]" } }
               ].map((item, index) => (
                 <RevealOnScroll animation="fade-up" delay={index * 100} key={item.title}>
                   <div
@@ -425,15 +432,15 @@ const About = () => {
                     <div className="relative z-10">
                       {/* Icon */}
                       <div className="mb-6">
-                        <div className="w-14 h-14 rounded-xl bg-white/60 flex items-center justify-center shadow-sm group-hover:bg-white transition-colors duration-300">
-                          <item.icon className="w-7 h-7 text-gray-700" strokeWidth={1.5} />
+                        <div className="w-14 h-14 rounded-xl bg-[#FF7700] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                          <item.icon className="w-7 h-7 text-white" strokeWidth={1.5} />
                         </div>
                       </div>
 
-                      <h3 className="font-heading text-2xl font-bold mb-4 text-gray-900 leading-tight">
+                      <h3 className="font-heading text-2xl font-bold mb-4 text-[#FF7700] leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-gray-700 leading-relaxed font-medium opacity-90">
+                      <p className="text-[#FF7700] leading-relaxed font-medium opacity-90">
                         {item.text}
                       </p>
 
@@ -497,23 +504,26 @@ const About = () => {
           <div className="container-wide relative z-10">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-              {/* Left: Brand & Intro */}
-              <div className="lg:col-span-5 space-y-8">
+
+
+              {/* Left: Brand & Intro - First on Mobile */}
+              <div className="lg:col-span-5 space-y-8 order-1 lg:order-1">
                 <RevealOnScroll animation="slide-in-left">
+                  {/* Desktop Badge */}
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-bold uppercase tracking-widest">
                     <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     Live Premiers Weekly
                   </div>
 
                   <h2 className="font-heading text-[48px] font-bold text-primary leading-tight">
-                    The Europe Bound <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200 italic">Video Podcast</span>
+                    Why Europe Calling <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200 italic">Was Created</span>
                   </h2>
 
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-left">
                     Watch unscripted conversations with immigration experts, successful expats, and legal minds. Your visual guide to making Europe home.
                   </p>
 
-                  <div className="flex gap-4 pt-4">
+                  <div className="flex gap-4 pt-4 justify-center lg:justify-start">
                     <a href="https://youtube.com/shorts/g_vqnB18DYM?si=1bPUwWqF1Od104oH" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full bg-muted border border-border text-foreground hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white transition-all duration-300 group">
                       <svg className="w-6 h-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" /></svg>
                     </a>
@@ -527,8 +537,8 @@ const About = () => {
                 </RevealOnScroll>
               </div>
 
-              {/* Right: Premium Video Player UI */}
-              <div className="lg:col-span-7">
+              {/* Right: Premium Video Player UI - Second on Mobile */}
+              <div className="lg:col-span-7 order-2 lg:order-2">
                 <RevealOnScroll animation="scale-up" delay={200}>
                   <div className="relative bg-card backdrop-blur-xl border border-border rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
                     {/* Background Glow */}
@@ -685,7 +695,7 @@ const About = () => {
                   className="w-full h-full"
                 >
                   {/* Card Main Container */}
-                  <div className="group relative bg-white rounded-3xl p-6 border border-teal-100 hover:border-teal-500 transition-all duration-300 hover:shadow-2xl h-full flex flex-col justify-between">
+                  <div className="group relative bg-white rounded-3xl p-6 border border-gray-100 hover:border-[#FF7700] transition-all duration-300 hover:shadow-2xl h-full flex flex-col justify-between">
 
                     {/* Image Area */}
                     <div className="relative w-full aspect-[4/4.5] rounded-2xl mb-8 overflow-hidden shrink-0">
@@ -702,12 +712,12 @@ const About = () => {
                         <h3 className="font-heading text-xl font-bold text-primary leading-tight mb-2">
                           {member.name}
                         </h3>
-                        <p className="font-bold text-[10px] text-teal-600 uppercase tracking-widest">
+                        <p className="font-bold text-[10px] text-[#FF7700] uppercase tracking-widest">
                           {member.role}
                         </p>
                       </div>
 
-                      <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white group-hover:bg-teal-600 transition-colors duration-300 shadow-lg cursor-pointer">
+                      <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white group-hover:bg-[#FF7700] transition-colors duration-300 shadow-lg cursor-pointer">
                         <ChevronRight className="w-5 h-5" />
                       </div>
                     </div>

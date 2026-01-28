@@ -17,7 +17,7 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
     if (!itinerary || itinerary.length === 0) return null;
 
     return (
-        <section className="py-24 md:py-32 bg-[#FDFCF8] relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-[#faf4e5] relative overflow-hidden">
             {/* Extended Background Decorations for Premium Feel */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.3]" />
             <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
@@ -55,7 +55,7 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                             {itinerary.map((item, index) => {
                                 const isEven = index % 2 === 0;
                                 return (
-                                    <div key={index} className="relative md:grid md:grid-cols-2 gap-12 lg:gap-16 items-center group perspective-1000">
+                                    <div key={index} className="relative flex flex-col md:grid md:grid-cols-2 gap-12 lg:gap-16 items-center group perspective-1000">
 
                                         {/* Timeline Node (Center) - Premium Marker */}
                                         <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex-col items-center justify-center">
@@ -69,11 +69,14 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                         {/* Left Side (Column 1) */}
                                         <div className={cn(
                                             "relative",
-                                            !isEven ? "md:text-right" : "" // Odd (Row 2): Text on Left (Align Right)
+                                            !isEven ? "md:text-right" : "",
+                                            // Mobile Order: If Even (Image), Order 1. If Odd (Text), Order 2.
+                                            isEven ? "order-1" : "order-2",
+                                            "md:order-none"
                                         )}>
                                             {isEven ? (
-                                                /* EVEN [Row 1]: Image on Left */
-                                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[5/4] rotate-1 group-hover:rotate-0 transition-transform duration-700 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.25)]">
+                                                /* EVEN [Row 1]: Image on Left (Desktop) */
+                                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[5/4] rotate-1 group-hover:rotate-0 transition-transform duration-700 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.25)] mb-8 md:mb-0">
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
                                                     {item.image ? (
                                                         <img
@@ -92,35 +95,38 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
                                                     </div>
                                                 </div>
                                             ) : (
-                                                /* ODD [Row 2]: Text on Left */
+                                                /* ODD [Row 2]: Text on Left (Desktop) */
                                                 <div className={cn(
-                                                    "relative z-10 p-6 md:p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[200px]",
-                                                    !item.description && "items-center text-center bg-gradient-to-br from-[#faf4e5] to-[#faf4e5]/80"
+                                                    "relative z-10 p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[140px] md:min-h-[200px] max-w-[90%] mx-auto md:max-w-none",
+                                                    !item.description && "items-center text-center bg-[#faf4e5] border-black"
                                                 )}>
                                                     {/* Golden Number Watermark - Right aligned */}
                                                     <span className={cn(
-                                                        "absolute -top-4 -right-4 text-[6rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-40",
-                                                        !item.description && "text-[5rem] opacity-25 right-4"
+                                                        "absolute -top-3 -right-3 md:-top-4 md:-right-4 text-[4rem] md:text-[6rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-10 md:opacity-40",
+                                                        !item.description && "text-[3rem] md:text-[5rem] opacity-25 right-4"
                                                     )}>
                                                         {item.day}
                                                     </span>
 
-                                                    <div className="relative z-10 w-full">
+                                                    <div className={cn(
+                                                        "relative z-10 w-full text-center",
+                                                        item.description ? "md:text-right" : "md:text-center"
+                                                    )}>
                                                         <h3 className={cn(
-                                                            "font-heading font-semibold text-primary mb-3 leading-tight",
-                                                            item.description ? "text-xl md:text-2xl" : "text-xl md:text-2xl tracking-tight uppercase"
+                                                            "font-heading font-semibold text-primary mb-2 md:mb-3 leading-tight",
+                                                            item.description ? "text-lg md:text-2xl" : "text-lg md:text-2xl tracking-tight uppercase"
                                                         )}>
                                                             {item.title}
                                                         </h3>
                                                         {item.description ? (
                                                             <>
-                                                                <div className="w-10 h-0.5 bg-[#FF7700]/60 ml-auto mb-4" />
+                                                                <div className="w-8 md:w-10 h-0.5 bg-[#FF7700]/60 mx-auto md:ml-auto md:mr-0 mb-3 md:mb-4" />
                                                                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-light">
                                                                     {item.description}
                                                                 </p>
                                                             </>
                                                         ) : (
-                                                            <div className="w-12 h-0.5 bg-[#FF7700] mx-auto mt-4 rounded-full opacity-40" />
+                                                            <div className="w-10 md:w-12 h-0.5 bg-[#FF7700] mx-auto mt-2 md:mt-4 rounded-full opacity-40" />
                                                         )}
                                                     </div>
                                                 </div>
@@ -129,39 +135,45 @@ export const RoadmapSection = ({ itinerary }: RoadmapSectionProps) => {
 
                                         {/* Right Side (Column 2) */}
                                         <div className={cn(
-                                            "relative mt-12 md:mt-0",
-                                            isEven ? "md:text-left" : "" // Even (Row 1): Text on Right (Align Left)
+                                            "relative md:mt-0",
+                                            isEven ? "md:text-left" : "",
+                                            // Mobile Order: If Even (Text), Order 2. If Odd (Image), Order 1.
+                                            isEven ? "order-2" : "order-1",
+                                            "md:order-none mb-8 md:mb-0"
                                         )}>
                                             {isEven ? (
                                                 /* EVEN [Row 1]: Text on Right */
                                                 <div className={cn(
-                                                    "relative z-10 p-6 md:p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[200px]",
-                                                    !item.description && "items-center text-center bg-gradient-to-bl from-[#faf4e5] to-[#faf4e5]/80"
+                                                    "relative z-10 p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-center min-h-[140px] md:min-h-[200px] max-w-[90%] mx-auto md:max-w-none",
+                                                    !item.description && "items-center text-center bg-[#faf4e5] border-black"
                                                 )}>
                                                     {/* Golden Number Watermark - Left aligned */}
                                                     <span className={cn(
-                                                        "absolute -top-4 -left-4 text-[6rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-40",
-                                                        !item.description && "text-[5rem] opacity-25 left-4"
+                                                        "absolute -top-3 -left-3 md:-top-4 md:-left-4 text-[4rem] md:text-[6rem] font-serif font-bold text-gray-50 leading-none pointer-events-none select-none z-0 opacity-10 md:opacity-40",
+                                                        !item.description && "text-[3rem] md:text-[5rem] opacity-25 left-4"
                                                     )}>
                                                         {item.day}
                                                     </span>
 
-                                                    <div className="relative z-10 w-full">
+                                                    <div className={cn(
+                                                        "relative z-10 w-full text-center",
+                                                        item.description ? "md:text-left" : "md:text-center"
+                                                    )}>
                                                         <h3 className={cn(
-                                                            "font-heading font-semibold text-primary mb-3 leading-tight",
-                                                            item.description ? "text-xl md:text-2xl" : "text-xl md:text-2xl tracking-tight uppercase"
+                                                            "font-heading font-semibold text-primary mb-2 md:mb-3 leading-tight",
+                                                            item.description ? "text-lg md:text-2xl" : "text-lg md:text-2xl tracking-tight uppercase"
                                                         )}>
                                                             {item.title}
                                                         </h3>
                                                         {item.description ? (
                                                             <>
-                                                                <div className="w-10 h-0.5 bg-[#FF7700]/60 mr-auto mb-4" />
+                                                                <div className="w-8 md:w-10 h-0.5 bg-[#FF7700]/60 mx-auto md:mr-auto md:ml-0 mb-3 md:mb-4" />
                                                                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-light">
                                                                     {item.description}
                                                                 </p>
                                                             </>
                                                         ) : (
-                                                            <div className="w-12 h-0.5 bg-[#FF7700] mx-auto mt-4 rounded-full opacity-40" />
+                                                            <div className="w-10 md:w-12 h-0.5 bg-[#FF7700] mx-auto mt-2 md:mt-4 rounded-full opacity-40" />
                                                         )}
                                                     </div>
                                                 </div>

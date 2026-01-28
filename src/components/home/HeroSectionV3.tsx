@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LeadPopup } from "../ui/LeadPopup";
-import azerbaijanBg from "../../assets/a3.png";
+import azerbaijanBg from "../../assets/panoramic-cityscape-view-baku-morning-capital-city-azerbaijan.jpg (1).jpeg";
 import armeniaBg from "../../assets/a4.png";
 import kyrgyzstanBg from "../../assets/a1.png";
 import kazakhstanBg from "../../assets/a2 (1).png";
@@ -159,7 +159,7 @@ export const HeroSectionV3 = () => {
                     </div>
 
                     {/* Slide Indicators */}
-                    <div className="flex gap-2 mt-8 animate-fade-in-up animation-delay-300">
+                    <div className="flex gap-2 mt-8 animate-fade-in-up animation-delay-300 justify-center sm:justify-start">
                         {slides.map((_, index) => (
                             <button
                                 key={index}
