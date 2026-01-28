@@ -158,7 +158,7 @@ export function Header() {
               />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[85vw] sm:w-[400px] p-0 border-l border-primary/5 bg-white z-[70]">
+          <SheetContent side="right" className="w-[85vw] sm:w-[400px] p-0 border-l border-primary/5 bg-[#faf4e5] z-[70]">
             <SheetHeader className="sr-only">
               <SheetTitle>Mobile Navigation Menu</SheetTitle>
               <SheetDescription>
@@ -169,7 +169,7 @@ export function Header() {
               {/* Menu Header with Pattern */}
               {/* Menu Header with Pattern */}
               {/* Menu Header with Pattern */}
-              <div className="bg-white pt-8 pb-4 px-8 relative overflow-hidden flex items-center justify-start gap-4 border-b border-gray-100 shrink-0">
+              <div className="bg-[#faf4e5] pt-8 pb-4 px-8 relative overflow-hidden flex items-center justify-start gap-4 border-b border-primary/5 shrink-0">
                 <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-[0.03]" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] pointer-events-none" />
 
@@ -180,7 +180,7 @@ export function Header() {
               </div>
 
               {/* Menu Links */}
-              <div className="flex-1 overflow-y-auto py-6 pr-4 pl-0 bg-white">
+              <div className="flex-1 overflow-y-auto py-6 pr-4 pl-0 bg-[#faf4e5]">
                 <nav className="flex flex-col gap-1">
                   {navItems.map((item, index) => {
                     const isActive = location.pathname === item.path;
@@ -277,7 +277,7 @@ export function Header() {
               </div>
 
               {/* Menu Footer */}
-              <div className="p-8 pb-10 bg-gray-50 border-t border-gray-100">
+              <div className="p-8 pb-10 bg-[#faf4e5]/50 border-t border-primary/5">
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
