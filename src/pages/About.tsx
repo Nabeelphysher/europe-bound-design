@@ -237,8 +237,8 @@ const About = () => {
                       <div className="absolute bottom-8 right-8 md:-right-6 z-30">
                         <div className="bg-white/95 backdrop-blur-sm py-3 px-6 rounded-full shadow-xl border border-white/50 flex items-center gap-3 animate-float">
                           <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7700] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#FF7700]"></span>
                           </span>
                           <span className="text-xs font-bold text-primary tracking-wide">
                             Open for Consultation
@@ -276,8 +276,8 @@ const About = () => {
               <div className="col-span-1 lg:hidden order-1 mb-2 text-left">
                 <RevealOnScroll animation="fade-up">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#3B82F6]"></div>
-                    <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#9CA3AF] uppercase">
+                    <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#FF7700]"></div>
+                    <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#FF7700] uppercase">
                       WHO WE ARE
                     </span>
                   </div>
@@ -337,8 +337,8 @@ const About = () => {
                   <div className="mb-8 text-left">
                     {/* Eyebrow */}
                     <div className="hidden lg:flex items-center gap-3 mb-6">
-                      <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#3B82F6]"></div>
-                      <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#9CA3AF] uppercase">
+                      <div className="w-2.5 h-2.5 rounded-full border-[3px] border-[#FF7700]"></div>
+                      <span className="font-sans text-xs font-bold tracking-[0.2em] text-[#FF7700] uppercase">
                         WHO WE ARE
                       </span>
                     </div>
