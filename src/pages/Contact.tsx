@@ -9,6 +9,7 @@ import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import contactBanner from "@/assets/destination-czech.jpg";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { submitLead } from "@/lib/api";
 
 
 const Contact = () => {
@@ -58,13 +59,31 @@ const Contact = () => {
           description: "Your feedback has been successfully submitted.",
         });
       } else {
-        // Mock API call for Contact Form
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        toast({
-          title: "Message Sent Successfully!",
-          description: "Our team will review your inquiry and respond within 24 hours.",
+        // Contact Form Submission
+        const result = await submitLead({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+          country: formData.country,
+          form_type: "Contact Us Form",
         });
+
+        if (result.status === "success") {
+          toast({
+            title: "Message Sent Successfully!",
+            description: "Our team will review your inquiry and respond within 24 hours.",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: result.message || "There was a problem sending your message.",
+          });
+          // Don't throw here to avoid generic catch block overriding specific error
+          setIsSubmitting(false);
+          return;
+        }
       }
 
       // Reset form

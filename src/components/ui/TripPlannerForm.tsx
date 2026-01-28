@@ -14,6 +14,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
+import { submitLead } from "@/lib/api";
 
 interface TripPlannerFormProps {
   isOpen: boolean;
@@ -73,31 +74,51 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Trip planner form submitted:", formData);
-
-    toast({
-      title: "Request Received!",
-      description: "Our trip planner will contact you shortly to discuss your travel plans.",
-      duration: 3000,
+    // Submit to API
+    const result = await submitLead({
+      name: formData.name,
+      phone: formData.phone,
+      whatsapp_number: formData.whatsappSame ? formData.phone : formData.whatsappNumber,
+      email: formData.email,
+      destination: formData.destination,
+      travel_date: formData.travelDate ? format(formData.travelDate, "yyyy-MM-dd") : undefined,
+      adults: formData.adults,
+      kids: formData.kids,
+      budget_range: formData.budgetRange,
+      special_requests: formData.specialRequests.join(", "),
+      form_type: "Trip Planner Form",
     });
+
+    if (result.status === "success") {
+      toast({
+        title: "Request Received!",
+        description: "Our trip planner will contact you shortly to discuss your travel plans.",
+        duration: 3000,
+      });
+
+      onClose();
+      setFormData({
+        name: "",
+        phone: "",
+        whatsappSame: true,
+        whatsappNumber: "",
+        email: "",
+        destination: "",
+        travelDate: undefined,
+        adults: "",
+        kids: "",
+        budgetRange: "",
+        specialRequests: [],
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: result.message || "Please try again later.",
+      });
+    }
 
     setIsSubmitting(false);
-    onClose();
-    setFormData({
-      name: "",
-      phone: "",
-      whatsappSame: true,
-      whatsappNumber: "",
-      email: "",
-      destination: "",
-      travelDate: undefined,
-      adults: "",
-      kids: "",
-      budgetRange: "",
-      specialRequests: [],
-    });
   };
 
   if (!isOpen) return null;
@@ -254,8 +275,8 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
                   {formData.travelDate ? format(formData.travelDate, "PPP") : "Select date"}
                 </button>
               </PopoverTrigger>
-              <PopoverContent 
-                className="w-auto p-0 bg-white border-gray-100 rounded-xl shadow-xl z-[150]" 
+              <PopoverContent
+                className="w-auto p-0 bg-white border-gray-100 rounded-xl shadow-xl z-[150]"
                 align="start"
                 sideOffset={5}
               >

@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { submitLead } from "@/lib/api";
 
 interface LeadPopupProps {
   isOpen: boolean;
@@ -84,19 +85,33 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Form submitted:", formData);
-
-    toast({
-      title: "Request Received",
-      description: "Our travel specialists will contact you shortly.",
-      duration: 3000,
+    // Submit to API
+    const result = await submitLead({
+      name: formData.name,
+      phone: formData.phone,
+      whatsapp_number: formData.whatsappSame ? formData.phone : formData.whatsappNumber,
+      travel_month: formData.travelMonth,
+      destination: formData.destination,
+      form_type: "Lead Popup",
     });
 
+    if (result.status === "success") {
+      toast({
+        title: "Request Received",
+        description: "Our travel specialists will contact you shortly.",
+        duration: 3000,
+      });
+      onClose();
+      setFormData({ name: "", phone: "", whatsappSame: true, whatsappNumber: "", travelMonth: "", destination: "" });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: result.message || "Please try again later.",
+      });
+    }
+
     setIsSubmitting(false);
-    onClose();
-    setFormData({ name: "", phone: "", whatsappSame: true, whatsappNumber: "", travelMonth: "", destination: "" });
   };
 
   if (!isOpen) return null;

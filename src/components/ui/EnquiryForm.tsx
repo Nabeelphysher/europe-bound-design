@@ -14,6 +14,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
+import { submitLead } from "@/lib/api";
 
 interface EnquiryFormProps {
   isOpen: boolean;
@@ -66,30 +67,48 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
     setIsSubmitting(true);
     setActionType("package");
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Enquiry form submitted:", { ...formData, action: "package" });
-
-    toast({
-      title: "Package Details Requested",
-      description: "Our travel specialists will contact you shortly with the details.",
-      duration: 3000,
+    // Submit to API
+    const result = await submitLead({
+      name: formData.name,
+      phone: formData.phone,
+      whatsapp_number: formData.whatsappSame ? formData.phone : formData.whatsappNumber,
+      adults: formData.adults,
+      kids: formData.kids,
+      travel_date: formData.travelDate ? format(formData.travelDate, "yyyy-MM-dd") : undefined,
+      destination: formData.destination,
+      hotel_category: formData.hotelCategory,
+      form_type: "Enquiry Form",
     });
+
+    if (result.status === "success") {
+      toast({
+        title: "Package Details Requested",
+        description: "Our travel specialists will contact you shortly with the details.",
+        duration: 3000,
+      });
+
+      onClose();
+      setFormData({
+        name: "",
+        phone: "",
+        whatsappSame: true,
+        whatsappNumber: "",
+        adults: "",
+        kids: "",
+        travelDate: undefined,
+        destination: "",
+        hotelCategory: "",
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: result.message || "Please try again later.",
+      });
+    }
 
     setIsSubmitting(false);
     setActionType(null);
-    onClose();
-    setFormData({
-      name: "",
-      phone: "",
-      whatsappSame: true,
-      whatsappNumber: "",
-      adults: "",
-      kids: "",
-      travelDate: undefined,
-      destination: "",
-      hotelCategory: "",
-    });
   };
 
   if (!isOpen) return null;
@@ -236,8 +255,8 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
                   {formData.travelDate ? format(formData.travelDate, "PPP") : "Select date"}
                 </button>
               </PopoverTrigger>
-              <PopoverContent 
-                className="w-auto p-0 bg-white border-gray-100 rounded-xl shadow-xl z-[150]" 
+              <PopoverContent
+                className="w-auto p-0 bg-white border-gray-100 rounded-xl shadow-xl z-[150]"
                 align="start"
                 sideOffset={5}
               >
