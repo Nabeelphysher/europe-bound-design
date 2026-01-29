@@ -37,7 +37,8 @@ export function Header() {
   const isHomePage = location.pathname === "/";
 
   // Pages that have LIGHT background heroes (Transparent header, DARK text)
-  const lightHeroPages = ["/", "/about", "/newsroom", "/contact", "/destinations", "/gallery", "/privacy", "/terms", "/testimonials"];
+  // Pages that have LIGHT background heroes (Transparent header, DARK text)
+  const lightHeroPages = ["/about", "/newsroom", "/contact", "/destinations", "/gallery", "/privacy", "/terms", "/testimonials"];
   const isLightHeroPage = lightHeroPages.includes(location.pathname);
 
   // Pages that have DARK background heroes (Transparent header, WHITE text)
@@ -51,7 +52,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const shouldUseDarkText = isScrolled || isLightHeroPage || isHomePage;
+  const shouldUseDarkText = isScrolled || isLightHeroPage;
 
   // Determine background styling:
   // - Scrolled: Always White
