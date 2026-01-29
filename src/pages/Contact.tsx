@@ -132,24 +132,28 @@ const Contact = () => {
       icon: MapPin,
       title: "Office",
       content: (
-        <div className="flex flex-col gap-4 text-sm md:text-base w-full">
+        <div className="flex flex-col gap-2 text-xs md:text-sm w-full">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Bashir+safar-oghlu,+Baku,+Azerbaijan"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center border-b border-gray-100 pb-3 hover:bg-gray-50/50 rounded-lg transition-colors p-2 block group/link"
+            className="text-center border-b border-gray-100 pb-2 hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
           >
-            <span className="block font-bold text-[#FF7700] mb-1 group-hover/link:underline">Baku, Azerbaijan</span>
-            <span className="block opacity-80 text-sm leading-relaxed">Bashir safar-oghlu, Baku, Azerbaijan</span>
+            <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
+              <MapPin className="w-3.5 h-3.5" /> Baku, Azerbaijan
+            </span>
+            <span className="block opacity-80 text-xs leading-tight">Bashir safar-oghlu, Baku, Azerbaijan</span>
           </a>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center hover:bg-gray-50/50 rounded-lg transition-colors p-2 block group/link"
+            className="text-center hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
           >
-            <span className="block font-bold text-[#FF7700] mb-1 group-hover/link:underline">Kerala, India</span>
-            <span className="block opacity-80 text-sm leading-relaxed">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
+            <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
+              <MapPin className="w-3.5 h-3.5" /> Kerala, India
+            </span>
+            <span className="block opacity-80 text-xs leading-tight">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
           </a>
         </div>
       ),
@@ -172,7 +176,7 @@ const Contact = () => {
         {/* Contact Info Cards */}
         <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-32 lg:mb-40">
           <div className="container-wide">
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center items-stretch gap-6">
               {contactInfo.map((info, index) => (
                 <RevealOnScroll
                   className="h-full w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
@@ -187,15 +191,15 @@ const Contact = () => {
                     return (
                       <Wrapper
                         {...wrapperProps}
-                        className="group bg-card hover:bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center backdrop-blur-sm h-full min-h-[380px]"
+                        className="group bg-card hover:bg-white p-5 pt-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-start text-center backdrop-blur-sm h-full min-h-[350px]"
                       >
-                        <div className="w-16 h-16 rounded-2xl bg-gold text-primary flex items-center justify-center mb-6 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
-                          <info.icon className="w-7 h-7" />
+                        <div className="w-14 h-14 rounded-xl bg-gold text-primary flex items-center justify-center mb-4 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
+                          <info.icon className="w-6 h-6" />
                         </div>
-                        <h3 className="font-heading text-xl font-bold mb-2 text-gold transition-colors">{info.title}</h3>
-                        <div className="text-foreground font-medium text-lg mb-2 break-words w-full px-2">{info.content}</div>
-                        <p className="text-muted-foreground/80 text-sm mb-4 px-4">{info.description}</p>
-                        <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">{info.subtext}</p>
+                        <h3 className="font-heading text-lg font-bold mb-2 text-gold transition-colors">{info.title}</h3>
+                        <div className="text-foreground font-medium text-base mb-2 break-words w-full px-1">{info.content}</div>
+                        <p className="text-muted-foreground/80 text-xs mb-3 px-2">{info.description}</p>
+                        <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">{info.subtext}</p>
                       </Wrapper>
                     );
                   })()}
