@@ -8,9 +8,36 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Temporary fix for build failure due to spaces in filenames
-import franceImg from "@/assets/france.jpg";
-const images = [franceImg, franceImg, franceImg, franceImg, franceImg, franceImg];
+import img13 from '@/assets/WhatsApp Image 2025-12-05 at 4.03.57 PM.jpeg';
+import img14 from '@/assets/WhatsApp Image 2025-12-05 at 4.03.58 PM.jpeg';
+import img15 from '@/assets/WhatsApp Image 2025-12-05 at 4.03.59 PM.jpeg';
+import img17 from '@/assets/WhatsApp Image 2025-12-05 at 4.04.00 PM.jpeg';
+import img19 from '@/assets/WhatsApp Image 2025-12-05 at 4.06.10 PM.jpeg';
+import img21 from '@/assets/WhatsApp Image 2025-12-05 at 4.06.11 PM.jpeg';
+import img22 from '@/assets/WhatsApp Image 2026-01-20 at 1.55.53 PM.jpeg';
+import img25 from '@/assets/WhatsApp Image 2026-01-20 at 1.55.54 PM.jpeg';
+import img29 from '@/assets/WhatsApp Image 2026-01-20 at 1.55.55 PM.jpeg';
+import img30 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.18 PM.jpeg';
+import img33 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.20 PM.jpeg';
+import img35 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.22 PM.jpeg';
+import img36 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.23 PM.jpeg';
+import img38 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.24 PM.jpeg';
+import img40 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.25 PM.jpeg';
+import img43 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.29 PM.jpeg';
+import img44 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.30 PM.jpeg';
+import img46 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.31 PM.jpeg';
+import img48 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.32 PM.jpeg';
+import img50 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.33 PM.jpeg';
+import img51 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.34 PM.jpeg';
+import img54 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.35 PM.jpeg';
+import img56 from '@/assets/WhatsApp Image 2026-01-20 at 1.56.36 PM.jpeg';
+
+
+const images = [
+    img13, img14, img15, img17, img19, img21, img22,
+    img25, img29, img30, img33, img35, img36, img38, img40,
+    img43, img44, img46, img48, img50, img51, img54, img56
+];
 
 const categories = [
     { id: "all", label: "All Photos" },

@@ -112,14 +112,14 @@ export const HeroSectionV3 = () => {
             ))}
 
             {/* Main Content - Left Aligned */}
-            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center pb-20 md:pb-0">
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center pb-20 md:pb-0 pt-32">
                 <div className="max-w-2xl text-left">
                     {/* Trusted By Section - Glass Pill */}
                     <div className="inline-flex items-center gap-3 mb-6 animate-fade-in-up md:justify-start bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
                         <div className="flex -space-x-2">
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500" />
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-gradient-to-br from-green-400 to-blue-500" />
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-gradient-to-br from-orange-400 to-pink-500" />
+                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#000000]" />
+                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#faf4e5]" />
+                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#ff7700]" />
                         </div>
                         <p className="text-white/90 text-xs sm:text-sm font-medium tracking-wide">
                             Trusted by <span className="font-bold text-white">10k+</span> travelers

@@ -117,9 +117,30 @@ export function HeroSection() {
             <h1 className="font-heading text-4xl sm:text-7xl md:text-8xl font-bold text-white uppercase leading-[0.9] mb-2 sm:mb-6 tracking-tight drop-shadow-2xl text-shadow-premium">
               {activeDest.name}
             </h1>
-            <p className="text-white/90 text-sm sm:text-lg leading-relaxed max-w-lg drop-shadow-lg font-medium line-clamp-2 sm:line-clamp-none">
+            <p className="text-white/90 text-sm sm:text-lg leading-relaxed max-w-lg drop-shadow-lg font-medium line-clamp-2 sm:line-clamp-none mb-6">
               {activeDest.description}
             </p>
+            <a
+              href={`/contact?destination=${activeDest.name}`}
+              className="inline-flex items-center justify-center gap-2 bg-[#faf4e5] text-black px-6 py-3 rounded-full font-bold text-sm sm:text-base transition-transform hover:scale-105 hover:bg-white"
+            >
+              Book {activeDest.name} Tour
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4 sm:w-5 sm:h-5"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
           </RevealOnScroll>
         </div>
       </div>

@@ -440,7 +440,7 @@ const About = () => {
                       <h3 className="font-heading text-2xl font-bold mb-4 text-[#FF7700] leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-[#FF7700] leading-relaxed font-medium opacity-90">
+                      <p className="text-[#faf4e5] leading-relaxed font-medium opacity-90">
                         {item.text}
                       </p>
 

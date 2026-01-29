@@ -423,6 +423,15 @@ const Testimonials = () => {
     return testimonials.filter((t) => !t.hasVideo);
   }, []);
 
+  // Group text testimonials into pairs for 2-row layout
+  const chunkedTextTestimonials = useMemo(() => {
+    const chunks = [];
+    for (let i = 0; i < textTestimonials.length; i += 2) {
+      chunks.push(textTestimonials.slice(i, i + 2));
+    }
+    return chunks;
+  }, [textTestimonials]);
+
   return (
     <>
       <Header />
@@ -492,47 +501,51 @@ const Testimonials = () => {
                     className="w-full"
                   >
                     <CarouselContent className="-ml-4">
-                      {textTestimonials.map((t, index) => (
-                        <CarouselItem key={t.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                          <div className="h-full">
-                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col hover:shadow-md transition-all duration-300 font-sans min-h-[250px]">
+                      {chunkedTextTestimonials.map((group, index) => (
+                        <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                          <div className="flex flex-col gap-6">
+                            {group.map((t) => (
+                              <div key={t.id} className="h-full">
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col hover:shadow-md transition-all duration-300 font-sans min-h-[250px]">
 
-                              {/* Header */}
-                              <div className="flex items-start justify-between mb-4">
-                                <div className="flex items-center gap-4">
-                                  <div className="relative">
-                                    <div className="w-12 h-12 rounded-full bg-[#FF7700] flex items-center justify-center text-white font-bold text-lg">
-                                      {t.name.charAt(0)}
+                                  {/* Header */}
+                                  <div className="flex items-start justify-between mb-4">
+                                    <div className="flex items-center gap-4">
+                                      <div className="relative">
+                                        <div className="w-12 h-12 rounded-full bg-[#FF7700] flex items-center justify-center text-white font-bold text-lg">
+                                          {t.name.charAt(0)}
+                                        </div>
+                                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                          <Star className="w-2.5 h-2.5 text-white fill-white" />
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <h3 className="font-bold text-gray-900 text-base leading-tight">{t.name}</h3>
+                                        <p className="text-xs text-gray-400 mt-1">{t.role || '2025 Client'}</p>
+                                      </div>
                                     </div>
-                                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                                      <Star className="w-2.5 h-2.5 text-white fill-white" />
-                                    </div>
+                                    <GoogleLogo />
                                   </div>
-                                  <div>
-                                    <h3 className="font-bold text-gray-900 text-base leading-tight">{t.name}</h3>
-                                    <p className="text-xs text-gray-400 mt-1">{t.role || '2025 Client'}</p>
+
+                                  {/* Stars & Verified */}
+                                  <div className="flex items-center gap-1 mb-4">
+                                    <div className="flex gap-1">
+                                      {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className={`w-4 h-4 ${i < t.rating ? 'fill-[#fbbf24] text-[#fbbf24]' : 'fill-gray-200 text-gray-200'}`} />
+                                      ))}
+                                    </div>
+                                    <VerifiedBadge />
+                                  </div>
+
+                                  {/* Content */}
+                                  <div className="flex-grow">
+                                    <p className="text-gray-600 text-[15px] leading-relaxed">
+                                      {t.content}
+                                    </p>
                                   </div>
                                 </div>
-                                <GoogleLogo />
                               </div>
-
-                              {/* Stars & Verified */}
-                              <div className="flex items-center gap-1 mb-4">
-                                <div className="flex gap-1">
-                                  {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className={`w-4 h-4 ${i < t.rating ? 'fill-[#fbbf24] text-[#fbbf24]' : 'fill-gray-200 text-gray-200'}`} />
-                                  ))}
-                                </div>
-                                <VerifiedBadge />
-                              </div>
-
-                              {/* Content */}
-                              <div className="flex-grow">
-                                <p className="text-gray-600 text-[15px] leading-relaxed">
-                                  {t.content}
-                                </p>
-                              </div>
-                            </div>
+                            ))}
                           </div>
                         </CarouselItem>
                       ))}

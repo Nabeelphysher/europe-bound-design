@@ -549,23 +549,20 @@ const Contact = () => {
                   </div>
 
                   {/* Decorative Map Image */}
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block h-48 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors cursor-pointer group/map"
-                  >
-                    <img
-                      src={contactBanner}
-                      alt="Map Location"
-                      className="w-full h-full object-cover opacity-80 group-hover/map:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-primary/40 group-hover/map:bg-primary/20 transition-colors flex items-center justify-center">
-                      <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/40 group-hover/map:scale-110 transition-transform">
-                        <MapPin className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                  </a>
+                  <div className="relative block h-64 rounded-2xl overflow-hidden shadow-inner border border-white/10 hover:border-gold/50 transition-colors group/map">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      id="gmap_canvas"
+                      src="https://maps.google.com/maps?q=2nd%20Floor,%20Paravath%20Arcade,%20opp.%20Budget%20Hypermarket,%20Varangode,%20Down%20Hill,%20Malappuram,%20Kerala%20676519&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                      frameBorder="0"
+                      scrolling="no"
+                      marginHeight={0}
+                      marginWidth={0}
+                      title="Europe Calling Office Map"
+                      className="w-full h-full grayscale-[0.5] hover:grayscale-0 transition-all duration-500"
+                    ></iframe>
+                  </div>
 
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"

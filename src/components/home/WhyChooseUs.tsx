@@ -132,7 +132,7 @@ export function WhyChooseUs() {
                     {item.title}
                   </h3>
 
-                  <p className={`leading-relaxed text-[15px] font-medium tracking-wide text-[#FF7700]/90`}>
+                  <p className={`leading-relaxed text-[15px] font-medium tracking-wide text-[#faf4e5]/90`}>
                     {item.description}
                   </p>
                 </div>
