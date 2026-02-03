@@ -184,7 +184,7 @@ const countryData: Record<string, CountryData> = {
         name: "Azerbaijan",
         tagline: "Where East Meets West",
         image: azerbaijanImg,
-        description: "Azerbaijan blends ancient heritage with modern flair—where Silk Road history meets futuristic Baku. From dramatic Caucasus landscapes to warm hospitality, it offers rich culture, unique cuisine, and great value for unforgettable travel experiences.",
+        description: "Azerbaijan blends ancient heritage with modern flair where Silk Road history meets futuristic Baku. From dramatic Caucasus landscapes to warm hospitality, it offers rich culture, unique cuisine, and great value for unforgettable travel experiences.",
         stats: { price: "$650", duration: "8 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Local Knowledge", description: "Deep insights into local culture and hidden gems." },
@@ -234,7 +234,7 @@ const countryData: Record<string, CountryData> = {
         name: "Kazakhstan",
         tagline: "Mountains, Lakes & Canyons",
         image: kazakhstanImg,
-        description: "Kazakhstan offers vast natural beauty and modern cities in one journey—from the endless steppes and alpine lakes to the futuristic skyline of Astana. Rich nomadic culture, warm hospitality, and great value make it a unique destination for travelers seeking something truly different.",
+        description: "Kazakhstan offers vast natural beauty and modern cities in one journey from the endless steppes and alpine lakes to the futuristic skyline of Astana. Rich nomadic culture, warm hospitality, and great value make it a unique destination for travelers seeking something truly different.",
         stats: { price: "$850", duration: "7 Days", visa: "Visa Free/E-Visa" },
         whyChoose: [
             { title: "Expert Local Guides", description: "Learn more with our professional English-speaking guides." },
@@ -333,7 +333,7 @@ const countryData: Record<string, CountryData> = {
         name: "Kyrgyzstan",
         tagline: "3 Nights / 4 Days - The Nomadic Spirit",
         image: kyrgyzstanImg,
-        description: "Kyrgyzstan is a paradise for nature lovers, offering dramatic mountains, crystal-clear alpine lakes, and vast open landscapes. With its strong nomadic culture, warm hospitality, and peaceful atmosphere, it’s perfect for travelers seeking adventure and authenticity off the beaten path.",
+        description: "Kyrgyzstan is a paradise for nature lovers, offering dramatic mountains, crystal clear alpine lakes, and vast open landscapes. With its strong nomadic culture, warm hospitality, and peaceful atmosphere, it’s perfect for travelers seeking adventure and authenticity off the beaten path.",
         stats: { price: "$1,210", duration: "4 Days", visa: "E-Visa" },
         whyChoose: [
             { title: "Expert Multi-lingual Guides", description: "Professional Arabic or English-speaking drivers for your trip." },
@@ -386,7 +386,7 @@ const countryData: Record<string, CountryData> = {
         name: "Netherlands",
         tagline: "Windmills, Art & Iconic Waterways",
         image: netherlandsImg,
-        description: "Experience the Netherlands in its full glory—from the UNESCO-listed canals of Amsterdam to the historic windmills of Zaanse Schans. Immerse yourself in a land where artistic heritage meets modern innovation, featuring world-class museums, vibrant tulip fields, and a cycling culture that invites you to explore at your own pace.",
+        description: "Experience the Netherlands in its full glory from the UNESCO listed canals of Amsterdam to the historic windmills of Zaanse Schans. Immerse yourself in a land where artistic heritage meets modern innovation, featuring world-class museums, vibrant tulip fields, and a cycling culture that invites you to explore at your own pace.",
         stats: { price: "€1,250", duration: "6 Days", visa: "Schengen Visa" },
         whyChoose: [
             { title: "Canal Cruise Experience", description: "Navigate the iconic waterways of Amsterdam." },
@@ -436,7 +436,7 @@ const countryData: Record<string, CountryData> = {
         name: "Russia",
         tagline: "History, Art & Grandeur",
         image: russiaImg,
-        description: "Discover the vast beauty of Russia, from the colorful onion domes of St. Basil's in Moscow to the imperial canals of St. Petersburg. A land of deep history, world-class ballet, and architectural marvels, Russia offers a journey through the grandeur of tsars and the soul of the Slavic world.",
+        description: "Discover the vast beauty of Russia, from the colorful onion domes of St. Basil's in Moscow to the imperial canals of St. Petersburg. A land of deep history, world class ballet, and architectural marvels, Russia offers a journey through the grandeur of tsars and the soul of the Slavic world.",
         stats: { price: "$1,150", duration: "7 Days", visa: "E-Visa/Consult" },
         whyChoose: [
             { title: "Red Square & Kremlin", description: "The historic heart of Moscow." },
@@ -487,7 +487,7 @@ const countryData: Record<string, CountryData> = {
         name: "Georgia",
         tagline: "Wine, Mountains & History",
         image: georgiaImg,
-        description: "Georgia is where ancient traditions meet stunning natural beauty—from medieval towns and mountain valleys to world-famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
+        description: "Georgia is where ancient traditions meet stunning natural beauty from medieval towns and mountain valleys to world-famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
         stats: { price: "$600", duration: "7 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Expert Local Insights", description: "Discover hidden gems in Tbilisi and Kazbegi with our knowledgeable guides." },
