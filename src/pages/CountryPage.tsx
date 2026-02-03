@@ -118,10 +118,10 @@ const countryData: Record<string, CountryData> = {
         benefits: [
             { title: "Central Hotels", description: "Stay near major attractions." },
             { title: "Daily Breakfast", description: "Croissants and coffee included." },
-            { title: "Museum Passes", description: "Skip-the-line entry." },
+            { title: "Entry Tickets", description: "Skip-the-line entry to museums and attractions." },
             { title: "Private Transfers", description: "Comfortable travel." },
-            { title: "English Guide", description: "Expert local knowledge." },
-            { title: "City Tours", description: "Guided walks in Paris." }
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." },
+            { title: "Value & Transparency", description: "No hidden costs—what you see is what you pay." }
         ],
         process: [
             { step: 1, title: "Inquire", description: "Select dates." },
@@ -198,8 +198,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Privet transportation", description: "Dedicated private vehicle for all your travels." },
             { title: "Scenic Road Trips", description: "Curated sightseeing and beautiful road trip experiences." },
             { title: "Personal Assistance", description: "Dedicated support for a smooth travel experience." },
-            { title: "English Speaking Driver", description: "Professional drivers for easy and clear communication." },
-            { title: "Daily Breakfast", description: "Delicious breakfast provided at the hotel every morning." }
+            { title: "Entry Tickets", description: "Entry to all mentioned parks and attractions." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." }
         ],
         process: [
             { step: 1, title: "Select", description: "Choose 4 or 5 day pack." },
@@ -246,10 +246,10 @@ const countryData: Record<string, CountryData> = {
         benefits: [
             { title: "4-Star Hotel Stay", description: "Stay at Ozen Palace with daily breakfast." },
             { title: "Private Sedan Vehicle", description: "Dedicated car for all transfers and tours." },
-            { title: "All Entry Tickets", description: "Entry to all mentioned parks and attractions." },
+            { title: "Entry Tickets", description: "Entry to all mentioned parks and attractions." },
             { title: "Full Cable Car Access", description: "Includes Shymbulak and Kok Tobe cable cars." },
-            { title: "Guided Nature Tours", description: "Full-day tours to canyons, lakes, and waterfalls." },
-            { title: "Hassle-Free Logistics", description: "Covers all tolls, parking, and eco-charges." }
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." },
+            { title: "Value & Transparency", description: "No hidden costs—what you see is what you pay." }
         ],
         process: [
             { step: 1, title: "Inquire", description: "Check seasonality." },
@@ -299,8 +299,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Breakfast Daily", description: "Complimentary morning meal." },
             { title: "Private Tour", description: "Exclusive experience for your group." },
             { title: "Tasting Sessions", description: "Sample local delicacies." },
-            { title: "Museum Tickets", description: "Entry to all sites included." },
-            { title: "Airport Transfers", description: "Pick-up and drop-off provided." }
+            { title: "Entry Tickets", description: "Entry to all museums and sites included." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." }
         ],
         process: [
             { step: 1, title: "Choose", description: "Select package." },
@@ -354,8 +354,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Private Minivan", description: "Private minivan for all your sightseeing and transfers." },
             { title: "Airport Transfers", description: "Private pick-up and drop-off at the airport included." },
             { title: "Daily Breakfast", description: "Delicious breakfast provided at the hotel every morning." },
-            { title: "Professional Driver", description: "Expert Arabic or English-speaking driver for all tours." },
-            { title: "Guided Day Tours", description: "Scheduled tours daily from 10:00 AM to 6:00 PM." }
+            { title: "Entry Tickets", description: "Entry to all mentioned parks and attractions." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." }
         ],
         process: [
             { step: 1, title: "Day 1", description: "Arrival & Transfer to Bishkek Hotel." },
@@ -401,9 +401,9 @@ const countryData: Record<string, CountryData> = {
             { title: "Central 4-Star Stays", description: "Accommodation in the heart of the city." },
             { title: "Daily Buffet Breakfast", description: "Start every day with a premium meal." },
             { title: "Unlimited Travel Card", description: "Access to tram, bus, and metro networks." },
-            { title: "Museum Skip-the-Line", description: "Priority entry to major art museums." },
-            { title: "Guided Countryside Tour", description: "Expert-led visits to windmills and villages." },
-            { title: "Private Airport Transfer", description: "Seamless arrival and departure experience." }
+            { title: "Entry Tickets", description: "Priorit entry to major art museums and attractions." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." },
+            { title: "Value & Transparency", description: "No hidden costs—what you see is what you pay." }
         ],
         process: [
             { step: 1, title: "Inquire", description: "Share your travel dates." },
@@ -452,8 +452,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Sapsan Train Tickets", description: "High-speed train between Moscow & St. Pete." },
             { title: "Private Guided Tours", description: "English-speaking expert guides." },
             { title: "Theater Tickets", description: "Reservation assistance for shows." },
-            { title: "Visa Support", description: "Invitation letter for visa application." },
-            { title: "All Entry Fees", description: "Tickets to major museums included." }
+            { title: "Entry Tickets", description: "Tickets to major museums included." },
+            { title: "Visa Assistance", description: "Invitation letter and application support." }
         ],
         process: [
             { step: 1, title: "Select", description: "Choose your cities." },
@@ -501,8 +501,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Private Guided Tours", description: "Full-day tours to Gudauri, Kazbegi, and Dashbashi." },
             { title: "Airport Transfers", description: "Private airport pick-up and drop-off included." },
             { title: "Scenic Mountain Travel", description: "Private transport along the Georgian Military Highway." },
-            { title: "Entry Fees & Activities", description: "Includes entry to Dashbashi Canyon and glass bridge." },
-            { title: "Daily Breakfast", description: "Delicious breakfast provided every morning." }
+            { title: "Entry Tickets", description: "Includes entry to Dashbashi Canyon and all sites." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." }
         ],
         process: [
             { step: 1, title: "Select", description: "Choose tour type." },
@@ -550,8 +550,8 @@ const countryData: Record<string, CountryData> = {
             { title: "Private Car", description: "All ground transfers and city tours." },
             { title: "Express Train", description: "Round-trip tickets to Samarkand." },
             { title: "Pro Guide", description: "Dedicated English-speaking guide/driver." },
-            { title: "Mountain Tour", description: "Full-day excursion to Charvak Lake." },
-            { title: "Daily Water", description: "Complimentary bottled water during tours." }
+            { title: "Entry Tickets", description: "Entry to all mentioned parks and attractions." },
+            { title: "Visa Assistance", description: "Full support with visa applications and documentation." }
         ],
         process: [
             { step: 1, title: "Day 1", description: "Airport Transfer + Panoramic City Tour." },
@@ -791,7 +791,7 @@ const CountryPage = () => {
                                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">What's Included</h2>
                                 <div className="w-24 h-1 bg-gold/30 mx-auto rounded-full mb-6" />
                                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                                    We believe in complete transparency. Your {data.name} package includes everything you need for a seamless experience.
+                                    We believe in Value & Transparency. Your {data.name} package includes Entry Tickets, Visa Assistance, and everything you need for a seamless experience.
                                 </p>
                             </div>
 
