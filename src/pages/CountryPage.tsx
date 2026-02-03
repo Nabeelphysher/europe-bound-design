@@ -104,7 +104,7 @@ const countryData: Record<string, CountryData> = {
         name: "France",
         tagline: "Art, Culture & Cuisine",
         image: franceImg,
-        description: "France offers a perfect blend of romance, culture, and world-class experiences—from iconic landmarks in Paris to charming villages and stunning coastlines. With rich history, legendary cuisine, and timeless art, it’s a destination that never goes out of style.",
+        description: "France offers a perfect blend of romance, culture, and world class experiences from iconic landmarks in Paris to charming villages and stunning coastlines. With rich history, legendary cuisine, and timeless art, it’s a destination that never goes out of style.",
         stats: { price: "€1,250", duration: "6 Days", visa: "Schengen Visa" },
         whyChoose: [
             { title: "Eiffel Tower Visit", description: "Iconic landmark of Paris." },
@@ -487,7 +487,7 @@ const countryData: Record<string, CountryData> = {
         name: "Georgia",
         tagline: "Wine, Mountains & History",
         image: georgiaImg,
-        description: "Georgia is where ancient traditions meet stunning natural beauty from medieval towns and mountain valleys to world-famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
+        description: "Georgia is where ancient traditions meet stunning natural beauty from medieval towns and mountain valleys to world famous wine culture. Warm hospitality, rich history, and incredible food make it a soulful destination for travelers seeking authenticity and adventure.",
         stats: { price: "$600", duration: "7 Days", visa: "Visa on Arrival" },
         whyChoose: [
             { title: "Expert Local Insights", description: "Discover hidden gems in Tbilisi and Kazbegi with our knowledgeable guides." },
