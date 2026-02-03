@@ -195,7 +195,7 @@ const countryData: Record<string, CountryData> = {
         eligibility: ["Valid Passport", "E-Visa (3 days)", "Flight Ticket", "Hotel Voucher", "Vaccine Cert (if any)", "Funds Proof"],
         benefits: [
             { title: "Comfortable Stay", description: "Premium luxury budget stay with daily breakfast." },
-            { title: "Privet transportation", description: "Dedicated private vehicle for all your travels." },
+            { title: "Private Transportation", description: "Dedicated private vehicle for all your travels." },
             { title: "Scenic Road Trips", description: "Curated sightseeing and beautiful road trip experiences." },
             { title: "Personal Assistance", description: "Dedicated support for a smooth travel experience." },
             { title: "Entry Tickets", description: "Entry to all mentioned parks and attractions." },
