@@ -115,13 +115,13 @@ export const HeroSectionV3 = () => {
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center pb-20 md:pb-0 pt-32">
                 <div className="max-w-2xl text-left">
                     {/* Trusted By Section - Glass Pill */}
-                    <div className="inline-flex items-center gap-3 mb-6 animate-fade-in-up md:justify-start bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-6 animate-fade-in-up md:justify-start bg-black/30 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 mx-auto md:mx-0">
                         <div className="flex -space-x-2">
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#000000]" />
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#faf4e5]" />
-                            <div className="w-8 h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#ff7700]" />
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#000000]" />
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#faf4e5]" />
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#ff7700]" />
                         </div>
-                        <p className="text-white/90 text-xs sm:text-sm font-medium tracking-wide">
+                        <p className="text-white/90 text-[10px] sm:text-sm font-medium tracking-wide">
                             Trusted by <span className="font-bold text-white">10k+</span> travelers
                         </p>
                     </div>
@@ -140,19 +140,19 @@ export const HeroSectionV3 = () => {
                     </p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-300 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300 w-fit mx-auto md:mx-0">
                         <button
                             onClick={() => handleBookTour(slide.title)}
-                            className="group relative overflow-hidden px-8 py-4 bg-white text-black rounded-full font-bold text-base shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.4)] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto hover:bg-gray-100"
+                            className="group relative overflow-hidden px-5 py-2.5 sm:px-8 sm:py-4 bg-white text-black rounded-full font-bold text-[13px] sm:text-base shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 w-auto hover:bg-gray-100"
                         >
                             <span className="relative z-10">{slide.cta}</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                            <ArrowRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                             {/* Shine Effect */}
                             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent z-0 ease-in-out" />
                         </button>
                         <Link
                             to="/about"
-                            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center w-full sm:w-auto"
+                            className="px-5 py-2.5 sm:px-8 sm:py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold text-[13px] sm:text-base hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center w-auto"
                         >
                             Read Our Story
                         </Link>

@@ -8,7 +8,8 @@ import { CountryHero } from "@/components/country/CountryHero";
 import { RoadmapSection } from "@/components/country/RoadmapSection";
 import {
     ArrowRight, CheckCircle2, Globe, Award,
-    User, Mail, Phone, Clock, Wallet, ShieldCheck, Star, Quote
+    User, Mail, Phone, Clock, Wallet, ShieldCheck, Star, Quote,
+    Users, ChevronDown
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
@@ -193,8 +194,8 @@ const countryData: Record<string, CountryData> = {
         ],
         eligibility: ["Valid Passport", "E-Visa (3 days)", "Flight Ticket", "Hotel Voucher", "Vaccine Cert (if any)", "Funds Proof"],
         benefits: [
-            { title: "Baku & Shahdag Stay", description: "4 nights premium stay with daily breakfast." },
-            { title: "Private Sedan Car", description: "Dedicated private vehicle for all your travels." },
+            { title: "Comfortable Stay", description: "Premium luxury budget stay with daily breakfast." },
+            { title: "Privet transportation", description: "Dedicated private vehicle for all your travels." },
             { title: "Scenic Road Trips", description: "Curated sightseeing and beautiful road trip experiences." },
             { title: "Personal Assistance", description: "Dedicated support for a smooth travel experience." },
             { title: "English Speaking Driver", description: "Professional drivers for easy and clear communication." },
@@ -584,11 +585,14 @@ const CountryPage = () => {
     const { country } = useParams();
     const [data, setData] = useState<CountryData | null>(null);
     const [date, setDate] = useState<Date>();
+    const [isWhatsAppSame, setIsWhatsAppSame] = useState(true);
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
-        email: "",
-        travelers: "1 Person",
+        adults: "1",
+        kids: "0",
+        destination: (country && countryData[country]) ? countryData[country].name : "",
+        hotelCategory: "Standard",
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -610,10 +614,12 @@ const CountryPage = () => {
         const result = await submitLead({
             name: formData.name,
             phone: formData.phone,
-            email: formData.email,
+            is_whatsapp_same: isWhatsAppSame,
+            adults: formData.adults,
+            kids: formData.kids,
             travel_date: date ? format(date, "yyyy-MM-dd") : undefined,
-            travellers: formData.travelers,
-            destination: data?.name || country,
+            destination: formData.destination || data?.name || country,
+            hotel_category: formData.hotelCategory,
             form_type: "Country Page Inline Form",
         });
 
@@ -622,8 +628,16 @@ const CountryPage = () => {
                 title: "Inquiry Received!",
                 description: "We will contact you shortly.",
             });
-            setFormData({ name: "", phone: "", email: "", travelers: "1 Person" });
+            setFormData({
+                name: "",
+                phone: "",
+                adults: "1",
+                kids: "0",
+                destination: data?.name || (country && countryData[country]?.name) || "",
+                hotelCategory: "Standard"
+            });
             setDate(undefined);
+            setIsWhatsAppSame(true);
         } else {
             toast({
                 variant: "destructive",
@@ -637,7 +651,9 @@ const CountryPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         if (country && countryData[country]) {
-            setData(countryData[country]);
+            const countryInfo = countryData[country];
+            setData(countryInfo);
+            setFormData(prev => ({ ...prev, destination: countryInfo.name }));
         } else {
             setData(null);
         }
@@ -810,60 +826,85 @@ const CountryPage = () => {
                         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100">
                             <div className="grid md:grid-cols-5 h-full">
                                 {/* Form Side */}
-                                <div className="md:col-span-3 p-8 md:p-12">
-                                    <div className="mb-8">
-                                        <h3 className="font-heading text-3xl font-bold text-primary mb-2">Start Your Journey</h3>
-                                        <p className="text-muted-foreground">Fill in the details below to get a custom quote for {data.name}.</p>
+                                <div className="md:col-span-3 p-8 md:p-10">
+                                    <div className="mb-6">
+                                        <h3 className="font-heading text-2xl lg:text-3xl font-bold text-primary mb-1">Start Your Journey</h3>
+                                        <p className="text-muted-foreground text-sm lg:text-base">Fill in the details below to get a custom quote for {data.name}.</p>
                                     </div>
-                                    <form className="space-y-4" onSubmit={handleFormSubmit}>
-                                        <div className="grid sm:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
+                                    <form className="space-y-3.5" onSubmit={handleFormSubmit}>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div className="space-y-1.5">
                                                 <label className="text-sm font-medium text-gray-700">Name</label>
                                                 <input
                                                     type="text"
                                                     required
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                    placeholder="Your Name"
-                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                                    placeholder="Enter your full name"
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all text-sm"
                                                 />
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-sm font-medium text-gray-700">Phone</label>
+
+                                            <div className="space-y-1.5">
+                                                <label className="text-sm font-medium text-gray-700">Phone / WhatsApp</label>
                                                 <input
                                                     type="tel"
                                                     required
                                                     value={formData.phone}
                                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                     placeholder="+1 (555) 000-0000"
-                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all text-sm"
                                                 />
                                             </div>
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-medium text-gray-700">Email</label>
-                                            <input
-                                                type="email"
-                                                value={formData.email}
-                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                placeholder="hello@example.com"
-                                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
-                                            />
+
+                                        <div className="flex items-center gap-2 py-0.5 cursor-pointer group" onClick={() => setIsWhatsAppSame(!isWhatsAppSame)}>
+                                            <div className={cn(
+                                                "w-4.5 h-4.5 rounded flex items-center justify-center border transition-all",
+                                                isWhatsAppSame ? "bg-orange-500 border-orange-500 text-white" : "bg-white border-gray-300"
+                                            )}>
+                                                {isWhatsAppSame && <CheckCircle2 className="w-3.5 h-3.5" />}
+                                            </div>
+                                            <span className="text-[13px] text-gray-700 font-medium select-none">WhatsApp Number (same as phone)</span>
                                         </div>
-                                        <div className="grid sm:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
+
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-1.5">
+                                                <label className="text-sm font-medium text-gray-700">Adults</label>
+                                                <input
+                                                    type="number"
+                                                    min="1"
+                                                    value={formData.adults}
+                                                    onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all text-sm"
+                                                />
+                                            </div>
+                                            <div className="space-y-1.5">
+                                                <label className="text-sm font-medium text-gray-700">Kids</label>
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    value={formData.kids}
+                                                    onChange={(e) => setFormData({ ...formData, kids: e.target.value })}
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all text-sm"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div className="space-y-1.5">
                                                 <label className="text-sm font-medium text-gray-700">Travel Date</label>
                                                 <Popover>
                                                     <PopoverTrigger asChild>
                                                         <Button
                                                             variant={"outline"}
                                                             className={cn(
-                                                                "w-full px-4 py-3 h-[50px] rounded-xl bg-gray-50 border border-gray-200 text-left font-normal justify-start hover:bg-gray-100 hover:text-black shadow-none",
+                                                                "w-full px-4 py-2.5 h-[42px] rounded-xl bg-gray-50 border border-gray-200 text-left font-normal justify-start hover:bg-gray-100 hover:text-black shadow-none text-sm",
                                                                 !date && "text-muted-foreground"
                                                             )}
                                                         >
                                                             <CalendarIcon className="mr-2 h-4 w-4" />
-                                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                                            {date ? format(date, "PPP") : <span>Select date</span>}
                                                         </Button>
                                                     </PopoverTrigger>
                                                     <PopoverContent className="w-auto p-0" align="start">
@@ -877,24 +918,39 @@ const CountryPage = () => {
                                                     </PopoverContent>
                                                 </Popover>
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-sm font-medium text-gray-700">Travelers</label>
-                                                <select
-                                                    value={formData.travelers}
-                                                    onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
-                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
-                                                >
-                                                    <option>1 Person</option>
-                                                    <option>Couple (2)</option>
-                                                    <option>Family (3-5)</option>
-                                                    <option>Group (6+)</option>
-                                                </select>
+
+                                            <div className="space-y-1.5">
+                                                <label className="text-sm font-medium text-gray-700">Destination</label>
+                                                <input
+                                                    type="text"
+                                                    readOnly
+                                                    value={formData.destination}
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-100 border border-gray-200 text-gray-500 cursor-not-allowed outline-none transition-all text-sm"
+                                                />
                                             </div>
                                         </div>
+
+                                        <div className="space-y-1.5">
+                                            <label className="text-sm font-medium text-gray-700">Hotel Category <span className="text-gray-400 font-normal">(Optional)</span></label>
+                                            <div className="relative">
+                                                <select
+                                                    value={formData.hotelCategory}
+                                                    onChange={(e) => setFormData({ ...formData, hotelCategory: e.target.value })}
+                                                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none appearance-none transition-all text-sm"
+                                                >
+                                                    <option>Standard</option>
+                                                    <option>Premium (4 Star)</option>
+                                                    <option>Luxury (5 Star)</option>
+                                                    <option>Cottage / Boutique</option>
+                                                </select>
+                                                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                                            </div>
+                                        </div>
+
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full btn-primary py-4 text-lg mt-4 shadow-lg shadow-primary/20 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+                                            className="w-full btn-primary py-3.5 text-base mt-2 shadow-lg shadow-primary/20 hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed"
                                         >
                                             {isSubmitting ? "Sending..." : "Request Detailed Itinerary"}
                                         </button>
@@ -917,6 +973,14 @@ const CountryPage = () => {
                                             <li className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
                                                 <span className="text-sm text-white/80">Tailored Itineraries</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Europe based company</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">10,000+ happy customers</span>
                                             </li>
                                         </ul>
                                     </div>

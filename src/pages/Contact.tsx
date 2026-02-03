@@ -111,13 +111,12 @@ const Contact = () => {
       icon: Phone,
       title: "Phone",
       content: (
-        <>
-          <span className="block">+91 85904 04857</span>
-          <span className="block">+91 85920 04857</span>
-        </>
+        <div className="flex flex-col gap-1">
+          <a href="tel:+994555533744" className="block hover:text-gold transition-colors">+994 55 553 37 44</a>
+          <a href="tel:+994519737056" className="block hover:text-gold transition-colors">+994 51 973 70 56 </a>
+        </div>
       ),
       description: "Speak directly with our expert consultants.",
-      link: "tel:+918590404857",
       subtext: "Mon-Fri 9am-6pm"
     },
     {
@@ -144,17 +143,23 @@ const Contact = () => {
             </span>
             <span className="block opacity-80 text-xs leading-tight">Bashir safar-oghlu, Baku, Azerbaijan</span>
           </a>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-center hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
-          >
-            <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
-              <MapPin className="w-3.5 h-3.5" /> Kerala, India
-            </span>
-            <span className="block opacity-80 text-xs leading-tight">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
-          </a>
+          <div className="text-center">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
+            >
+              <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
+                <MapPin className="w-3.5 h-3.5" /> Kerala, India
+              </span>
+              <span className="block opacity-80 text-xs leading-tight">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
+            </a>
+            <div className="flex flex-col gap-1 mt-2">
+              <a href="tel:+918592004857" className="text-xs hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85920 04857</a>
+              <a href="tel:+918590404857" className="text-xs hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85904 04857</a>
+            </div>
+          </div>
         </div>
       ),
       description: "",
@@ -184,9 +189,9 @@ const Contact = () => {
                   key={index}
                 >
                   {(() => {
-                    const isOffice = info.title === "Office";
-                    const Wrapper = isOffice ? "div" : "a";
-                    const wrapperProps = isOffice ? {} : { href: info.link };
+                    const isStaticCard = info.title === "Office" || info.title === "Phone";
+                    const Wrapper = isStaticCard ? "div" : "a";
+                    const wrapperProps = isStaticCard ? {} : { href: info.link };
 
                     return (
                       <Wrapper

@@ -200,7 +200,7 @@ const About = () => {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF7700] text-[#faf4e5] hover:bg-black hover:text-[#FF7700] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                             aria-label={label}
                           >
                             <Icon className="w-4 h-4" strokeWidth={1.5} />

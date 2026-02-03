@@ -40,7 +40,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-white border border-border/60 rounded-full text-muted-foreground hover:bg-gold hover:text-white hover:border-gold hover:-translate-y-1 transition-all duration-300 shadow-sm"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF7700] text-[#faf4e5] hover:bg-black hover:text-[#FF7700] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 >
                   {social.icon}
                 </a>
@@ -86,9 +86,9 @@ export function Footer() {
                 { name: 'Kyrgyzstan', path: '/destinations/kyrgyzstan' },
                 { name: 'France', path: '/destinations/france' },
               ].map((item) => (
-                <Link 
-                  key={item.name} 
-                  to={item.path} 
+                <Link
+                  key={item.name}
+                  to={item.path}
                   className="relative text-slate-600 hover:text-gold text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 sm:gap-2.5 group py-1.5 px-2 sm:px-2 rounded-md hover:bg-gold/5 whitespace-nowrap"
                 >
                   <span className="absolute left-0 w-1 h-1 rounded-full bg-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></span>
@@ -111,9 +111,11 @@ export function Footer() {
                 </div>
                 <div>
                   <h5 className="font-semibold text-primary text-xs uppercase tracking-widest mb-1">Call Us</h5>
-                  <a href="tel:+994555533744" className="block text-muted-foreground hover:text-gold text-sm transition-colors font-medium">
-                    +994 55 553 37 44
-                  </a>
+                  <div className="space-y-1">
+                    <a href="tel:+994555533744" className="block text-muted-foreground hover:text-gold text-sm transition-colors font-medium">
+                      +994 55 553 37 44
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -163,7 +165,6 @@ export function Footer() {
             <Link to="/terms" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Terms of Use</Link>
             <Link to="/privacy" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Privacy Policy</Link>
             <Link to="/refund" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Refund Policy</Link>
-            <Link to="/shipping" className="text-xs text-muted-foreground/60 hover:text-gold transition-colors">Shipping Policy</Link>
           </div>
         </div>
       </div>

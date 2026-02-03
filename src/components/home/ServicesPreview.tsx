@@ -18,8 +18,6 @@ const packages = [
       "Personal driver",
       "Private transportation",
       "All including taxes",
-      "Car rent",
-      "Car fuel",
     ],
     highlighted: false,
     link: "/destinations",
@@ -40,8 +38,9 @@ const packages = [
       "Personalized Luxury Touches",
       "Flight tickets",
       "Visa",
+      "Entry ticket",
       "Lunch and dinner",
-      "Entry ticket"
+
     ],
     highlighted: true,
     link: "/services",
@@ -50,11 +49,11 @@ const packages = [
 
 export function ServicesPreview() {
   return (
-    <section className="relative pt-6 sm:pt-8 md:pt-8 pb-16 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-32 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)]">
+    <section className="relative pt-4 sm:pt-6 md:pt-6 pb-8 sm:pb-10 md:pb-12 lg:pt-8 lg:pb-16 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)]">
       <div className="container-wide relative z-10 px-6">
         {/* Section Header */}
         <RevealOnScroll animation="fade-up">
-          <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-10">
+          <div className="text-center max-w-4xl mx-auto mb-4 sm:mb-6 md:mb-8">
             <span className="inline-block py-1 px-3 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-bold uppercase tracking-[0.2em] mb-4">
               Exclusive Journeys
             </span>
@@ -80,7 +79,7 @@ export function ServicesPreview() {
               className="h-full"
             >
               <div
-                className={`group relative h-full rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 md:p-8 transition-all duration-500 flex flex-col items-start border
+                className={`group relative h-full rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-5 md:p-6 transition-all duration-500 flex flex-col items-start border
                   ${pkg.highlighted
                     ? "bg-[#000000] border-[#D4AF37]/40 shadow-[0_30px_60px_-10px_rgba(0,0,0,0.5)]"
                     : "bg-white border-gray-100 shadow-xl hover:shadow-2xl hover:border-[#D4AF37]/30"
@@ -101,7 +100,7 @@ export function ServicesPreview() {
                 )}
 
                 {/* Content */}
-                <div className="w-full mb-3 sm:mb-4 md:mb-5 border-b border-dashed pb-3 sm:pb-4 md:pb-5 border-current/10">
+                <div className="w-full mb-2 sm:mb-3 md:mb-4 border-b border-dashed pb-2 sm:pb-3 md:pb-4 border-current/10">
                   <h3 className={`font-heading text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-1.5 ${pkg.highlighted ? "text-white" : "text-[#0f172a]"}`}>
                     {pkg.title}
                   </h3>
@@ -111,7 +110,7 @@ export function ServicesPreview() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 w-full mb-4 sm:mb-5 md:mb-6 flex-grow">
+                <ul className="space-y-1 sm:space-y-1.5 md:space-y-2 w-full mb-3 sm:mb-4 md:mb-5 flex-grow">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 sm:gap-2.5 md:gap-3 group/item">
                       <div className={`mt-0.5 w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
@@ -132,7 +131,7 @@ export function ServicesPreview() {
                 {/* Button */}
                 <Link
                   to={pkg.link}
-                  className={`w-full py-2 sm:py-2.5 md:py-3.5 rounded-xl sm:rounded-2xl font-bold text-center tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden relative group/btn
+                  className={`w-full py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-2xl font-bold text-center tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden relative group/btn
                     ${pkg.highlighted
                       ? "bg-[#FF7700] text-white hover:bg-white hover:text-[#FF7700] shadow-[0_10px_30px_rgba(255,119,0,0.3)]"
                       : "bg-[#FF7700] text-white hover:bg-[#FF6B00] hover:text-white shadow-xl"

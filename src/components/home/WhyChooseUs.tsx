@@ -15,7 +15,7 @@ const features = [
   {
     icon: Headphones,
     title: "24/7 dedicated support",
-    description: "Round-the-clock assistance from pre-departure to your first week abroad.",
+    description: "Round the clock assistance from pre departure to your first week abroad.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -25,7 +25,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: "High visa and placement success",
-    description: "Industry-leading visa approval rates backed by meticulous documentation.",
+    description: "Industry leading visa approval rates backed by meticulous documentation.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -35,7 +35,7 @@ const features = [
   {
     icon: FileText,
     title: "Transparent process",
-    description: "Clear timelines, honest pricing, and real-time updates at every stage.",
+    description: "Clear timelines, honest pricing, and real time updates at every stage.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",

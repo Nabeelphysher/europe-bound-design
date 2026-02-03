@@ -19,7 +19,6 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
-const ShippingPolicy = lazy(() => import("./pages/ShippingPolicy"));
 const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 
 const queryClient = new QueryClient();
@@ -47,7 +46,6 @@ const App = () => (
             <Route path="/destinations/:country" element={<CountryPage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
-            <Route path="/shipping" element={<ShippingPolicy />} />
             <Route path="/refund" element={<RefundPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

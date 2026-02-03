@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, Clock, CreditCard, FileCheck } from "lucide-react";
+import { ArrowRight, FileCheck } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 interface CountryHeroProps {
@@ -42,12 +42,7 @@ export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
                         Visit <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold italic">{name}</span>
                     </h1>
 
-                    {/* Stats Grid */}
                     <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-10 text-sm md:text-base">
-                        <div className="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                            <Clock className="w-4 h-4 text-gold" />
-                            <span>{stats.duration}</span>
-                        </div>
                         <div className="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                             <FileCheck className="w-4 h-4 text-gold" />
                             <span>{stats.visa}</span>
