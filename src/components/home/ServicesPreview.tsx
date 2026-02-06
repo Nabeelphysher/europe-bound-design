@@ -23,7 +23,7 @@ const packages = [
     link: "/destinations",
   },
   {
-    title: "Customized Package",
+    title: "Luxury Package",
     description:
       "Tailored luxury experiences for discerning travelers seeking perfection.",
     price: "Premium",
