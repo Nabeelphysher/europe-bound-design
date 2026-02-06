@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Phone, Mail, Home, Info, MapPin, Image as ImageIcon, MessageSquare, Newspaper, Send, X, Instagram, Facebook, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "../../assets/logo-1.png";
+import logoImg from "../../assets/logo-unamed.png";
 import {
   Sheet,
   SheetContent,
@@ -15,12 +15,12 @@ import {
 const navItems = [
   { name: "Home", path: "/", icon: Home },
   {
-    name: "About",
+    name: "About Us",
     path: "/about",
     icon: Info,
     children: [
       { name: "Gallery", path: "/gallery", icon: ImageIcon },
-      { name: "Testimonials", path: "/testimonials", icon: MessageSquare },
+      { name: "Reviews", path: "/testimonials", icon: MessageSquare },
     ]
   },
   { name: "Destinations", path: "/destinations", icon: MapPin },
@@ -72,16 +72,19 @@ export function Header() {
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 relative z-50 group">
+        <Link to="/" className="flex items-center gap-2 relative z-50 group pl-2 sm:pl-4 md:pl-6">
           <div className={cn("transition-transform duration-500 relative animate-scale-in origin-left", isScrolled ? "scale-90" : "scale-100")}>
-            {/* Subtler/Removed Glow for better blending */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[radial-gradient(closest-side,rgba(250,244,229,0.8)_0%,transparent_100%)] blur-xl -z-10 opacity-50" />
+            {/* Pronounced White Gradient Background for Logo */}
+            <div className={cn(
+              "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] bg-[radial-gradient(closest-side,white_0%,rgba(255,255,255,0.8)_40%,transparent_100%)] blur-2xl -z-10 transition-opacity duration-500",
+              isScrolled ? "opacity-0" : "opacity-70"
+            )} />
             <img
               src={logoImg}
               alt="Europe Calling Logo"
               className={cn(
                 "w-auto object-contain transition-all duration-500",
-                isScrolled ? "h-10 lg:h-12" : "h-12 lg:h-16 drop-shadow-xl"
+                isScrolled ? "h-10 lg:h-12" : "h-20 lg:h-28 drop-shadow-2xl"
               )}
             />
           </div>

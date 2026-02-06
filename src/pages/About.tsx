@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
-import { ArrowRight, Target, Eye, Heart, Quote, Instagram, Facebook, Linkedin, Volume2, VolumeX, Maximize, Play, Pause } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Quote, Instagram, Facebook, Volume2, VolumeX, Maximize, Play, Pause } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { CTASection } from "@/components/home/CTASection";
 
@@ -30,8 +30,8 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Aysha Nasrin P", role: "Sales Adviser ", location: "Mumbai", img: poster3 },
-  { name: "Muhsin Mubarak P", role: " Sales Adviser", location: "Delhi", img: poster2 },
+  { name: "Aysha Nasrin P", role: "Sales Advisor ", location: "Mumbai", img: poster3 },
+  { name: "Muhsin Mubarak P", role: " Sales Advisor", location: "Delhi", img: poster2 },
   { name: "Muhammed Navaf P", role: "Senior Travel Consultant", location: "Dubai", img: poster5 },
   { name: "Aysha Thaslee E.C", role: "Travel Consultant ", location: "Berlin", img: poster7 },
   { name: "Najiya binu", role: "Travel Consultant", location: "Paris", img: poster9 },
@@ -150,15 +150,12 @@ const About = () => {
                     <div className="flex items-center gap-4 mb-2">
                       <span className="h-[2px] w-8 bg-orange-500"></span>
                       <span className="font-sans text-[10px] font-bold tracking-[0.25em] text-orange-500 uppercase">
-                        Welcome to Europe Bound
+                        Welcome to Europe Calling
                       </span>
                     </div>
 
                     {/* Leading Text */}
                     <div className="space-y-0">
-                      <h2 className="font-heading text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                        Hi, I'm
-                      </h2>
                       <h2 className="font-heading text-4xl lg:text-6xl font-bold text-orange-500 leading-tight">
                         Najath Sharafudeen
                       </h2>
@@ -192,8 +189,7 @@ const About = () => {
                       <div className="flex gap-4">
                         {[
                           { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/naj.ath?igsh=MTd0cWJzNzQwcjJtdg==" },
-                          { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/share/1D3oGMZS5V/" },
-                          { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" }
+                          { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/share/1D3oGMZS5V/" }
                         ].map(({ Icon, label, href }, i) => (
                           <a
                             key={i}
@@ -234,17 +230,22 @@ const About = () => {
                       </div>
 
                       {/* Floating Badge */}
-                      <div className="absolute bottom-8 right-8 md:-right-6 z-30">
-                        <div className="bg-white/95 backdrop-blur-sm py-3 px-6 rounded-full shadow-xl border border-white/50 flex items-center gap-3 animate-float">
+                      <a
+                        href="https://wa.me/994555533744"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-8 right-8 md:-right-6 z-30 group/badge"
+                      >
+                        <div className="bg-white/95 backdrop-blur-sm py-3 px-6 rounded-full shadow-xl border border-white/50 flex items-center gap-3 animate-float transition-all duration-300 group-hover/badge:scale-105 group-hover/badge:shadow-2xl">
                           <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7700] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#FF7700]"></span>
                           </span>
-                          <span className="text-xs font-bold text-primary tracking-wide">
+                          <span className="text-xs font-bold text-primary tracking-wide group-hover/badge:text-[#FF7700] transition-colors">
                             Open for Consultation
                           </span>
                         </div>
-                      </div>
+                      </a>
 
                     </div>
 
@@ -281,7 +282,7 @@ const About = () => {
                       WHO WE ARE
                     </span>
                   </div>
-                  <h2 className="font-heading text-5xl font-medium text-primary leading-[1.1]">
+                  <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary leading-[1.2]">
                     Why Europe Calling <br />
                     <span className="font-serif italic text-primary">Was Created</span>
                   </h2>
@@ -305,14 +306,19 @@ const About = () => {
                     />
 
                     {/* Floating 'Watch Video' Pill (Top Left) */}
-                    <div className="absolute top-10 -left-6 md:-left-12 bg-[#faf4e5] py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50/50">
-                      <div className="w-10 h-10 bg-[#FF7700] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#FF7700]/30">
+                    <a
+                      href="https://www.instagram.com/reel/DSuWesgldpy/?igsh=Y3dpaDZ5bDdqczV6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-10 -left-6 md:-left-12 bg-[#faf4e5] py-3 px-5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-bounce-slow z-20 border border-gray-50/50 hover:bg-white hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,119,0,0.2)] transition-all duration-300 group/pill"
+                    >
+                      <div className="w-10 h-10 bg-[#FF7700] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#FF7700]/30 group-hover/pill:bg-black transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-0.5">
                           <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
                         </svg>
                       </div>
-                      <span className="text-sm font-bold text-primary">Watch Video</span>
-                    </div>
+                      <span className="text-sm font-bold text-primary group-hover/pill:text-[#FF7700] transition-colors">Watch Video</span>
+                    </a>
 
                     {/* Floating Quote Card (Bottom Left) */}
                     <div className="absolute bottom-10 -left-6 md:-left-16 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] max-w-[280px] z-20 border border-gray-50 hidden sm:block">
@@ -324,7 +330,7 @@ const About = () => {
                         </div>
                       </div>
                       <p className="text-xs text-gray-500 italic leading-relaxed font-medium">
-                        "Empower your passion for teaching by sharing your expertise and unlock the path to financial freedom."
+                        "Travel taught me that happiness grows when you open your world to others. Europe Calling was born from real journeys, real people, and real experiences."
                       </p>
                     </div>
                   </div>
@@ -344,14 +350,14 @@ const About = () => {
                     </div>
 
                     {/* Headline */}
-                    <h2 className="hidden lg:block font-heading text-5xl lg:text-[4rem] font-medium text-primary leading-[1.1] mb-8">
+                    <h2 className="hidden lg:block font-heading text-5xl font-medium text-primary leading-[1.2] mb-8">
                       Why Europe Calling <br />
                       <span className="font-serif italic text-primary">Was Created</span>
                     </h2>
 
                     {/* Description */}
                     <p className="text-lg text-gray-500 leading-[1.8] mb-8 lg:mb-12 font-light max-w-lg">
-                      It began with a realization. In 2014, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy. Europe Calling was born to bridge this gap.
+                      It began with a realization. In 2020, the European dream was alive for millions, yet the path to achieving it was obscured by a fog of fragmented information, changing regulations, and impersonal bureaucracy. Europe Calling was born to bridge this gap.
                     </p>
 
                     <div className="w-full h-px bg-gray-100 mb-8 lg:mb-12"></div>
@@ -359,14 +365,9 @@ const About = () => {
                     {/* Stats Row */}
                     <div ref={statsRef} className="flex flex-row items-center justify-start gap-8 md:gap-12">
                       <div className="space-y-1 md:space-y-2 text-left">
-                        <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">Top 1</h3>
-                        <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider md:tracking-[0.2em]">IN THE INDUSTRY</p>
-                      </div>
-                      <div className="w-px h-12 bg-gray-200"></div>
-                      <div className="space-y-1 md:space-y-2 text-left">
                         <AnimatedCounter
-                          value={25}
-                          suffix="K"
+                          value={10}
+                          suffix="K+"
                           duration={1500}
                           isVisible={statsVisible}
                           className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gold leading-tight"
@@ -515,7 +516,7 @@ const About = () => {
                     Live Premiers Weekly
                   </div>
 
-                  <h2 className="font-heading text-[48px] font-bold text-primary leading-tight">
+                  <h2 className="font-heading text-4xl lg:text-5xl font-bold text-primary leading-tight">
                     Why Europe Calling <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200 italic">Was Created</span>
                   </h2>
 
@@ -526,9 +527,6 @@ const About = () => {
                   <div className="flex gap-4 pt-4 justify-center lg:justify-start">
                     <a href="https://youtube.com/shorts/g_vqnB18DYM?si=1bPUwWqF1Od104oH" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full bg-muted border border-border text-foreground hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white transition-all duration-300 group">
                       <svg className="w-6 h-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" /></svg>
-                    </a>
-                    <a href="#" className="w-12 h-12 flex items-center justify-center rounded-full bg-muted border border-border text-foreground hover:bg-[#1DB954] hover:border-[#1DB954] hover:text-white transition-all duration-300 group">
-                      <svg className="w-6 h-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.019.6-1.141 4.38-1.379 9.901-.719 13.561 1.56.42.3.479.84.18 1.26zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" /></svg>
                     </a>
                     <div className="h-12 px-6 flex items-center rounded-full border border-border text-muted-foreground text-sm italic">
                       Watch on YouTube
@@ -627,7 +625,7 @@ const About = () => {
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <p className="text-gold text-xs font-bold uppercase tracking-widest mb-2">Episode 24 • Season 2</p>
-                          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2 leading-tight group-hover:text-gold transition-colors">Demystifying the German Opportunity Card</h3>
+                          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2 leading-tight group-hover:text-gold transition-colors">Where to Eat in Azerbaijan | Best Food Spots in Baku, shahabag and gabala!!!</h3>
                           <div className="flex items-center gap-2 text-muted-foreground text-sm">
                             <div className="w-6 h-6 rounded-full overflow-hidden bg-muted border border-border">
                               <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100" alt="Host" className="w-full h-full object-cover" />
@@ -681,7 +679,7 @@ const About = () => {
                   A wholesome team that <br className="hidden md:block" /> stands for success!
                 </h2>
                 <p className="font-serif text-xl md:text-2xl italic text-gray-500 max-w-2xl mx-auto">
-                  Meet the experts guiding your European integration.
+                  Meet the experts guiding your European journeys.
                 </p>
               </div>
             </RevealOnScroll>

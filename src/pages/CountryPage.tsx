@@ -176,7 +176,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit France?", answer: "If you’re from a Schengen visa-free country, you can enter without a visa for short stays. Others need a Schengen tourist visa." },
             { question: "Is France safe for tourists?", answer: "Yes. France is generally safe for visitors, especially in major tourist areas. As in any big destination, basic precautions against pickpocketing are advised." },
-            { question: "When is the best time to visit France?", answer: "The best time is April to June and September to October for pleasant weather, fewer crowds, and great sightseeing." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ]
     },
     azerbaijan: {
@@ -226,7 +226,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Azerbaijan?", answer: "Yes, most travelers can easily apply for an e-visa online before travel. The process is quick and simple." },
             { question: "Is Azerbaijan safe for tourists?", answer: "Yes. Azerbaijan is considered a safe country for visitors, especially in major cities like Baku, with friendly locals and good public security." },
-            { question: "What is the best time to visit Azerbaijan?", answer: "The best time is April to June and September to October when the weather is pleasant for sightseeing and outdoor activities." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ]
     },
     kazakhstan: {
@@ -266,7 +266,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Kazakhstan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply online for an e-visa. Always verify your eligibility before travel." },
             { question: "Is Kazakhstan safe for tourists?", answer: "Yes. Major cities like Almaty and Astana are generally safe, with good infrastructure and helpful locals." },
-            { question: "When is the best time to visit Kazakhstan?", answer: "The best time is May to September for pleasant weather, outdoor activities, and sightseeing." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "Arrival in Almaty", description: "", image: kazakhstanAlmatyImg },
@@ -317,7 +317,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Armenia?", answer: "Many travelers can enter visa-free or get a visa on arrival / e-visa depending on nationality. Check eligibility before you go." },
             { question: "Is Armenia safe for tourists?", answer: "Yes. Armenia is considered very safe, with friendly locals and low crime rates, especially in Yerevan and tourist areas." },
-            { question: "When is the best time to visit Armenia?", answer: "The best months are May to October for pleasant weather, sightseeing, and mountain travel." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "Yerevan City Tour", description: "", image: ArmeniaYerevanImg },
@@ -372,7 +372,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Kyrgyzstan?", answer: "Many nationalities can enter visa-free for 30–60 days. Others can apply for an e-visa online. Always confirm based on your passport." },
             { question: "Is Kyrgyzstan safe for tourists?", answer: "Yes. Kyrgyzstan is generally safe and peaceful, especially in Bishkek and popular tourist regions. Locals are known for warm hospitality." },
-            { question: "When is the best time to visit Kyrgyzstan?", answer: "The best time is June to September for trekking, lake visits, and mountain travel due to good weather conditions." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "TRANSFER TO BISHKEK HOTEL", description: "", image: kyrgyzstanHotelImg },
@@ -420,7 +420,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa for the Netherlands?", answer: "Travelers from non-visa-exempt countries need a Schengen Visa. We provide full assistance with your application documentation." },
             { question: "Is English widely spoken?", answer: "Yes, the Netherlands has one of the highest English-proficiency rates in the world, making travel very easy." },
-            { question: "When is the tulip season?", answer: "The best time to see tulips, especially at Keukenhof, is from mid-April to early May." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "Arrival in Amsterdam", description: "Welcome to the Dutch capital! Private transfer to your hotel. Evening canal cruise to see the city lights.", image: netherlandsImg },
@@ -470,7 +470,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa for Russia?", answer: "Yes, most travelers require a visa. Electronic visas (E-visas) are available for citizens of many countries." },
             { question: "Is it safe to travel to Russia?", answer: "Yes, major tourist cities like Moscow and St. Petersburg are generally safe with high security, but standard travel precautions apply." },
-            { question: "What is the best time to visit?", answer: "Late spring (May-June) for White Nights in St. Petersburg, or winter for a classic snowy experience." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "Arrival in St. Petersburg", description: "", image: russiaPetersburgImg },
@@ -519,7 +519,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Georgia?", answer: "Many nationalities can enter visa-free for up to 1 year. Others can apply for an e-visa online. Always check your eligibility before travel." },
             { question: "Is Georgia safe for tourists?", answer: "Yes. Georgia is considered very safe, especially in cities like Tbilisi and Batumi, with friendly locals and good tourist support." },
-            { question: "When is the best time to visit Georgia?", answer: "The best time is May to October — perfect for sightseeing, mountain trips, and outdoor activities." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "TBILISI CITY TOUR", image: georgiaTbilisiImg },
@@ -568,7 +568,7 @@ const countryData: Record<string, CountryData> = {
         faqs: [
             { question: "Do I need a visa to visit Uzbekistan?", answer: "Many nationalities can enter visa-free for short stays. Others can apply for a quick e-visa online. Always check current rules for your passport." },
             { question: "Is Uzbekistan safe for tourists?", answer: "Yes. Uzbekistan is considered very safe, especially in tourist cities like Tashkent, Samarkand, and Bukhara, with welcoming locals." },
-            { question: "When is the best time to visit Uzbekistan?", answer: "The best time is April–May and September–October when the weather is comfortable for sightseeing and travel." }
+            { question: "Do you provide emergency support?", answer: "Yes, we offer 24/7 emergency assistance for all our travelers throughout their journey." }
         ],
         itinerary: [
             { day: 1, title: "Airport Transfer + Panoramic City Tour", description: "", image: uzbekistanCityImg },
@@ -791,7 +791,7 @@ const CountryPage = () => {
                                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">What's Included</h2>
                                 <div className="w-24 h-1 bg-gold/30 mx-auto rounded-full mb-6" />
                                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                                    We believe in Value & Transparency. Your {data.name} package includes Entry Tickets, Visa Assistance, and everything you need for a seamless experience.
+                                    We believe in Value & Transparency. Your {data.name} package includes Entry Tickets, Visa Assistance,Sightseeing, Flight ticket and everything you need for a seamless experience.
                                 </p>
                             </div>
 
@@ -980,13 +980,25 @@ const CountryPage = () => {
                                             </li>
                                             <li className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Malayalee-led</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Azerbaijan-based</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
+                                                <span className="text-sm text-white/80">Your Eurasian travel experts</span>
+                                            </li>
+                                            <li className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
                                                 <span className="text-sm text-white/80">10,000+ happy customers</span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="mt-12 relative z-10">
                                         <p className="text-xs text-white/40 uppercase tracking-widest mb-2">Need Help?</p>
-                                        <p className="text-2xl font-bold text-white">+91 85920 04857</p>
+                                        <p className="text-2xl font-bold text-white">+994 51 973 70 56</p>
                                         <p className="text-white/60 text-sm">sales@europecalling.com</p>
                                     </div>
                                 </div>

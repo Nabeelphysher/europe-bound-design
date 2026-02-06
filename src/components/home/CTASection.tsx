@@ -33,7 +33,7 @@ export function CTASection() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:+49123456789"
+                href="tel:+994555533744"
                 className="btn-secondary border-primary/30 text-primary hover:bg-primary hover:text-white inline-flex items-center justify-center text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3"
               >
                 Call Us Now

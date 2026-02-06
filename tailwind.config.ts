@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Raleway"', 'sans-serif'],
+        heading: ['"Archivo"', 'sans-serif'],
         body: ['"Poppins"', 'sans-serif'],
+        archivo: ['"Archivo"', 'sans-serif'],
       },
       fontWeight: {
         thin: '100',

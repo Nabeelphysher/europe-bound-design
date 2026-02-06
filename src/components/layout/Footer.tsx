@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter, MapPin } from "lucide-react";
-import logoImg from "../../assets/logo-1.png";
+import logoImg from "../../assets/logo-unamed.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -54,7 +54,7 @@ export function Footer() {
             <ul className="space-y-3.5">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'About', path: '/about' },
+                { name: 'About Us', path: '/about' },
                 { name: 'Destinations', path: '/destinations' },
                 { name: 'Contact', path: '/contact' }
               ].map((item) => (
@@ -137,16 +137,29 @@ export function Footer() {
                 <div className="shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   <MapPin className="w-4 h-4 text-gold fill-current" />
                 </div>
-                <div>
-                  <h5 className="font-semibold text-primary text-xs uppercase tracking-widest mb-1">Location</h5>
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-muted-foreground hover:text-gold text-sm max-w-[220px] md:max-w-[220px] mx-auto md:mx-0 transition-colors leading-relaxed"
-                  >
-                    2nd Floor, Paravath Arcade, opp. Budget Hypermarket, Varangode, Down Hill, Malappuram, Kerala 676519
-                  </a>
+                <div className="space-y-4">
+                  <div>
+                    <h5 className="font-semibold text-primary text-xs uppercase tracking-widest mb-1">Baku Office</h5>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Bashir+safar-oghlu,+Baku,+Azerbaijan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-muted-foreground hover:text-gold text-sm max-w-[220px] md:max-w-[220px] mx-auto md:mx-0 transition-colors leading-relaxed font-medium"
+                    >
+                      Bashir safar-oghlu, Baku, Azerbaijan
+                    </a>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-primary text-xs uppercase tracking-widest mb-1">India Office</h5>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+Paravath+Arcade,+opp.+Budget+Hypermarket,+Varangode,+Down+Hill,+Malappuram,+Kerala+676519"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-muted-foreground hover:text-gold text-sm max-w-[220px] md:max-w-[220px] mx-auto md:mx-0 transition-colors leading-relaxed font-medium"
+                    >
+                      2nd Floor, Paravath Arcade, Malappuram, Kerala 676519
+                    </a>
+                  </div>
                 </div>
               </div>
 

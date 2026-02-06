@@ -23,7 +23,7 @@ const packages = [
     link: "/destinations",
   },
   {
-    title: "Customized Package",
+    title: "Luxury Package",
     description:
       "Tailored luxury experiences for discerning travelers seeking perfection.",
     price: "Premium",
@@ -33,8 +33,7 @@ const packages = [
       "Exclusive Dining Experiences",
       "Private Tours & Expert Guides",
       "Curated Cultural Experiences",
-      "Bespoke Excursions Across Destinations",
-      "Leisure & Wellness Experiences",
+      "Custom Trips Across Multiple Destinations",
       "Personalized Luxury Touches",
       "Flight tickets",
       "Visa",
@@ -79,7 +78,7 @@ export function ServicesPreview() {
               className="h-full"
             >
               <div
-                className={`group relative h-full rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-5 md:p-6 transition-all duration-500 flex flex-col items-start border
+                className={`group relative h-full rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-5 md:p-6 transition-all duration-500 flex flex-col items-center text-center md:items-start md:text-left border
                   ${pkg.highlighted
                     ? "bg-[#000000] border-[#D4AF37]/40 shadow-[0_30px_60px_-10px_rgba(0,0,0,0.5)]"
                     : "bg-white border-gray-100 shadow-xl hover:shadow-2xl hover:border-[#D4AF37]/30"

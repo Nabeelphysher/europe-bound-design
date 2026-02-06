@@ -14,7 +14,7 @@ interface CountryHeroProps {
 
 export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
     return (
-        <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[65vh] sm:h-[80vh] md:h-[85vh] min-h-[480px] sm:min-h-[600px] flex items-center justify-center overflow-hidden">
             {/* Background Image with Zoom Effect */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -27,24 +27,24 @@ export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
                 <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
             </div>
 
-            <div className="container-wide relative z-10 px-4 sm:px-6 text-center text-white mt-16">
+            <div className="container-wide relative z-10 px-4 sm:px-6 text-center text-white mt-12 sm:mt-16">
                 <RevealOnScroll animation="fade-up">
                     {/* Tagline Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 mx-auto hover:bg-white/20 transition-colors cursor-default">
-                        <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                        <span className="text-gold font-bold text-xs md:text-sm uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-4 sm:mb-6 mx-auto hover:bg-white/20 transition-colors cursor-default">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold animate-pulse" />
+                        <span className="text-gold font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em]">
                             {tagline}
                         </span>
                     </div>
 
                     {/* Main Title */}
-                    <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold mb-6 leading-[1.1] tracking-tight text-shadow-lg">
+                    <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold mb-4 sm:mb-6 leading-[1.1] tracking-tight text-shadow-lg">
                         Visit <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-gold italic">{name}</span>
                     </h1>
 
-                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-10 text-sm md:text-base">
-                        <div className="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
-                            <FileCheck className="w-4 h-4 text-gold" />
+                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-6 sm:mb-10 text-xs sm:text-sm md:text-base">
+                        <div className="flex items-center gap-2 text-white/90 bg-black/30 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-sm border border-white/10">
+                            <FileCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
                             <span>{stats.visa}</span>
                         </div>
 
@@ -54,12 +54,12 @@ export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a
                             href="#booking-form"
-                            className="group relative px-8 py-4 bg-gold text-primary rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] hover:-translate-y-1 w-full sm:w-auto min-w-[200px]"
+                            className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-gold text-primary rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] hover:-translate-y-1 w-full sm:w-auto min-w-[160px] sm:min-w-[200px]"
                         >
                             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-                            <span className="font-bold relative z-10 flex items-center justify-center gap-2">
+                            <span className="font-bold relative z-10 flex items-center justify-center gap-2 text-sm sm:text-base">
                                 Book Now
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </a>
 

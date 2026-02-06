@@ -122,7 +122,7 @@ export function DestinationsSection({ className = "", showViewAll = true, showHe
 
                             {/* Top Badge (Tours Count) - Subtle Glass */}
                             <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out translate-y-2 group-hover:translate-y-0">
-                                <span className="bg-white/20 backdrop-blur-md border border-white/10 text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider">
+                                <span className="bg-black text-[#ff7700] text-[8px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-wider shadow-lg border border-[#ff7700]/20">
                                     {dest.tours}
                                 </span>
                             </div>

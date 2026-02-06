@@ -77,7 +77,7 @@ const Gallery = () => {
             <main className="bg-[#faf4e5] min-h-screen pt-20">
                 <PageHeader
                     eyebrow="Our Gallery"
-                    title="Memories Across Europe"
+                    title="Crafting Memories For You"
                     description="Explore our collection of breathtaking moments, happy clients, and stunning destinations."
                 />
 
@@ -103,19 +103,7 @@ const Gallery = () => {
                                             loading="lazy"
                                         />
 
-                                        {/* Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                                            <span className="text-gold text-xs font-semibold uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
-                                                {image.category}
-                                            </span>
-                                            <h3 className="text-white font-heading text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
-                                                {image.title}
-                                            </h3>
-                                            <p className="text-white/80 text-sm flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
-                                                <ZoomIn className="w-4 h-4" />
-                                                {image.location}
-                                            </p>
-                                        </div>
+
                                     </div>
                                 </RevealOnScroll>
                             ))}

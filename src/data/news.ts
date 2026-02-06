@@ -1,9 +1,19 @@
-import germanyImg from "@/assets/destination-germany.jpg";
+import eesImg from "@/assets/EES.jpg";
 import russiaImg from "@/assets/russia.jpg";
-import georgiaImg from "@/assets/destination-georgia.png";
+import nomadImg from "@/assets/nomed.jpg";
 import kazakhstanImg from "@/assets/a2 (1).png";
 import armeniaImg from "@/assets/a4.png";
-import franceImg from "@/assets/destination-france.jpg";
+import etisImg from "@/assets/ETIS.jpg";
+import trainImg from "@/assets/h2 (1).jpg";
+import startupImg from "@/assets/startup.jpg";
+import winterImg from "@/assets/mountain.jpg";
+import flightImg from "@/assets/flight.jpg";
+import visaImg from "@/assets/schgean.jpg";
+import cardImg from "@/assets/germenCard.jpg";
+import ouluImg from "@/assets/images.jpg";
+import aivisaImg from "@/assets/aivisa.jpg";
+import coolcationImg from "@/assets/coolcations.jpg";
+import monocoImg from "@/assets/monoco.jpg";
 
 export const news = [
   {
@@ -26,7 +36,7 @@ export const news = [
       <p>"While the delay provides a breather, we advise all our clients to stay updated," says our Head of Immigration. Europe Calling will continue to monitor these developments closely to keep you prepared.</p>
     `,
     date: "January 15, 2026",
-    image: franceImg,
+    image: etisImg,
     slug: "etias-launch-delayed-late-2026",
   },
   {
@@ -46,7 +56,7 @@ export const news = [
       <p>For our clients, this means arriving at the airport a bit earlier is the new norm. "Digital borders are the future," notes our travel analyst. "They offer a layer of security and efficiency that manual stamps never could."</p>
     `,
     date: "December 12, 2025",
-    image: germanyImg,
+    image: eesImg,
     slug: "ees-system-impact-report",
   },
   {
@@ -66,29 +76,29 @@ export const news = [
       <p>Europe Calling has already helped over 200 freelancers secure these visas in the last quarter alone. If you're ready to move your office to a sunny piazza, now is the time to apply.</p>
     `,
     date: "January 20, 2026",
-    image: georgiaImg,
+    image: nomadImg,
     slug: "digital-nomad-visa-updates-2026",
   },
   {
     id: 4,
-    category: "Company News",
-    title: "Europe Calling Expands to Scandinavia",
-    excerpt: "We are excited to announce our new regional offices in Stockholm and Oslo, bringing our expert immigration services to Northern Europe.",
+    category: "New Launch",
+    title: "Alpine Elegance: Luxury Winter Retreats 2026",
+    excerpt: "Discover our new collection of exclusive winter escapes in the Swiss and French Alps, featuring private chalets and world-class skiing.",
     content: `
-      <p>Responding to surging demand for migration pathways to the Nordics, Europe Calling is proud to announce the opening of two new operational hubs in Stockholm, Sweden, and Oslo, Norway.</p>
+      <p>We are proud to unveil our most ambitious winter collection yet. Alpine Elegance 2026 brings you the peak of luxury in Europe's most prestigious mountain destinations.</p>
       
-      <p>Scandinavia offers some of the highest standards of living in the world, but its immigration policies can be complex. Our new local teams will provide on-the-ground support for:</p>
+      <h3>Premium Features:</h3>
       <ul>
-        <li><strong>Work Permits:</strong> Specialized guidance for the tech and green energy sectors.</li>
-        <li><strong>Family Reunification:</strong> Navigating the strict requirements for bringing loved ones.</li>
-        <li><strong>Student Visas:</strong> Partnering with top Nordic universities.</li>
+        <li><strong>Private Chalets:</strong> Handpicked properties with ski-in/ski-out access and personal butler service.</li>
+        <li><strong>Exclusive Experiences:</strong> Private heli-skiing tours and sunset fondue on the glacier.</li>
+        <li><strong>Wellness & Spa:</strong> Access to world-renowned thermal baths and in-house spa treatments.</li>
       </ul>
 
-      <p>"This expansion marks a new chapter for us," says our CEO. "We are bringing our signature personalized care to the North."</p>
+      <p>"Our goal is to provide more than just a holiday; we offer an immersion into the sublime," says our Senior Travel Curator. Bookings are now open for the 2026 season.</p>
     `,
-    date: "January 5, 2026",
-    image: kazakhstanImg,
-    slug: "europe-calling-scandinavia-expansion",
+    date: "February 5, 2026",
+    image: winterImg,
+    slug: "alpine-elegance-luxury-winter-retreats-2026",
   },
   {
     id: 5,
@@ -107,7 +117,7 @@ export const news = [
       <p>At Europe Calling, we are now curating 'Slow Travel' itineraries that celebrate the journey as much as the destination.</p>
     `,
     date: "December 28, 2025",
-    image: franceImg,
+    image: trainImg,
     slug: "sustainable-travel-train-initiative",
   },
   {
@@ -123,7 +133,7 @@ export const news = [
       <p>Elena's company recently raised Series A funding. Her story is a powerful reminder that a visa is just the beginning of what's possible in Europe.</p>
     `,
     date: "November 15, 2025",
-    image: armeniaImg,
+    image: startupImg,
     slug: "elena-startup-success-story",
   },
   {
@@ -145,7 +155,7 @@ export const news = [
       <p>Europe Calling is already offering exclusive package deals for these new routes. Contact us to be among the first to fly direct.</p>
     `,
     date: "January 12, 2026",
-    image: russiaImg,
+    image: flightImg,
     slug: "direct-flights-delhi-rome-athens-2026",
   },
   {
@@ -165,7 +175,7 @@ export const news = [
       <p>While the increase is modest, we advise applying early to avoid the peak season rush which often comes with additional expedited service fees.</p>
     `,
     date: "January 8, 2026",
-    image: franceImg,
+    image: visaImg,
     slug: "schengen-visa-fee-increase-2026",
   },
   {
@@ -179,7 +189,7 @@ export const news = [
       <p>This provides a 12-month window to find qualified employment, during which candidates can work part-time to support themselves. It's a game-changer for non-EU students looking to build a career in Europe largest economy.</p>
     `,
     date: "December 20, 2025",
-    image: germanyImg,
+    image: cardImg,
     slug: "germany-opportunity-card-students",
   },
   {
@@ -200,7 +210,7 @@ export const news = [
       <p>Europe Calling is engaging with local partners to offer exclusive 'Northern Lights & Culture' tour packages for winter 2026.</p>
     `,
     date: "January 2, 2026",
-    image: kazakhstanImg,
+    image: ouluImg,
     slug: "oulu-capital-of-culture-2026",
   },
   {
@@ -214,7 +224,7 @@ export const news = [
       <p>This applies to both employees joining French tech companies and founders launching AI startups. Family members also receive a multi-year permit automatically.</p>
     `,
     date: "December 15, 2025",
-    image: franceImg,
+    image: aivisaImg,
     slug: "france-tech-visa-ai-expansion",
   },
   {
@@ -233,7 +243,28 @@ export const news = [
       </ul>
     `,
     date: "January 22, 2026",
-    image: russiaImg,
+    image: coolcationImg,
     slug: "coolcationing-travel-trend-2026",
+  },
+  {
+    id: 13,
+    category: "Success Story",
+    title: "A Royal Welcome: Our Clients' Journey to Monaco",
+    excerpt: "Meet the family who experienced the ultimate Mediterranean luxury tour with Europe Calling this summer.",
+    content: `
+      <p>This month, we are celebrating a truly unique success story. We had the honor of organizing a bespoke 14-day tour for the Robertson family, taking them from the hills of Tuscany to the glitz of Monaco.</p>
+      
+      <h3>Highlights of the Journey:</h3>
+      <ul>
+        <li><strong>Monaco Dream:</strong> A private yacht tour of the French Riviera followed by a gala dinner at the Monte Carlo Casino.</li>
+        <li><strong>Tuscan Retreat:</strong> A private villa stay with olive oil tasting and vintage car tours.</li>
+        <li><strong>Parisian Finale:</strong> Exclusive after-hours access to the Louvre.</li>
+      </ul>
+
+      <p>"It wasn't just a trip; it was a series of perfect moments," the Robertsons shared. At Europe Calling, we turn itineraries into legacies.</p>
+    `,
+    date: "February 15, 2026",
+    image: monocoImg,
+    slug: "royal-welcome-clients-journey-monaco",
   },
 ];

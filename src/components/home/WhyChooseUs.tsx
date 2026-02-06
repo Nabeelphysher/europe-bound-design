@@ -5,7 +5,7 @@ const features = [
   {
     icon: Globe,
     title: "Europe-focused expertise",
-    description: "Deep knowledge of European immigration policies and cultural nuances.",
+    description: "Deep knowledge of European destinations, cultures, and hidden gems.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -15,7 +15,7 @@ const features = [
   {
     icon: Headphones,
     title: "24/7 dedicated support",
-    description: "Round the clock assistance from pre departure to your first week abroad.",
+    description: "Round the clock assistance from pre-departure to your safe return home.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -24,8 +24,8 @@ const features = [
   },
   {
     icon: ShieldCheck,
-    title: "High visa and placement success",
-    description: "Industry leading visa approval rates backed by meticulous documentation.",
+    title: "Eurasian travel experts",
+    description: "Baku-based, Malayalee-led team delivering seamless ground coordination.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -54,8 +54,8 @@ const features = [
   },
   {
     icon: Clock,
-    title: "100% documentation aid",
-    description: "Complete legal and documentation support leaving no room for errors.",
+    title: "Hassle-free documentation",
+    description: "Expert assistance with visas, permits, and all travel-related paperwork.",
     bgColor: "bg-black",
     pinColor: "bg-[#FF7700]",
     textColor: "text-[#FF7700]",
@@ -128,7 +128,7 @@ export function WhyChooseUs() {
                     <item.icon className={`w-7 h-7 text-white`} strokeWidth={1.5} />
                   </div>
 
-                  <h3 className={`font-heading text-xl md:text-2xl font-bold mb-3 leading-tight ${item.textColor} drop-shadow-[0_2px_10px_rgba(255,119,0,0.15)]`}>
+                  <h3 className={`font-heading text-lg sm:text-xl font-bold mb-3 leading-tight ${item.textColor} drop-shadow-[0_2px_10px_rgba(255,119,0,0.15)]`}>
                     {item.title}
                   </h3>
 

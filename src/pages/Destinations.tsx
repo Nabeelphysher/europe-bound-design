@@ -14,7 +14,7 @@ const Destinations = () => {
                 <PageHeader
                     eyebrow="Explore Europe"
                     title={<>Our <span className="text-gold italic">Destinations</span></>}
-                    description="Discover the most popular destinations for your next adventure or relocation."
+                    description="Discover the most popular destinations for your next adventure."
                 />
 
                 <div className="pb-12">

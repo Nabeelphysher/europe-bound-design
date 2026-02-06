@@ -111,11 +111,11 @@ export const HeroSectionV3 = () => {
                 </div>
             ))}
 
-            {/* Main Content - Left Aligned */}
-            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center pb-20 md:pb-0 pt-32">
-                <div className="max-w-2xl text-left">
+            {/* Main Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center items-center md:items-start pb-20 md:pb-0 pt-32">
+                <div className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
                     {/* Trusted By Section - Glass Pill */}
-                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-6 animate-fade-in-up md:justify-start bg-black/30 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 mx-auto md:mx-0">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-6 animate-fade-in-up bg-black/30 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 mx-auto md:mx-0">
                         <div className="flex -space-x-2">
                             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#000000]" />
                             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#faf4e5]" />
@@ -127,20 +127,20 @@ export const HeroSectionV3 = () => {
                     </div>
 
                     {/* Main Heading - Static Welcome Title */}
-                    <h1 className="font-heading text-[12vw] sm:text-6xl md:text-7xl font-bold text-white mb-4 leading-[0.9] tracking-tighter animate-fade-in-up animation-delay-100 text-left drop-shadow-lg">
+                    <h1 className="font-hero-title text-[9vw] sm:text-4xl md:text-5xl lg:text-6xl text-[#faf4e5] mb-3 leading-[0.95] animate-fade-in-up animation-delay-100 text-center md:text-left drop-shadow-lg">
                         Welcome to
                         <br />
                         <span className="text-[#FF6B00] italic pr-2">Europe Calling</span>
                     </h1>
 
                     {/* Description - Reduced Size */}
-                    <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-xl font-light animate-fade-in-up animation-delay-200 text-left drop-shadow-md">
-                        For over a decade, we've been the bridge between dreams and destinations.
-                        Experience Europe's finest landscapes, cultures, and opportunities.
+                    <p className="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-6 max-w-lg font-light animate-fade-in-up animation-delay-200 text-center md:text-left drop-shadow-md mx-auto md:mx-0">
+                        Malayalee-led | Azerbaijan-based | Your Eurasian travel experts.
+                        Experience the finest European landscapes and cultures with us.
                     </p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300 w-fit mx-auto md:mx-0">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300 w-fit mx-auto md:mx-0 items-center">
                         <button
                             onClick={() => handleBookTour(slide.title)}
                             className="group relative overflow-hidden px-5 py-2.5 sm:px-8 sm:py-4 bg-white text-black rounded-full font-bold text-[13px] sm:text-base shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 w-auto hover:bg-gray-100"
@@ -159,7 +159,7 @@ export const HeroSectionV3 = () => {
                     </div>
 
                     {/* Slide Indicators */}
-                    <div className="flex gap-2 mt-8 animate-fade-in-up animation-delay-300 justify-center sm:justify-start">
+                    <div className="flex gap-2 mt-8 animate-fade-in-up animation-delay-300 justify-center">
                         {slides.map((_, index) => (
                             <button
                                 key={index}

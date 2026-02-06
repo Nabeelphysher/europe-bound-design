@@ -10,20 +10,20 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const faqs = [
   {
-    question: "What documents are required to begin the application?",
-    answer: "Typically, you will need a valid passport, academic transcripts, work experience letters, and a European-format CV. We provide a tailored checklist during consultation.",
+    question: "What documents are required for booking a tour?",
+    answer: "Passport copy, visa (if applicable), ID proof, and advance payment are required.",
   },
   {
-    question: "How does the Europe Calling package process work?",
-    answer: "Our transparent process moves from profile evaluation to visa filing. We handle documentation, strategy, and submission, keeping you updated at every milestone.",
+    question: "How early should I book my trip??",
+    answer: "We recommend booking at least 15–30 days in advance for better availability and price.",
   },
   {
-    question: "Do you offer interview preparation or job placement support?",
-    answer: "Yes, we provide dedicated career support including resume enhancement, LinkedIn optimization, and mock interviews to meet European standards.",
+    question: "How can I make payment",
+    answer: "You can pay via bank transfer, UPI, or cash (as per company policy)",
   },
   {
-    question: "What is the typical timeline for the entire process?",
-    answer: "Timelines generally range from 3 to 6 months depending on the country and visa category. We provide a realistic estimate at the start of your journey.",
+    question: "Do you provide emergency support during travel",
+    answer: "Yes, we offer emergency support during your travel.",
   },
 ];
 
