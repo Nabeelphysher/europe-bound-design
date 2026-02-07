@@ -18,6 +18,7 @@ import poster7 from "@/assets/CODO 5 THEME POSTERS 7 copy.png";
 import poster8 from "@/assets/CODO 5 THEME POSTERS 8 copy.png";
 import poster9 from "@/assets/CODO 5 THEME POSTERS 9 copy.png";
 import founderImage from "@/assets/NJD.jpg";
+import officeImage from "@/assets/office.jpeg";
 import { ChevronRight } from "lucide-react";
 
 const timeline = [
@@ -300,7 +301,7 @@ const About = () => {
                   <div className="relative w-[85%] max-w-[500px] aspect-[4/5] z-10 mx-auto">
                     <div className="absolute inset-0 bg-primary rounded-[2.5rem] rotate-3 opacity-5"></div>
                     <img
-                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+                      src={officeImage}
                       alt="Modern Office Space"
                       className="w-full h-full object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(11,30,63,0.15)] relative z-10"
                     />

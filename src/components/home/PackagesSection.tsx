@@ -57,6 +57,7 @@ const packages = [
             "Curated Cultural Experiences",
             "Custom Trips Across Multiple Destinations",
             "Personalized Luxury Touches",
+            "Everything in Basic Package",
             "Flight tickets",
             "Visa",
             "Entry ticket",

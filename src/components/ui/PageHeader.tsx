@@ -1,14 +1,17 @@
 import React, { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+
 interface PageHeaderProps {
     eyebrow: string;
     title: ReactNode;
     description: string;
+    className?: string; // Allow custom classes like padding or alignment
 }
 
-export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => {
+export const PageHeader = ({ eyebrow, title, description, className }: PageHeaderProps) => {
     return (
-        <section className="relative py-20 md:py-32 text-center px-4 overflow-visible">
+        <section className={cn("relative py-20 md:py-32 text-center px-4 overflow-visible", className)}>
             {/* Smooth Gradient Background that blends into page content */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#faf4e5] via-[#faf4e5] to-transparent -z-20" />
             {/* Decorative Background Blobs */}

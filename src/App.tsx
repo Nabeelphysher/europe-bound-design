@@ -8,7 +8,7 @@ import { PageSkeleton } from "@/components/ui/PageSkeleton";
 
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
-const Services = lazy(() => import("./pages/Services"));
+
 const Destinations = lazy(() => import("./pages/Destinations"));
 const Testimonials = lazy(() => import("./pages/Testimonials"));
 const Newsroom = lazy(() => import("./pages/Newsroom"));
@@ -36,8 +36,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
             <Route path="/destinations" element={<Destinations />} />
+
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/newsroom" element={<Newsroom />} />
             <Route path="/newsroom/:slug" element={<NewsArticle />} />

@@ -6,6 +6,7 @@ import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { DestinationBanner } from "@/components/country/DestinationBanner";
 import { CountryHero } from "@/components/country/CountryHero";
 import { RoadmapSection } from "@/components/country/RoadmapSection";
+import { ServicesPreview } from "@/components/home/ServicesPreview";
 import {
     ArrowRight, CheckCircle2, Globe, Award,
     User, Mail, Phone, Clock, Wallet, ShieldCheck, Star, Quote,
@@ -782,40 +783,7 @@ const CountryPage = () => {
 
                 {/* --- 4.5. Benefits (What's Included) --- */}
 
-                < section className="py-24 bg-[#faf4e5] relative" >
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')] opacity-40 mx-auto" />
-                    <div className="container-wide px-4 sm:px-6 relative z-10">
-                        <RevealOnScroll animation="scale-up" delay={200}>
-                            <div className="text-center mb-16">
-                                <span className="text-gold font-bold text-sm uppercase tracking-widest mb-3 block">Value & Transparency</span>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">What's Included</h2>
-                                <div className="w-24 h-1 bg-gold/30 mx-auto rounded-full mb-6" />
-                                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                                    We believe in Value & Transparency. Your {data.name} package includes Entry Tickets, Visa Assistance,Sightseeing, Flight ticket and everything you need for a seamless experience.
-                                </p>
-                            </div>
-
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
-                                {data.benefits.map((benefit, i) => (
-                                    <div
-                                        key={i}
-                                        className="group flex flex-col sm:flex-row items-start gap-5 p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold/20 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
-                                    >
-                                        <div className="absolute top-0 left-0 w-1 h-full bg-gold/0 group-hover:bg-gold transition-colors duration-300" />
-
-                                        <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <CheckCircle2 className="w-6 h-6" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-heading text-xl font-bold text-primary mb-2 group-hover:text-gold transition-colors">{benefit.title}</h3>
-                                            <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">{benefit.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </RevealOnScroll>
-                    </div>
-                </section >
+                <ServicesPreview />
 
 
 
@@ -980,11 +948,12 @@ const CountryPage = () => {
                                             </li>
                                             <li className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
-                                                <span className="text-sm text-white/80">Malayalee-led</span>
+                                                <span className="text-sm text-white/80">Malayalee led</span>
                                             </li>
                                             <li className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>
-                                                <span className="text-sm text-white/80">Azerbaijan-based</span>
+                                                <span className="text-sm text-white/80">Azerbaijan Welcome to
+                                                    Europe Callingbased</span>
                                             </li>
                                             <li className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold"><CheckCircle2 className="w-4 h-4" /></div>

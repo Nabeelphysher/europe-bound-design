@@ -10,6 +10,17 @@ import { cn } from "@/lib/utils";
 import contactBanner from "@/assets/destination-czech.jpg";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { submitLead } from "@/lib/api";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const destinations = [
+  "Azerbaijan", "Kazakhstan", "Uzbekistan", "Kyrgyzstan","Georgia", "Armenia","Russia","France"
+]
 
 
 const Contact = () => {
@@ -117,48 +128,65 @@ const Contact = () => {
         </div>
       ),
       description: "Speak directly with our expert consultants.",
-      subtext: "Mon-Fri 9am-6pm"
+      subtext: "Mon-Sat 9am-6pm"
     },
     {
       icon: Mail,
       title: "Email",
-      content: "sales@europecalling.co",
+      content: (
+        <div className="flex flex-col gap-1">
+          <a href="mailto:sales@europecalling.co" className="block hover:text-gold transition-colors">sales@europecalling.co</a>
+          <a href="mailto:careers@europecalling.co" className="block hover:text-gold transition-colors">careers@europecalling.co</a>
+        </div>
+      ),
       description: "Get a detailed quote or support for your application.",
-      link: "mailto:sales@europecalling.co",
-      subtext: "Online 24/7"
+      link: "#",
+      subtext: "Online Mon-Sat 9am-6pm"
     },
     {
       icon: MapPin,
-      title: "Office",
+      title: "India Office",
       content: (
-        <div className="flex flex-col gap-2 text-xs md:text-sm w-full">
+        <div className="flex flex-col gap-2 w-full">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg transition-colors p-1 block group/link text-center"
+          >
+            <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
+              <MapPin className="w-3.5 h-3.5" /> Kerala, India
+            </span>
+            <span className="block opacity-80 leading-tight">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
+          </a>
+          <div className="flex flex-col gap-1 mt-2 text-center">
+            <a href="tel:+918592004857" className="hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85920 04857</a>
+            <a href="tel:+918590404857" className="hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85904 04857</a>
+          </div>
+        </div>
+      ),
+      description: "",
+      link: "#",
+      subtext: ""
+    },
+    {
+      icon: MapPin,
+      title: "Azerbaijan Office",
+      content: (
+        <div className="flex flex-col gap-2 w-full">
           <a
             href="https://www.google.com/maps/search/?api=1&query=Bashir+safar-oghlu,+Baku,+Azerbaijan"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center border-b border-gray-100 pb-2 hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
+            className="text-center rounded-lg transition-colors p-1 block group/link"
           >
             <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
               <MapPin className="w-3.5 h-3.5" /> Baku, Azerbaijan
             </span>
-            <span className="block opacity-80 text-xs leading-tight">Bashir safar-oghlu, Baku, Azerbaijan</span>
+            <span className="block opacity-80 leading-tight">Bashir safar-oghlu, Baku, Azerbaijan</span>
           </a>
-          <div className="text-center">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Calicut+rd,+opposite+Budget+hyper+market,+Varangod,+Down+Hill,+Malappuram,+Kerala"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:bg-gray-50/50 rounded-lg transition-colors p-1 block group/link"
-            >
-              <span className="flex items-center justify-center gap-1.5 font-bold text-[#FF7700] mb-0.5 group-hover/link:underline">
-                <MapPin className="w-3.5 h-3.5" /> Kerala, India
-              </span>
-              <span className="block opacity-80 text-xs leading-tight">Calicut rd, opposite Budget hyper market, Varangod, Down Hill, Malappuram, Kerala</span>
-            </a>
-            <div className="flex flex-col gap-1 mt-2">
-              <a href="tel:+918592004857" className="text-xs hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85920 04857</a>
-              <a href="tel:+918590404857" className="text-xs hover:text-[#FF7700] transition-colors inline-block font-medium">+91 85904 04857</a>
-            </div>
+          <div className="flex flex-col gap-1 mt-2 text-center">
+            <a href="tel:+994519737056" className="hover:text-[#FF7700] transition-colors inline-block font-medium">+994 51 973 70 56</a>
           </div>
         </div>
       ),
@@ -181,28 +209,28 @@ const Contact = () => {
         {/* Contact Info Cards */}
         <section className="relative z-20 -mt-16 sm:-mt-20 px-4 mb-32 lg:mb-40">
           <div className="container-wide">
-            <div className="flex flex-wrap justify-center items-stretch gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {contactInfo.map((info, index) => (
                 <RevealOnScroll
-                  className="h-full w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                  className="h-full"
                   delay={index * 100}
                   key={index}
                 >
                   {(() => {
-                    const isStaticCard = info.title === "Office" || info.title === "Phone";
+                    const isStaticCard = info.title.includes("Office") || info.title === "Phone" || info.title === "Email";
                     const Wrapper = isStaticCard ? "div" : "a";
                     const wrapperProps = isStaticCard ? {} : { href: info.link };
 
                     return (
                       <Wrapper
                         {...wrapperProps}
-                        className="group bg-card hover:bg-white p-5 pt-8 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-start text-center backdrop-blur-sm h-full min-h-[350px]"
+                        className="group bg-card hover:bg-white p-4 pt-6 rounded-2xl shadow-xl hover:shadow-2xl border border-white/10 hover:border-gold/30 transition-all duration-500 transform hover:-translate-y-2 flex flex-col items-center justify-start text-center backdrop-blur-sm h-full min-h-[300px]"
                       >
-                        <div className="w-14 h-14 rounded-xl bg-gold text-primary flex items-center justify-center mb-4 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
-                          <info.icon className="w-6 h-6" />
+                        <div className="w-12 h-12 rounded-xl bg-gold text-primary flex items-center justify-center mb-3 transition-all duration-500 shadow-glow group-hover:bg-primary group-hover:text-gold">
+                          <info.icon className="w-5 h-5" />
                         </div>
                         <h3 className="font-heading text-lg font-bold mb-2 text-gold transition-colors">{info.title}</h3>
-                        <div className="text-foreground font-medium text-base mb-2 break-words w-full px-1">{info.content}</div>
+                        <div className="text-foreground font-medium text-sm mb-2 break-words w-full px-1">{info.content}</div>
                         <p className="text-muted-foreground/80 text-xs mb-3 px-2">{info.description}</p>
                         <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">{info.subtext}</p>
                       </Wrapper>
@@ -354,24 +382,38 @@ const Contact = () => {
 
                             {/* Country Input */}
                             <div className="relative">
-                              <select
-                                id="country"
-                                required
+                              <Select
                                 value={formData.country}
-                                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                                onFocus={() => setActiveField('country')}
-                                onBlur={() => setActiveField(null)}
-                                className="peer w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:outline-none focus:border-[#C6A87C] focus:ring-1 focus:ring-[#C6A87C] transition-all duration-300 pt-5 font-medium shadow-sm hover:border-gray-300 appearance-none cursor-pointer"
+                                onValueChange={(value) => setFormData({ ...formData, country: value })}
+                                onOpenChange={(open) => setActiveField(open ? 'country' : null)}
                               >
-                                <option value=""></option>
-                                <option value="germany">Germany</option>
-                                <option value="poland">Poland</option>
-                                <option value="czech">Czech Republic</option>
-                                <option value="france">France</option>
-                                <option value="romania">Romania</option>
-                                <option value="azerbaijan">Azerbaijan</option>
-                                <option value="other">Other</option>
-                              </select>
+                                <SelectTrigger
+                                  id="country"
+                                  className={cn(
+                                    "peer w-full px-4 py-2.5 h-auto rounded-lg border border-gray-200 bg-gray-50/50 focus:bg-white text-foreground text-sm focus:ring-1 focus:ring-[#C6A87C] focus:border-[#C6A87C] transition-all duration-300 pt-5 font-medium shadow-sm hover:border-gray-300",
+                                    !formData.country && "text-transparent"
+                                  )}
+                                >
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent className="max-h-[300px] p-2 bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border-gray-100">
+                                  {destinations.map((country) => (
+                                    <SelectItem
+                                      key={country}
+                                      value={country.toLowerCase()}
+                                      className="rounded-lg py-2.5 px-4 mb-0.5 cursor-pointer focus:bg-[#FF7700] focus:text-white data-[state=checked]:bg-[#FF7700] data-[state=checked]:text-white transition-colors font-medium text-sm"
+                                    >
+                                      {country}
+                                    </SelectItem>
+                                  ))}
+                                  <SelectItem
+                                    value="other"
+                                    className="rounded-lg py-2.5 px-4 cursor-pointer focus:bg-[#FF7700] focus:text-white data-[state=checked]:bg-[#FF7700] data-[state=checked]:text-white transition-colors font-medium text-sm"
+                                  >
+                                    Other
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
                               <label
                                 htmlFor="country"
                                 className={cn(

@@ -1,5 +1,6 @@
-import { ArrowRight, FileCheck } from "lucide-react";
+import { ArrowRight, FileCheck, ArrowLeft } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { useNavigate } from "react-router-dom";
 
 interface CountryHeroProps {
     image: string;
@@ -13,8 +14,22 @@ interface CountryHeroProps {
 }
 
 export function CountryHero({ image, name, tagline, stats }: CountryHeroProps) {
+    const navigate = useNavigate();
+
     return (
         <section className="relative h-[65vh] sm:h-[80vh] md:h-[85vh] min-h-[480px] sm:min-h-[600px] flex items-center justify-center overflow-hidden">
+            {/* Back Button */}
+            <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none">
+                <div className="container-wide h-full relative px-4 sm:px-6">
+                    <button
+                        onClick={() => navigate('/destinations')}
+                        className="absolute top-28 md:top-32 left-4 sm:left-6 inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-gold hover:border-gold transition-all duration-300 group shadow-lg cursor-pointer pointer-events-auto"
+                        aria-label="Back to Destinations"
+                    >
+                        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                    </button>
+                </div>
+            </div>
             {/* Background Image with Zoom Effect */}
             <div className="absolute inset-0 z-0">
                 <img

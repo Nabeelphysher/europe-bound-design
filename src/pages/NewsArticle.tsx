@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -12,6 +12,7 @@ import NotFound from "./NotFound";
 
 const NewsArticle = () => {
     const { slug } = useParams();
+    const navigate = useNavigate();
     const article = news.find((n) => n.slug === slug);
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const NewsArticle = () => {
             <main className="min-h-screen bg-[#faf4e5]">
 
                 {/* --- Hero Section --- */}
-                <section className="relative h-[60vh] min-h-[500px] w-full">
+                <section className="relative h-[75vh] md:h-[85vh] min-h-[500px] w-full">
                     <div className="absolute inset-0">
                         <img
                             src={article.image}
@@ -43,11 +44,15 @@ const NewsArticle = () => {
 
                     <div className="relative z-10 container-wide px-4 h-full flex flex-col justify-end pb-16 md:pb-24">
                         <RevealOnScroll animation="fade-up" className="max-w-4xl mx-auto w-full">
-                            <Link to="/newsroom" className="inline-flex items-center gap-2 text-white/80 hover:text-gold transition-colors mb-6 text-sm font-semibold tracking-wide uppercase">
-                                <ArrowLeft className="w-4 h-4" /> Back to Newsroom
-                            </Link>
 
                             <div className="flex flex-wrap items-center gap-4 mb-6">
+                                <button
+                                    onClick={() => navigate('/newsroom')}
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-gold hover:border-gold transition-all duration-300 group shadow-lg cursor-pointer mr-2"
+                                    aria-label="Back to Newsroom"
+                                >
+                                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                                </button>
                                 <span className="bg-gold text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                     {article.category}
                                 </span>

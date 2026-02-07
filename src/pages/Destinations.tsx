@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { StickyEnquireButton } from "@/components/ui/StickyEnquireButton";
 import { DestinationsSection } from "@/components/home/DestinationsSection";
-import { PackagesSection } from "@/components/home/PackagesSection";
+import { ServicesPreview } from "@/components/home/ServicesPreview";
 
 const Destinations = () => {
     return (
@@ -21,7 +21,7 @@ const Destinations = () => {
                     <DestinationsSection showViewAll={false} showHeader={false} className="py-12" />
                 </div>
 
-                <PackagesSection />
+                <ServicesPreview />
 
             </main>
             <Footer />

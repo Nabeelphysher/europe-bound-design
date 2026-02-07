@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, Plane } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 import {
@@ -10,6 +10,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
 import { submitLead } from "@/lib/api";
 
 interface LeadPopupProps {
@@ -43,8 +47,13 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
     phone: "",
     whatsappSame: true,
     whatsappNumber: "",
-    travelMonth: "",
+    email: "",
     destination: initialDestination ? initialDestination.toLowerCase() : "",
+    travelDate: undefined as Date | undefined,
+    adults: "",
+    kids: "",
+    budgetRange: "",
+    specialRequests: [] as string[],
   });
 
   useEffect(() => {
@@ -66,19 +75,18 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
     { value: "france", label: "France" },
   ];
 
-  const travelMonths = [
-    { value: "january", label: "January" },
-    { value: "february", label: "February" },
-    { value: "march", label: "March" },
-    { value: "april", label: "April" },
-    { value: "may", label: "May" },
-    { value: "june", label: "June" },
-    { value: "july", label: "July" },
-    { value: "august", label: "August" },
-    { value: "september", label: "September" },
-    { value: "october", label: "October" },
-    { value: "november", label: "November" },
-    { value: "december", label: "December" },
+  const budgetRanges = [
+    { value: "under-1000", label: "Under $1,000" },
+    { value: "1000-2500", label: "$1,000 - $2,500" },
+    { value: "2500-5000", label: "$2,500 - $5,000" },
+    { value: "5000-10000", label: "$5,000 - $10,000" },
+    { value: "over-10000", label: "Over $10,000" },
+  ];
+
+  const specialRequestOptions = [
+    { value: "honeymoon", label: "Honeymoon" },
+    { value: "family", label: "Family Trip" },
+    { value: "visa-help", label: "Visa Help" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -90,8 +98,13 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
       name: formData.name,
       phone: formData.phone,
       whatsapp_number: formData.whatsappSame ? formData.phone : formData.whatsappNumber,
-      travel_month: formData.travelMonth,
+      email: formData.email,
       destination: formData.destination,
+      travel_date: formData.travelDate ? format(formData.travelDate, "yyyy-MM-dd") : undefined,
+      adults: formData.adults,
+      kids: formData.kids,
+      budget_range: formData.budgetRange,
+      special_requests: formData.specialRequests.join(", "),
       form_type: "Lead Popup",
     });
 
@@ -102,7 +115,19 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
         duration: 3000,
       });
       onClose();
-      setFormData({ name: "", phone: "", whatsappSame: true, whatsappNumber: "", travelMonth: "", destination: "" });
+      setFormData({
+        name: "",
+        phone: "",
+        whatsappSame: true,
+        whatsappNumber: "",
+        email: "",
+        destination: "",
+        travelDate: undefined,
+        adults: "",
+        kids: "",
+        budgetRange: "",
+        specialRequests: [],
+      });
     } else {
       toast({
         variant: "destructive",
@@ -130,7 +155,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
       />
 
       {/* Modal Container - Clean White Card */}
-      <div className="relative bg-white w-full max-w-[26rem] rounded-3xl shadow-2xl p-5 md:p-6 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="relative bg-white w-full max-w-[32rem] rounded-3xl shadow-2xl p-5 md:p-6 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
 
         {/* Header - Clean & Simple */}
         <div className="mb-4 md:mb-6">
@@ -155,7 +180,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
           {/* Full Name */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Full Name
+              Full Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -170,7 +195,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
           {/* Mobile Number */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Mobile Number (with country code)
+              Mobile Number (with country code) <span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
@@ -202,7 +227,7 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
           {!formData.whatsappSame && (
             <div className="relative">
               <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                WhatsApp Number (with country code)
+                WhatsApp Number (with country code) <span className="text-red-500">*</span>
               </label>
               <input
                 type="tel"
@@ -215,36 +240,24 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
             </div>
           )}
 
-          {/* Travel Month */}
+          {/* Email - Optional */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Travel Month
+              Email <span className="text-gray-400 font-normal">(Optional)</span>
             </label>
-            <Select
-              value={formData.travelMonth}
-              onValueChange={(value) => setFormData({ ...formData, travelMonth: value })}
-            >
-              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold [&>span]:line-clamp-none">
-                <SelectValue placeholder="Select Travel Month" />
-              </SelectTrigger>
-              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
-                {travelMonths.map((month) => (
-                  <SelectItem
-                    key={month.value}
-                    value={month.value}
-                    className="cursor-pointer focus:bg-gold/10 focus:text-primary whitespace-nowrap"
-                  >
-                    {month.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
+              placeholder="e.g. sarah@example.com"
+            />
           </div>
 
-          {/* Destination of Interest */}
+          {/* Destination */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Destination of Interest
+              Destination of Interest <span className="text-red-500">*</span>
             </label>
             <Select
               value={formData.destination}
@@ -267,6 +280,137 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
             </Select>
           </div>
 
+          {/* Travel Dates */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Travel Dates <span className="text-red-500">*</span>
+            </label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  className={cn(
+                    "w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold transition-all duration-200 text-sm text-left justify-start font-normal",
+                    !formData.travelDate && "text-gray-400"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4 inline" />
+                  {formData.travelDate ? format(formData.travelDate, "PPP") : "Select date"}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent
+                className="w-auto p-0 bg-white border-gray-100 rounded-xl shadow-xl z-[150]"
+                align="start"
+                sideOffset={5}
+              >
+                <Calendar
+                  mode="single"
+                  selected={formData.travelDate}
+                  onSelect={(date) => {
+                    setFormData({ ...formData, travelDate: date });
+                  }}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          {/* No. of Travellers */}
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Adults <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                required
+                min="1"
+                value={formData.adults}
+                onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
+                placeholder="0"
+              />
+            </div>
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Kids
+              </label>
+              <input
+                type="number"
+                min="0"
+                value={formData.kids}
+                onChange={(e) => setFormData({ ...formData, kids: e.target.value })}
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all duration-200 text-sm"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          {/* Budget Range */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Budget Range <span className="text-red-500">*</span>
+            </label>
+            <Select
+              value={formData.budgetRange}
+              onValueChange={(value) => setFormData({ ...formData, budgetRange: value })}
+              required
+            >
+              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-gold focus:border-gold [&>span]:line-clamp-none">
+                <SelectValue placeholder="Select Budget Range" />
+              </SelectTrigger>
+              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                {budgetRanges.map((range) => (
+                  <SelectItem
+                    key={range.value}
+                    value={range.value}
+                    className="cursor-pointer focus:bg-gold/10 focus:text-primary whitespace-nowrap"
+                  >
+                    {range.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Special Requests */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-2 ml-1">
+              Special Requests
+            </label>
+            <div className="flex flex-row flex-wrap gap-x-6 gap-y-3">
+              {specialRequestOptions.map((option) => (
+                <div key={option.value} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`special-pop-${option.value}`}
+                    checked={formData.specialRequests.includes(option.value)}
+                    onCheckedChange={(checked) => {
+                      if (checked === true) {
+                        setFormData({ ...formData, specialRequests: [...formData.specialRequests, option.value] });
+                      } else {
+                        setFormData({ ...formData, specialRequests: formData.specialRequests.filter(req => req !== option.value) });
+                      }
+                    }}
+                    className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-gold data-[state=checked]:border-gold"
+                  />
+                  <label
+                    htmlFor={`special-pop-${option.value}`}
+                    className="text-sm font-medium text-gray-900 cursor-pointer"
+                  >
+                    {option.label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2 pt-2">
+            <Checkbox id="authorize-pop" className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-gold data-[state=checked]:border-gold" />
+            <label htmlFor="authorize-pop" className="text-[13px] font-medium text-gray-700 cursor-pointer">
+              I authorize Europe Calling to contact me via Phone / WhatsApp
+            </label>
+          </div>
+
           {/* Action Button */}
           <div className="pt-2">
             <button
@@ -280,7 +424,12 @@ export function LeadPopup({ isOpen, onClose, initialDestination }: LeadPopupProp
               {isSubmitting ? (
                 "Processing..."
               ) : (
-                "Talk to Travel Expert"
+                <>
+                  <span>Speak to Trip Planner</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </>
               )}
             </button>
 

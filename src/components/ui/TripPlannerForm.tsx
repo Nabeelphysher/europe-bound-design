@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -20,9 +21,10 @@ interface TripPlannerFormProps {
   isOpen: boolean;
   onClose: () => void;
   initialDestination?: string;
+  initialPackageType?: string;
 }
 
-export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPlannerFormProps) {
+export function TripPlannerForm({ isOpen, onClose, initialDestination, initialPackageType }: TripPlannerFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -34,6 +36,7 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
     adults: "",
     kids: "",
     budgetRange: "",
+    packageType: initialPackageType || "",
     specialRequests: [] as string[],
   });
 
@@ -41,7 +44,10 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
     if (initialDestination) {
       setFormData(prev => ({ ...prev, destination: initialDestination.toLowerCase() }));
     }
-  }, [initialDestination, isOpen]);
+    if (initialPackageType) {
+      setFormData(prev => ({ ...prev, packageType: initialPackageType }));
+    }
+  }, [initialDestination, initialPackageType, isOpen]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -85,6 +91,7 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
       adults: formData.adults,
       kids: formData.kids,
       budget_range: formData.budgetRange,
+      package_type: formData.packageType,
       special_requests: formData.specialRequests.join(", "),
       form_type: "Trip Planner Form",
     });
@@ -108,6 +115,7 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
         adults: "",
         kids: "",
         budgetRange: "",
+        packageType: "",
         specialRequests: [],
       });
     } else {
@@ -123,7 +131,7 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
@@ -230,7 +238,6 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
             />
           </div>
 
-          {/* Destination */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
               Destination <span className="text-red-500">*</span>
@@ -253,6 +260,26 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
                     {destination.label}
                   </SelectItem>
                 ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Package Type */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Package Type <span className="text-gray-400 font-normal">(Optional)</span>
+            </label>
+            <Select
+              value={formData.packageType}
+              onValueChange={(value) => setFormData({ ...formData, packageType: value })}
+            >
+              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#FF7700] focus:border-[#FF7700] [&>span]:line-clamp-none">
+                <SelectValue placeholder="Select Package Type" />
+              </SelectTrigger>
+              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                <SelectItem value="Basic Package">Basic Package</SelectItem>
+                <SelectItem value="Luxury Package">Luxury Package</SelectItem>
+                <SelectItem value="Custom Package">Custom Package</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -352,10 +379,10 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
 
           {/* Special Requests */}
           <div className="relative">
-            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+            <label className="block text-xs font-semibold text-gray-900 mb-2 ml-1">
               Special Requests
             </label>
-            <div className="space-y-2">
+            <div className="flex flex-row flex-wrap gap-x-6 gap-y-3">
               {specialRequestOptions.map((option) => (
                 <div key={option.value} className="flex items-center space-x-2">
                   <Checkbox
@@ -368,17 +395,24 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
                         setFormData({ ...formData, specialRequests: formData.specialRequests.filter(req => req !== option.value) });
                       }
                     }}
-                    className="border-gray-300 data-[state=checked]:bg-[#FF7700] data-[state=checked]:border-[#FF7700]"
+                    className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-[#FF7700] data-[state=checked]:border-[#FF7700]"
                   />
                   <label
                     htmlFor={`special-${option.value}`}
-                    className="text-sm font-medium text-gray-900 cursor-pointer leading-none"
+                    className="text-sm font-medium text-gray-900 cursor-pointer"
                   >
                     {option.label}
                   </label>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="flex items-center space-x-2 pt-2">
+            <Checkbox id="authorize" className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-[#FF7700] data-[state=checked]:border-[#FF7700]" />
+            <label htmlFor="authorize" className="text-[13px] font-medium text-gray-700 cursor-pointer">
+              I authorize Europe Calling to contact me via Phone / WhatsApp
+            </label>
           </div>
 
           {/* Action Button */}
@@ -415,6 +449,7 @@ export function TripPlannerForm({ isOpen, onClose, initialDestination }: TripPla
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

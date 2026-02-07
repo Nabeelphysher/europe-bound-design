@@ -15,18 +15,16 @@ export default function PrivacyPolicy() {
             <Header />
 
             <main className="bg-[#faf4e5] flex-grow overflow-x-hidden w-full max-w-full">
-                <PageHeader
-                    eyebrow="Legal"
-                    title="Privacy Policy"
-                    description="Europe Calling respects your privacy and is committed to protecting your personal information."
-                />
+                <div className="container-narrow mx-auto max-w-4xl px-4 pt-32 pb-2 text-center">
+                    <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary">Privacy Policy</h1>
+                </div>
 
-                <section className="py-20 px-4 sm:px-4 md:px-6 overflow-x-hidden w-full max-w-full">
+                <section className="pt-8 pb-20 px-4 sm:px-4 md:px-6 overflow-x-hidden w-full max-w-full">
                     <div className="container-narrow mx-auto max-w-4xl">
                         <RevealOnScroll animation="fade-up">
                             <div className="prose prose-lg prose-headings:font-heading prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-gold prose-a:no-underline hover:prose-a:text-primary transition-colors max-w-none">
 
-                                <div className="bg-secondary/20 border border-secondary p-6 rounded-xl mb-12 flex items-start gap-4">
+                                <div className="bg-secondary/20 border border-secondary p-4 sm:p-6 rounded-xl mb-12 flex items-start gap-3 sm:gap-4">
                                     <Shield className="w-6 h-6 text-primary mt-1 shrink-0" />
                                     <div>
                                         <h4 className="font-heading text-lg font-bold text-primary mb-2">Your Privacy Matters</h4>
@@ -131,17 +129,18 @@ export default function PrivacyPolicy() {
                                             </p>
 
                                             <div className="flex flex-col md:flex-row gap-4 sm:gap-5 justify-center items-stretch max-w-3xl mx-auto w-full">
-                                                {/* Email Card */}
-                                                <a href="mailto:privacy@europecalling.co" className="group w-full md:flex-1 bg-white p-5 sm:p-6 md:p-5 rounded-xl shadow-sm hover:shadow-md border border-gray-100 hover:border-gold/30 transition-all duration-300 flex items-start gap-3 sm:gap-4 text-left relative overflow-hidden">
+                                                {/* Email & Phone Card */}
+                                                <div className="group w-full md:flex-1 bg-white p-5 sm:p-6 md:p-5 rounded-xl shadow-sm hover:shadow-md border border-gray-100 hover:border-gold/30 transition-all duration-300 flex items-start gap-3 sm:gap-4 text-left relative overflow-hidden">
                                                     <div className="absolute right-0 top-0 w-16 h-16 bg-gold/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
                                                     <div className="w-12 h-12 sm:w-11 sm:h-11 md:w-10 md:h-10 rounded-full bg-secondary group-hover:bg-gold flex items-center justify-center text-primary group-hover:text-white transition-colors duration-300 shrink-0">
                                                         <Mail className="w-5 h-5 sm:w-[18px] sm:h-[18px] md:w-4 md:h-4" />
                                                     </div>
-                                                    <div className="relative flex-1 min-w-0 overflow-hidden">
-                                                        <p className="text-[10px] sm:text-[11px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mb-1.5 sm:mb-1 md:mb-0.5">Privacy Support</p>
-                                                        <p className="text-primary font-bold text-sm sm:text-base md:text-base leading-tight sm:leading-snug md:leading-none group-hover:text-gold transition-colors break-all sm:break-words md:break-normal" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>privacy@europecalling.co</p>
+                                                    <div className="relative flex-1 min-w-0 overflow-hidden flex flex-col">
+                                                        <p className="text-[10px] sm:text-[11px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mb-1.5 sm:mb-1 md:mb-0.5">Legal Support</p>
+                                                        <a href="mailto:sales@europecalling.co" className="text-primary font-bold text-xs sm:text-sm md:text-base leading-tight hover:text-gold transition-colors whitespace-nowrap mb-1">sales@europecalling.co</a>
+                                                        <a href="https://wa.me/994555533744" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-xs sm:text-sm md:text-base leading-tight hover:text-gold transition-colors whitespace-nowrap">+994 55 553 37 44</a>
                                                     </div>
-                                                </a>
+                                                </div>
 
                                                 {/* Address Card */}
                                                 <div className="w-full md:flex-1 bg-white p-5 sm:p-6 md:p-5 rounded-xl shadow-sm border border-gray-100 border-l-[4px] border-l-gold flex items-start gap-3 sm:gap-4 text-left">

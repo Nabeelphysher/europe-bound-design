@@ -90,7 +90,7 @@ export const HeroSectionV3 = () => {
     };
 
     return (
-        <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+        <section className="relative h-[85vh] md:h-screen min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
             {/* Full-bleed Background Image Slider */}
             {slides.map((s, index) => (
                 <div
@@ -112,10 +112,10 @@ export const HeroSectionV3 = () => {
             ))}
 
             {/* Main Content */}
-            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-end md:justify-center items-center md:items-start pb-20 md:pb-0 pt-32">
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 w-full h-full flex flex-col justify-center items-center md:items-start pb-12 md:pb-0 pt-24 md:pt-32">
                 <div className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
                     {/* Trusted By Section - Glass Pill */}
-                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-6 animate-fade-in-up bg-black/30 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 mx-auto md:mx-0">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 md:mb-6 animate-fade-in-up bg-black/30 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 mx-auto md:mx-0">
                         <div className="flex -space-x-2">
                             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#000000]" />
                             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white/50 overflow-hidden bg-[#faf4e5]" />
@@ -135,7 +135,7 @@ export const HeroSectionV3 = () => {
 
                     {/* Description - Reduced Size */}
                     <p className="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-6 max-w-lg font-light animate-fade-in-up animation-delay-200 text-center md:text-left drop-shadow-md mx-auto md:mx-0">
-                        Malayalee-led | Azerbaijan-based | Your Eurasian travel experts.
+                        Malayalee led | Azerbaijan based | Your Eurasian travel experts.
                         Experience the finest European landscapes and cultures with us.
                     </p>
 
@@ -159,7 +159,7 @@ export const HeroSectionV3 = () => {
                     </div>
 
                     {/* Slide Indicators */}
-                    <div className="flex gap-2 mt-8 animate-fade-in-up animation-delay-300 justify-center">
+                    <div className="flex gap-2 mt-6 md:mt-8 animate-fade-in-up animation-delay-300 justify-center">
                         {slides.map((_, index) => (
                             <button
                                 key={index}

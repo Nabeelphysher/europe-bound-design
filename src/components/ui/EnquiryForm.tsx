@@ -28,11 +28,13 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
     phone: "",
     whatsappSame: true,
     whatsappNumber: "",
+    email: "",
+    destination: initialDestination ? initialDestination.toLowerCase() : "",
+    travelDate: undefined as Date | undefined,
     adults: "",
     kids: "",
-    travelDate: undefined as Date | undefined,
-    destination: initialDestination ? initialDestination.toLowerCase() : "",
-    hotelCategory: "",
+    budgetRange: "",
+    specialRequests: [] as string[],
   });
 
   useEffect(() => {
@@ -42,7 +44,6 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
   }, [initialDestination, isOpen]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [actionType, setActionType] = useState<"package" | null>(null);
 
   const destinations = [
     { value: "azerbaijan", label: "Azerbaijan" },
@@ -55,34 +56,42 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
     { value: "france", label: "France" },
   ];
 
+  const budgetRanges = [
+    { value: "under-1000", label: "Under $1,000" },
+    { value: "1000-2500", label: "$1,000 - $2,500" },
+    { value: "2500-5000", label: "$2,500 - $5,000" },
+    { value: "5000-10000", label: "$5,000 - $10,000" },
+    { value: "over-10000", label: "Over $10,000" },
+  ];
 
-  const hotelCategories = [
-    { value: "3star", label: "3⭐" },
-    { value: "4star", label: "4⭐" },
-    { value: "5star", label: "5⭐" },
+  const specialRequestOptions = [
+    { value: "honeymoon", label: "Honeymoon" },
+    { value: "family", label: "Family Trip" },
+    { value: "visa-help", label: "Visa Help" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setActionType("package");
 
     // Submit to API
     const result = await submitLead({
       name: formData.name,
       phone: formData.phone,
       whatsapp_number: formData.whatsappSame ? formData.phone : formData.whatsappNumber,
+      email: formData.email,
+      destination: formData.destination,
+      travel_date: formData.travelDate ? format(formData.travelDate, "yyyy-MM-dd") : undefined,
       adults: formData.adults,
       kids: formData.kids,
-      travel_date: formData.travelDate ? format(formData.travelDate, "yyyy-MM-dd") : undefined,
-      destination: formData.destination,
-      hotel_category: formData.hotelCategory,
-      form_type: "Enquiry Form",
+      budget_range: formData.budgetRange,
+      special_requests: formData.specialRequests.join(", "),
+      form_type: "Enquiry Form (Dream Trip)",
     });
 
     if (result.status === "success") {
       toast({
-        title: "Package Details Requested",
+        title: "Request Received!",
         description: "Our travel specialists will contact you shortly with the details.",
         duration: 3000,
       });
@@ -93,11 +102,13 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
         phone: "",
         whatsappSame: true,
         whatsappNumber: "",
+        email: "",
+        destination: "",
+        travelDate: undefined,
         adults: "",
         kids: "",
-        travelDate: undefined,
-        destination: "",
-        hotelCategory: "",
+        budgetRange: "",
+        specialRequests: [],
       });
     } else {
       toast({
@@ -108,7 +119,6 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
     }
 
     setIsSubmitting(false);
-    setActionType(null);
   };
 
   if (!isOpen) return null;
@@ -122,14 +132,14 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
       />
 
       {/* Modal Container */}
-      <div className="relative bg-white w-full max-w-[28rem] rounded-3xl shadow-2xl p-6 md:p-8 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="relative bg-white w-full max-w-[32rem] rounded-3xl shadow-2xl p-6 md:p-8 animate-scale-in flex flex-col max-h-[90dvh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Header */}
         <div className="mb-6">
           <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-2">
             Plan Your Dream Trip
           </h2>
           <p className="text-gray-500 text-sm">
-            Get personalized travel package details.
+            Tell us about your travel plans and we'll create a personalized itinerary.
           </p>
         </div>
 
@@ -142,11 +152,11 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
         </button>
 
         {/* Form Section */}
-        <form className="space-y-4 md:space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
           {/* Name */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Name
+              Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -161,7 +171,7 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
           {/* Phone */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Phone / WhatsApp
+              Phone <span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
@@ -193,7 +203,7 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
           {!formData.whatsappSame && (
             <div className="relative">
               <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                WhatsApp Number (with country code)
+                WhatsApp Number <span className="text-red-500">*</span>
               </label>
               <input
                 type="tel"
@@ -206,41 +216,51 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
             </div>
           )}
 
-          {/* No. of Travellers */}
-          <div className="grid grid-cols-2 gap-3 md:gap-4">
-            <div className="relative">
-              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                Adults
-              </label>
-              <input
-                type="number"
-                required
-                min="1"
-                value={formData.adults}
-                onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
-                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FF7700] focus:ring-1 focus:ring-[#FF7700] transition-all duration-200 text-sm"
-                placeholder="0"
-              />
-            </div>
-            <div className="relative">
-              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-                Kids
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={formData.kids}
-                onChange={(e) => setFormData({ ...formData, kids: e.target.value })}
-                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FF7700] focus:ring-1 focus:ring-[#FF7700] transition-all duration-200 text-sm"
-                placeholder="0"
-              />
-            </div>
-          </div>
-
-          {/* Preferred Travel Date */}
+          {/* Email - Optional */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Preferred Travel Date
+              Email <span className="text-gray-400 font-normal">(Optional)</span>
+            </label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FF7700] focus:ring-1 focus:ring-[#FF7700] transition-all duration-200 text-sm"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          {/* Destination */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Destination <span className="text-red-500">*</span>
+            </label>
+            <Select
+              value={formData.destination}
+              onValueChange={(value) => setFormData({ ...formData, destination: value })}
+              required
+            >
+              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#FF7700] focus:border-[#FF7700] [&>span]:line-clamp-none">
+                <SelectValue placeholder="Select Destination" />
+              </SelectTrigger>
+              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
+                {destinations.map((destination) => (
+                  <SelectItem
+                    key={destination.value}
+                    value={destination.value}
+                    className="cursor-pointer focus:bg-[#FF7700]/10 focus:text-primary whitespace-nowrap"
+                  >
+                    {destination.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Travel Dates */}
+          <div className="relative">
+            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+              Travel Dates <span className="text-red-500">*</span>
             </label>
             <Popover>
               <PopoverTrigger asChild>
@@ -272,73 +292,121 @@ export function EnquiryForm({ isOpen, onClose, initialDestination }: EnquiryForm
             </Popover>
           </div>
 
-          {/* Destination */}
+          {/* No. of Travellers */}
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Adults <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                required
+                min="1"
+                value={formData.adults}
+                onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FF7700] focus:ring-1 focus:ring-[#FF7700] transition-all duration-200 text-sm"
+                placeholder="0"
+              />
+            </div>
+            <div className="relative">
+              <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
+                Kids
+              </label>
+              <input
+                type="number"
+                min="0"
+                value={formData.kids}
+                onChange={(e) => setFormData({ ...formData, kids: e.target.value })}
+                className="w-full px-4 py-2.5 md:py-3 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FF7700] focus:ring-1 focus:ring-[#FF7700] transition-all duration-200 text-sm"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          {/* Budget Range */}
           <div className="relative">
             <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Destination
+              Budget Range <span className="text-red-500">*</span>
             </label>
             <Select
-              value={formData.destination}
-              onValueChange={(value) => setFormData({ ...formData, destination: value })}
+              value={formData.budgetRange}
+              onValueChange={(value) => setFormData({ ...formData, budgetRange: value })}
+              required
             >
               <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#FF7700] focus:border-[#FF7700] [&>span]:line-clamp-none">
-                <SelectValue placeholder="Select Destination" />
+                <SelectValue placeholder="Select Budget Range" />
               </SelectTrigger>
               <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] max-h-[200px] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
-                {destinations.map((destination) => (
+                {budgetRanges.map((range) => (
                   <SelectItem
-                    key={destination.value}
-                    value={destination.value}
+                    key={range.value}
+                    value={range.value}
                     className="cursor-pointer focus:bg-[#FF7700]/10 focus:text-primary whitespace-nowrap"
                   >
-                    {destination.label}
+                    {range.label}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
 
-          {/* Hotel Category - Optional */}
+          {/* Special Requests */}
           <div className="relative">
-            <label className="block text-xs font-semibold text-gray-900 mb-1.5 ml-1">
-              Hotel Category <span className="text-gray-400 font-normal">(Optional)</span>
+            <label className="block text-xs font-semibold text-gray-900 mb-2 ml-1">
+              Special Requests
             </label>
-            <Select
-              value={formData.hotelCategory}
-              onValueChange={(value) => setFormData({ ...formData, hotelCategory: value })}
-            >
-              <SelectTrigger className="w-full px-4 py-2.5 md:py-3 h-auto bg-white border border-gray-200 rounded-2xl text-gray-900 shadow-none focus:ring-1 focus:ring-[#FF7700] focus:border-[#FF7700] [&>span]:line-clamp-none">
-                <SelectValue placeholder="Select Hotel Category" />
-              </SelectTrigger>
-              <SelectContent position="popper" sideOffset={5} className="min-w-[var(--radix-select-trigger-width)] bg-white border-gray-100 rounded-xl shadow-xl z-[150]">
-                {hotelCategories.map((category) => (
-                  <SelectItem
-                    key={category.value}
-                    value={category.value}
-                    className="cursor-pointer focus:bg-[#FF7700]/10 focus:text-primary whitespace-nowrap"
+            <div className="flex flex-row flex-wrap gap-x-6 gap-y-3">
+              {specialRequestOptions.map((option) => (
+                <div key={option.value} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`special-enquiry-${option.value}`}
+                    checked={formData.specialRequests.includes(option.value)}
+                    onCheckedChange={(checked) => {
+                      if (checked === true) {
+                        setFormData({ ...formData, specialRequests: [...formData.specialRequests, option.value] });
+                      } else {
+                        setFormData({ ...formData, specialRequests: formData.specialRequests.filter(req => req !== option.value) });
+                      }
+                    }}
+                    className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-[#FF7700] data-[state=checked]:border-[#FF7700]"
+                  />
+                  <label
+                    htmlFor={`special-enquiry-${option.value}`}
+                    className="text-sm font-medium text-gray-900 cursor-pointer"
                   >
-                    {category.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                    {option.label}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2 pt-2">
+            <Checkbox id="authorize-enquiry" className="h-5 w-5 rounded border-gray-300 data-[state=checked]:bg-[#FF7700] data-[state=checked]:border-[#FF7700]" />
+            <label htmlFor="authorize-enquiry" className="text-[13px] font-medium text-gray-700 cursor-pointer">
+              I authorize Europe Calling to contact me via Phone / WhatsApp
+            </label>
           </div>
 
           {/* Action Button */}
           <div className="pt-2">
             <button
               type="submit"
-              onClick={handleSubmit}
               disabled={isSubmitting}
               className={cn(
                 "w-full bg-[#FF7700] hover:bg-[#FF7700]/90 text-white font-bold py-3 md:py-3.5 rounded-2xl shadow-lg border border-[#FF7700]/20 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm",
-                isSubmitting && actionType === "package" && "opacity-80 cursor-not-allowed transform-none"
+                isSubmitting && "opacity-80 cursor-not-allowed transform-none"
               )}
             >
-              {isSubmitting && actionType === "package" ? (
+              {isSubmitting ? (
                 "Sending..."
               ) : (
-                "Send Me Package Details"
+                <>
+                  <span>Speak to Trip Planner</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </>
               )}
             </button>
 

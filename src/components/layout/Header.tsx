@@ -38,7 +38,7 @@ export function Header() {
 
   // Pages that have LIGHT background heroes (Transparent header, DARK text)
   // Pages that have LIGHT background heroes (Transparent header, DARK text)
-  const lightHeroPages = ["/about", "/newsroom", "/contact", "/destinations", "/gallery", "/privacy", "/terms", "/testimonials"];
+  const lightHeroPages = ["/about", "/newsroom", "/contact", "/destinations", "/gallery", "/privacy", "/terms", "/testimonials", "/refund"];
   const isLightHeroPage = lightHeroPages.includes(location.pathname);
 
   // Pages that have DARK background heroes (Transparent header, WHITE text)
@@ -66,7 +66,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out",
         shouldHaveWhiteBackground
-          ? "bg-[#faf4e5]/90 backdrop-blur-md shadow-sm border-b border-gray-100 py-3"
+          ? "bg-gradient-to-b from-[#faf4e5] to-[#faf4e5]/0 backdrop-blur-md shadow-sm border-b border-gray-100 py-3"
           : "bg-transparent py-5 lg:py-8"
       )}
     >
@@ -84,7 +84,7 @@ export function Header() {
               alt="Europe Calling Logo"
               className={cn(
                 "w-auto object-contain transition-all duration-500",
-                isScrolled ? "h-10 lg:h-12" : "h-20 lg:h-28 drop-shadow-2xl"
+                isScrolled || !isHomePage ? "h-10 lg:h-12" : "h-20 lg:h-28 drop-shadow-2xl"
               )}
             />
           </div>

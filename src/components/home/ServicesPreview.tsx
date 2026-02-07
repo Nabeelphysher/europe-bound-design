@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Star } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import flightVideo from "@/assets/vecteezy_airplane-flying-in-the-sky_35448314.mp4";
+import { TripPlannerForm } from "@/components/ui/TripPlannerForm";
 
 const packages = [
   {
@@ -35,18 +37,33 @@ const packages = [
       "Curated Cultural Experiences",
       "Custom Trips Across Multiple Destinations",
       "Personalized Luxury Touches",
+      "Everything in Basic Package",
       "Flight tickets",
       "Visa",
       "Entry ticket",
       "Lunch and dinner",
-
+    ],
+    vipBenefits: [
+      "Completely stress-free experience",
+      "Priority handling & support",
+      "VIP treatment & Exclusive access",
+      "End-to-end relocation management",
+      "Personalized career strategy"
     ],
     highlighted: true,
-    link: "/services",
+    link: "/contact",
   },
 ];
 
 export function ServicesPreview() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState("");
+
+  const handleOpenForm = (packageTitle: string) => {
+    setSelectedPackage(packageTitle);
+    setIsFormOpen(true);
+  };
+
   return (
     <section className="relative pt-4 sm:pt-6 md:pt-6 pb-8 sm:pb-10 md:pb-12 lg:pt-8 lg:pb-16 overflow-hidden bg-[linear-gradient(180deg,#faf4e5_0%,#faf4e5_150px,#faf4e5_100%)]">
       <div className="container-wide relative z-10 px-6">
@@ -108,28 +125,52 @@ export function ServicesPreview() {
                   </p>
                 </div>
 
-                {/* Features */}
-                <ul className="space-y-1 sm:space-y-1.5 md:space-y-2 w-full mb-3 sm:mb-4 md:mb-5 flex-grow">
-                  {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 sm:gap-2.5 md:gap-3 group/item">
-                      <div className={`mt-0.5 w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
+                <div className="w-full flex flex-col md:flex-row gap-4 lg:gap-6 mb-4 sm:mb-5 flex-grow">
+                  {/* Features */}
+                  <ul className="space-y-1 sm:space-y-1.5 md:space-y-2 flex-grow">
+                    {pkg.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 sm:gap-2.5 md:gap-3 group/item">
+                        <div className={`mt-0.5 w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
                         ${pkg.highlighted
-                          ? "bg-[#FF7700]/20 text-[#FF7700]"
-                          : "bg-slate-100 text-slate-900 group-hover/item:bg-[#FF7700] group-hover/item:text-white"
-                        }`
-                      }>
-                        <CheckCircle2 className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3" />
+                            ? "bg-[#FF7700]/20 text-[#FF7700]"
+                            : "bg-slate-100 text-slate-900 group-hover/item:bg-[#FF7700] group-hover/item:text-white"
+                          }`
+                        }>
+                          <CheckCircle2 className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3" />
+                        </div>
+                        <span className={`text-xs sm:text-sm font-medium leading-tight sm:leading-snug ${pkg.highlighted ? "text-white/80" : "text-slate-700"}`}>
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* VIP Benefits Section for Luxury Package */}
+                  {/* @ts-ignore */}
+                  {pkg.vipBenefits && (
+                    <div className="w-full md:w-5/12 lg:w-1/2 bg-white/5 rounded-xl p-4 border border-white/10 h-fit self-start">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-5 h-5 rounded-full bg-[#FF7700]/20 flex items-center justify-center">
+                          <CheckCircle2 className="w-3 h-3 text-[#FF7700]" />
+                        </div>
+                        <h4 className="text-white font-bold text-sm uppercase tracking-wider">VIP Benefits</h4>
                       </div>
-                      <span className={`text-xs sm:text-sm font-medium leading-tight sm:leading-snug ${pkg.highlighted ? "text-white/80" : "text-slate-700"}`}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                      <ul className="space-y-2">
+                        {/* @ts-ignore */}
+                        {pkg.vipBenefits.map((benefit, i) => (
+                          <li key={i} className="flex items-center gap-2.5">
+                            <span className="w-1.5 h-1.5 min-w-[6px] min-h-[6px] rounded-full bg-[#FF7700]" />
+                            <span className="text-gray-300 text-xs font-medium leading-tight">{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
 
                 {/* Button */}
-                <Link
-                  to={pkg.link}
+                <button
+                  onClick={() => handleOpenForm(pkg.title)}
                   className={`w-full py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-2xl font-bold text-center tracking-widest uppercase text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden relative group/btn
                     ${pkg.highlighted
                       ? "bg-[#FF7700] text-white hover:bg-white hover:text-[#FF7700] shadow-[0_10px_30px_rgba(255,119,0,0.3)]"
@@ -139,13 +180,19 @@ export function ServicesPreview() {
                 >
                   <span className="relative z-10">Explore {pkg.price}</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
+                </button>
 
               </div>
             </RevealOnScroll>
           ))}
         </div>
       </div>
+
+      <TripPlannerForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        initialPackageType={selectedPackage}
+      />
     </section >
   );
 }
